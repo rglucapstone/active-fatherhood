@@ -1,31 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/login">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_enter"
-        android:id="@+id/btn_enter"
-        android:onClick="keepOn"
-        android:layout_marginRight="54dp"
-        android:layout_marginEnd="54dp"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:weightSum="1">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_register"
-        android:id="@+id/button"
-        android:onClick="doRegister"
-        android:clickable="true"
-        android:layout_alignTop="@+id/btn_enter"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="45dp"
-        android:layout_marginEnd="45dp" />
-</RelativeLayout>
+        <ImageView android:src="@mipmap/logo_app"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Email Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Email" />
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Password"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView android:id="@+id/link_signup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="No account yet? Create one"
+            android:gravity="center"
+            android:textSize="16dip"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.22">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:padding="10dp"
+                android:text="@string/btn_enter"
+                android:textColor="#35adbd"
+                android:id="@+id/btn_enter"
+                android:onClick="keepOn"
+                android:background="@drawable/background_button_white"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="41dp"
+                android:layout_marginStart="41dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="@string/btn_register"
+                android:id="@+id/button"
+                android:onClick="doRegister"
+                android:clickable="true"
+                android:layout_alignTop="@+id/btn_enter"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="45dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/background_button_white"
+                android:textColor="#35adbd" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
+    <!--<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="10dp"
+            android:text="@string/btn_enter"
+            android:textColor="#35adbd"
+            android:id="@+id/btn_enter"
+            android:onClick="keepOn"
+            android:layout_marginRight="54dp"
+            android:layout_marginEnd="54dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/button"
+            android:layout_toStartOf="@+id/button"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/background_button_white"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="@string/btn_register"
+            android:id="@+id/button"
+            android:onClick="doRegister"
+            android:clickable="true"
+            android:layout_alignTop="@+id/btn_enter"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="45dp"
+            android:layout_marginEnd="45dp"
+            android:background="@drawable/background_button_white"
+            />
+    </LinearLayout>-->
