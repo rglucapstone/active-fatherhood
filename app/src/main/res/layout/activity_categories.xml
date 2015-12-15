@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_health"
+        android:background="@drawable/btn_health"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="53dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="69dp"
+        android:contentDescription="@string/topic_health"
+        android:clickable="true"
+        android:onClick="selectTopic" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_education"
+        android:background="@drawable/btn_education"
+        android:contentDescription="@string/topic_education"
+        android:clickable="true"
+        android:onClick="selectTopic"
+        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_alignTop="@+id/btn_health"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_social_problems"
+        android:background="@drawable/btn_social_problems"
+        android:contentDescription="@string/topic_social_problems"
+        android:clickable="true"
+        android:onClick="selectTopic"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/btn_health"
+        android:layout_alignStart="@+id/btn_health" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_security"
+        android:background="@drawable/btn_security"
+        android:contentDescription="@string/topic_security"
+        android:clickable="true"
+        android:onClick="selectTopic"
+        android:layout_alignTop="@+id/btn_social_problems"
+        android:layout_alignLeft="@+id/btn_education"
+        android:layout_alignStart="@+id/btn_education" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_sexuality"
+        android:background="@drawable/btn_sexuality"
+        android:contentDescription="@string/topic_sexuality"
+        android:clickable="true"
+        android:onClick="selectTopic"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/btn_social_problems"
+        android:layout_alignLeft="@+id/btn_social_problems"
+        android:layout_alignStart="@+id/btn_social_problems" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_discipline"
+        android:background="@drawable/btn_discipline"
+        android:contentDescription="@string/topic_discipline"
+        android:clickable="true"
+        android:onClick="selectTopic"
+        android:layout_alignTop="@+id/btn_sexuality"
+        android:layout_alignLeft="@+id/btn_security"
+        android:layout_alignStart="@+id/btn_security" />
+
+</RelativeLayout>

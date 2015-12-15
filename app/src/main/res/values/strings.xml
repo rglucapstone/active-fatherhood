@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Paternidad Plus</string>
+
+    <string name="btn_continue">Continuar</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="btn_enter">Entrar</string>
+    <string name="btn_register">Registrarse</string>
+    <string name="btn_ask">Haz una pregunta</string>
+    <string name="btn_answer">Responder</string>
+
+    <string name="txt_categories">Categorías</string>
+
+    <string name="topic_health">Salud</string>
+    <string name="topic_education">Educación</string>
+    <string name="topic_security">Seguridad</string>
+    <string name="topic_sexuality">Sexualidad</string>
+    <string name="topic_discipline">Disciplina</string>
+    <string name="topic_social_problems">Problemas Sociales</string>
+</resources>
