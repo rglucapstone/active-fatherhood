@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/register">
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Regístrate para que puedas participar"
+        android:id="@+id/textView3"
+        android:layout_marginTop="29dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Nombre Completo"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_marginTop="25dp" />
+
+    <EditText android:id="@+id/input_nombres"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textColorHint="#c2c2c2"
+        android:textIsSelectable="true"
+        android:textColorLink="#cb5858"
+        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_alignRight="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Correo Electrónico"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/input_nombres"
+        android:layout_alignLeft="@+id/input_nombres"
+        android:layout_alignStart="@+id/input_nombres"
+        android:layout_marginTop="15dp" />
+
+    <EditText android:id="@+id/input_correo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textColorHint="#c2c2c2"
+        android:textIsSelectable="true"
+        android:textColorLink="#cb5858"
+        android:layout_below="@+id/textView5"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_alignRight="@+id/input_nombres"
+        android:layout_alignEnd="@+id/input_nombres" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Contraseña"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/input_correo"
+        android:layout_alignLeft="@+id/input_correo"
+        android:layout_alignStart="@+id/input_correo"
+        android:layout_marginTop="15dp" />
+
+    <EditText android:id="@+id/input_contrasena"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textColorHint="#c2c2c2"
+        android:textIsSelectable="true"
+        android:textColorLink="#cb5858"
+        android:layout_below="@+id/textView6"
+        android:layout_alignRight="@+id/input_correo"
+        android:layout_alignEnd="@+id/input_correo"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6" />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/btn_register"
+        android:id="@+id/button"
+        android:onClick="doRegister"
+        android:clickable="true"
+        android:background="@drawable/background_button_white"
+        android:textColor="#35adbd"
+        android:layout_gravity="center_vertical"
+        android:layout_below="@+id/input_contrasena"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
