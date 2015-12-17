@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:onClick="profileOn"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/iconUser"

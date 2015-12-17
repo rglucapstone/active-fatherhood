@@ -32,8 +32,9 @@
             android:background="@drawable/background_no_button"
             android:textColor="#1f8f9e"
             android:width="130dp" />
-        <Button
 
+        <Button
+            android:onClick="profileOn"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Tips"
@@ -75,13 +76,21 @@
             android:text="Tab1"
             android:layout_height="match_parent"
             android:layout_alignTop="@+id/content_tab1" />-->
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/btn_health"
+            android:background="@drawable/search"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
         <ListView
             android:layout_width="455dp"
             android:layout_height="435dp"
             android:id="@+id/listQuestions"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/btn_health" />
 
         <Button
             android:layout_width="match_parent"

@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp" >
+    android:paddingRight="16dp"
+    android:transitionGroup="false"
+    android:touchscreenBlocksFocus="false">
     <ImageView android:src="@mipmap/logo_app"
         android:layout_width="wrap_content"
         android:layout_height="72dp"

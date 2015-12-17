@@ -120,6 +120,10 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+    public void profileOn(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

@@ -1,5 +1,6 @@
 package com.rglucapstone.activefatherhood;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import 	java.util.ArrayList;
 import android.widget.TextView;
 import com.rglucapstone.activefatherhood.apis.Question;
+
+import static android.content.Intent.getIntent;
 
 /**
  * Created by ronald on 16/12/15.
@@ -37,4 +40,5 @@ public class QuestionItemAdapter extends ArrayAdapter<Question>{
         //return inflater.inflate(R.layout.item_question, parent, false);
         return convertView;
     }
+
 }
