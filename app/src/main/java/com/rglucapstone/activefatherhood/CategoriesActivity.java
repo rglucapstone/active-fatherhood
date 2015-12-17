@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.app.Fragment;
+import android.app.Activity;
+
 import android.widget.ImageButton;
 
 import com.rglucapstone.activefatherhood.questions.ListQuestionsActivity;
@@ -11,7 +14,7 @@ import com.rglucapstone.activefatherhood.questions.ListQuestionsActivity;
 /**
  * Created by ronald on 14/12/15.
  */
-public class CategoriesActivity extends AppCompatActivity {
+public class CategoriesActivity extends Activity {
     public final static String EXTRA_MESSAGE = "com.rglucapstone.activefatherhood.MESSAGE";
 
     @Override
@@ -21,10 +24,10 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     public void selectTopic(View view) {
-        Intent intent = new Intent(this, ListQuestionsActivity.class);
-        ImageButton b = (ImageButton)view;
-        String buttonText = b.getContentDescription().toString();
-        intent.putExtra(EXTRA_MESSAGE, buttonText);
+        Intent intent = new Intent(this, LIstQuestionsByCategory.class);
+        //ImageButton b = (ImageButton)view;
+        //String buttonText = b.getContentDescription().toString();
+        //intent.putExtra(EXTRA_MESSAGE, buttonText);
         startActivity(intent);
     }
 

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
+    <!--<com.rglucapstone.activefatherhood.CategoriesActivity xmlns:android="http://schemas.android.com/apk/res/android"-->
+
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -79,5 +81,7 @@
         android:layout_alignTop="@+id/btn_sexuality"
         android:layout_alignLeft="@+id/btn_security"
         android:layout_alignStart="@+id/btn_security" />
+
+    <!--</com.rglucapstone.activefatherhood.CategoriesActivity>-->
 
 </RelativeLayout>

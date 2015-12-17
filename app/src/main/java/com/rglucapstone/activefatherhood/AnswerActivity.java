@@ -24,8 +24,10 @@ public class AnswerActivity extends AppCompatActivity {
         //t.requestFocus();
     }
 
-    public void asking(View view) {
+    public void answering(View view) {
         Intent intent = new Intent(this, QuestionActivity.class);
         startActivity(intent);
     }
+
+
 }

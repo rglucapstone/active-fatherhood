@@ -39,9 +39,6 @@ public class ListQuestionsActivity extends ListActivity {
         //listQuestions.setAdapter(listQuestionsAdapter);
         //listQuestions = (ListView) findViewById(R.id.list);
 
-        /*Intent intent = getIntent();
-        String message = intent.getStringExtra(CategoriesActivity.EXTRA_MESSAGE);
-        setTitle(message);*/
         /*stringArray = new String[20];
         for(int i=0; i < stringArray.length; i++){
             stringArray[i] = "String " + i;

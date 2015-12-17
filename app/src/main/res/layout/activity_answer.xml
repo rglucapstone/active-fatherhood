@@ -31,7 +31,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="70dp"
         android:clickable="true"
-        android:onClick="asking" />
+        android:onClick="answering" />
 
 
 </LinearLayout>
