@@ -12,9 +12,9 @@ public class AskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         String message = intent.getStringExtra(CategoriesActivity.EXTRA_MESSAGE);
-        setTitle(message);
+        setTitle(message);*/
         setContentView(R.layout.activity_ask);
     }
 }

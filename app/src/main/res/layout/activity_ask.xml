@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Escribe tu pregunta aquí:"
+        android:id="@+id/label_question"
+        android:layout_gravity="top"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="12"
+        android:id="@+id/input_question" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/btn_asking"
+        android:text="Enviar"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center_horizontal|right"
+        android:background="@drawable/button_ask"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="70dp"
+        android:clickable="true"
+        android:onClick="asking" />
+
+
+</LinearLayout>

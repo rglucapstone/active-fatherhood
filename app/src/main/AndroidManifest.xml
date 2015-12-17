@@ -32,7 +32,7 @@
             android:name=".HomeActivity"
             android:label="Paternidad Plus">
         </activity>
-        <activity android:name=".ListQuestionsActivity">
+        <activity android:name=".questions.ListQuestionsActivity">
         </activity>
     </application>
 

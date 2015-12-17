@@ -11,6 +11,7 @@
     <string name="btn_answer">Responder</string>
 
     <string name="txt_categories">Categorías</string>
+    <string name="txt_answers">Respuestas</string>
 
     <string name="topic_health">Salud</string>
     <string name="topic_education">Educación</string>
