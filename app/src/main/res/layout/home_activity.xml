@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/menu_toolbar"
+        android:background="@android:color/transparent">
+
+        <Button
+            android:onClick="selectMenuGeneral"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Preguntas"
+            android:id="@+id/menu_general"
+            android:layout_weight="0.02"
+            android:width="130dp"
+            android:background="@drawable/background_no_button"
+            android:textColor="#1f8f9e"
+            android:layout_marginLeft="0dp" />
+
+        <Button
+
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Categorías"
+            android:id="@+id/menu_categories"
+            android:layout_weight="0.06"
+            android:background="@drawable/background_no_button"
+            android:textColor="#1f8f9e"
+            android:width="130dp" />
+        <Button
+
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Tips"
+            android:id="@+id/menu_tips"
+            android:layout_weight="0.06"
+            android:allowUndo="false"
+            android:background="@drawable/background_no_button"
+            android:textColor="#1f8f9e"
+            android:width="130dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content_question"
+        android:layout_below="@+id/menu_toolbar">
+        <fragment
+            android:layout_width="455dp"
+            android:layout_height="461dp"
+            android:name="android.webkit.WebViewFragment"
+            android:id="@+id/content_tab1"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Tab1"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/content_tab1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content_categories"
+        android:layout_below="@+id/menu_toolbar">
+        <fragment
+            android:layout_width="455dp"
+            android:layout_height="461dp"
+            android:name="android.webkit.WebViewFragment"
+            android:id="@+id/content_tab2"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Tab2"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/content_tab2" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content_tips"
+        android:layout_below="@+id/menu_toolbar">
+        <fragment
+            android:layout_width="455dp"
+            android:layout_height="461dp"
+            android:name="android.webkit.WebViewFragment"
+            android:id="@+id/content_tab3"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Tab3"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/content_tab3" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+<!--<RelativeLayout
+    android:id="@+id/main_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tab_layout"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/action_settings"
+        android:layout_below="@+id/tab_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/menu"
+        android:layout_below="@+id/tab_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
+</RelativeLayout>-->
+

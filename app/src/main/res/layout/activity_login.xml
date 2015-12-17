@@ -104,7 +104,6 @@
         android:layout_height="35dp"
         android:text="@string/btn_entrar_gmail"
         android:id="@+id/button_gmail"
-        android:onClick="doRegister"
         android:clickable="true"
         android:background="@drawable/background_button_white"
         android:textColor="#35adbd"

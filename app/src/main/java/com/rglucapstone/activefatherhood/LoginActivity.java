@@ -16,8 +16,12 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
     }
 
-    public void keepOn(View view) {
+    /*public void keepOn(View view) {
         Intent intent = new Intent(this, CategoriesActivity.class);
+        startActivity(intent);
+    }*/
+    public void keepOn(View view) {
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 

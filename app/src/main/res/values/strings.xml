@@ -5,6 +5,7 @@
     <string name="btn_login">Iniciar Sesión</string>
     <string name="btn_enter">Entrar</string>
     <string name="btn_register">Registrarse</string>
+    <string name="btn_aceptar">Aceptar</string>
     <string name="btn_entrar_gmail">Iniciar con Gmail</string>
     <string name="btn_ask">Haz una pregunta</string>
     <string name="btn_answer">Responder</string>

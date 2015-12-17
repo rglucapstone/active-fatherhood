@@ -14,13 +14,22 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
-    public void keepOn(View view) {
+    /*public void keepOn(View view) {
         Intent intent = new Intent(this, CategoriesActivity.class);
+        startActivity(intent);
+    }*/
+    public void keepOn(View view) {
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 
     public void showLogin(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void doRegister(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 }

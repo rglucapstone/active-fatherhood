@@ -18,7 +18,6 @@ public class CategoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
     }
 
-
     public void selectTopic(View view) {
         Intent intent = new Intent(this, ListQuestionsActivity.class);
         ImageButton b = (ImageButton)view;
