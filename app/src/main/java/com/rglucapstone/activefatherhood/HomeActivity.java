@@ -19,6 +19,7 @@ import android.widget.ListView;
 import 	android.widget.AdapterView;
 import 	android.content.Context;
 
+import com.rglucapstone.activefatherhood.apis.PadreGuru;
 import com.rglucapstone.activefatherhood.apis.Question;
 import com.rglucapstone.activefatherhood.QuestionActivity;
 
@@ -32,6 +33,10 @@ public class HomeActivity extends AppCompatActivity {
     private ListView listQuestions;
     private ArrayList<Question> arrayOfQuestions;
     private Context list;
+
+    private ArrayAdapter listInfoGuruAdapter;
+    private ListView listPadresGurus;
+    private ArrayList<Question> arrayOfInfoGuru;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        ArrayList<PadreGuru> arrayOfInfoGuru = new ArrayList<PadreGuru>();
+        this.populateInfoGuru(arrayOfInfoGuru);
+        listInfoGuruAdapter = new GuruItemAdapter(this, arrayOfInfoGuru);
+        listPadresGurus = (ListView) findViewById(R.id.listPadresGurus);
+        listPadresGurus.setAdapter(listInfoGuruAdapter);
+
 
         final RelativeLayout content_question = (RelativeLayout) findViewById(R.id.content_question);
         final RelativeLayout content_publicaciones = (RelativeLayout) findViewById(R.id.content_publicaciones);
@@ -76,6 +87,8 @@ public class HomeActivity extends AppCompatActivity {
 
         content_publicaciones.setVisibility(View.INVISIBLE);
         content_gurus.setVisibility(View.INVISIBLE);
+
+        final Button btn_menu_general= (Button) findViewById(R.id.menu_general);
         btn_menu_general.setBackgroundColor(Color.WHITE);
 
         btn_menu_general.setOnClickListener(new View.OnClickListener() {
@@ -101,11 +114,10 @@ public class HomeActivity extends AppCompatActivity {
                 content_question.setVisibility(View.INVISIBLE);
                 content_gurus.setVisibility(View.INVISIBLE);
                 content_publicaciones.setVisibility(View.VISIBLE);
-                /*content_categories.setVisibility((content_categories.getVisibility() == View.VISIBLE)
-                        ? View.GONE : View.VISIBLE);*/
             }
         });
 
+<<<<<<< HEAD
         menu_gurus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 menu_gurus.setBackgroundColor(Color.WHITE);
@@ -116,6 +128,11 @@ public class HomeActivity extends AppCompatActivity {
                 content_publicaciones.setVisibility(View.INVISIBLE);
                 content_gurus.setVisibility(View.VISIBLE);
                /* content_gurus.setVisibility((content_categories.getVisibility() == View.VISIBLE)
+=======
+                content_categories.setVisibility(View.INVISIBLE);
+                content_padres_gurus.setVisibility(View.VISIBLE);
+               /* content_tips.setVisibility((content_categories.getVisibility() == View.VISIBLE)
+>>>>>>> Implementacion tab de padres gurus parte1
                         ? View.GONE : View.VISIBLE);*/
             }
         });
@@ -200,6 +217,39 @@ public class HomeActivity extends AppCompatActivity {
         questions.add(q14);
         Question q15 = new Question("Jorge Ortega", "hace 13 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit?","Enfermedades","Bebes");
         questions.add(q15);
+    }
+
+    private void populateInfoGuru(ArrayList arrayOfInfoGuru){
+        PadreGuru q1 = new PadreGuru("Pedro Xavier", "hace 45 minutos", "¿Cómo y cuándo hablar con los niños acerca de las enfermedades que puedan tener?");
+        arrayOfInfoGuru.add(q1);
+        PadreGuru q2 = new PadreGuru("Telmo Riofrio", "hace 1 hora", "¿Es mi bebé corto para su edad?");
+        arrayOfInfoGuru.add(q2);
+        /*Question q3 = new Question("Lorenzo Perez", "hace 1 hora", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh metus, pulvinar non nulla vel?");
+        questions.add(q3);
+        Question q4 = new Question("Rafael Nevarez", "hace 2 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh metus, pulvinar non nulla vel?");
+        questions.add(q4);
+        Question q5 = new Question("Daniel Gavilanes", "hace 3 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit?");
+        questions.add(q5);
+        Question q6 = new Question("David Lolin", "hace 4 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh metus, pulvinar non nulla vel?");
+        questions.add(q6);
+        Question q7 = new Question("Juan Constantine", "hace 5 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit?");
+        questions.add(q7);
+        Question q8 = new Question("Ronald Gonzales", "hace 6 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh metus, pulvinar non nulla vel?");
+        questions.add(q8);
+        Question q9 = new Question("Joe Sarzosa", "hace 7 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit?");
+        questions.add(q9);
+        Question q10 = new Question("Mauricio Reina", "hace 8 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh metus, pulvinar non nulla vel?");
+        questions.add(q10);
+        Question q11 = new Question("Rafael Tamayo", "hace 9 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit?");
+        questions.add(q11);
+        Question q12 = new Question("Erwin Bravo", "hace 10 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh metus, pulvinar non nulla vel?");
+        questions.add(q12);
+        Question q13 = new Question("Xavier Quimi", "hace 11 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit?");
+        questions.add(q13);
+        Question q14 = new Question("Carlos Choez", "hace 12 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh metus, pulvinar non nulla vel?");
+        questions.add(q14);
+        Question q15 = new Question("Jorge Ortega", "hace 13 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit?");
+        questions.add(q15);*/
     }
 
     public void ask(View view) {

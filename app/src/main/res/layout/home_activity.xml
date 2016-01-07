@@ -44,7 +44,6 @@
             android:background="@drawable/background_no_button"
             android:textColor="#1f8f9e"
             android:width="130dp" />
-
     </LinearLayout>
 
     <!-- Tab Preguntas -->
@@ -143,11 +142,21 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <TextView
+        <ListView
+            android:layout_width="455dp"
+            android:layout_height="435dp"
+            android:id="@+id/listPadresGurus"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <!--<RelativeLayout
             android:layout_width="match_parent"
-            android:text="En construcción"
-            android:layout_height="match_parent"
-            android:layout_alignTop="@+id/content_tab3" />
+            android:layout_height="match_parent">
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                layout="@layout/activity_list_infoguru" >
+            </include>
+        </RelativeLayout>-->
 
     </RelativeLayout>
 
