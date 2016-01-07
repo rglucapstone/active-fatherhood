@@ -26,8 +26,8 @@
 
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="Categorías"
-            android:id="@+id/menu_categories"
+            android:text="Publicaciones"
+            android:id="@+id/menu_publicaciones"
             android:layout_weight="0.06"
             android:background="@drawable/background_no_button"
             android:textColor="#1f8f9e"
@@ -37,8 +37,8 @@
             android:onClick="profileOn"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="Tips"
-            android:id="@+id/menu_tips"
+            android:text="Padres Gurús"
+            android:id="@+id/menu_gurus"
             android:layout_weight="0.06"
             android:allowUndo="false"
             android:background="@drawable/background_no_button"
@@ -47,18 +47,12 @@
 
     </LinearLayout>
 
+    <!-- Tab Preguntas -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/content_question"
         android:layout_below="@+id/menu_toolbar">
-
-        <!--<ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:id="@+id/browser"
-            android:src="@drawable/browser"
-            android:layout_gravity="top" />-->
 
         <fragment
             android:layout_width="455dp"
@@ -70,12 +64,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-
-        <!--<TextView
-            android:layout_width="match_parent"
-            android:text="Tab1"
-            android:layout_height="match_parent"
-            android:layout_alignTop="@+id/content_tab1" />-->
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -111,10 +99,11 @@
 
     </RelativeLayout>
 
+    <!-- Tab Publicaciones-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/content_categories"
+        android:id="@+id/content_publicaciones"
         android:layout_below="@+id/menu_toolbar">
         <fragment
             android:layout_width="455dp"
@@ -132,16 +121,17 @@
             <include
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                layout="@layout/activity_categories" >
+                layout="@layout/activity_publicaciones" >
             </include>
         </RelativeLayout>
 
     </RelativeLayout>
 
+    <!-- Tab Padres Guus -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/content_tips"
+        android:id="@+id/content_gurus"
         android:layout_below="@+id/menu_toolbar">
         <fragment
             android:layout_width="455dp"

@@ -33,6 +33,10 @@ public class QuestionActivity extends AppCompatActivity {
         questionDate.setText(extras.getString("date"));
         TextView questionContent = (TextView) findViewById(R.id.questionContent);
         questionContent.setText(extras.getString("content"));
+        TextView questionTagEnfermedades = (TextView) findViewById(R.id.questionTagEnfermedades);
+        questionContent.setText(extras.getString("tagEnfermedades"));
+        TextView questionTagBebes = (TextView) findViewById(R.id.questionTagBebes);
+        questionContent.setText(extras.getString("tagBebes"));
 
         listAnswerAdapter = new AnswerItemAdapter(this, new String[10]);
         listAnswer = (ListView) findViewById(R.id.listAnswer);
