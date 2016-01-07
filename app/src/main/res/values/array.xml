@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="list_categories">
+        <item>Bebés</item>
+        <item>Niños</item>
+        <item>Adolescentes</item>
+        <item>Escuela</item>
+        <item>Salud</item>
+        <item>Disciplina</item>
+        <item>Problemas Sociales</item>
+        <item>Aprendizaje</item>
+    </string-array>
+</resources>

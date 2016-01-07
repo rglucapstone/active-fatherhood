@@ -11,31 +11,20 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
-        </activity>
-        <activity android:name=".RegisterActivity">
-        </activity>
-        <activity android:name=".AskActivity">
-        </activity>
-        <activity android:name=".QuestionActivity">
-        </activity>
-        <activity android:name=".AnswerActivity">
-        </activity>
-        <activity
-            android:name=".CategoriesActivity">
-        </activity>
-        <activity
-            android:name=".HomeActivity"
-            android:label="Paternidad Plus">
-        </activity>
-        <activity android:name=".questions.ListQuestionsActivity">
-        </activity>
-        <activity android:name=".ProfileActivity">
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".AskActivity"></activity>
+        <activity android:name=".QuestionActivity"></activity>
+        <activity android:name=".AnswerActivity"></activity>
+        <activity android:name=".CategoriesActivity"></activity>
+        <activity android:name=".HomeActivity" android:label="Paternidad Plus"></activity>
+        <activity android:name=".questions.ListQuestionsActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <!--  <activity android:name=".InterestActivity"></activity>
+          <activity android:name=".DialogInterestActivity"></activity>-->
     </application>
 
 </manifest>
