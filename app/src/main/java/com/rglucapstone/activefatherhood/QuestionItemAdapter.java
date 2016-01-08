@@ -32,14 +32,16 @@ public class QuestionItemAdapter extends ArrayAdapter<Question>{
         TextView questionUser = (TextView) convertView.findViewById(R.id.questionUser);
         TextView questionDate = (TextView) convertView.findViewById(R.id.questionDate);
         TextView questionContent = (TextView) convertView.findViewById(R.id.questionContent);
-        TextView questionTagEnfermedades = (TextView) convertView.findViewById(R.id.questionTagEnfermedades);
-        TextView questionTagBebes = (TextView) convertView.findViewById(R.id.questionTagBebes);
+        TextView pregunta_tag = (TextView) convertView.findViewById(R.id.pregunta_tag);
+        TextView reporte_likes = (TextView) convertView.findViewById(R.id.reporte_likes);
+        TextView reporte_respuestas = (TextView) convertView.findViewById(R.id.reporte_respuestas);
 
         questionUser.setText(question.user);
         questionDate.setText(question.date);
         questionContent.setText(question.content);
-        questionTagEnfermedades.setText(question.tagEnfermedades);/* pasar a array*/
-        questionTagEnfermedades.setText(question.tagBebes);
+        pregunta_tag.setText(question.pregunta_tag);/* pasar a array*/
+        reporte_likes.setText(question.reporte_likes);
+        reporte_respuestas.setText(question.reporte_respuestas);
 
         //return inflater.inflate(R.layout.item_question, parent, false);
         return convertView;
