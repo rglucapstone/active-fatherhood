@@ -22,4 +22,5 @@
     <string name="topic_social_problems">Problemas Sociales</string>
 
     <string name="message_intereses">Queremos brindarte mejor información, escoge los temas que te interesen</string>
+    <string name="action_buscar">buscar</string>
 </resources>

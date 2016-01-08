@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/toolbar_actionbar" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -11,11 +16,12 @@
         android:background="@android:color/transparent">
 
         <Button
+            android:id="@+id/menu_general"
             android:onClick="selectMenuGeneral"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Preguntas"
-            android:id="@+id/menu_general"
+            android:textSize="12sp"
             android:layout_weight="0.02"
             android:width="130dp"
             android:background="@drawable/background_no_button"
@@ -23,22 +29,23 @@
             android:layout_marginLeft="0dp" />
 
         <Button
-
+            android:id="@+id/menu_publicaciones"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Publicaciones"
-            android:id="@+id/menu_publicaciones"
+            android:textSize="12sp"
             android:layout_weight="0.06"
             android:background="@drawable/background_no_button"
             android:textColor="#1f8f9e"
             android:width="130dp" />
 
         <Button
+            android:id="@+id/menu_gurus"
             android:onClick="profileOn"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Padres Gurús"
-            android:id="@+id/menu_gurus"
+            android:textSize="12sp"
             android:layout_weight="0.06"
             android:allowUndo="false"
             android:background="@drawable/background_no_button"
@@ -63,14 +70,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/btn_health"
-            android:background="@drawable/search"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
         <ListView
             android:layout_width="455dp"
             android:layout_height="435dp"
@@ -94,8 +93,6 @@
             android:layout_marginLeft="70dp"
             android:clickable="true"
             android:onClick="ask" />
-
-
     </RelativeLayout>
 
     <!-- Tab Publicaciones-->
@@ -104,29 +101,44 @@
         android:layout_height="match_parent"
         android:id="@+id/content_publicaciones"
         android:layout_below="@+id/menu_toolbar">
+
         <fragment
-            android:layout_width="455dp"
-            android:layout_height="461dp"
-            android:name="android.webkit.WebViewFragment"
             android:id="@+id/content_tab2"
+            android:layout_width="455dp"
+            android:layout_height="435dp"
+            android:name="android.webkit.WebViewFragment"
             android:layout_gravity="center_vertical"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <RelativeLayout
+        <ListView
+            android:id="@+id/listPublicaciones"
+            android:layout_width="455dp"
+            android:layout_height="435dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/btn_health" />
+
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                layout="@layout/activity_publicaciones" >
-            </include>
-        </RelativeLayout>
+            android:layout_height="50dp"
+            android:id="@+id/btn_publicar"
+            android:text="Realizar Post"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="bottom"
+            android:background="@drawable/button_ask"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginLeft="70dp"
+            android:clickable="true"
+            android:onClick="publicar" />
 
     </RelativeLayout>
 
-    <!-- Tab Padres Guus -->
+    <!-- Tab Padres Gurus -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -162,60 +174,4 @@
 
 
 </RelativeLayout>
-<!--<RelativeLayout
-    android:id="@+id/main_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimary"
-        android:elevation="6dp"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:background="?attr/colorPrimary"
-        android:elevation="6dp"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/tab_layout"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/action_settings"
-        android:layout_below="@+id/tab_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/menu"
-        android:layout_below="@+id/tab_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp" />
-</RelativeLayout>-->
 

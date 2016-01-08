@@ -2,16 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="7dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingRight="5dp">
 
     <ImageView
         android:onClick="profileOn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:id="@+id/iconUser"
-        android:src="@drawable/user_profile"
+        android:src="@drawable/ico_profile2_32"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="3dp" />
 
     <!-- Preguntas -->
     <LinearLayout
@@ -21,85 +25,124 @@
         android:layout_marginLeft="10dp"
         android:gravity="left" >
         <TextView
+            android:id="@+id/questionUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=""
-            android:id="@+id/questionUser"
+            android:text="sda"
             android:textSize="14sp"
-            android:textColor="#222222"
+            android:textColor="#333333"
             android:textStyle="bold" />
         <TextView
+            android:id="@+id/questionDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text=""
-            android:id="@+id/questionDate"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:textColor="#999999"
             android:textSize="12sp" />
         <TextView
+            android:id="@+id/questionContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text=""
-            android:id="@+id/questionContent"
+            android:singleLine="false"
             android:layout_marginTop="5dp"
             android:ellipsize="end"
-            android:lines="3"
+            android:maxLines="5"
             android:textColor="#666666"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <!-- Tags -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp">
             <ImageView
                 android:id="@+id/iconTag"
                 android:onClick="profileOn"
-                android:layout_width="13dp"
-                android:layout_height="13dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:layout_marginRight="4dp"
                 android:src="@drawable/icon_tag"
-                 />
+                android:layout_marginTop="3dp" />
             <TextView
                 android:id="@+id/pregunta_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textSize="12sp"
-                android:text="sdf"/>
+                android:text="dd"/>
         </LinearLayout>
 
         <!-- Reporte -->
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:background="@drawable/background_border_top"
-            android:paddingTop="2dp"
             android:paddingBottom="2dp">
             <TextView
                 android:id="@+id/reporte_likes"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textAlignment="center"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 android:textColor="#d3d3d3"
-                android:text=""
+                android:text="ss"
                 />
             <TextView
+                android:id="@+id/separador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="·"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+            <TextView
                 android:id="@+id/reporte_respuestas"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textAlignment="center"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 android:textColor="#d3d3d3"
-                android:text=""
+                android:text="ss"
                 />
+
         </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
+
+<!--
+Reporte
+
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:background="@drawable/background_border_top"
+android:paddingTop="2dp"
+android:paddingBottom="2dp">
+<TextView
+    android:id="@+id/reporte_likes"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceSmall"
+    android:textAlignment="center"
+    android:textSize="12sp"
+    android:textColor="#d3d3d3"
+    android:text=""
+    />
+<TextView
+    android:id="@+id/reporte_respuestas"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceSmall"
+    android:textAlignment="center"
+    android:textSize="12sp"
+    android:textColor="#d3d3d3"
+    android:text=""
+    />
+</LinearLayout>-->
