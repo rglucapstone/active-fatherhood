@@ -2,7 +2,12 @@
 <resources>
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <color name="colorPrimary">#30ABBB</color>
+    <color name="colorPrimaryLabel">#efefef</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="lightGrey">#efefef</color>
+
+    <!-- ActionBar Color-->
+    <color name="actionbar_color">#30ABBB</color>
+    <color name="actionbar_title_text">#FFFFFF</color>
 </resources>
