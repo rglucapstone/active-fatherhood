@@ -1,14 +1,11 @@
 package com.rglucapstone.activefatherhood.adapters;
 
-import android.support.v4.app.ListFragment;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.rglucapstone.activefatherhood.fragments.PageFragment;
 
 /**
  * Created by ronald on 10/01/16.
