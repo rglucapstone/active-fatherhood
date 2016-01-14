@@ -12,7 +12,7 @@
         <include
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            layout="@layout/item_question" >
+            layout="@layout/fragment_item_question" >
         </include>
 
     </LinearLayout>

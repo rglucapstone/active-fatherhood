@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="7dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingRight="5dp">
+
+        <TextView
+            android:id="@+id/txt_ptitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="sda"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:textStyle="bold" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp">
+        <ImageView
+            android:onClick="profileOn"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/ic_user"
+            android:src="@drawable/ic_profile"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp" />
+
+            <TextView
+                android:id="@+id/txt_puser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/txt_pdatetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:layout_marginTop="3dp"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+    </LinearLayout>
+
+        <!-- Tags -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp">
+            <ImageView
+                android:id="@+id/ic_tag"
+                android:onClick="profileOn"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/ic_tag"
+                android:layout_marginTop="3dp" />
+            <TextView
+                android:id="@+id/txt_ptags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:text="dd"/>
+        </LinearLayout>
+
+        <!-- Reporte -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp">
+            <TextView
+                android:id="@+id/txt_plikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAlignment="center"
+                android:textSize="11sp"
+                android:textColor="#d3d3d3"
+                android:text="ss"
+                />
+            <TextView
+                android:id="@+id/txt_separator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="·"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:id="@+id/txt_pcomments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAlignment="center"
+                android:textSize="11sp"
+                android:textColor="#d3d3d3"
+                android:text="ss"
+                />
+
+        </LinearLayout>
+
+</LinearLayout>
