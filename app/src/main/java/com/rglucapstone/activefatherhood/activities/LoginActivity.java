@@ -48,6 +48,8 @@ public class LoginActivity extends Activity{
                         .setPositiveButton(R.string.btn_aceptar_dialog, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 LoginActivity.this.finish();
+                                Intent intent = new Intent(context, HomeActivity.class);
+                                startActivityForResult(intent, 0);
                             }
                         })
                    /* .setNegativeButton("No", new DialogInterface.OnClickListener() {

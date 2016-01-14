@@ -78,10 +78,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="top">
         <Button
+            android:id="@+id/btn_acept"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="@string/btn_aceptar"
-            android:id="@+id/button"
             android:onClick="keepOn"
             android:clickable="true"
             android:background="@drawable/background_button_white"
@@ -90,7 +90,6 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="false"
             android:layout_alignParentEnd="false"
-            android:layout_alignParentStart="false"
             android:layout_alignWithParentIfMissing="false"
             android:layout_alignParentRight="false"
             android:layout_centerHorizontal="true"

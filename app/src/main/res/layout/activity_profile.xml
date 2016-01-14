@@ -206,21 +206,37 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:gravity="center">
-            <TextView
-                android:id="@+id/guru_progress_text"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gurú"
-                android:textSize="12dp"
                 android:gravity="center"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-            <ProgressBar
-                android:id="@+id/guru_progress"
-                style="?android:attr/progressBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/guru_progress_text" />
+                android:layout_marginBottom="-5dp"
+                android:layout_marginTop="-5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/guru_progress_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gurú"
+                    android:textSize="12dp"
+                    android:gravity="center"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+                <ImageView
+                    android:id="@+id/iconUser"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ico_progress"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="left" />
+                <!--<ProgressBar
+                    android:id="@+id/guru_progress"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/guru_progress_text" />-->
+            </LinearLayout>
+
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout
@@ -230,15 +246,12 @@
         android:background="@color/colorPrimary"
         android:paddingTop="10dp">
         <RelativeLayout
-            android:layout_width="132dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:background="@drawable/background_border_bottom"
             android:padding="10dp"
             android:gravity="center"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="-10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp">
+            android:layout_marginTop="-10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -252,14 +265,13 @@
                 android:textStyle="bold" />
         </RelativeLayout>
         <RelativeLayout
-            android:layout_width="132dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:gravity="center"
-            android:paddingLeft="10dp"
             android:layout_marginTop="-10dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginLeft="30dp">
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -267,6 +279,25 @@
                 android:textSize="12dp"
                 android:textAlignment="center"
                 android:id="@+id/textView13"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/actionbar_title_text"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_marginTop="-10dp"
+            android:layout_marginRight="32dp">
+            <TextView
+                android:id="@+id/tab_direct_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preguntas Directas"
+                android:textSize="12dp"
+                android:textAlignment="center"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/actionbar_title_text"
                 android:layout_alignParentEnd="true"

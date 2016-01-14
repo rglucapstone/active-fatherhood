@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="20dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -30,6 +31,7 @@
         android:background="@drawable/button_ask"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="70dp"
+        android:layout_marginTop="30dp"
         android:clickable="true"
         android:onClick="answering" />
 

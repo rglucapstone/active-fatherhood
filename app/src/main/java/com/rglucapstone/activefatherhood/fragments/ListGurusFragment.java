@@ -46,7 +46,7 @@ public class ListGurusFragment extends Fragment {
         Guru g3 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
         salud.add(g3);
 
-        tags.add("Adolescentes");
+        tags.add("Educación");
         ArrayList<Guru> adolescentes = new ArrayList<>();
         Guru g4 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
         adolescentes.add(g4);
@@ -55,8 +55,38 @@ public class ListGurusFragment extends Fragment {
         Guru g6 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
         adolescentes.add(g6);
 
+        tags.add("Problemas Sociales");
+        ArrayList<Guru> problemas_sociales = new ArrayList<>();
+        Guru g7 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
+        adolescentes.add(g7);
+        Guru g8 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
+        adolescentes.add(g8);
+        Guru g9 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
+        adolescentes.add(g9);
+
+        tags.add("Sexualidad");
+        ArrayList<Guru> sexualidad = new ArrayList<>();
+        Guru g10 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
+        adolescentes.add(g10);
+        Guru g11 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
+        adolescentes.add(g11);
+        Guru g12 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
+        adolescentes.add(g12);
+
+        tags.add("Disciplina");
+        ArrayList<Guru> disciplina = new ArrayList<>();
+        Guru g13 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
+        adolescentes.add(g13);
+        Guru g14 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
+        adolescentes.add(g14);
+        Guru g15 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
+        adolescentes.add(g15);
+
         gurus.put(tags.get(0), salud);
         gurus.put(tags.get(1), adolescentes);
+        gurus.put(tags.get(2), problemas_sociales);
+        gurus.put(tags.get(3), sexualidad);
+        gurus.put(tags.get(4), disciplina);
 
     }
 }

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="20dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -20,6 +21,26 @@
         android:ems="12"
         android:id="@+id/input_question" />
 
+    <TextView
+        android:id="@+id/text_add_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="60dp"
+        android:textSize="16dp"
+        android:text="Agrega etiquetas a tu pregunta"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView">
+        <include
+            android:id="@+id/add_tags"
+            layout="@layout/activity_preferences">
+        </include>
+    </ScrollView>
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -31,6 +52,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="70dp"
         android:clickable="true"
+        android:layout_marginTop="30dp"
         android:onClick="asking" />
 
 
