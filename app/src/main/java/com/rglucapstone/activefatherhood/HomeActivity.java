@@ -1,34 +1,29 @@
 package com.rglucapstone.activefatherhood;
 
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.ListView;
-import 	android.widget.AdapterView;
-import 	android.content.Context;
-
-import com.rglucapstone.activefatherhood.apis.PadreGuru;
-import com.rglucapstone.activefatherhood.apis.Question;
-import com.rglucapstone.activefatherhood.QuestionActivity;
 
 import java.util.ArrayList;
+
+import com.rglucapstone.activefatherhood.R;
+import com.rglucapstone.activefatherhood.apis.PadreGuru;
+import com.rglucapstone.activefatherhood.apis.Question;
 
 /**
  * Created by Luisa Castro on 16/12/2015.

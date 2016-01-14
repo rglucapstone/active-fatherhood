@@ -7,7 +7,7 @@
     <string name="btn_register">Registrarse</string>
     <string name="btn_aceptar">Aceptar</string>
     <string name="btn_aceptar_dialog">Aceptar</string>
-    <string name="btn_entrar_gmail">Iniciar con Gmail</string>
+    <string name="btn_entrar_facebook">Iniciar con Facebook</string>
     <string name="btn_ask">Haz una pregunta</string>
     <string name="btn_answer">Responder</string>
 
@@ -24,5 +24,5 @@
     <string name="message_intereses">Queremos brindarte mejor información, escoge los temas que te interesen</string>
     <string name="action_buscar">buscar</string>
     <string name="search_hint">Buscar texto</string>
-    <string name="description_user">Ser un buen padre es ser amigo de tus hijos y no una autoridad</string>
+    <string name="description_user">Ser un buen padre es ser amigo de tus hijos y no una autoridad...</string>
 </resources>

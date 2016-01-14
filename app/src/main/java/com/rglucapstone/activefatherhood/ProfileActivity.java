@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.rglucapstone.activefatherhood.apis.Question;
 
@@ -27,13 +29,21 @@ public class ProfileActivity extends Activity {
     private ListView listPadresGurus;
     private ArrayList<Question> arrayOfInfoGuru;
 
+    private static final int PROGRESS = 0x1;
+
+    private ProgressBar mProgress;
+    private int mProgressStatus = 0;
+
+    private Handler mHandler = new Handler();
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         String message = intent.getStringExtra(CategoriesActivity.EXTRA_MESSAGE);
         setTitle(message);
         setContentView(R.layout.activity_profile);
-
+/*
         ArrayList<Question> arrayOfQuestions = new ArrayList<Question>();
         this.populateQuestions(arrayOfQuestions);
         listQuestionsAdapter = new QuestionItemAdapter(this, arrayOfQuestions);
@@ -59,7 +69,7 @@ public class ProfileActivity extends Activity {
 
                 //Toast.makeText(getApplicationContext(), "TV Selected", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
     private void populateQuestions(ArrayList questions){

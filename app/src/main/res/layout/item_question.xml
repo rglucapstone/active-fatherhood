@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="sda"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget quam semper, hendrerit nulla sed, consectetur elit. Aliquam cursus nisl a feugiat placerat. Aenean diam magna, consectetur quis augue in, consectetur dictum sapien. Nunc ut ante gravida, euismod augue non, lacinia tortor. Mauris fringilla sem in cursus sollicitudin. Duis enim lacus, accumsan et vulputate in, faucibus sed elit. Proin tempor pretium aliquet. Vivamus semper facilisis ipsum ullamcorper pretium. Pellentesque posuere"
             android:textSize="14sp"
             android:textColor="#333333"
             android:textStyle="bold" />
