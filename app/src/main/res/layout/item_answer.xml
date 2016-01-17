@@ -2,12 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:layout_marginTop="3dp">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:gravity="right">
 
         <ImageView
@@ -105,30 +108,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_border_top"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginRight="10dp"
         android:gravity="center">
 
         <!--Me Gusta-->
         <RelativeLayout
-            android:layout_width="130dp"
-            android:layout_height="wrap_content">
+            android:layout_width="150dp"
+            android:layout_height="29dp">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/icon_up"
                     android:src="@drawable/ico_like"
-                    android:layout_marginLeft="25dp" />
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="4dp" />
                 <TextView
                     android:id="@+id/btn_like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textSize="11sp"
-                    android:paddingTop="5sp"
+                    android:paddingTop="8sp"
                     android:paddingLeft="5sp"
                     android:text="Me Gusta"/>
             </LinearLayout>
@@ -138,53 +142,33 @@
         <!--Destacar/Sugerir publicación-->
         <RelativeLayout
             android:layout_width="140dp"
-            android:layout_height="wrap_content">
+            android:layout_height="29dp">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_suggest_publication">
                 <ImageView
+                    android:id="@+id/ico_suggest_publication"
                     android:layout_width="19dp"
                     android:layout_height="20dp"
-                    android:id="@+id/ico_favorite"
                     android:src="@drawable/ico_suggest"
                     android:layout_gravity="top"
-                    android:layout_margin="5dp" />
+                    android:layout_margin="5dp"
+                    android:onClick="seguroSugerirPublication"/>
                 <TextView
-                    android:id="@+id/btn_sugest_publication"
+                    android:id="@+id/text_sugest_publication"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textSize="11sp"
                     android:paddingTop="8sp"
-                    android:text="Sugerir Publicación"/>
+                    android:text="Sugerir Publicación"
+                    android:onClick="seguroSugerirPublication"/>
             </LinearLayout>
 
         </RelativeLayout>
 
         <!--Destacar/Sugerir Votar Padre-->
-        <RelativeLayout
-            android:layout_width="110dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/ico_vote_father"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ico_vote_father"
-                    android:layout_gravity="top"
-                    android:layout_margin="5dp" />
-                <TextView
-                    android:id="@+id/text_vote_father"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textSize="11sp"
-                    android:paddingTop="8sp"
-                    android:text="Votar Padre"/>
-            </LinearLayout>
-        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

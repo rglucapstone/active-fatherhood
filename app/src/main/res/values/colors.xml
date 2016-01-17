@@ -2,6 +2,7 @@
 <resources>
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <color name="colorPrimary">#30ABBB</color>
+    <color name="colorPrimaryText">#ffffff</color>
     <color name="colorPrimaryLight">#d8f4f5</color>
     <color name="colorSecondary">#e1f5f7</color>
     <color name="colorThird">#4d8eb4</color>

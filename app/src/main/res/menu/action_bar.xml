@@ -2,14 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:appcompat="http://schemas.android.com/tools">
+
+    <!-- Search -->
     <item
         android:id="@+id/action_buscar"
         android:icon="@drawable/icon_search"
         android:title="@string/action_buscar"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always|never" />
+
+    <!-- Settings -->
+    <item
+        android:id="@+id/action_settings"
+        android:title="Configuración"
+        app:showAsAction="never"/>
+
+    <!--Profile-->
+    <item
+        android:id="@+id/action_profile"
+        android:title="Ver Perfil"
+        android:icon="@drawable/ico_profile_24"
+        app:showAsAction="ifRoom"/>
 </menu>
+
 
 <!--
 <?xml version="1.0" encoding="utf-8"?>

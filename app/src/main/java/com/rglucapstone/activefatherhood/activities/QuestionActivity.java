@@ -2,8 +2,16 @@ package com.rglucapstone.activefatherhood.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,18 +34,11 @@ public class QuestionActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = getIntent().getExtras();
 
-        /*TextView questionUser = (TextView) findViewById(R.id.questionUser);
-        questionUser.setText(extras.getString("user"));
-        TextView questionDate = (TextView) findViewById(R.id.questionDate);
-        questionDate.setText(extras.getString("date"));
-        TextView questionContent = (TextView) findViewById(R.id.questionContent);
-        questionContent.setText(extras.getString("content"));
-        TextView pregunta_tag = (TextView) findViewById(R.id.pregunta_tag);
-        questionContent.setText(extras.getString("pregunta_tag"));
-        TextView reporte_likes = (TextView) findViewById(R.id.reporte_likes);
-        questionContent.setText(extras.getString("reporte_likes"));
-        TextView reporte_respuestas = (TextView) findViewById(R.id.reporte_respuestas);
-        questionContent.setText(extras.getString("reporte_respuestas"));*/
+        // toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
+        toolbar.setTitle("Pregunta");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listAnswerAdapter = new AnswerItemAdapter(this, new String[10]);
         listAnswer = (ListView) findViewById(R.id.listAnswer);
@@ -49,4 +50,27 @@ public class QuestionActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar, menu);
+        return true;
+    }*/
+/*
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_buscar:
+                // User chose the "Settings" item, show the app settings UI...
+                return true;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
+    }
+*/
 }

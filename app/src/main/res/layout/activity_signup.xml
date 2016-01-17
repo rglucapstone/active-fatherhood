@@ -73,6 +73,18 @@
             android:textSize="16dp"
             android:textColorHint="#c2c2c2" />
     </RelativeLayout>
+    <!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText android:id="@+id/input_names"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:hint="Edad"
+            android:layout_marginTop="15dp"
+            android:textSize="16dp"
+            android:textColorHint="#c2c2c2" />
+    </RelativeLayout>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

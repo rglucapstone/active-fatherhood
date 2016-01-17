@@ -1,59 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="20dp">
-
-    <TextView
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar_action"
+        layout="@layout/toolbar_action">
+    </include>
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Escribe tu pregunta aquí:"
-        android:id="@+id/label_question"
-        android:layout_gravity="top"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_margin="13dp">
+        <!-- Question -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/input_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="12"
+                android:hint="Escribe aquí tu pregunta.."
+                android:layout_marginTop="5dp"/>
+        </RelativeLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="12"
-        android:id="@+id/input_question" />
+        <!-- Tags -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:id="@+id/container_tags">
+            <TextView
+                android:id="@+id/text_add_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Agrega etiquetas a tu pregunta"/>
 
-    <TextView
-        android:id="@+id/text_add_tag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:layout_marginTop="60dp"
-        android:textSize="16dp"
-        android:text="Agrega etiquetas a tu pregunta"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView"
+                android:layout_marginTop="30dp">
+                <include
+                    android:id="@+id/add_tags"
+                    layout="@layout/activity_preferences">
+                </include>
+            </ScrollView>
+        </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView">
-        <include
-            android:id="@+id/add_tags"
-            layout="@layout/activity_preferences">
-        </include>
-    </ScrollView>
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:id="@+id/btn_asking"
-        android:text="Enviar"
-        android:textColor="#FFFFFF"
-        android:layout_gravity="center_horizontal|right"
-        android:background="@drawable/button_ask"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="70dp"
-        android:clickable="true"
-        android:layout_marginTop="30dp"
-        android:onClick="asking" />
-
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/btn_asking"
+            android:text="Enviar"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center_horizontal|right"
+            android:background="@drawable/button_fill_primary"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="70dp"
+            android:clickable="true"
+            android:layout_marginTop="30dp" />
+    </LinearLayout>
 </LinearLayout>

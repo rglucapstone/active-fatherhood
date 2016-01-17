@@ -2,38 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="20dp">
-
-    <TextView
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar_action"
+        layout="@layout/toolbar_action">
+    </include>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Escribe tu respuesta:"
-        android:id="@+id/label_question"
-        android:layout_gravity="top"
-        android:textStyle="bold" />
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/input_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="12"
+            android:hint="Escribe aquí tu respuesta.."/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="12"
-        android:id="@+id/input_answer" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:id="@+id/btn_answering"
-        android:text="Enviar"
-        android:textColor="#FFFFFF"
-        android:layout_gravity="center_horizontal|right"
-        android:background="@drawable/button_ask"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="30dp"
-        android:clickable="true"
-        android:onClick="answering" />
-
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/btn_answering"
+            android:text="Enviar"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center_horizontal|right"
+            android:background="@drawable/button_fill_primary"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="50dp"
+            android:clickable="true"
+            android:onClick="answering" />
+        </LinearLayout>
 </LinearLayout>
