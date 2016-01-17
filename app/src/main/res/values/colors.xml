@@ -2,12 +2,23 @@
 <resources>
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <color name="colorPrimary">#30ABBB</color>
+    <color name="colorPrimaryLight">#d8f4f5</color>
+    <color name="colorSecondary">#e1f5f7</color>
+    <color name="colorThird">#4d8eb4</color>
+    <color name="colorThirdText">#ffffff</color>
     <color name="colorPrimaryLabel">#efefef</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="lightGrey">#efefef</color>
+    <color name="mediumGrey">#ADADAD</color>
+    <color name="backgroundGrey">#f5f5f5</color>
+    <color name="normalText">#616161</color>
+
 
     <!-- ActionBar Color-->
     <color name="actionbar_color">#30ABBB</color>
     <color name="actionbar_title_text">#FFFFFF</color>
+
+    <!-- Tabs Action -->
+    <color name="tabAction">#00BCD4</color>
 </resources>

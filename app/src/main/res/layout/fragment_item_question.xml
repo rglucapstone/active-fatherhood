@@ -32,7 +32,9 @@
             android:text="Telmo Riofrio"
             android:textSize="14sp"
             android:textColor="#333333"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:clickable="true"
+            android:onClick="profileOn"/>
         <TextView
             android:id="@+id/txt_qdatetime"
             android:layout_width="wrap_content"
