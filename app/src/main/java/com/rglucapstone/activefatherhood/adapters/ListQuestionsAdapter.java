@@ -19,6 +19,8 @@ public class ListQuestionsAdapter extends ArrayAdapter<Question>{
 
     private LayoutInflater inflater;
 
+    public ArrayList<Question> questions;
+
     public ListQuestionsAdapter(Activity activity, ArrayList<Question> questions){
         super(activity, R.layout.fragment_item_question, questions);
         inflater = activity.getWindow().getLayoutInflater();
@@ -37,14 +39,17 @@ public class ListQuestionsAdapter extends ArrayAdapter<Question>{
         TextView txt_qlikes = (TextView) convertView.findViewById(R.id.txt_qlikes);
         TextView txt_qanswers = (TextView) convertView.findViewById(R.id.txt_qanswers);
 
-        txt_quser.setText(question.user);
-        txt_qdatetime.setText(question.datetime);
+        txt_quser.setText(question.user.name);
+        txt_qdatetime.setText(question.created);
         txt_qcontent.setText(question.content);
-        txt_qtags.setText(question.tags);
-        txt_qlikes.setText(question.likes);
-        txt_qanswers.setText(question.answers);
+        txt_qtags.setText("5"); //txt_qtags.setText(question.tags);
+        txt_qlikes.setText("10"); //txt_qlikes.setText(question.likes);
+        //txt_qanswers.setText(question.answers);
 
         return convertView;
     }
+
+
+
 
 }

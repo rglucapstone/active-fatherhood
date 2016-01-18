@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.content.Context;
 
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.activities.QuestionActivity;
@@ -28,17 +30,38 @@ public class ListQuestionsFragment extends ListFragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_list_questions, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_questions, container, false);
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.view_tabs);
+
+        //ArrayList<Question> listQuestions = new ArrayList<>();
+        Question q = new Question(getActivity());
+        ArrayList<Question> listQuestions = q.getAll();
+
+        //if( q.task.getStatus().toString() == "FINISHED" ){
+            ListQuestionsAdapter questionsAdapter = new ListQuestionsAdapter(getActivity(), listQuestions);
+            setListAdapter(questionsAdapter);
+        //}
+
+        /*TextView texto = (TextView) view.findViewById(R.id.txt_main);
+        String names = "";
+        ArrayList<Question> list = Question.getAll();
+        for(int i = 0; i < list.size() ; i++){
+            names = names + "OBJECT" + i + ":" + list.get(i).content + " / " + list.get(i).created + "\n\n";
+        }
+        texto.setText(names);*/
+        return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ArrayList<Question> listQuestions = new ArrayList<>();
-        this.populate(listQuestions);
-        ListQuestionsAdapter questionsAdapter = new ListQuestionsAdapter(getActivity(), listQuestions);
-        setListAdapter(questionsAdapter);
+        //ArrayList<Question> listQuestions = new ArrayList<>();
+
+        //listQuestions = new Question((Context)this).getAll();
+        //this.populate(listQuestions);
+
+        //
     }
 
     @Override
@@ -51,7 +74,11 @@ public class ListQuestionsFragment extends ListFragment{
         startActivity(intent);
     }
 
-    private void populate(ArrayList questions){
+    public void postExecute(){
+
+    }
+
+    /*private void populate(ArrayList questions){
         Question q1 = new Question("Pedro Xavier", "hace 45 minutos", "¿Cómo y cuándo hablar con los niños acerca de las enfermedades que..","Bebes","10 Me Gusta","15 Respuestas");
         questions.add(q1);
         Question q2 = new Question("Telmo Riofrio", "hace 1 hora", "¿Es mi bebé corto para su edad?","Bebes","10 Me Gusta","7 Respuestas");
@@ -82,6 +109,6 @@ public class ListQuestionsFragment extends ListFragment{
         questions.add(q14);
         Question q15 = new Question("Joe Sarzosa", "hace 7 horas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit?","Bebes","5 Me Gusta","15 Respuestas");
         questions.add(q15);
-    }
+    }*/
 
 }
