@@ -18,12 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="1">
-            <ImageButton
+            <Button
+                android:id="@+id/back_home"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ico_back"
-                android:onClick="editProfile"/>
+                android:onClick="backProfile"/>
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="90dp"
@@ -31,13 +32,14 @@
                 android:layout_marginLeft="110dp"
                 android:layout_gravity="center"
                 android:layout_weight="0.06" />
-            <ImageButton
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/ico_edit"
+            <Button
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginLeft="90dp"
+                android:layout_marginTop="5dp"
+                android:background="@mipmap/ic_edit_white_square_24"
                 android:onClick="editProfile"/>
+
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
@@ -71,22 +73,23 @@
     <!-- Padres Guru-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="98dp"
-        android:paddingTop="7dp"
+        android:layout_height="120dp"
+        android:paddingTop="2dp"
         android:paddingLeft="15dp"
-        android:paddingBottom="9dp"
+        android:paddingBottom="0dp"
         android:background="@color/backgroundGrey"
         android:orientation="horizontal">
         <RelativeLayout
-            android:layout_width="220dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="false">
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentStart="false"
+                android:paddingTop="5dp">
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -123,7 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Salud"
-                        android:textSize="11dp"
+                        android:textSize="13dp"
                         android:gravity="center"
                         android:textColor="@color/normalText"
                         android:textIsSelectable="true" />
@@ -136,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Niños"
-                        android:textSize="11dp"
+                        android:textSize="13dp"
                         android:gravity="center"
                         android:textColor="@color/normalText"
                         android:textIsSelectable="true" />
@@ -149,7 +152,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Escuela"
-                        android:textSize="11dp"
+                        android:textSize="13dp"
                         android:gravity="center"
                         android:textColor="@color/normalText"
                         android:textIsSelectable="true" />
@@ -159,22 +162,23 @@
 
         <!--Acciones Guru-->
         <RelativeLayout
-            android:layout_width="115dp"
-            android:layout_height="84dp"
+            android:layout_width="145dp"
+            android:layout_height="match_parent"
             android:gravity="left">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:padding="0dp">
                 <LinearLayout
                     android:id="@+id/btn_ask_guru"
-                    android:layout_width="match_parent"
+                    android:layout_width="128dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:background="@drawable/background_button_white"
-                    android:padding="4dp"
+                    android:padding="6dp"
                     android:clickable="true"
                     android:onClick="askGuru">
                     <ImageView
@@ -189,18 +193,18 @@
                         android:text="Preguntar"
                         android:textSize="12dp"
                         android:layout_marginTop="0dp"
-                        android:layout_marginLeft="3dp"
+                        android:layout_marginLeft="7dp"
                         android:textColor="@color/colorPrimary"
                         android:layout_gravity="center" />
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="133dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:background="@drawable/background_button_white"
-                    android:padding="6dp"
+                    android:padding="8dp"
                     android:clickable="true"
                     android:onClick="publicationsGuru">
                     <ImageView
@@ -210,11 +214,11 @@
                         android:src="@drawable/ico_post"/>
                     <TextView
                         android:id="@+id/ico_publication_profile"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Publicaciones"
-                        android:textSize="12dp"
-                        android:layout_marginLeft="5dp"
+                        android:textSize="13dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginTop="0dp"
                         android:textColor="@color/colorPrimary"
                         android:layout_gravity="center"/>
@@ -327,8 +331,6 @@
         android:layout_height="match_parent"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:paddingLeft="7dp"
-        android:paddingRight="7dp"
         android:orientation="vertical"
         android:background="@color/lightGrey">
         <TextView
@@ -337,7 +339,7 @@
             android:layout_height="wrap_content"
             android:text="Actividad"
             android:textSize="15dp"
-            android:paddingLeft="5dp"
+            android:paddingLeft="7dp"
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:gravity="left"
@@ -349,27 +351,19 @@
             android:layout_marginTop="7dp"
             android:orientation="vertical"
             android:background="#ffffff">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="144dp"
-                android:text="Actividad"
-                android:textSize="15dp"
-                android:padding="3dp"
-                android:gravity="left"
-                android:textColor="#ffffff"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:background="#ffffff">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ver más"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:background="@drawable/border_top_blue" />
             </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ver más"
+                android:gravity="center"
+                android:padding="3dp"
+                android:background="@drawable/border_top_blue"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

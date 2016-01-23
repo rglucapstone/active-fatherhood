@@ -42,6 +42,7 @@
         </activity>
         <activity android:name=".activities.AskGuruActivity"></activity>
         <activity android:name=".activities.EditProfileActivity"></activity>
+        <activity android:name=".activities.PublicationsGuru"></activity>
     </application>
 
 </manifest>

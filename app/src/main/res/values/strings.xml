@@ -22,7 +22,7 @@
     <string name="topic_discipline">Disciplina</string>
     <string name="topic_social_problems">Problemas Sociales</string>
 
-    <string name="message_intereses">Queremos brindarte mejor información, escoge los temas que te interesen</string>
+    <string name="message_preferences">Queremos brindarte mejor información, escoge los temas que te interesen</string>
     <string name="message_suggest_publication">Está seguro que desea sugerir esta respuesta como publicación</string>
     <string name="action_buscar">buscar</string>
     <string name="search_hint">Ingresa algún tema que desees buscar..</string>

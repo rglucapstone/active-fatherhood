@@ -6,31 +6,27 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.rglucapstone.activefatherhood.R;
 
 /**
- * Created by Luisa Castro on 17/01/2016.
+ * Created by Luisa Castro on 24/01/2016.
  */
-public class EditProfileActivity extends AppCompatActivity {
+public class PublicationsGuru extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
-
-        // toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
-        toolbar.setTitle("Editar datos del Perfil");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
+        Intent intent = getIntent();
+        setContentView(R.layout.activity_publications_guru);
+        setToolbar();
     }
 
-    public void updateProfile(View view){
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
+    /* Toolbar */
+    public void setToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
+        toolbar.setTitle("Publicaciones");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     /* Action Back*/

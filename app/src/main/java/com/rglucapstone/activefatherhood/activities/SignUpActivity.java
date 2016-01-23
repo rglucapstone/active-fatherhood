@@ -34,7 +34,7 @@ public class SignUpActivity extends Activity{
                 selectedCategories = new ArrayList();
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setTitle(R.string.message_intereses);
+                /*alertDialogBuilder.setTitle(R.string.message_preferences);*/
                 alertDialogBuilder.setMultiChoiceItems(R.array.list_categories, null, new DialogInterface.OnMultiChoiceClickListener() {
                     public void onClick(DialogInterface dialog, int which, boolean isCheked) {
                         if (isCheked) {

@@ -51,7 +51,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Set Tabs
+     * */
     private void setupViewPager(ViewPager viewPager) {
+
         HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager(),HomeActivity.this);
         adapter.addFragment(new ListQuestionsFragment(), "Preguntas");
         adapter.addFragment(new ListPostsFragment(), "Publicaciones");
@@ -59,12 +63,14 @@ public class HomeActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    /**
+     * Actions for menu
+     * */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_bar, menu);
-
 
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -78,6 +84,38 @@ public class HomeActivity extends AppCompatActivity {
 
         return true;
     }
+    /**
+     * Select actions for menu
+     * */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_buscar:
+                return true;
+            case R.id.action_my_profile:
+                Intent intent = new Intent(this, ProfileActivity.class);
+                startActivityForResult(intent, 0);
+                return true;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * Do a Question
+     * */
+    public void ask(View view) {
+        Intent intent = new Intent(this, AskActivity.class);
+        startActivity(intent);
+    }
+
+    public void profileOn(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
 
     /**
      * Function to change default icon search
@@ -90,36 +128,7 @@ public class HomeActivity extends AppCompatActivity {
         SearchView mSearchView = (SearchView) searchViewMenuItem.getActionView();
         int searchImgId = getResources().getIdentifier("android:id/search_button", null, null);
         ImageView v = (ImageView) mSearchView.findViewById(searchImgId);
-        v.setImageResource(R.drawable.icon_search);
+        v.setImageResource(R.mipmap.ic_search_white_24dp);
         return super.onPrepareOptionsMenu(menu);
-    }
-
-    /**
-     * Create actions for menu
-     * */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_buscar:
-                // User chose the "Settings" item, show the app settings UI...
-                return true;
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    public void ask(View view) {
-        Intent intent = new Intent(this, AskActivity.class);
-        startActivity(intent);
-    }
-
-    public void profileOn(View view) {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
     }
 }

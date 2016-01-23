@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
     <include
         android:id="@+id/toolbar_action"
@@ -23,12 +23,11 @@
                 android:layout_marginLeft="120dp"
                 android:layout_gravity="center"
                 android:layout_weight="0.06" />
-            <ImageButton
-                android:layout_width="16dp"
-                android:layout_height="15dp"
+            <Button
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/ico_edit_primary"
-                android:layout_marginLeft="0dp"
+                android:background="@mipmap/ic_edit_simple_24"
                 android:onClick="editProfile"/>
         </LinearLayout>
 
@@ -99,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:hint="Escribe aquí tu comentario"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:textSize="16dp"
                 android:textColorHint="#c2c2c2" />
         </LinearLayout>
@@ -122,7 +121,7 @@
                 android:layout_alignWithParentIfMissing="false"
                 android:layout_alignParentRight="false"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"/>
         </RelativeLayout>
     </LinearLayout>
 

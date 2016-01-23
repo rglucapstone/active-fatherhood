@@ -6,7 +6,7 @@
     <!-- Search -->
     <item
         android:id="@+id/action_buscar"
-        android:icon="@drawable/icon_search"
+        android:icon="@drawable/ico_search"
         android:title="@string/action_buscar"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always|never" />
@@ -19,9 +19,9 @@
 
     <!--Profile-->
     <item
-        android:id="@+id/action_profile"
-        android:title="Ver Perfil"
-        android:icon="@drawable/ico_profile_24"
+        android:id="@+id/action_my_profile"
+        android:title="Mi Perfil"
+        android:icon="@mipmap/ic_profile_white_24dp"
         app:showAsAction="ifRoom"/>
 </menu>
 

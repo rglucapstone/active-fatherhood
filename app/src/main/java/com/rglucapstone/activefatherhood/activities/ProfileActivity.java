@@ -42,23 +42,32 @@ public class ProfileActivity extends Activity {
         setContentView(R.layout.activity_profile);
     }
 
-    public void askGuru(View view){
-        Intent intent = new Intent(this, AskGuruActivity.class);
-        startActivity(intent);
+    /* Action Back*/
+    public void backProfile(View view) {
+        this.finish();
     }
 
-    public void guruQuestion(View view){
-        Intent intent = new Intent(this, AskGuruActivity.class);
-        startActivity(intent);
-    }
-
+    /* Editar Datos */
     public void editProfile(View view){
         Intent intent = new Intent(this, EditProfileActivity.class);
         startActivity(intent);
     }
 
+    /* Preguntar */
+    public void askGuru(View view){
+        Intent intent = new Intent(this, AskGuruActivity.class);
+        startActivity(intent);
+    }
+
+    /* Realizar Pregunta */
     public void asking(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    /* Ver Publicaciones */
+    public void publicationsGuru(View view) {
+        Intent intent = new Intent(this, PublicationsGuru.class);
         startActivity(intent);
     }
 }

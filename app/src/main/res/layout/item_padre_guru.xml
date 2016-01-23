@@ -9,7 +9,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/iconUser"
-        android:src="@drawable/user_profile"
+        android:src="@drawable/ic_profile"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp" />
 
