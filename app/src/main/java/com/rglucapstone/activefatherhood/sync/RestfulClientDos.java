@@ -26,7 +26,7 @@ import com.rglucapstone.activefatherhood.interfaces.restfulResponse;
 /**
  * Created by ronald on 17/01/16.
  */
-public class RestfulClient extends AsyncTask<String, Void, JSONArray>{
+public class RestfulClientDos extends AsyncTask<String, Void, String>{
 
     private Context context;
     private ArrayAdapter adapter;
@@ -40,20 +40,11 @@ public class RestfulClient extends AsyncTask<String, Void, JSONArray>{
     public JSONArray response;
 
 
-    public RestfulClient(Model element, Context context, ArrayAdapter adapter) {
+    public RestfulClientDos(Model element, Context context, ArrayAdapter adapter) {
         this.context = context;
         this.adapter = adapter;
         this.element = element;
     }
-
-    public RestfulClient(Model element, Context context) {
-        this.context = context;
-        this.element = element;
-    }
-    public RestfulClient() {
-
-    }
-
 
 
     @Override
@@ -62,7 +53,7 @@ public class RestfulClient extends AsyncTask<String, Void, JSONArray>{
     }
 
     @Override
-    protected JSONArray doInBackground(String... params) {
+    protected String doInBackground(String... params) {
         String str_content = "";
 
         // REQUEST
@@ -84,13 +75,11 @@ public class RestfulClient extends AsyncTask<String, Void, JSONArray>{
         }
 
         // RESPONSE
-        this.setResponse(str_content);
-        //this.element.loadData(this.response);
-        return this.response;
+        return str_content;
     }
 
     @Override
-    protected void onPostExecute(JSONArray result) {
+    protected void onPostExecute(String result) {
         if (result.length() > 0){
             //this.element.loadData(result);
             //this.adapter.notifyDataSetChanged();

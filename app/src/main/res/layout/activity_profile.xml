@@ -50,7 +50,8 @@
             android:focusable="true"
             android:layout_gravity="center"
             android:paddingTop="7dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:id="@+id/txt_profile_name" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

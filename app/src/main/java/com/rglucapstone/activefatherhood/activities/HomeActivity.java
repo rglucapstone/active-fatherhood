@@ -112,11 +112,6 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void profileOn(View view) {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
-    }
-
     /**
      * Function to change default icon search
      * @param menu
@@ -130,5 +125,14 @@ public class HomeActivity extends AppCompatActivity {
         ImageView v = (ImageView) mSearchView.findViewById(searchImgId);
         v.setImageResource(R.mipmap.ic_search_white_24dp);
         return super.onPrepareOptionsMenu(menu);
+    }
+
+    /**
+     * View user profile activity
+     * @param view
+     */
+    public void viewProfile(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 }

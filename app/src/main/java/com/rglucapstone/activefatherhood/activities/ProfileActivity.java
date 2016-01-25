@@ -5,13 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.data.Question;
+import com.rglucapstone.activefatherhood.data.User;
 
 import java.util.ArrayList;
 
@@ -38,8 +41,17 @@ public class ProfileActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
         setContentView(R.layout.activity_profile);
+
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("user_id");
+
+        User user = User.load(id);
+
+        TextView txt_name = (TextView) findViewById(R.id.txt_profile_name);
+        txt_name.setText(user.name);
+
+
     }
 
     /* Action Back*/

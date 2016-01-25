@@ -15,4 +15,8 @@
         <!-- Parent theme sets colorControlNormal to textColorPrimary. -->
         <item name="android:textColorPrimary">@color/actionbar_title_text</item>
     </style>
+
+    <style name="Tags">
+
+    </style>
 </resources>
