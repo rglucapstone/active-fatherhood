@@ -9,11 +9,14 @@
     <string name="btn_cancelar">Cancelar</string>
     <string name="btn_aceptar_dialog">Aceptar</string>
     <string name="btn_entrar_facebook">Iniciar con Facebook</string>
-    <string name="btn_ask">Haz una pregunta</string>
+    <string name="btn_do_ask">Realizar una pregunta</string>
+    <string name="btn_ask">Preguntar</string>
     <string name="btn_answer">Responder</string>
+    <string name="btn_send">Enviar</string>
 
     <string name="txt_categories">Categorías</string>
     <string name="txt_answers">Respuestas</string>
+    <string name="txt_write_question">Escribe aquí tu pregunta...</string>
 
     <string name="topic_health">Salud</string>
     <string name="topic_education">Educación</string>

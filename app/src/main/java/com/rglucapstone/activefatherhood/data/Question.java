@@ -40,7 +40,6 @@ public class Question extends Model {
 
     public Question(Context context) {
         this.context = context;
-        this.adapter = adapter;
     }
 
     public Question(Context context, ArrayAdapter adapter) {
@@ -62,9 +61,10 @@ public class Question extends Model {
         }
     }
 
-    public Question(String content, String created) {
+    public Question(String content, String created, String user_id) {
         this.content = content;
         this.created = created;
+        this.user = new User(user_id);
     }
 
     public static ArrayList<Question> getAll() {
@@ -73,11 +73,25 @@ public class Question extends Model {
         rest.method = "GET";
         rest.uri = "/questions";
         try{
-            JSONArray data = rest.execute().get();
-            items = Question.fromJson(data);
+            JSONObject response = rest.execute().get();
+            items = Question.fromJson(response.getJSONArray("data"));
         }catch (Exception e) {
         }
         return items;
+    }
+
+    public boolean send() {
+        boolean send = false;
+        RestfulClient rest = new RestfulClient();
+        rest.method = "POST";
+        rest.uri = "/questions";
+        try{
+            rest.execute(this.toJson().toString());
+            if( rest.status == 201 )
+                send = true;
+        }catch (Exception e) {
+        }
+        return send;
     }
 
     // Factory method to convert an array of JSON objects into a list of objects
@@ -94,23 +108,13 @@ public class Question extends Model {
         return items;
     }
 
-    public String testRest() {
-        JSONArray data;
-        String result = "";
-        RestfulClient rest = new RestfulClient(this, this.context, this.adapter);
-        rest.method = "GET";
-        rest.uri = "/questions";
-        try{
-            data = rest.execute().get();
-            try {
-                JSONObject obj = data.getJSONObject(6);
-                Question q = new Question(obj);
-                result = q.content;
-            }catch(JSONException e){
-
-            }
-        }catch (Exception e) {
-        }
-        return result;
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("content", this.content);
+            json.put("created", this.created);
+            json.put("user_id", this.user.id);
+        } catch (JSONException e) {}
+        return json;
     }
 }

@@ -104,13 +104,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Do a Question
-     * */
-    public void ask(View view) {
-        Intent intent = new Intent(this, AskActivity.class);
-        startActivity(intent);
-    }
 
     /**
      * Function to change default icon search
@@ -128,11 +121,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
-     * View user profile activity
-     * @param view
+     * Do a Question
      */
-    public void viewProfile(View view) {
-        Intent intent = new Intent(this, ProfileActivity.class);
+    public void ask(View view) {
+        Intent intent = new Intent(this, AskActivity.class);
         startActivity(intent);
     }
 }

@@ -2,21 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <ListView android:id="@id/android:list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:drawSelectorOnTop="false"/>
+        android:layout_weight=".80"
+        android:drawSelectorOnTop="false" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
         android:id="@+id/btn_ask"
-        android:text="Realizar una pregunta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".20"
+        android:text="@string/btn_do_ask"
         android:textSize="13dp"
         android:textColor="#FFFFFF"
-        android:layout_gravity="bottom"
         android:background="@drawable/button_fill_primary"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

@@ -49,7 +49,9 @@ public class ProfileActivity extends Activity {
         User user = User.load(id);
 
         TextView txt_name = (TextView) findViewById(R.id.txt_profile_name);
+        TextView txt_goodfather = (TextView) findViewById(R.id.txt_profile_goodfather);
         txt_name.setText(user.name);
+        txt_goodfather.setText(user.buen_padre);
 
 
     }

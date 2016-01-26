@@ -1,6 +1,8 @@
 package com.rglucapstone.activefatherhood.sync;
 
 import android.os.AsyncTask;
+
+import java.io.IOException;
 import java.net.URL;
 import android.content.Context;
 import android.widget.ArrayAdapter;
@@ -13,8 +15,15 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import org.json.JSONObject;
 import org.json.JSONException;
+import java.io.IOException;
 
 import org.json.JSONArray;
+
+import 	java.io.OutputStreamWriter;
+import 	java.io.BufferedWriter;
+import 	java.io.OutputStream;
+import java.io.DataOutputStream;
+import 	java.net.URLEncoder;
 
 import java.util.ArrayList;
 
@@ -26,18 +35,19 @@ import com.rglucapstone.activefatherhood.interfaces.restfulResponse;
 /**
  * Created by ronald on 17/01/16.
  */
-public class RestfulClient extends AsyncTask<String, Void, JSONArray>{
+public class RestfulClient extends AsyncTask<String, Void, JSONObject>{
 
     private Context context;
     private ArrayAdapter adapter;
     private Model element;
 
     private String server = "http://ct-alpha.funiber.org/rgonzales/paternidad_plus/api";
-    private HttpURLConnection conn;
+    public HttpURLConnection conn;
 
     public String uri;
     public String method;
-    public JSONArray response;
+    public JSONObject response;
+    public int status;
 
 
     public RestfulClient(Model element, Context context, ArrayAdapter adapter) {
@@ -62,7 +72,7 @@ public class RestfulClient extends AsyncTask<String, Void, JSONArray>{
     }
 
     @Override
-    protected JSONArray doInBackground(String... params) {
+    protected JSONObject doInBackground(String... params) {
         String str_content = "";
 
         // REQUEST
@@ -76,25 +86,40 @@ public class RestfulClient extends AsyncTask<String, Void, JSONArray>{
                     while ((line = in.readLine()) != null) {
                         str_content = str_content + line;
                     }
+                    this.setResponse(str_content);
                     break;
                 case "POST":
+                    this.conn.setDoInput(true);
+                    this.conn.setDoOutput(true);
+                    OutputStream os = this.conn.getOutputStream();
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
+                    writer.write(params[0]);
+                    writer.flush();
+                    writer.close();
+                    os.close();
+                    this.conn.connect();
                     break;
             }
         }catch(Exception e) {
         }
 
+        try{
+            this.status = this.conn.getResponseCode();
+        }catch(IOException e){
+
+        }
+
         // RESPONSE
-        this.setResponse(str_content);
         //this.element.loadData(this.response);
         return this.response;
     }
 
     @Override
-    protected void onPostExecute(JSONArray result) {
-        if (result.length() > 0){
+    protected void onPostExecute(JSONObject result) {
+        //if (result.length() > 0){
             //this.element.loadData(result);
             //this.adapter.notifyDataSetChanged();
-        }
+        //}
     }
 
 
@@ -116,10 +141,14 @@ public class RestfulClient extends AsyncTask<String, Void, JSONArray>{
     private void setResponse(String str){
         try{
             JSONObject json = new JSONObject(str);
-            if (json.has("data")) {
-                JSONArray data = json.getJSONArray("data");
+            this.response = json;
+
+            /*if (json.has("data")) {
+                JSONObject data = json.getJSONObject("data");
                 this.response = data;
-            }
+            }else{
+                this.response = json;
+            }*/
         } catch (JSONException e) {
         }
     }

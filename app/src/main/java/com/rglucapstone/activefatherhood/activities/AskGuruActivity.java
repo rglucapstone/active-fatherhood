@@ -38,8 +38,8 @@ public class AskGuruActivity extends AppCompatActivity {
         /** Se oculta el contenedor de seleccionar tags, cuando es una
          * pregunta directa
          */
-        container = (RelativeLayout) findViewById(R.id.container_tags);
-        container.setVisibility(View.GONE);
+        //container = (RelativeLayout) findViewById(R.id.container_tags);
+        //container.setVisibility(View.GONE);
 
         /**
          * Sobreescribo la accion, cuando realizo la pregunta se actualiza

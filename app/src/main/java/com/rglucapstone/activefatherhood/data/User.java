@@ -17,6 +17,11 @@ public class User extends Model
     public String login;
     public String name;
     public String email;
+    public String buen_padre;
+
+    public User(String id){
+        this.id = id;
+    }
 
     public User(String id, String login, String name){
         this.id = id;
@@ -31,6 +36,7 @@ public class User extends Model
             this.login = u.getString("login");
             this.name = u.getString("name");
             this.email = u.getString("email");
+            this.buen_padre = u.getString("buen_padre");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -42,11 +48,11 @@ public class User extends Model
         rest.method = "GET";
         rest.uri = "/users/" + id;
         try{
-            JSONArray data = rest.execute().get();
-            ArrayList<User> users = User.fromJson(data);
-            if( !users.isEmpty() ){
+            //JSONArray data = rest.execute().get();
+            //ArrayList<User> users = User.fromJson(data);
+            /*if( !users.isEmpty() ){
                 user = users.get(0);
-            }
+            }*/
         }catch (Exception e) {
         }
         return user;
