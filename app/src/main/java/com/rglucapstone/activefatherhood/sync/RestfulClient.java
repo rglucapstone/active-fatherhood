@@ -50,6 +50,10 @@ public class RestfulClient extends AsyncTask<String, Void, JSONObject>{
     public int status;
 
 
+    public RestfulClient(Context context) {
+        this.context = context;
+    }
+
     public RestfulClient(Model element, Context context, ArrayAdapter adapter) {
         this.context = context;
         this.adapter = adapter;
@@ -68,7 +72,6 @@ public class RestfulClient extends AsyncTask<String, Void, JSONObject>{
 
     @Override
     protected void onPreExecute() {
-
     }
 
     @Override
@@ -142,13 +145,6 @@ public class RestfulClient extends AsyncTask<String, Void, JSONObject>{
         try{
             JSONObject json = new JSONObject(str);
             this.response = json;
-
-            /*if (json.has("data")) {
-                JSONObject data = json.getJSONObject("data");
-                this.response = data;
-            }else{
-                this.response = json;
-            }*/
         } catch (JSONException e) {
         }
     }

@@ -127,4 +127,8 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AskActivity.class);
         startActivity(intent);
     }
+
+    public void onPreExecute(){
+
+    }
 }

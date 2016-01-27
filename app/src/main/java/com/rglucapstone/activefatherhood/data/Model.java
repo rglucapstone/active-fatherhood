@@ -1,6 +1,8 @@
 package com.rglucapstone.activefatherhood.data;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -9,7 +11,25 @@ import java.util.ArrayList;
  */
 public class Model {
 
-    public void loadData(JSONArray data){
+    public Model() {
 
+    }
+
+    public Model(JSONObject object) {
+
+    }
+
+    // Factory method to convert an array of JSON objects into a list of objects
+    // User.fromJson(jsonArray);
+    public static ArrayList fromJson(JSONArray data) {
+        ArrayList items = new ArrayList<>();
+        for (int i = 0; i < data.length(); i++) {
+            try {
+                items.add(new Model(data.getJSONObject(i)));
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+        }
+        return items;
     }
 }

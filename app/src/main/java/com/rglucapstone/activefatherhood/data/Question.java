@@ -20,6 +20,7 @@ public class Question extends Model {
 
     public Context context;
     public ArrayAdapter adapter;
+    public RestfulClient asynctask;
 
     public String content;
     public String created;
@@ -29,14 +30,16 @@ public class Question extends Model {
 
 
 
-
-
     public String userstr;
     public String contentstr;
     public String datetime;
     public String tags;
     public String likes;
     public String answers;
+
+    public Question(RestfulClient task) {
+        this.asynctask = task;
+    }
 
     public Question(Context context) {
         this.context = context;
@@ -67,14 +70,13 @@ public class Question extends Model {
         this.user = new User(user_id);
     }
 
-    public static ArrayList<Question> getAll() {
+    public ArrayList<Question> getAll() {
         ArrayList<Question> items = new ArrayList<>();
-        RestfulClient rest = new RestfulClient();
+        RestfulClient rest = this.asynctask;
         rest.method = "GET";
         rest.uri = "/questions";
         try{
-            JSONObject response = rest.execute().get();
-            items = Question.fromJson(response.getJSONArray("data"));
+            rest.execute();
         }catch (Exception e) {
         }
         return items;
@@ -94,10 +96,9 @@ public class Question extends Model {
         return send;
     }
 
-    // Factory method to convert an array of JSON objects into a list of objects
-    // User.fromJson(jsonArray);
-    public static ArrayList<Question> fromJson(JSONArray data) {
-        ArrayList<Question> items = new ArrayList<>();
+
+    public static ArrayList fromJson(JSONArray data) {
+        ArrayList items = new ArrayList<>();
         for (int i = 0; i < data.length(); i++) {
             try {
                 items.add(new Question(data.getJSONObject(i)));
@@ -107,6 +108,7 @@ public class Question extends Model {
         }
         return items;
     }
+
 
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
