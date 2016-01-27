@@ -60,14 +60,13 @@ public class ListGurusAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.view_items_gurus, null);
         }
-
+/*
         TextView txt_guser = (TextView) convertView.findViewById(R.id.txt_guser);
         TextView txt_gpost = (TextView) convertView.findViewById(R.id.txt_gpost);
         TextView txt_gvotes = (TextView) convertView.findViewById(R.id.txt_gvotes);
 
         txt_guser.setText(guru.user);
-        txt_gpost.setText(guru.posts);
-        txt_gvotes.setText(guru.votes);
+       // txt_gpost.setText(guru.posts)txt_gvotes.setText(guru.votes);*/
 
         return convertView;
     }

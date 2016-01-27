@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.rglucapstone.activefatherhood.R;
@@ -24,17 +25,19 @@ import java.util.Date;
 public class AskActivity extends AppCompatActivity {
     private Button button_asking;
     final Context context = this;
+    private TextView container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask);
+        setToolbar();
 
-        // toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
-        toolbar.setTitle(R.string.btn_ask);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        /**
+         * Se oculta el titulo de preferencias
+         */
+        container = (TextView) findViewById(R.id.title_preference);
+        container.setVisibility(View.GONE);
 
         // Luego de realizar la pregunta la muestra en el listado
         button_asking = (Button) findViewById(R.id.btn_asking);
@@ -54,6 +57,15 @@ public class AskActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    /* Toolbar */
+    public void setToolbar(){
+        // toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
+        toolbar.setTitle("Agregar pregunta");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     /* Pedndiente revisar uso*/

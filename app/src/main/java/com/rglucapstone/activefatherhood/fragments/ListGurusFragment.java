@@ -1,5 +1,8 @@
 package com.rglucapstone.activefatherhood.fragments;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +11,8 @@ import android.view.ViewGroup;
 import android.support.v4.app.ListFragment;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.GridView;
+
 import java.util.HashMap;
 
 import com.rglucapstone.activefatherhood.R;
@@ -22,16 +27,27 @@ import java.util.ArrayList;
  */
 public class ListGurusFragment extends Fragment {
 
+    public static ArrayList<Integer> check = new ArrayList<Integer>();
     @Override
+    //public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_list_gurus, null);
         ExpandableListView elv = (ExpandableListView) v.findViewById(R.id.exp_list_gurus);
 
+        // View v = inflater.inflate(R.layout.fragment_list_gurus, null);
         ArrayList<String> listTags = new ArrayList<>();
         HashMap<String, ArrayList<Guru>> listGurus = new HashMap<>();
         prepareListData(listTags, listGurus);
 
+        //ExpandableListView elv = (ExpandableListView) v.findViewById(R.id.exp_list_gurus);
+        elv.setChildDivider(getResources().getDrawable(R.color.backgroundContainer));
+        elv.setDivider(getResources().getDrawable(R.color.lightGrey));
+        elv.setDividerHeight(25);
+        elv.setFooterDividersEnabled(true);
         elv.setAdapter(new ListGurusAdapter(getActivity(), listTags, listGurus));
+
+
+
         return v;
     }
 

@@ -35,10 +35,9 @@
         </RelativeLayout>
 
         <!-- Tags -->
-        <!--<RelativeLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
             android:id="@+id/container_tags">
             <TextView
                 android:id="@+id/text_add_tag"
@@ -57,7 +56,7 @@
                     layout="@layout/activity_preferences">
                 </include>
             </ScrollView>
-        </RelativeLayout>-->
+        </RelativeLayout>
 
         <Button
             android:id="@+id/btn_asking"

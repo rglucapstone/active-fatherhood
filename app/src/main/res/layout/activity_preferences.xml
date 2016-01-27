@@ -9,17 +9,17 @@
     android:orientation="vertical">
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/message_preferences"
-        android:id="@+id/textView3"
-        android:layout_marginBottom="5dp"
-        android:layout_alignParentTop="true"
-        android:padding="15dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16dp"
-        android:background="@drawable/border_bottom_primary"/>
+            android:id="@+id/title_preference"
+            android:text="@string/message_preferences"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentTop="true"
+            android:padding="15dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:background="@drawable/border_bottom_primary"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -66,7 +66,6 @@
                 android:layout_above="@+id/check_aprendizaje"
                 android:layout_alignLeft="@+id/check_salud"
                 android:layout_alignStart="@+id/check_salud"
-                android:clickable="false"
                 android:elegantTextHeight="false"
                 android:buttonTint="#4cb6c4" />
 

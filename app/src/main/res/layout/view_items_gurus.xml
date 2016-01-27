@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
         android:gravity="left" >
 
         <ImageView
@@ -19,51 +19,73 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="3dp" />
 
-        <TextView
-            android:id="@+id/txt_guser"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Pedro Xavier"
-            android:textSize="14sp"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="3dp"
-            android:textColor="#333333"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:paddingBottom="2dp">
-        <TextView
-            android:id="@+id/txt_gpost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textAlignment="center"
-            android:textSize="11sp"
-            android:textColor="#d3d3d3"
-            android:text="13 publicaciones"
-            />
-        <TextView
-            android:id="@+id/txt_separator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="·"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
-        <TextView
-            android:id="@+id/txt_gvotes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textAlignment="center"
-            android:textSize="11sp"
-            android:textColor="#d3d3d3"
-            android:text="- 3 votos"
-            />
+            android:layout_marginLeft="30dp"
+            android:paddingBottom="2dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_guser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Pedro Xavier"
+                android:textSize="14sp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:textColor="#333333"/>
 
-    </LinearLayout>
+            <!-- Container Report-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="10dp">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txt_gpost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textAlignment="center"
+                        android:textSize="11sp"
+                        android:textColor="@color/mediumGrey"
+                        android:text="Publicaciones"
+                        />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txt_separator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="·"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txt_gpost2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textAlignment="center"
+                        android:textSize="11sp"
+                        android:textColor="@color/mediumGrey"
+                        android:text="Puntuación 6%"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
