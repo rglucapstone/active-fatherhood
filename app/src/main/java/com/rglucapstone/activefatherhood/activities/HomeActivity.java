@@ -128,6 +128,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void post(View view) {
+        Intent intent = new Intent(this, DoPost.class);
+        startActivity(intent);
+    }
+
     public void onPreExecute(){
 
     }

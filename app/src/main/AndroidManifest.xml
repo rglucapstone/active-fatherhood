@@ -45,6 +45,9 @@
         <activity android:name=".activities.AskGuruActivity"></activity>
         <activity android:name=".activities.EditProfileActivity"></activity>
         <activity android:name=".activities.PublicationsGuru"></activity>
+        <activity android:name=".activities.PostActivity"></activity>
+        <activity android:name=".activities.CommentActivity"></activity>
+        <activity android:name=".activities.DoPost"></activity>
     </application>
 
 </manifest>

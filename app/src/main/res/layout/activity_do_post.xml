@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar_action"
+        layout="@layout/toolbar_action">
+    </include>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="13dp">
+        <!-- Question -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="top"
+            android:layout_height="150dp">
+            <EditText
+                android:id="@+id/input_write_post"
+                android:hint="@string/txt_write_post"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLength="150"
+                android:ems="12"
+                android:gravity="top"
+                android:singleLine="true"
+                android:inputType="textMultiLine"
+                android:background="@drawable/field_write_question"
+                android:textCursorDrawable="@drawable/cursor_text"
+                android:editable="true" />
+        </RelativeLayout>
+
+        <!-- Tags -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/container_tags">
+            <TextView
+                android:id="@+id/text_add_tag_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Agrega etiquetas a tu publicación"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView"
+                android:layout_marginTop="30dp">
+                <include
+                    android:id="@+id/add_tags"
+                    layout="@layout/activity_preferences">
+                </include>
+            </ScrollView>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_doPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".20"
+            android:text="@string/btn_send"
+            android:background="@drawable/button_fill_primary"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="bottom|right"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:clickable="true" />
+
+    </LinearLayout>
+</LinearLayout>

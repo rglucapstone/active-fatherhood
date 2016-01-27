@@ -1,47 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="7dp"
-    android:paddingLeft="5dp"
+    android:paddingLeft="3dp"
     android:paddingTop="5dp"
     android:paddingRight="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ic_user"
+                android:src="@drawable/ic_profile"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="1dp"
+                android:clickable="true" />
+            <TextView
+                android:id="@+id/txt_quser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:textSize="14sp"
+                android:textColor="#4d8eb4"/>
 
-    <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:id="@+id/ic_user"
-        android:src="@drawable/ic_profile"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="3dp"
-        android:clickable="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+            <TextView
+                android:id="@+id/txt_qdatetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:layout_marginTop="3dp"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+        </LinearLayout>
 
+    </LinearLayout>
     <!-- Preguntas -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:gravity="left" >
-        <TextView
-            android:id="@+id/txt_quser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=""
-            android:textSize="14sp"
-            android:textColor="#333333"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/txt_qdatetime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text=""
-            android:layout_marginTop="3dp"
-            android:textColor="#999999"
-            android:textSize="12sp" />
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="-12dp">
+
         <TextView
             android:id="@+id/txt_qcontent"
             android:layout_width="match_parent"
@@ -62,7 +79,7 @@
             android:paddingTop="2dp"
             android:id="@+id/ly_themes"
             android:orientation="horizontal" >
-            <!--<ImageView
+            <ImageView
                 android:id="@+id/ic_tag"
                 android:onClick="profileOn"
                 android:layout_width="10dp"
@@ -76,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textSize="12sp"
-                android:text="Bebés"/>-->
+                android:text="Bebés"/>
         </LinearLayout>
 
         <!-- Reporte -->
@@ -109,11 +126,10 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textAlignment="center"
                 android:textSize="11sp"
-                android:textColor="#d3d3d3"
+                android:textColor="@color/mediumGrey"
                 android:text=""
                 />
 
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

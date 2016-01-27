@@ -54,9 +54,9 @@ public class AskActivity extends AppCompatActivity {
         button_asking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-
-                // setting data to send question
-                EditText iquestion = (EditText) findViewById(R.id.input_question);
+                EditText iquestion = (EditText)findViewById(R.id.input_question);
+                String content = iquestion.getText().toString();
+                String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
                 int user_id = 2;
 
                 // instance Question object
