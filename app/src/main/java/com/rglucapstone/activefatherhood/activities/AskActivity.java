@@ -12,9 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.widget.Toast;
 
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.data.Question;
+import com.rglucapstone.activefatherhood.data.User;
+import com.rglucapstone.activefatherhood.sync.RestfulClient;
+
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,15 +29,18 @@ import java.util.Date;
  * Created by ronald on 15/12/15.
  */
 public class AskActivity extends AppCompatActivity {
-    private Button button_asking;
     final Context context = this;
+
+    private Button button_asking;
     private TextView container;
+    private LayoutInflater inflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask);
         setToolbar();
+
 
         /**
          * Se oculta el titulo de preferencias
@@ -45,16 +54,17 @@ public class AskActivity extends AppCompatActivity {
         button_asking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                EditText iquestion = (EditText)findViewById(R.id.input_question);
-                String content = iquestion.getText().toString();
-                String date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+
+                // setting data to send question
+                EditText iquestion = (EditText) findViewById(R.id.input_question);
                 int user_id = 2;
-                Question q = new Question(content, date.toString(), Integer.toString(user_id));
-                if( q.send() == true ){
-                    Intent intent = new Intent(context, HomeActivity.class);
-                    startActivity(intent);
-                    //startActivityForResult(intent, 0);
-                }
+
+                // instance Question object
+                Question question = new Question(context, new sendQuestion());
+                question.content = iquestion.getText().toString();
+                question.created = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+                question.user = new User(Integer.toString(user_id));
+                question.send();
             }
         });
     }
@@ -84,5 +94,23 @@ public class AskActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private class sendQuestion extends RestfulClient {
+
+        private Toast toast;
+
+        @Override
+        protected void onPreExecute() {
+            toast = Toast.makeText(context, "Enviando pregunta", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+            toast.cancel();
+            context.startActivity(new Intent(context, HomeActivity.class));
+        }
+
     }
 }

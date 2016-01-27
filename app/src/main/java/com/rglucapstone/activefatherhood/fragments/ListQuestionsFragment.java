@@ -70,8 +70,6 @@ public class ListQuestionsFragment extends ListFragment
 
         @Override
         protected void onPreExecute() {
-            //RelativeLayout loadingLayout = (RelativeLayout) view.findViewById(R.id.loading_questions);
-            //loadingLayout.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -96,17 +94,15 @@ public class ListQuestionsFragment extends ListFragment
 
     }
 
-
-
-
-    /*@Override
+    @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-
+        Question question = (Question) getListView().getItemAtPosition(position);
         Intent intent = new Intent(getActivity(), QuestionActivity.class);
-        intent.putExtra("user", "Pedro Pablo");
-        intent.putExtra("date", "hace 5 horas");
-        intent.putExtra("content", "Lorem ipsum dolor sit amet, consectetur adipiscing elit?");
+        intent.putExtra("question_id", question.id);
         startActivity(intent);
-    }*/
+        //TextView txt_qanswers = (TextView) v.findViewById(R.id.txt_qanswers);
+        //txt_qanswers.setText(question.id);
+
+    }
 
 }

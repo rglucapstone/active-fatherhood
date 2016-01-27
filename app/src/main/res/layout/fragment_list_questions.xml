@@ -13,14 +13,15 @@
     <ListView android:id="@id/android:list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight=".80"
-        android:drawSelectorOnTop="false" />
+        android:layout_weight=".75"
+        android:drawSelectorOnTop="false"
+        android:layout_gravity="top" />
 
     <Button
         android:id="@+id/btn_ask"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".20"
+        android:layout_height="70dp"
+        android:layout_weight=".25"
         android:text="@string/btn_do_ask"
         android:textSize="13dp"
         android:textColor="#FFFFFF"
@@ -32,6 +33,7 @@
         android:layout_marginRight="70dp"
         android:layout_marginLeft="70dp"
         android:clickable="true"
-        android:onClick="ask" />
+        android:onClick="ask"
+        android:layout_gravity="bottom" />
 
 </LinearLayout>

@@ -22,11 +22,13 @@ public class Question extends Model {
     public ArrayAdapter adapter;
     public RestfulClient asynctask;
 
+    public String id;
     public String content;
     public String created;
     public String total_answers;
     public String[] themes;
     public User user;
+    public ArrayList<Answer> listAnswers;
 
 
 
@@ -35,7 +37,7 @@ public class Question extends Model {
     public String datetime;
     public String tags;
     public String likes;
-    public String answers;
+
 
     public Question(RestfulClient task) {
         this.asynctask = task;
@@ -45,25 +47,29 @@ public class Question extends Model {
         this.context = context;
     }
 
-    public Question(Context context, ArrayAdapter adapter) {
+    public Question(Context context, RestfulClient task) {
         this.context = context;
-        this.adapter = adapter;
+        this.asynctask = task;
     }
 
-    // Constructor to convert JSON object into a Java class instance
+    // Constructor to convert JSON object into a Question class instance
     public Question(JSONObject object) {
         try {
             JSONObject q = object.getJSONObject("question");
+            this.id = q.getString("id");
             this.content = q.getString("content");
             this.created = q.getString("created");
-            this.total_answers = q.getString("answers");
+            //this.total_answers = q.getString("answers");
             this.themes = q.getString("themes").split(",");
             this.user = new User(q);
+            this.listAnswers = Answer.fromJson(q.getJSONArray("answers"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
+    // Constructor to send Question
     public Question(String content, String created, String user_id) {
         this.content = content;
         this.created = created;
@@ -82,9 +88,21 @@ public class Question extends Model {
         return items;
     }
 
+    public Question load(String id){
+        Question question = null;
+        RestfulClient rest = this.asynctask;
+        rest.method = "GET";
+        rest.uri = "/questions/" + id;
+        try{
+            rest.execute();
+        }catch (Exception e) {
+        }
+        return question;
+    }
+
     public boolean send() {
         boolean send = false;
-        RestfulClient rest = new RestfulClient();
+        RestfulClient rest = this.asynctask;
         rest.method = "POST";
         rest.uri = "/questions";
         try{

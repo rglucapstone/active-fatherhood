@@ -3,7 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:id="@+id/content_profile">
+
+    <include
+        android:id="@+id/loading_profile"
+        layout="@layout/loading_view">
+    </include>
 
     <!-- Datos -->
     <LinearLayout

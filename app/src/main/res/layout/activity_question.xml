@@ -12,6 +12,12 @@
             android:id="@+id/toolbar_action"
             layout="@layout/toolbar_action">
         </include>
+
+        <include
+            android:id="@+id/loading_question"
+            layout="@layout/loading_view">
+        </include>
+
     <!-- Question -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
@@ -20,7 +26,8 @@
         <include
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            layout="@layout/fragment_item_question" >
+            android:id="@+id/layout_item_question"
+            layout="@layout/fragment_item_question">
         </include>
     </LinearLayout>
 
@@ -39,33 +46,41 @@
             android:layout_marginLeft="15dp"
             android:orientation="vertical"
             android:background="@color/colorPrimaryLabel"
-            android:layout_weight="0.90">
+            android:layout_weight="0.75">
             <TextView
+                android:id="@+id/title_answers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="14 Respuestas"
-                android:id="@+id/title_answers"
+                android:text=""
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="5dp"
                 android:textSize="15dp"
                 android:textColor="@color/mediumGrey"
                 android:layout_marginLeft="5dp" />
-            <ListView
+
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/layout_list_answers"
+                    layout="@layout/fragment_list_answers">
+                </include>
+            <!--<ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/listAnswer"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true" />-->
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_weight="0.25">
             <Button
                 android:layout_width="150dp"
-                android:layout_height="35dp"
+                android:layout_height="50dp"
                 android:id="@+id/btn_answering"
                 android:text="Responder"
                 android:textColor="#FFFFFF"

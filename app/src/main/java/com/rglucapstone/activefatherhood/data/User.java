@@ -1,5 +1,7 @@
 package com.rglucapstone.activefatherhood.data;
 
+import android.content.Context;
+
 import com.rglucapstone.activefatherhood.sync.RestfulClient;
 
 import org.json.JSONArray;
@@ -19,8 +21,16 @@ public class User extends Model
     public String email;
     public String buen_padre;
 
+    public RestfulClient asynctask;
+    public Context context;
+
     public User(String id){
         this.id = id;
+    }
+
+    public User(Context context, RestfulClient task) {
+        this.context = context;
+        this.asynctask = task;
     }
 
     public User(String id, String login, String name){
@@ -42,17 +52,13 @@ public class User extends Model
         }
     }
 
-    public static User load(String id){
+    public User load(String id){
         User user = null;
-        RestfulClient rest = new RestfulClient();
+        RestfulClient rest = this.asynctask;
         rest.method = "GET";
         rest.uri = "/users/" + id;
         try{
-            //JSONArray data = rest.execute().get();
-            //ArrayList<User> users = User.fromJson(data);
-            /*if( !users.isEmpty() ){
-                user = users.get(0);
-            }*/
+            rest.execute();
         }catch (Exception e) {
         }
         return user;

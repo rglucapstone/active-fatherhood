@@ -29,6 +29,7 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
     private Context context;
     private LayoutInflater inflater;
     public ArrayList<Question> questions;
+    public Question question;
 
     public QuestionsAdapter(Context context, ArrayList<Question> questions){
         super(context, R.layout.fragment_item_question, questions);
@@ -51,6 +52,8 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
         }else{
             //viewHolder = (ViewHolder) convertView.getTag();
         }
+
+        final View vista = convertView;
 
 
         final ImageView ic_user = (ImageView) convertView.findViewById(R.id.ic_user);
