@@ -32,5 +32,7 @@
     <string name="description_user">Ser un buen padre es ser amigo de tus hijos y no una autoridad...</string>
     <string name="btn_publicar">Realizar una publicación</string>
     <string name="txt_write_post">Escribe aquí tu experiencia o cualquier publicación que desees realizar</string>
+    <string name="seguro_sugerir_post">Desea sugerir que esta respuesta sea publicada? </string>
+    <string name="mensaje_sugerir_post">Las respuestas sugeridas son almacenadas en la sección de Publicaciones para que los padres puedan acceder a soluciones facilmente. </string>
 
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item android:state_pressed="true" android:background="@mipmap/ico_like_blue_24" />
+    <item android:state_focused="true" android:background="@mipmap/ico_like_light_grey_24" />
+    <item android:background="@mipmap/ico_like_light_grey_24" />-->
+</selector>

@@ -28,16 +28,10 @@ public class AskGuruActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask);
+        setToolbar();
 
-        // toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
-        toolbar.setTitle("Realizar Pregunta");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /** Se oculta el contenedor de seleccionar tags, cuando es una
-         * pregunta directa
-         */
+        /* Se oculta el contenedor de seleccionar tags, cuando es una pregunta directa */
         //container = (RelativeLayout) findViewById(R.id.container_tags);
         //container.setVisibility(View.GONE);
 
@@ -55,6 +49,15 @@ public class AskGuruActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+    }
+
+    /* Toolbar */
+    public void setToolbar(){
+        // toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
+        toolbar.setTitle("Realizar Pregunta");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     /* Action Back*/
     @Override

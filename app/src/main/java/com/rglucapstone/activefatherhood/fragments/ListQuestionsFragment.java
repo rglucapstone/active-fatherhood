@@ -79,7 +79,6 @@ public class ListQuestionsFragment extends ListFragment
                 // Create the adapter to convert the array to views
                 adapter = new QuestionsAdapter(getActivity(), list);
                 setListAdapter(adapter); // Attach the adapter to a ListView
-
                 // Populating Data into ListView
                 list = Question.fromJson(result.getJSONArray("data"));
                 adapter.addAll(list);

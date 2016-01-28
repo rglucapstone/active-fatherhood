@@ -32,7 +32,7 @@ public class ListPostsAdapter extends ArrayAdapter<Post> {
         Post post = getItem(position);
         TextView txt_ptitle = (TextView) convertView.findViewById(R.id.txt_ptitle);
         TextView txt_puser = (TextView) convertView.findViewById(R.id.txt_puser);
-        TextView txt_pdatetime = (TextView) convertView.findViewById(R.id.txt_pdatetime);
+        TextView txt_pdatetime = (TextView) convertView.findViewById(R.id.txt_date_post);
         TextView txt_ptags = (TextView) convertView.findViewById(R.id.txt_ptags);
         TextView txt_plikes = (TextView) convertView.findViewById(R.id.txt_plikes);
         TextView txt_pcomments = (TextView) convertView.findViewById(R.id.txt_pcomments);

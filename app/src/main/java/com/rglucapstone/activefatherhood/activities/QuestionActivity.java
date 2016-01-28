@@ -1,17 +1,23 @@
 package com.rglucapstone.activefatherhood.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
@@ -39,6 +45,9 @@ public class QuestionActivity extends AppCompatActivity {
     private ListView listAnswer;
     public Question question;
     public Context context;
+    private TextView container;
+    private ImageButton btn_like;
+    private ImageButton btn_suggest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +58,8 @@ public class QuestionActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.question = new Question(this, new loadQuestion());
         this.question.load(intent.getStringExtra("question_id"));
-
-        // toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
-        toolbar.setTitle("Pregunta");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        setToolbar();
+        setActions();
         //listAnswerAdapter = new AnswerItemAdapter(this, new String[10]);
         //listAnswer = (ListView) findViewById(R.id.listAnswer);
         //listAnswer.setAdapter(listAnswerAdapter);
@@ -88,6 +92,64 @@ public class QuestionActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }*/
+
+    /* Actions */
+
+    public void setActions(){
+        /* Se oculta la hora y se muestra el icono de like */
+        container = (TextView) findViewById(R.id.txt_qdatetime);
+        container.setVisibility(View.GONE);
+
+        btn_like = (ImageButton) findViewById(R.id.btn_like_question);
+        btn_like.setVisibility(View.VISIBLE);
+        btn_like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                // function to increment like to person
+                if(btn_like.getBackground().equals(R.mipmap.ico_like_light_grey_24)) {
+                    btn_like.setBackgroundResource(R.mipmap.ico_like_blue_24);
+                }else {
+                    btn_like.setBackgroundResource(R.mipmap.ico_like_light_grey_24);
+                }
+            }
+        });
+
+        /***** ELIMINAR LUEGO, TEMPORAL para pruebas */
+        btn_suggest = (ImageButton) findViewById(R.id.btn_suggest_post);
+        btn_suggest.setVisibility(View.VISIBLE);
+
+        btn_suggest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                alertDialogBuilder.setTitle(R.string.seguro_sugerir_post);
+                alertDialogBuilder.setMessage(R.string.mensaje_sugerir_post)
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                //QuestionActivity.this.finish();
+                                QuestionActivity.this.closeContextMenu();
+                            }
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                QuestionActivity.this.closeContextMenu();
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+    }
+
+    /* Toolbar */
+    public void setToolbar(){
+        // toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
+        toolbar.setTitle("Pregunta");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
     private void setData(){
         LinearLayout layout = (LinearLayout)findViewById(R.id.layout_item_question);
@@ -132,6 +194,11 @@ public class QuestionActivity extends AppCompatActivity {
             RelativeLayout loadingLayout = (RelativeLayout) findViewById(R.id.loading_question);
             loadingLayout.setVisibility(View.GONE);
         }
+
+    }
+
+    /* Sugerir Publicacion*/
+    public void suggestPost(View view){
 
     }
 }

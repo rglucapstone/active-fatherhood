@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="7dp"
     android:paddingLeft="1dp"
-    android:paddingTop="5dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="5dp"
     android:paddingRight="5dp">
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:gravity="right">
             <TextView
-                android:id="@+id/txt_pdatetime"
+                android:id="@+id/txt_date_post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
@@ -49,6 +50,14 @@
                 android:textColor="#999999"
                 android:layout_marginLeft="7dp"
                 android:textSize="12sp" />
+            <ImageButton
+                android:id="@+id/btn_like_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:visibility="invisible"
+                android:background="@mipmap/ico_like_grey_24"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -57,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="36dp"
-        android:layout_marginTop="-14dp"
+        android:layout_marginTop="-8dp"
         android:gravity="left" >
         <TextView
             android:id="@+id/txt_ptitle"
@@ -106,6 +115,7 @@
         <!-- Reporte -->
 
         <LinearLayout
+            android:id="@+id/container_report_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="2dp">
