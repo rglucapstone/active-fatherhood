@@ -21,6 +21,11 @@ public class User extends Model
     public String email;
     public String buen_padre;
 
+    public String total_questions;
+    public String total_answers;
+    public String total_posts;
+    public String total_likes;
+
     public RestfulClient asynctask;
     public Context context;
 
@@ -42,11 +47,18 @@ public class User extends Model
     public User(JSONObject object){
         try {
             JSONObject u = object.getJSONObject("user");
-            this.id = u.getString("id");
-            this.login = u.getString("login");
-            this.name = u.getString("name");
-            this.email = u.getString("email");
-            this.buen_padre = u.getString("buen_padre");
+            if (u.has("login")) this.login = u.getString("login");
+            if (u.has("id")) this.id = u.getString("id");
+            if (u.has("name")) this.name = u.getString("name");
+            if (u.has("email")) this.email = u.getString("email");
+            if (u.has("buen_padre")) this.buen_padre = u.getString("buen_padre");
+            if( u.has("aportes") ){
+                JSONObject a = u.getJSONObject("aportes");
+                if (a.has("preguntas")) this.total_questions = a.getString("preguntas");
+                if (a.has("respuestas")) this.total_answers = a.getString("respuestas");
+                if (a.has("publicaciones")) this.total_posts = a.getString("publicaciones");
+                if (a.has("me_gusta")) this.total_likes = a.getString("me_gusta");
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

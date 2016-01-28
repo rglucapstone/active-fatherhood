@@ -41,13 +41,12 @@ import java.util.ArrayList;
  * Created by ronald on 15/12/15.
  */
 public class QuestionActivity extends AppCompatActivity {
-    private ArrayAdapter listAnswerAdapter;
-    private ListView listAnswer;
     public Question question;
     public Context context;
     private TextView container;
     private ImageButton btn_like;
     private ImageButton btn_suggest;
+    //public AnswerItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +55,14 @@ public class QuestionActivity extends AppCompatActivity {
         this.context = this;
 
         Intent intent = getIntent();
+
+        //TextView txt_qanswers = (TextView) findViewById(R.id.title_answers);
+        //txt_qanswers.setText(obj.user.name);
         this.question = new Question(this, new loadQuestion());
         this.question.load(intent.getStringExtra("question_id"));
         setToolbar();
         setActions();
+
         //listAnswerAdapter = new AnswerItemAdapter(this, new String[10]);
         //listAnswer = (ListView) findViewById(R.id.listAnswer);
         //listAnswer.setAdapter(listAnswerAdapter);
@@ -67,6 +70,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void answer(View view) {
         Intent intent = new Intent(this, AnswerActivity.class);
+        intent.putExtra("question_id", this.question.id);
         startActivity(intent);
     }
 
@@ -162,8 +166,12 @@ public class QuestionActivity extends AppCompatActivity {
         txt_quser.setText(this.question.user.name);
         txt_qdatetime.setText(this.question.created);
         txt_qcontent.setText(this.question.content);
-        txt_qanswers.setText(this.question.total_answers + " respuestas");
+        txt_qanswers.setText(this.question.listAnswers.size() + " respuestas");
 
+        AnswerItemAdapter adapter = new AnswerItemAdapter(this, this.question.listAnswers);
+        LinearLayout layout_answers = (LinearLayout) findViewById(R.id.layout_list_answers);
+        ListView list = (ListView) layout_answers.findViewById(R.id.listAnswer);
+        list.setAdapter(adapter);
     }
 
     private class loadQuestion extends RestfulClient {

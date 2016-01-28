@@ -68,7 +68,7 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
         txt_quser.setText(question.user.name);
         txt_qdatetime.setText(question.created);
         txt_qcontent.setText(question.content);
-        txt_qanswers.setText(question.total_answers + " comentarios");
+        txt_qanswers.setText(question.listAnswers.size() + " respuestas");
 
         ic_user.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {

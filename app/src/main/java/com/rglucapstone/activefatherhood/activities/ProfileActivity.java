@@ -99,6 +99,19 @@ public class ProfileActivity extends Activity {
         TextView txt_goodfather = (TextView) findViewById(R.id.txt_profile_goodfather);
         txt_name.setText(this.user.name);
         txt_goodfather.setText(this.user.buen_padre);
+
+        TextView txt_questions = (TextView) findViewById(R.id.txt_questions);
+        txt_questions.setText(this.user.total_questions);
+
+        TextView txt_answers = (TextView) findViewById(R.id.txt_answers);
+        txt_answers.setText(this.user.total_answers);
+
+        TextView txt_posts = (TextView) findViewById(R.id.txt_posts);
+        txt_posts.setText(this.user.total_posts);
+
+        TextView txt_me_gusta = (TextView) findViewById(R.id.txt_likes);
+        txt_me_gusta.setText(this.user.total_likes);
+
         //txt_goodfather.setText(Integer.toString(this.list.size()));
     }
 

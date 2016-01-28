@@ -36,8 +36,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Nombre usuario"
-                    android:id="@+id/answerTitle"
+                    android:text=""
+                    android:id="@+id/answer_user"
                     android:textSize="14sp"
                     android:textColor="#222222"
                     android:textStyle="bold" />
@@ -51,8 +51,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="hace 3 horas"
-                    android:id="@+id/answerDate"
+                    android:text=""
+                    android:id="@+id/answer_date"
                     android:layout_marginTop="1dp"
                     android:textColor="#999999"
                     android:textSize="12sp" />
@@ -66,8 +66,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Lorem ipsum dolor sit amet, cosectetur adisisping elit. Cras cursus"
-                    android:id="@+id/answerContent"
+                    android:text=""
+                    android:id="@+id/answer_content"
                     android:layout_marginTop="5dp"
                     android:ellipsize="end"
                     android:maxLines="3"
@@ -118,13 +118,21 @@
             android:layout_height="29dp">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true">
+                <TextView
+                    android:id="@+id/txt_likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text=""
+                    android:gravity="right" />
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/icon_up"
                     android:src="@drawable/ico_like"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="4dp" />
                 <TextView
                     android:id="@+id/btn_like"

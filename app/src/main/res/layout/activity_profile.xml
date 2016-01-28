@@ -252,20 +252,20 @@
                 android:layout_height="37dp"
                 android:gravity="center">
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/txt_questions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="10"
+                    android:text=""
                     android:textSize="13dp"
                     android:gravity="center" />
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Preguntas"
+                    android:text="@string/txt_questions"
                     android:textSize="11dp"
                     android:gravity="center"
-                    android:layout_below="@+id/textView7"/>
+                    android:layout_below="@+id/txt_questions"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="92dp"
@@ -273,7 +273,7 @@
                 android:gravity="center"
                 android:background="@drawable/background_line_vertical">
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/txt_answers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="35"
@@ -283,10 +283,10 @@
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Respuestas"
+                    android:text="@string/txt_answers"
                     android:textSize="11dp"
                     android:gravity="center"
-                    android:layout_below="@+id/textView8"/>
+                    android:layout_below="@+id/txt_answers"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="92dp"
@@ -294,20 +294,20 @@
                 android:gravity="center"
                 android:background="@drawable/background_line_vertical">
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/txt_posts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="10"
                     android:textSize="13dp"
                     android:gravity="center" />
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/textView8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Publicaciones"
+                    android:text="@string/txt_posts"
                     android:textSize="11dp"
                     android:gravity="center"
-                    android:layout_below="@+id/textView10"/>
+                    android:layout_below="@+id/txt_posts"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="92dp"
@@ -315,7 +315,7 @@
                 android:gravity="center"
                 android:background="@drawable/background_line_vertical">
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/txt_likes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="10"
@@ -325,10 +325,10 @@
                     android:id="@+id/textView13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Me Gusta"
+                    android:text="@string/txt_likes"
                     android:textSize="11dp"
                     android:gravity="center"
-                    android:layout_below="@+id/textView12"/>
+                    android:layout_below="@+id/txt_likes"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

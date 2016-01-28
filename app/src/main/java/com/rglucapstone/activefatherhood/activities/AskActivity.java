@@ -55,14 +55,12 @@ public class AskActivity extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 EditText iquestion = (EditText)findViewById(R.id.input_question);
-                String content = iquestion.getText().toString();
-                String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
                 int user_id = 2;
 
                 // instance Question object
                 Question question = new Question(context, new sendQuestion());
                 question.content = iquestion.getText().toString();
-                question.created = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+                question.created = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
                 question.user = new User(Integer.toString(user_id));
                 question.send();
             }
