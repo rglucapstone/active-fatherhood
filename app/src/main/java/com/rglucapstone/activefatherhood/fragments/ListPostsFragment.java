@@ -21,25 +21,27 @@ import java.util.ArrayList;
  */
 public class ListPostsFragment extends ListFragment {
 
-    public ListPostsFragment() {
-
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
     }
-
-    /*@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_posts, container, false);
-    }*/
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         ArrayList<Post> listPosts = new ArrayList<>();
         this.populate(listPosts);
+
+        View view = inflater.inflate(R.layout.fragment_list_posts, container, false);
+
         ListPostsAdapter postsAdapter = new ListPostsAdapter(getActivity(), listPosts);
         setListAdapter(postsAdapter);
+
+        return view;
     }
 
     private void populate(ArrayList posts){

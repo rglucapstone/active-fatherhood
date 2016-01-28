@@ -81,21 +81,25 @@ public class QuestionActivity extends AppCompatActivity {
         return true;
     }*/
 
-    /*@Override
+    /* Toolbar */
+    public void setToolbar(){
+        // toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
+        toolbar.setTitle("Pregunta");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_buscar:
-                // User chose the "Settings" item, show the app settings UI...
-                return true;
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                this.finish();
                 return true;
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
-    }*/
+    }
 
     /* Actions */
 
@@ -144,15 +148,6 @@ public class QuestionActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
-    }
-
-    /* Toolbar */
-    public void setToolbar(){
-        // toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
-        toolbar.setTitle("Pregunta");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setData(){

@@ -65,7 +65,7 @@ public class AnswerActivity extends AppCompatActivity {
                 // instance Question object
                 Answer ans = new Answer(context, new sendAnswer());
                 ans.content = textasnswer.getText().toString();
-                ans.created = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+                ans.created = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
                 ans.user = new User(Integer.toString(user_id));
                 ans.question_id = answer.question_id;
 

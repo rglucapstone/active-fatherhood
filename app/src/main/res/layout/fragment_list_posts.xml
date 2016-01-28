@@ -5,22 +5,24 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <include
+    <!--<include
         android:id="@+id/loading_questions"
         layout="@layout/loading_view">
-    </include>
+    </include>-->
 
     <ListView android:id="@id/android:list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight=".80"
-        android:drawSelectorOnTop="false" />
+        android:layout_weight=".75"
+        android:drawSelectorOnTop="false"
+        android:layout_gravity="top" />
 
     <Button
         android:id="@+id/btn_do_post"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-           android:text="@string/btn_publicar"
+        android:layout_height="70dp"
+        android:layout_weight=".25"
+        android:text="@string/btn_publicar"
         android:textSize="13dp"
         android:textColor="#FFFFFF"
         android:background="@drawable/button_fill_primary"
@@ -31,5 +33,6 @@
         android:layout_marginRight="70dp"
         android:layout_marginLeft="70dp"
         android:clickable="true"
-        android:onClick="post" />
+        android:onClick="post"
+        android:layout_gravity="bottom"/>
 </LinearLayout>

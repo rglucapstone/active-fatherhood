@@ -128,6 +128,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Do a Post
+     */
     public void post(View view) {
         Intent intent = new Intent(this, DoPost.class);
         startActivity(intent);
