@@ -57,6 +57,7 @@
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:text="@string/btn_enter"
+        android:onClick="preferencesOn"
         android:background="@drawable/button_fill_primary"
         android:textColor="@color/colorPrimaryText"
         android:layout_gravity="center_vertical"

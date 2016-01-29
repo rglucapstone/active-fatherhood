@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- unchecked -->
+    <item android:drawable="@mipmap/check_grey_24"
+        android:left="4dp"
+        android:state_checked="false">
+    </item>
+    <!-- checked -->
+    <item android:drawable="@mipmap/check_primary_24"
+        android:state_checked="true">
+    </item>
+    <!-- focus -->
+    <item android:drawable="@mipmap/check_primary_24"
+        android:state_focused="true">
+        <color android:color="@color/colorPrimaryLabel"></color>
+    </item>
+
+</selector>

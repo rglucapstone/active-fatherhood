@@ -27,17 +27,38 @@ public class LoginActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+    }
 
+    /* Button Entrar: go to Add Preference */
+    public void preferencesOn(View view) {
+        Intent intent = new Intent(this, PreferencesActivity.class);
+        startActivity(intent);
+    }
+
+    public void keepOn (View view){
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void doRegister (View view){
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
+    }
+
+    public void dialogPreference(){
+           /*
         button = (Button) findViewById(R.id.btn_enter);
         View view;
         // add button listener
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                Intent intent = new Intent(this, PreferencesActivity.class);
+                startActivity(intent);
+                // Show container dialog preferences
                 selectedCategories = new ArrayList();
-
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                /*alertDialogBuilder.setTitle(R.string.message_preferences);*/
+                //alertDialogBuilder.setTitle(R.string.message_preferences);
                 LayoutInflater inflater = getLayoutInflater();
                 alertDialogBuilder.setView(inflater.inflate(R.layout.activity_preferences, null))
                         // Add action buttons
@@ -57,20 +78,6 @@ public class LoginActivity extends Activity{
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
-        });
-    }
-
-    /*public void keepOn(View view) {
-        Intent intent = new Intent(this, CategoriesActivity.class);
-        startActivity(intent);
-    }*/
-    public void keepOn (View view){
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-    }
-
-    public void doRegister (View view){
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
+        });*/
     }
 }

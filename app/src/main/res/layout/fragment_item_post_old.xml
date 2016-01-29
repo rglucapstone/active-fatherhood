@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="7dp"
+    android:paddingLeft="1dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="5dp"
+    android:paddingRight="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp">
+            <ImageView
+                android:onClick="profileOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ic_user"
+                android:src="@drawable/ic_profile"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="2dp"/>
+            <TextView
+                android:id="@+id/txt_puser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Pedro Xavier"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="0dp"
+                android:textColor="#4d8eb4"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+            <TextView
+                android:id="@+id/txt_date_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="hace 2 dias"
+                android:layout_marginTop="3dp"
+                android:textColor="#999999"
+                android:layout_marginLeft="7dp"
+                android:textSize="12sp" />
+            <ImageButton
+                android:id="@+id/btn_like_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="5dp"
+                android:visibility="invisible"
+                android:background="@mipmap/ico_like_grey_24"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="-8dp"
+        android:gravity="left" >
+        <TextView
+            android:id="@+id/txt_ptitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Que hacer cuando los niños se chupan los dedos.."
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#333333"/>
+        <TextView
+            android:id="@+id/txt_qcontent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Lorem impusn doler at si mel.."
+            android:singleLine="false"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <!-- Tags -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp">
+            <ImageView
+                android:id="@+id/ic_tag"
+                android:onClick="profileOn"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/ic_tag"
+                android:layout_marginTop="3dp" />
+            <TextView
+                android:id="@+id/txt_ptags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:text="dd"/>
+        </LinearLayout>
+
+        <!-- Reporte -->
+
+        <LinearLayout
+            android:id="@+id/container_report_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp">
+            <TextView
+                android:id="@+id/txt_plikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAlignment="center"
+                android:textSize="11sp"
+                android:textColor="@color/mediumGrey"
+                android:text="ss"
+                />
+            <TextView
+                android:id="@+id/txt_separator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="·"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:id="@+id/txt_pcomments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAlignment="center"
+                android:textSize="11sp"
+                android:textColor="@color/mediumGrey"
+                android:text="ss"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

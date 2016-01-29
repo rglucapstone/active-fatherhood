@@ -3,106 +3,62 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="7dp"
-    android:paddingLeft="4dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="5dp"
-    android:paddingRight="8dp">
-    <LinearLayout
+    android:padding="10dp">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="250dp"
+        android:gravity="right"
+        android:paddingRight="10dp">
+        <!-- Fecha -->
+        <TextView
+            android:id="@+id/txt_qdatetime"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="2dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ic_user"
-                android:src="@drawable/ic_profile"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginTop="1dp"
-                android:clickable="true" />
-            <TextView
-                android:id="@+id/txt_quser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text=""
-                android:textSize="14sp"
-                android:textColor="#4d8eb4"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="100dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="2 min"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+        <!-- Like -->
+        <ImageButton
+            android:id="@+id/btn_like_question"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right">
-            <TextView
-                android:id="@+id/txt_qdatetime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text=""
-                android:layout_marginTop="3dp"
-                android:textColor="#999999"
-                android:textSize="12sp" />
-            <ImageButton
-                android:id="@+id/btn_like_question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="5dp"
-                android:visibility="invisible"
-                android:background="@mipmap/ico_like_light_grey_24"/>
-            <!-- ELIMINAR LUEGO, TEMPORAL para pruebas -->
-            <ImageButton
-                android:id="@+id/btn_suggest_post"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="5dp"
-                android:visibility="gone"
-                android:background="@drawable/ico_suggest"/>
-        </LinearLayout>
-
-    </LinearLayout>
-    <!-- Preguntas -->
-    <LinearLayout
-        android:orientation="vertical"
+            android:visibility="gone"
+            android:background="@mipmap/ico_like_light_grey_24"/>
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="34dp"
-        android:layout_marginTop="-12dp">
-
+        android:layout_height="wrap_content">
         <TextView
             android:id="@+id/txt_qcontent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=""
-            android:singleLine="false"
-            android:layout_marginTop="5dp"
+            android:text="@string/prueba"
             android:ellipsize="end"
-            android:maxLines="5"
+            android:maxLines="3"
+            android:singleLine="false"
+            android:layout_marginTop="3dp"
             android:textColor="#666666"
             android:textSize="14sp" />
-
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:paddingBottom="7dp">
         <!-- Tags -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:paddingTop="2dp"
             android:id="@+id/ly_themes"
-            android:orientation="horizontal" >
+            android:gravity="left" >
             <ImageView
                 android:id="@+id/ic_tag"
                 android:onClick="profileOn"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:layout_marginRight="4dp"
                 android:src="@drawable/ic_tag"
                 android:layout_marginTop="3dp" />
             <TextView
@@ -111,43 +67,29 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textSize="12sp"
+                android:layout_marginLeft="15dp"
                 android:text="Bebés"/>
-        </LinearLayout>
-
-        <!-- Reporte -->
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="2dp">
-            <!--<TextView
-                android:id="@+id/txt_qlikes"
+        </RelativeLayout>
+        <!-- Tags -->
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ic_user"
+                android:onClick="profileOn"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ico_profile_grey" />
+            <TextView
+                android:id="@+id/txt_quser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textAlignment="center"
-                android:textSize="11sp"
-                android:textColor="#d3d3d3"
-                android:text="ss"
-                />
-            <TextView
-                android:id="@+id/txt_separator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="·"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>-->
-            <TextView
-                android:id="@+id/txt_qanswers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textAlignment="center"
-                android:textSize="11sp"
-                android:textColor="@color/mediumGrey"
-                android:text=""
-                />
-
-        </LinearLayout>
+                android:textSize="12sp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="2dp"
+                android:text="User"/>
+        </RelativeLayout>
     </LinearLayout>
+
 </LinearLayout>

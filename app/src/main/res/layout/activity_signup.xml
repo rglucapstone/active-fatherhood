@@ -13,10 +13,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Regístrate para que puedas participar"
+            android:text="Regístrate con nosotros"
             android:layout_marginTop="40dp"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
             android:textSize="18dp"
             android:textColor="#35adbd" />
     </RelativeLayout>
@@ -73,18 +72,19 @@
             android:textSize="16dp"
             android:textColorHint="#c2c2c2" />
     </RelativeLayout>
-    <!--<RelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <EditText android:id="@+id/input_names"
+        <!-- Password -->
+        <EditText android:id="@+id/input_edad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date"
+            android:inputType="textPassword"
             android:hint="Edad"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:textSize="16dp"
             android:textColorHint="#c2c2c2" />
-    </RelativeLayout>-->
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -105,6 +105,7 @@
             android:layout_alignWithParentIfMissing="false"
             android:layout_alignParentRight="false"
             android:layout_centerHorizontal="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginBottom="30dp" />
     </RelativeLayout>
 </LinearLayout>

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Paternidad Plus</string>
-
+    <string name="prueba">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mattis viverra ex in pharetra. In volutpat dui nibh, in mollis lorem ultricies vel. Sed odio justo, elementum vel molestie nec, finibus luctus</string>
     <string name="btn_continue">Continuar</string>
     <string name="btn_login">Iniciar Sesión</string>
     <string name="btn_enter">Entrar</string>

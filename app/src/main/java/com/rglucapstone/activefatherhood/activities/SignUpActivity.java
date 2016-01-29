@@ -25,8 +25,17 @@ public class SignUpActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+    }
 
-        button = (Button) findViewById(R.id.btn_acept);
+    /* Button Entrar: go to Add Preference */
+    public void keepOn(View view) {
+        Intent intent = new Intent(this, PreferencesActivity.class);
+        startActivity(intent);
+    }
+
+    public void goPreference(){
+        /*
+        *  button = (Button) findViewById(R.id.btn_acept);
         View view;
         // add button listener
         button.setOnClickListener(new View.OnClickListener() {
@@ -35,7 +44,6 @@ public class SignUpActivity extends Activity{
                 selectedCategories = new ArrayList();
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                /*alertDialogBuilder.setTitle(R.string.message_preferences);*/
                 LayoutInflater inflater = getLayoutInflater();
                 alertDialogBuilder.setView(inflater.inflate(R.layout.activity_preferences, null))
                         // Add action buttons
@@ -55,11 +63,6 @@ public class SignUpActivity extends Activity{
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
-        });
-    }
-
-    public void keepOn(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
+        });*/
     }
 }

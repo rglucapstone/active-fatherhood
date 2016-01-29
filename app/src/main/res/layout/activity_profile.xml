@@ -6,10 +6,10 @@
     android:background="#ffffff"
     android:id="@+id/content_profile">
 
-    <include
+    <!--<include
         android:id="@+id/loading_profile"
         layout="@layout/loading_view">
-    </include>
+    </include>-->
 
     <!-- Datos -->
     <LinearLayout
@@ -34,12 +34,12 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="90dp"
-                android:background="@drawable/profile5"
+                android:background="@drawable/ico_avatar_white"
                 android:layout_marginLeft="110dp"
                 android:layout_gravity="center"
                 android:layout_weight="0.06" />
             <Button
-                android:layout_width="24dp"
+                android:layout_width="25dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="90dp"
                 android:layout_marginTop="5dp"
