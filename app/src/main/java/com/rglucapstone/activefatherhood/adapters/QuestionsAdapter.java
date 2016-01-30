@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
 import android.content.Context;
@@ -59,19 +60,26 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
         final ImageView ic_user = (ImageView) convertView.findViewById(R.id.ic_user);
         //convertView.setTag(viewHolder);
 
+        // username - login
         TextView txt_quser = (TextView) convertView.findViewById(R.id.txt_quser);
-        TextView txt_qdatetime = (TextView) convertView.findViewById(R.id.txt_qdatetime);
+        txt_quser.setText(question.user.login);
+
+        //TextView txt_qdatetime = (TextView) convertView.findViewById(R.id.txt_qdatetime);
         TextView txt_qcontent = (TextView) convertView.findViewById(R.id.txt_qcontent);
         TextView txt_qanswers = (TextView) convertView.findViewById(R.id.txt_qanswers);
 
         //ic_user.setTag(question.user);
-        txt_quser.setText(question.user.name);
-        txt_qdatetime.setText(question.created);
+
+        //txt_qdatetime.setText(question.created);
         txt_qcontent.setText(question.content);
         txt_qanswers.setText(question.listAnswers.size() + " respuestas");
 
-        ic_user.setOnClickListener(new OnClickListener() {
+        final RelativeLayout link_user = (RelativeLayout) convertView.findViewById(R.id.link_user);
+        link_user.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
+                //TextView txt_qanswers = (TextView) view.findViewById(R.id.txt_qanswers);
+                //txt_qanswers.setText(question.user.id);
+
                 Intent intent = new Intent(context, ProfileActivity.class); //create an Intent object
                 intent.putExtra("user_id", question.user.id); //add data to the Intent object
                 context.startActivity(intent); //start the second activity

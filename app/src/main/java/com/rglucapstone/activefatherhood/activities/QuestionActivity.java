@@ -105,8 +105,8 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void setActions(){
         /* Se oculta la hora y se muestra el icono de like */
-        container = (TextView) findViewById(R.id.txt_qdatetime);
-        container.setVisibility(View.GONE);
+        //container = (TextView) findViewById(R.id.txt_qdatetime);
+        //container.setVisibility(View.GONE);
 
         btn_like = (ImageButton) findViewById(R.id.btn_like_question);
         btn_like.setVisibility(View.VISIBLE);
@@ -184,7 +184,7 @@ public class QuestionActivity extends AppCompatActivity {
                 ArrayList<Question> list = Question.fromJson(result.getJSONArray("data"));
                 if( !list.isEmpty() ){
                     question = list.get(0);
-                    //setData();
+                    setData();
                     //ListView listView = (ListView) findViewById(R.id.layout_list_answers);
                     //AnswerItemAdapter adapter = new AnswerItemAdapter(context, question.listAnswers);
                     //listView.setAdapter(adapter);
