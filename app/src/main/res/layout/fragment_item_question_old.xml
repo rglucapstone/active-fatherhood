@@ -145,7 +145,7 @@
                 android:textAlignment="center"
                 android:textSize="11sp"
                 android:textColor="@color/mediumGrey"
-                android:text=""
+                android:text="dfs"
                 />
 
         </LinearLayout>

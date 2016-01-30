@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="7dp"
     android:paddingLeft="1dp"
-    android:paddingTop="8dp"
+    android:paddingTop="6dp"
     android:paddingBottom="5dp"
     android:paddingRight="5dp">
     <LinearLayout
@@ -15,8 +15,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="2dp">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -82,7 +81,7 @@
                     android:text="2 min"
                     android:layout_marginTop="5dp"
                     android:textColor="#999999"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="8dp"
                     android:textSize="12sp" />
 
                 <!-- Me gusta -->
@@ -91,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="10dp"
                     android:visibility="invisible"
                     android:background="@mipmap/ico_like_grey_24"/>
             </RelativeLayout>
@@ -103,7 +102,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="-2dp"
         android:gravity="left" >
         <TextView

@@ -25,6 +25,16 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:background="@mipmap/ico_like_light_grey_24"/>
+        <!-- ELIMINAR LUEGO, TEMPORAL para pruebas -->
+        <ImageButton
+            android:id="@+id/btn_suggest_post"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:visibility="gone"
+            android:background="@drawable/ico_suggest"/>
+
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,28 +44,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/prueba"
+            android:text=""
             android:ellipsize="end"
             android:maxLines="3"
             android:singleLine="false"
             android:layout_marginTop="3dp"
-            android:textColor="#666666"
+            android:textColor="#444444"
             android:textSize="14sp" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="3dp"
-        android:paddingBottom="7dp">
+        android:paddingBottom="5dp">
+
         <!-- Tags -->
         <RelativeLayout
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="2dp"
             android:id="@+id/ly_themes"
             android:gravity="left" >
             <ImageView
-                android:id="@+id/ic_tag"
+                android:id="@+id/ic_tag_blue"
                 android:onClick="profileOn"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
@@ -70,10 +81,50 @@
                 android:layout_marginLeft="15dp"
                 android:text="Bebés"/>
         </RelativeLayout>
-        <!-- Tags -->
+    </LinearLayout>
+    <!-- Reporte -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp">
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_qanswers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAlignment="center"
+                android:textSize="11sp"
+                android:textColor="@color/mediumGrey"
+                android:text="10 respuestas"
+                />
+            <TextView
+                android:id="@+id/txt_separator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="·"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:id="@+id/txt_pcomments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAlignment="center"
+                android:textSize="11sp"
+                android:textColor="@color/mediumGrey"
+                android:text="10 Comentarios"
+                />
+        </LinearLayout>
+
+        <!-- User -->
         <RelativeLayout
             android:layout_width="130dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/link_user">
             <ImageView
                 android:id="@+id/ic_user"
                 android:onClick="profileOn"
@@ -82,14 +133,19 @@
                 android:src="@drawable/ico_profile_grey" />
             <TextView
                 android:id="@+id/txt_quser"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textSize="12sp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="2dp"
-                android:text="User"/>
+                android:layout_marginLeft="23dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="4dp"
+                android:text="User"
+                android:textColor="@color/colorThird"
+                android:onClick="profileOn"/>
         </RelativeLayout>
     </LinearLayout>
+
+
 
 </LinearLayout>

@@ -6,10 +6,10 @@
     android:background="#ffffff"
     android:id="@+id/content_profile">
 
-    <!--<include
+    <include
         android:id="@+id/loading_profile"
         layout="@layout/loading_view">
-    </include>-->
+    </include>
 
     <!-- Datos -->
     <LinearLayout
