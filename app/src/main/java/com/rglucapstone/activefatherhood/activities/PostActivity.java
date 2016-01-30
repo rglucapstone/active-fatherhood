@@ -43,10 +43,10 @@ public class PostActivity extends AppCompatActivity {
     public void setActions(){
 
         /* Se oculta la fecha y el reporte de la publicacion */
-        container = (TextView) findViewById(R.id.txt_date_post);
-        container_report = (LinearLayout) findViewById(R.id.container_report_post);
+        //container = (TextView) findViewById(R.id.txt_date_post);
+        //container.setVisibility(View.GONE);
 
-        container.setVisibility(View.GONE);
+        container_report = (LinearLayout) findViewById(R.id.container_report_post);
         container_report.setVisibility(View.GONE);
 
         /* Se cambia el background del icono Me gusta si este es presionado */

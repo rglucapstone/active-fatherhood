@@ -122,7 +122,7 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });
 
-        /***** ELIMINAR LUEGO, TEMPORAL para pruebas */
+        /***** ELIMINAR LUEGO, TEMPORAL para pruebas
         btn_suggest = (ImageButton) findViewById(R.id.btn_suggest_post);
         btn_suggest.setVisibility(View.VISIBLE);
 
@@ -147,21 +147,23 @@ public class QuestionActivity extends AppCompatActivity {
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
-        });
+        });*/
     }
 
     private void setData(){
         LinearLayout layout = (LinearLayout)findViewById(R.id.layout_item_question);
 
-        TextView txt_quser = (TextView) layout.findViewById(R.id.txt_quser);
-        TextView txt_qdatetime = (TextView) layout.findViewById(R.id.txt_qdatetime);
         TextView txt_qcontent = (TextView) layout.findViewById(R.id.txt_qcontent);
-        TextView txt_qanswers = (TextView) findViewById(R.id.title_answers);
-
-        txt_quser.setText(this.question.user.name);
-        txt_qdatetime.setText(this.question.created);
         txt_qcontent.setText(this.question.content);
+
+        TextView txt_qanswers = (TextView) findViewById(R.id.title_answers);
         txt_qanswers.setText(this.question.listAnswers.size() + " respuestas");
+
+        TextView txt_quser = (TextView) layout.findViewById(R.id.txt_quser);
+        txt_quser.setText(this.question.user.name);
+
+        //TextView txt_qdatetime = (TextView) layout.findViewById(R.id.txt_qdatetime);
+        //txt_qdatetime.setText(this.question.created);
 
         AnswerItemAdapter adapter = new AnswerItemAdapter(this, this.question.listAnswers);
         LinearLayout layout_answers = (LinearLayout) findViewById(R.id.layout_list_answers);
@@ -182,13 +184,10 @@ public class QuestionActivity extends AppCompatActivity {
                 ArrayList<Question> list = Question.fromJson(result.getJSONArray("data"));
                 if( !list.isEmpty() ){
                     question = list.get(0);
-                    setData();
-
+                    //setData();
                     //ListView listView = (ListView) findViewById(R.id.layout_list_answers);
                     //AnswerItemAdapter adapter = new AnswerItemAdapter(context, question.listAnswers);
                     //listView.setAdapter(adapter);
-
-
                 }
             }catch (JSONException e){
                 e.printStackTrace();

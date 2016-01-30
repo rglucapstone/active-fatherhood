@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="7dp"
     android:paddingLeft="1dp"
-    android:paddingTop="6dp"
-    android:paddingBottom="5dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="9dp"
     android:paddingRight="5dp">
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/ic_user"
-                    android:src="@drawable/ico_avatar_48"
+                    android:src="@drawable/ico_profile_grey"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="0dp"/>
@@ -43,27 +43,19 @@
                         android:layout_marginTop="2dp"
                         android:textColor="#4d8eb4"
                         android:textSize="14sp" />
-                    <!-- Tags -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
+
+                    <!-- Fecha -->
+                    <TextView
+                        android:id="@+id/txt_date_post"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="2dp">
-                        <ImageView
-                            android:id="@+id/ic_tag"
-                            android:onClick="profileOn"
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="4dp"
-                            android:src="@drawable/ic_tag"
-                            android:layout_marginTop="3dp" />
-                        <TextView
-                            android:id="@+id/txt_ptags"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textSize="12sp"
-                            android:text="dd"/>
-                    </LinearLayout>
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="2 min"
+                        android:layout_marginTop="1dp"
+                        android:textColor="#999999"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="4dp"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -71,19 +63,6 @@
                 android:layout_width="110dp"
                 android:layout_height="match_parent"
                 android:gravity="right">
-
-                <!-- Fecha -->
-                <TextView
-                    android:id="@+id/txt_date_post"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="2 min"
-                    android:layout_marginTop="5dp"
-                    android:textColor="#999999"
-                    android:layout_marginRight="8dp"
-                    android:textSize="12sp" />
-
                 <!-- Me gusta -->
                 <ImageButton
                     android:id="@+id/btn_like_post"
@@ -133,7 +112,44 @@
 
         Aqui poner foto -->
 
-
+        <!-- Tags -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp">
+            <ImageView
+                android:id="@+id/ic_tag1"
+                android:onClick="profileOn"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginTop="3dp" />
+            <TextView
+                android:id="@+id/txt_tag1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:text="Niños"/>
+            <ImageView
+                android:id="@+id/ic_tag2"
+                android:onClick="profileOn"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginTop="3dp" />
+            <TextView
+                android:id="@+id/txt_tag2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:text="Coportamiento"/>
+        </LinearLayout>
         <!-- Reporte -->
         <LinearLayout
             android:id="@+id/container_report_post"
