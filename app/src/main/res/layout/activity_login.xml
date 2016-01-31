@@ -6,11 +6,12 @@
     android:paddingRight="16dp"
     android:transitionGroup="false"
     android:touchscreenBlocksFocus="false">
-    <ImageView android:src="@mipmap/logo_app"
-        android:layout_width="wrap_content"
-        android:layout_height="72dp"
+    <ImageView android:src="@mipmap/logo_6"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="12dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/imageView" />

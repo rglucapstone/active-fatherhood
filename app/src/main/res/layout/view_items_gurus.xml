@@ -1,91 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/item_guru">
 
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:gravity="left" >
+        android:padding="5dp"
+        android:gravity="center"
+        android:background="@drawable/background_border_grey">
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
             android:id="@+id/ic_user"
-            android:src="@drawable/ic_profile"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="3dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_profile"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txt_guser"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:paddingBottom="2dp"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="_@rgonzales98"
+            android:textSize="10sp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="3dp"
+            android:textColor="@color/colorPrimary"/>
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:numStars="4"
+            android:isIndicator="false"/>
+
+        <TextView
+            android:id="@+id/txt_grating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="9sp"
+            android:textColor="@color/mediumGrey"
+            android:text="Super Papá"
+            />
+
+       <!-- <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <TextView
-                android:id="@+id/txt_guser"
+                android:id="@+id/txt_gpost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Pedro Xavier"
-                android:textSize="14sp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:textColor="#333333"/>
+                android:textSize="11sp"
+                android:textColor="@color/mediumGrey"
+                android:text="13"
+                />
+            <ImageView
+                android:id="@+id/ic_post"
+                android:layout_width="14dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ico_post"/>
+        </LinearLayout>-->
+    </LinearLayout>
 
-            <!-- Container Report-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="10dp">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/txt_gpost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textAlignment="center"
-                        android:textSize="11sp"
-                        android:textColor="@color/mediumGrey"
-                        android:text="Publicaciones"
-                        />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/txt_separator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="·"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/txt_gpost2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textAlignment="center"
-                        android:textSize="11sp"
-                        android:textColor="@color/mediumGrey"
-                        android:text="Puntuación 6%"
-                        />
-                </RelativeLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>
