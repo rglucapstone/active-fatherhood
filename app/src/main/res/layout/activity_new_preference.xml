@@ -80,10 +80,10 @@
                     android:buttonTint="#4cb6c4"
                     android:button="@drawable/color_check" />
                 <CheckBox
-                    android:id="@+id/check_twins"
+                    android:id="@+id/check_young"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gemelos"
+                    android:text="Jóvenes"
                     android:checked="false"
                     android:buttonTint="#4cb6c4"
                     android:button="@drawable/color_check"/>
@@ -219,7 +219,7 @@
                     android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
-                    android:id="@+id/check_feed"
+                    android:id="@+id/check_alimentacion"
                     android:text="Alimentación"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -261,8 +261,8 @@
                     android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4"/>
                 <CheckBox
-                    android:id="@+id/check_trastornos"
-                    android:text="Trastornos"
+                    android:id="@+id/check_discapacidades"
+                    android:text="Discapacidades"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -274,16 +274,16 @@
                 android:layout_marginBottom="5dp"
                 android:layout_height="fill_parent">
                 <CheckBox
-                    android:id="@+id/check_actividades"
-                    android:text="Actividades"
+                    android:id="@+id/check_recreacion"
+                    android:text="Recreación"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4"/>
                 <CheckBox
-                    android:id="@+id/check_noticias"
-                    android:text="Noticias"
+                    android:id="@+id/check_sexualidad"
+                    android:text="Sexualidad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"

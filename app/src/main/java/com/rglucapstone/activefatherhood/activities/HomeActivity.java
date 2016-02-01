@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
@@ -16,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.adapters.HomeFragmentPagerAdapter;
@@ -29,12 +32,19 @@ import com.rglucapstone.activefatherhood.fragments.ListGurusFragment;
  */
 public class HomeActivity extends AppCompatActivity {
 
+    public String str_themes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         // main view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Intent intent = getIntent();
+        this.str_themes = intent.getStringExtra("str_themes");
+        //TextView test = (TextView) findViewById(R.id.test);
+        //test.setText(themes);
 
         // toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
@@ -56,9 +66,22 @@ public class HomeActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
 
         HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager(),HomeActivity.this);
-        adapter.addFragment(new ListQuestionsFragment(), "Preguntas");
-        adapter.addFragment(new ListPostsFragment(), "Publicaciones");
-        adapter.addFragment(new ListGurusFragment(), "Padres Gurús");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("str_themes", this.str_themes);
+
+        ListFragment questions = new ListQuestionsFragment();
+        questions.setArguments(bundle);
+        adapter.addFragment(questions, "Preguntas");
+
+        ListFragment posts = new ListPostsFragment();
+        posts.setArguments(bundle);
+        adapter.addFragment(posts, "Publicaciones");
+
+        Fragment gurus = new ListGurusFragment();
+        gurus.setArguments(bundle);
+        adapter.addFragment(gurus, "Padres Gurús");
+
         viewPager.setAdapter(adapter);
     }
 

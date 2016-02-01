@@ -52,8 +52,15 @@ public class ListQuestionsFragment extends ListFragment
         View view = inflater.inflate(R.layout.fragment_list_questions, container, false);
         this.view = view;
 
+        String str_themes = getArguments().getString("str_themes");
         Question question = new Question(new loadQuestions());
-        this.list = question.getAll();
+        if( str_themes.length() > 0 )
+            this.list = question.find(str_themes);
+        else
+            this.list = question.getAll();
+
+        //TextView test = (TextView) view.findViewById(R.id.test);
+        //test.setText(question.content);
 
         return view;
     }

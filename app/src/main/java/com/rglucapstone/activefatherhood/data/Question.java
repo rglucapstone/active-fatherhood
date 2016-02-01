@@ -102,6 +102,19 @@ public class Question extends Model implements Serializable {
         return items;
     }
 
+    public ArrayList<Question> find(String themes) {
+        ArrayList<Question> items = new ArrayList<>();
+        RestfulClient rest = this.asynctask;
+        rest.method = "GET";
+        rest.uri = "/questions/?themes="+themes;
+        //this.content = rest.uri;
+        try{
+            rest.execute();
+        }catch (Exception e) {
+        }
+        return items;
+    }
+
     public Question load(String id){
         Question question = null;
         RestfulClient rest = this.asynctask;
