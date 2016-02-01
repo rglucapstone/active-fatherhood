@@ -59,95 +59,111 @@
                     android:background="@drawable/ico_suggest"/>-->
 
                 <!-- Btn Like -->
-                <ImageButton
+                <!--<ImageButton
                     android:id="@+id/btn_like_question"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="5dp"
                     android:visibility="invisible"
-                    android:background="@mipmap/ico_like_light_grey_24"/>
+                    android:background="@mipmap/ico_like_light_grey_24"/>-->
             </RelativeLayout>
 
         </LinearLayout>
+
+        <!-- Tags -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="3dp"
-            android:paddingBottom="5dp">
-
-            <!-- Tags -->
-            <RelativeLayout
-                android:layout_width="match_parent"
+            android:paddingTop="2dp"
+            android:id="@+id/ly_themes"
+            android:gravity="left" >
+            <ImageView
+                android:id="@+id/ic_question_tag1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/txt_question_tag1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="2dp"
-                android:id="@+id/ly_themes"
-                android:gravity="left" >
-                <ImageView
-                    android:id="@+id/ic_tag_blue"
-                    android:onClick="profileOn"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:src="@drawable/icon_tag_blue"
-                    android:layout_marginTop="3dp" />
-                <TextView
-                    android:id="@+id/txt_qtags"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textSize="12sp"
-                    android:layout_marginLeft="15dp"
-                    android:text="Bebés"/>
-            </RelativeLayout>
-        </LinearLayout>
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:text="Salud"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/ic_question_tag2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/txt_question_tag2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:text="Disciplina"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/ic_question_tag3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/txt_question_tag3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:text="Aprendizaje"
+                android:visibility="gone" />
+    </LinearLayout>
         <!-- Reporte -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="11dp">
-            <LinearLayout
-                android:layout_width="240dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/txt_qanswers"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="left">
+                <com.github.curioustechizen.ago.RelativeTimeTextView
+                    android:id="@+id/txt_question_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textAlignment="center"
                     android:textSize="11sp"
-                    android:textColor="@color/mediumGrey"
-                    android:text="10 respuestas"
-                    />
-                <TextView
-                    android:id="@+id/txt_separator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="·"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"/>
-                <TextView
-                    android:id="@+id/txt_pcomments"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textAlignment="center"
-                    android:textSize="11sp"
-                    android:textColor="@color/mediumGrey"
-                    android:text="10 Comentarios"
-                    />
-            </LinearLayout>
+                    android:paddingTop="5dp"
+                    android:text="2016-01-30 13:45:30" />
+            </RelativeLayout>
 
             <!-- User -->
             <RelativeLayout
-                android:layout_width="130dp"
+                android:id="@+id/link_question_user"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/link_user"
                 android:gravity="right"
-                android:paddingRight="20dp">
+                android:paddingRight="20dp"
+                android:clickable="true"
+                android:layout_alignParentRight="true">
                 <ImageView
                     android:id="@+id/ic_user"
-                    android:onClick="profileOn"
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:src="@drawable/ico_profile_grey" />
@@ -160,9 +176,8 @@
                     android:layout_marginLeft="23dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="4dp"
-                    android:text="User"
-                    android:textColor="@color/colorThird"
-                    android:onClick="profileOn"/>
+                    android:text="username"
+                    android:textColor="@color/colorThird" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
@@ -25,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.rglucapstone.activefatherhood.adapters.AnswerItemAdapter;
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.adapters.QuestionsAdapter;
@@ -108,7 +110,17 @@ public class QuestionActivity extends AppCompatActivity {
         //container = (TextView) findViewById(R.id.txt_qdatetime);
         //container.setVisibility(View.GONE);
 
-        btn_like = (ImageButton) findViewById(R.id.btn_like_question);
+        final RelativeLayout link_user = (RelativeLayout) findViewById(R.id.link_question_user);
+        link_user.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, ProfileActivity.class); //create an Intent object
+                intent.putExtra("user_id", question.user.id); //add data to the Intent object
+                context.startActivity(intent); //start the second activity
+            }
+        });
+
+        /*btn_like = (ImageButton) findViewById(R.id.btn_like_question);
         btn_like.setVisibility(View.VISIBLE);
         btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +132,7 @@ public class QuestionActivity extends AppCompatActivity {
                     btn_like.setBackgroundResource(R.mipmap.ico_like_light_grey_24);
                 }
             }
-        });
+        });*/
 
         /***** ELIMINAR LUEGO, TEMPORAL para pruebas
         btn_suggest = (ImageButton) findViewById(R.id.btn_suggest_post);
@@ -160,10 +172,27 @@ public class QuestionActivity extends AppCompatActivity {
         txt_qanswers.setText(this.question.listAnswers.size() + " respuestas");
 
         TextView txt_quser = (TextView) layout.findViewById(R.id.txt_quser);
-        txt_quser.setText(this.question.user.name);
+        txt_quser.setText(this.question.user.login);
+
+        RelativeTimeTextView v = (RelativeTimeTextView) layout.findViewById(R.id.txt_question_date);
+        v.setReferenceTime(question.created_ago);
 
         //TextView txt_qdatetime = (TextView) layout.findViewById(R.id.txt_qdatetime);
         //txt_qdatetime.setText(this.question.created);
+
+        setTags();
+        for (int i = 1; i <= this.question.themes.length; i++) {
+            int index = i - 1;
+
+            int imgtag = context.getResources().getIdentifier("ic_question_tag" + i, "id", context.getPackageName());
+            ImageView img_tag = (ImageView) layout.findViewById(imgtag);
+            img_tag.setVisibility(View.VISIBLE);
+
+            int txttag = context.getResources().getIdentifier("txt_question_tag" + i, "id", context.getPackageName());
+            TextView txt_tag = (TextView) layout.findViewById(txttag);
+            txt_tag.setText(question.themes[index]);
+            txt_tag.setVisibility(View.VISIBLE);
+        }
 
         AnswerItemAdapter adapter = new AnswerItemAdapter(this, this.question.listAnswers);
         LinearLayout layout_answers = (LinearLayout) findViewById(R.id.layout_list_answers);
@@ -199,8 +228,19 @@ public class QuestionActivity extends AppCompatActivity {
 
     }
 
-    /* Sugerir Publicacion*/
-    public void suggestPost(View view){
+    public void setTags(){
+
+        int total = 3;
+        for (int i = 1; i <= total; i++) {
+            int imgtag = context.getResources().getIdentifier("ic_question_tag" + i, "id", context.getPackageName());
+            ImageView img_tag = (ImageView) findViewById(imgtag);
+            img_tag.setVisibility(View.GONE);
+
+            int txttag = context.getResources().getIdentifier("txt_question_tag" + i, "id", context.getPackageName());
+            TextView txt_tag = (TextView) findViewById(txttag);
+            txt_tag.setVisibility(View.GONE);
+
+        }
 
     }
 }

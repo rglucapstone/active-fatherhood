@@ -4,14 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="10dp"
-    android:layout_marginTop="7dp"
+    android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
+    android:paddingBottom="8dp"
+    android:paddingTop="3dp"
     android:paddingRight="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="1dp"
         android:paddingRight="10dp">
         <!-- Fecha -->
         <!--<TextView
@@ -39,6 +41,30 @@
             android:visibility="gone"
             android:background="@drawable/ico_suggest"/>
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="1dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:gravity="right">
+            <com.github.curioustechizen.ago.RelativeTimeTextView
+                android:id="@+id/txt_question_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="11sp"
+                android:text="2016-01-30 13:45:30" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -47,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="jjj"
+            android:text="Contenido de prueba con mucho texto para ver como se ve las pregunta"
             android:ellipsize="end"
             android:maxLines="3"
             android:singleLine="false"
@@ -63,6 +89,7 @@
             android:visibility="gone"
             android:background="@drawable/ico_suggest"/>
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,37 +104,56 @@
             android:id="@+id/ly_themes"
             android:gravity="left" >
             <ImageView
-                android:id="@+id/ic_tag1"
-                android:onClick="profileOn"
+                android:id="@+id/ic_question_tag1"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:src="@drawable/icon_tag_blue_2"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="3dp" />
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
             <TextView
-                android:id="@+id/txt_tag1"
+                android:id="@+id/txt_question_tag1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textSize="12sp"
                 android:layout_marginLeft="5dp"
-                android:text="Bebés"/>
+                android:text="Salud"
+                android:visibility="gone" />
             <ImageView
-                android:id="@+id/ic_tag2"
-                android:onClick="profileOn"
+                android:id="@+id/ic_question_tag2"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginLeft="5dp"
                 android:src="@drawable/icon_tag_blue_2"
-                android:layout_marginTop="3dp" />
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
             <TextView
-                android:id="@+id/txt_tag2"
+                android:id="@+id/txt_question_tag2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textSize="12sp"
                 android:layout_marginLeft="5dp"
-                android:text="Bebés"/>
+                android:text="Disciplina"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/ic_question_tag3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/txt_question_tag3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:text="Aprendizaje"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
     <!-- Reporte -->
@@ -115,8 +161,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="11dp"
         android:orientation="horizontal">
+
         <RelativeLayout
             android:id="@+id/ly_answers"
             android:layout_width="220dp"
@@ -131,25 +177,9 @@
                 android:textSize="13sp"
                 android:textColor="@color/mediumGrey"
                 android:layout_alignParentLeft="true"
+                android:paddingTop="2dp"
                 android:text="10 respuestas"
                 />
-            <!--<TextView
-                android:id="@+id/txt_separator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="·"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
-            <TextView
-                android:id="@+id/txt_pcomments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textAlignment="center"
-                android:textSize="11sp"
-                android:textColor="@color/mediumGrey"
-                android:text="10 Comentarios"
-                />-->
         </RelativeLayout>
 
         <RelativeLayout
@@ -178,10 +208,5 @@
                 android:textColor="@color/colorThird" />
         </RelativeLayout>
 
-
-
     </LinearLayout>
-
-
-
 </LinearLayout>

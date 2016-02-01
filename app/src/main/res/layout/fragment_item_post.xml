@@ -21,10 +21,9 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp">
                 <ImageView
-                    android:onClick="profileOn"
+                    android:id="@+id/ic_post_user"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:id="@+id/ic_user"
                     android:src="@drawable/ico_profile_grey"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
@@ -45,7 +44,15 @@
                         android:textSize="14sp" />
 
                     <!-- Fecha -->
-                    <TextView
+                    <com.github.curioustechizen.ago.RelativeTimeTextView
+                        android:id="@+id/txt_post_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="11sp"
+                        android:text="2016-01-30 13:45:30" />
+
+                    <!--<TextView
                         android:id="@+id/txt_date_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -55,7 +62,7 @@
                         android:textColor="#999999"
                         android:layout_marginRight="8dp"
                         android:layout_marginLeft="4dp"
-                        android:textSize="12sp" />
+                        android:textSize="12sp" />-->
                 </LinearLayout>
 
             </LinearLayout>
@@ -89,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Que hacer cuando los niños se chupan los dedos.."
+            android:text="Titulo del post"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="#333333"/>
@@ -114,42 +121,64 @@
 
         <!-- Tags -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="4dp">
+            android:paddingTop="2dp"
+            android:id="@+id/ly_themes"
+            android:gravity="left" >
             <ImageView
-                android:id="@+id/ic_tag1"
-                android:onClick="profileOn"
+                android:id="@+id/ic_post_tag1"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:src="@drawable/icon_tag_blue_2"
-                android:layout_marginTop="3dp" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
             <TextView
-                android:id="@+id/txt_tag1"
+                android:id="@+id/txt_post_tag1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textSize="12sp"
-                android:text="Niños"/>
+                android:layout_marginLeft="5dp"
+                android:text="Salud"
+                android:visibility="gone" />
             <ImageView
-                android:id="@+id/ic_tag2"
-                android:onClick="profileOn"
+                android:id="@+id/ic_post_tag2"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:src="@drawable/icon_tag_blue_2"
-                android:layout_marginTop="3dp" />
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
             <TextView
-                android:id="@+id/txt_tag2"
+                android:id="@+id/txt_post_tag2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textSize="12sp"
-                android:text="Coportamiento"/>
+                android:layout_marginLeft="5dp"
+                android:text="Disciplina"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/ic_post_tag3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/txt_post_tag3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:text="Aprendizaje"
+                android:visibility="gone" />
         </LinearLayout>
+
         <!-- Reporte -->
         <LinearLayout
             android:id="@+id/container_report_post"
@@ -158,12 +187,12 @@
             android:paddingTop="3dp"
             android:paddingBottom="2dp">
             <TextView
-                android:id="@+id/txt_plikes"
+                android:id="@+id/txt_post_likes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textAlignment="center"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 android:textColor="@color/mediumGrey"
                 android:text="10 Me Gusta"
                 />
@@ -175,12 +204,12 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"/>
             <TextView
-                android:id="@+id/txt_pcomments"
+                android:id="@+id/txt_post_comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textAlignment="center"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 android:textColor="@color/mediumGrey"
                 android:text="10 Comentarios"
                 />

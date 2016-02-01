@@ -37,13 +37,12 @@ public class ListQuestionsFragment extends ListFragment
     public ArrayList<Question> list;
     public QuestionsAdapter adapter;
 
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState)
-    {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -60,8 +59,7 @@ public class ListQuestionsFragment extends ListFragment
     }
 
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         super.onStart();
     }
 

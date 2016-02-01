@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <!--<include
-        android:id="@+id/loading_questions"
+    <include
+        android:id="@+id/loading_posts"
         layout="@layout/loading_view">
-    </include>-->
+    </include>
 
     <ListView android:id="@id/android:list"
         android:layout_width="match_parent"

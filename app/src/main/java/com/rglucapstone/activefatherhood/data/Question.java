@@ -9,7 +9,10 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import android.content.Context;
 import android.widget.ArrayAdapter;
@@ -26,6 +29,7 @@ public class Question extends Model implements Serializable {
     public String id;
     public String content;
     public String created;
+    public long created_ago;
     public String total_answers;
     public String[] themes;
     public User user;
@@ -59,7 +63,14 @@ public class Question extends Model implements Serializable {
             JSONObject q = object.getJSONObject("question");
             if (q.has("id")) this.id = q.getString("id");
             if (q.has("content")) this.content = q.getString("content");
-            if (q.has("created")) this.created = q.getString("created");
+            if (q.has("created")){
+                this.created = q.getString("created");
+                try {
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date date = format.parse(this.created);
+                    this.created_ago = date.getTime();
+                }catch (ParseException e){}
+            }
             if (q.has("themes")){
                 this.themes = q.getString("themes").split(",");
             }

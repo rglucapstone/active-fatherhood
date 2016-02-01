@@ -13,16 +13,188 @@
             layout="@layout/toolbar_action">
         </include>
 
+        <include
+            android:id="@+id/loading_post"
+            layout="@layout/loading_view">
+        </include>
+
+
         <!-- Post -->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <include
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/layout_item_post" >
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                layout="@layout/fragment_item_post" >
-            </include>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp">
+                        <ImageView
+                            android:id="@+id/ic_post_user"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+
+                            android:src="@drawable/ico_profile_grey"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="0dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/txt_post_user"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Pedro Xavier"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginTop="2dp"
+                                android:textColor="#4d8eb4"
+                                android:textSize="14sp" />
+
+                            <!-- Fecha -->
+                            <com.github.curioustechizen.ago.RelativeTimeTextView
+                                android:id="@+id/txt_post_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textSize="11sp"
+                                android:text="2016-01-30 13:45:30" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:gravity="right">
+
+                        <!-- Me gusta -->
+                        <ImageButton
+                            android:id="@+id/btn_like_post"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_alignParentRight="true"
+                            android:background="@mipmap/ico_like_grey_24"/>
+
+                        <TextView
+                            android:id="@+id/txt_post_likes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textSize="14sp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="8dp"
+                            android:text="3"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="-2dp"
+                android:gravity="left" >
+                <TextView
+                    android:id="@+id/txt_post_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Titulo del post"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"/>
+                <TextView
+                    android:id="@+id/txt_post_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/prueba"
+                    android:singleLine="false"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+                <!-- Tags -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:id="@+id/ly_themes"
+                    android:gravity="left" >
+                    <ImageView
+                        android:id="@+id/ic_post_tag1"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:src="@drawable/icon_tag_blue_2"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/txt_post_tag1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="5dp"
+                        android:text="Salud"
+                        android:visibility="gone" />
+                    <ImageView
+                        android:id="@+id/ic_post_tag2"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/icon_tag_blue_2"
+                        android:layout_marginTop="3dp"
+                        android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/txt_post_tag2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="5dp"
+                        android:text="Disciplina"
+                        android:visibility="gone" />
+                    <ImageView
+                        android:id="@+id/ic_post_tag3"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/icon_tag_blue_2"
+                        android:layout_marginTop="3dp"
+                        android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/txt_post_tag3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="5dp"
+                        android:text="Aprendizaje"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <!-- Comments -->
@@ -52,13 +224,22 @@
                     android:textSize="15dp"
                     android:textColor="@color/mediumGrey"
                     android:layout_marginLeft="5dp" />
-                <ListView
+
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/layout_list_comments"
+                    layout="@layout/fragment_list_comments">
+                </include>
+
+                <!--<ListView
                     android:id="@+id/listComment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true" />-->
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
