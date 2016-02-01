@@ -15,25 +15,27 @@
         android:layout_margin="13dp">
 
         <!-- title post -->
-        <TextView
+
+        <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Título"
             android:textColor="@color/colorPrimary"
             android:textSize="16dp"
-            android:layout_marginBottom="0dp"/>
+            android:layout_marginBottom="0dp"/>-->
 
         <EditText android:id="@+id/input_title_post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint=""
+            android:hint="Título"
             android:layout_below="@+id/textView"
             android:textSize="16dp"
             android:textColorHint="#c2c2c2"/>
 
         <!-- description post -->
-        <TextView
+
+        <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Descripción"
@@ -41,17 +43,62 @@
             android:textSize="16dp"
             android:layout_marginBottom="0dp"
             android:layout_marginTop="10dp"
-            />
+            />-->
 
-        <EditText android:id="@+id/input_descripction_post"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="top"
+            android:layout_height="130dp">
+            <EditText
+                android:id="@+id/input_descripction_post"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLength="350"
+                android:ems="12"
+                android:gravity="top"
+                android:singleLine="true"
+                android:inputType="textMultiLine"
+                android:background="@drawable/field_write_question"
+                android:textCursorDrawable="@drawable/cursor_text"
+                android:hint="Agrega aquí una descripción.."
+                android:textSize="16dp"
+                android:textColorHint="#c2c2c2"
+                android:layout_marginTop="10dp"
+                android:editable="true" />
+            <!--<EditText android:id="@+id/input_descripction_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:textSize="16dp"
+                android:hint="Agrega una descripción"
+                android:inputType="textMultiLine"
+                android:textColorHint="#c2c2c2"/>-->
+        </RelativeLayout>
+
+        <!-- Tags -->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
-            android:textSize="16dp"
-            android:inputType="textMultiLine"
-            android:textColorHint="#c2c2c2"/>
-
-        <ScrollView
+            android:id="@+id/container_tags">
+            <TextView
+                android:id="@+id/text_add_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Agrega etiquetas a tu publicación"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView"
+                android:layout_marginTop="30dp">
+                <include
+                    android:id="@+id/add_tags"
+                    layout="@layout/activity_preferences">
+                </include>
+            </ScrollView>
+        </RelativeLayout>
+        <!--<ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/scrollView"
@@ -60,7 +107,7 @@
                 android:id="@+id/add_tags"
                 layout="@layout/activity_preferences">
             </include>
-        </ScrollView>
+        </ScrollView>-->
 
         <Button
             android:id="@+id/btn_doPost"

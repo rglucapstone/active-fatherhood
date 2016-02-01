@@ -50,6 +50,8 @@
         <activity android:name=".activities.PostActivity"></activity>
         <activity android:name=".activities.CommentActivity"></activity>
         <activity android:name=".activities.DoPost"></activity>
+        <activity android:name=".activities.CategoriesActivity"></activity>
+        <activity android:name=".activities.CategorieItemActivity"></activity>
     </application>
 
 </manifest>

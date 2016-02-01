@@ -15,6 +15,7 @@
     <color name="backgroundGrey">#f5f5f5</color>
     <color name="normalText">#616161</color>
     <color name="backgroundContainer">#ffffff</color>
+    <color name="backgroundDefault">#fafafa</color>
 
 
     <!-- ActionBar Color-->

@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.adapters.HomeFragmentPagerAdapter;
 import com.rglucapstone.activefatherhood.fragments.ListQuestionsFragment;
@@ -121,12 +121,35 @@ public class HomeActivity extends AppCompatActivity {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
+            case R.id.menu_categories:
+                goCategories(getBaseContext());
+                return true;
+            case R.id.menu_preferences:
+                goPreferences(getBaseContext());
+                return true;
+            case R.id.menu_get_out:
+                Toast.makeText(getBaseContext(), "Cerrar Sesión", Toast.LENGTH_SHORT).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    /** Ir a Categorias
+     * @param context
+     */
+    public void goCategories(Context context){
+        Intent intent = new Intent(context, CategoriesActivity.class);
+        startActivityForResult(intent, 0);
+    }
 
+    /** Cambiar Preferencias
+     * @param context
+     */
+    public void goPreferences(Context context){
+        Intent intent = new Intent(context, PreferencesActivity.class);
+        startActivityForResult(intent, 0);
+    }
     /**
      * Function to change default icon search
      * @param menu

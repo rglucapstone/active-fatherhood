@@ -11,18 +11,30 @@
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always|never" />
 
-    <!-- Settings -->
-    <item
-        android:id="@+id/action_settings"
-        android:title="Configuración"
-        app:showAsAction="never"/>
-
     <!--Profile-->
     <item
         android:id="@+id/action_my_profile"
         android:title="Mi Perfil"
         android:icon="@mipmap/ic_profile_white_24dp"
         app:showAsAction="ifRoom"/>
+
+    <!-- Settings -->
+    <item
+        android:id="@+id/menu_categories"
+        android:title="@string/menu_categories"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_preferences"
+        android:title="@string/menu_preferences"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_get_out"
+        android:title="@string/menu_get_out"
+        app:showAsAction="ifRoom|withText"
+        />
+
 </menu>
 
 

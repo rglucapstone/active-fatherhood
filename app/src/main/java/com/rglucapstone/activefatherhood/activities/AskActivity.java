@@ -44,9 +44,9 @@ public class AskActivity extends AppCompatActivity {
 
         /**
          * Se oculta el titulo de preferencias
-         */
+
         container = (TextView) findViewById(R.id.title_preference);
-        container.setVisibility(View.GONE);
+        container.setVisibility(View.GONE);*/
 
         // Luego de realizar la pregunta la muestra en el listado
         button_asking = (Button) findViewById(R.id.btn_asking);

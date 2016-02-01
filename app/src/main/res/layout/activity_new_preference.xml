@@ -38,13 +38,13 @@
                 android:layout_marginTop="1dp">
                 <TextView
                     android:id="@+id/title_children"
-                    android:text="Hijos"
+                    android:text="Etapas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:padding="5dp"
                     android:textColor="@color/mediumGrey"
-                    android:textSize="16dp"/>
+                    android:textSize="15dp"/>
             </TableRow>
             <TableRow
                 android:layout_width="0dp"
@@ -89,65 +89,6 @@
                     android:button="@drawable/color_check"/>
             </TableRow>
 
-            <!-- Tipos de Padres -->
-            <TableRow
-                android:id="@+id/row_title_fathers"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="5dp">
-                <TextView
-                    android:id="@+id/title_fathers"
-                    android:text="Tipos de Padres"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:padding="5dp"
-                    android:textColor="@color/mediumGrey"
-                    android:textSize="16dp"/>
-            </TableRow>
-            <TableRow
-                android:layout_width="0dp"
-                android:layout_marginBottom="5dp"
-                android:layout_height="fill_parent">
-                <CheckBox
-                    android:id="@+id/check_solteros"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Padres Solteros"
-                    android:checked="false"
-                    android:button="@drawable/color_check"
-                    android:buttonTint="#4cb6c4" />
-                <CheckBox
-                    android:id="@+id/check_primerizos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Padres Primerizos"
-                    android:checked="false"
-                    android:button="@drawable/color_check"
-                    android:buttonTint="#4cb6c4" />
-            </TableRow>
-            <TableRow
-                android:layout_width="0dp"
-                android:layout_marginBottom="5dp"
-                android:layout_height="fill_parent">
-                <CheckBox
-                    android:id="@+id/check_futuros"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Futuros Papás"
-                    android:checked="false"
-                    android:button="@drawable/color_check"
-                    android:buttonTint="#4cb6c4" />
-                <CheckBox
-                    android:id="@+id/check_divorciados"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Padres Divorciados"
-                    android:checked="false"
-                    android:button="@drawable/color_check"
-                    android:buttonTint="#4cb6c4" />
-            </TableRow>
-
             <!-- Temas -->
             <TableRow
                 android:id="@+id/row_title_categories"
@@ -156,13 +97,13 @@
                 android:layout_marginTop="5dp">
                 <TextView
                     android:id="@+id/title_categories"
-                    android:text="Temas"
+                    android:text="Categorías"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:padding="5dp"
                     android:textColor="@color/mediumGrey"
-                    android:textSize="16dp"/>
+                    android:textSize="15dp"/>
             </TableRow>
             <TableRow
                 android:layout_width="0dp"
@@ -286,6 +227,65 @@
                     android:text="Sexualidad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4" />
+            </TableRow>
+
+            <!-- Tipos de Padres -->
+            <TableRow
+                android:id="@+id/row_title_fathers"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/title_fathers"
+                    android:text="Otras Categorías"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:padding="5dp"
+                    android:textColor="@color/mediumGrey"
+                    android:textSize="15dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
+                <CheckBox
+                    android:id="@+id/check_solteros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Padres Solteros"
+                    android:checked="false"
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4" />
+                <CheckBox
+                    android:id="@+id/check_primerizos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Padres Primerizos"
+                    android:checked="false"
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4" />
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
+                <CheckBox
+                    android:id="@+id/check_futuros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Futuros Papás"
+                    android:checked="false"
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4" />
+                <CheckBox
+                    android:id="@+id/check_divorciados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Padres Divorciados"
                     android:checked="false"
                     android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
