@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
-    android:layout_marginTop="3dp">
+    android:layout_marginTop="3dp"
+    android:paddingTop="3dp"
+    android:paddingBottom="5dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -13,11 +15,11 @@
         android:layout_marginTop="5dp"
         android:gravity="right">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/iconUser"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ico_profile2_32"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/ico_profile_grey"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_gravity="left" />
@@ -26,22 +28,35 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:gravity="left">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
                     android:id="@+id/answer_user"
                     android:textSize="14sp"
-                    android:textColor="#222222"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+                    android:textColor="@color/colorThird" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right">
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/ico_father_highlights"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/ico_father_highlights"
+                        android:layout_marginRight="10dp"/>
+                </RelativeLayout>
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -78,7 +93,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <!-- Tags -->
+                <!-- Tags
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,7 +113,7 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textSize="12sp"
                         android:text="dd"/>
-                </LinearLayout>
+                </LinearLayout> -->
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
@@ -117,8 +132,12 @@
             android:layout_width="150dp"
             android:layout_height="29dp">
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/btn_like_answer"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundContainer"
+                android:layout_marginTop="3dp"
                 android:layout_alignParentTop="true">
                 <TextView
                     android:id="@+id/txt_likes"
@@ -126,52 +145,84 @@
                     android:layout_height="wrap_content"
                     android:textSize="11sp"
                     android:text=""
+                    android:textColor="@color/colorPrimary"
                     android:gravity="right" />
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
                     android:id="@+id/icon_up"
-                    android:src="@drawable/ico_like"
-                    android:layout_marginLeft="10dp"
+                    android:layout_width="18dp"
+                    android:layout_height="19dp"
+                    android:background="@mipmap/ico_like_grey_24"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginTop="4dp" />
                 <TextView
-                    android:id="@+id/btn_like"
+                    android:id="@+id/title_like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textSize="11sp"
                     android:paddingTop="8sp"
+                    android:paddingBottom="5sp"
                     android:paddingLeft="5sp"
                     android:text="Me Gusta"/>
             </LinearLayout>
 
         </RelativeLayout>
 
-        <!--Destacar/Sugerir publicación-->
+        <!-- Acciones Destacar -->
         <RelativeLayout
             android:layout_width="140dp"
             android:layout_height="29dp">
+
+            <!--Sugerir publicacion-->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/btn_suggest_publication"
+                android:clickable="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_suggest_publication">
+                android:background="@color/backgroundContainer"
+                android:layout_marginTop="3dp">
                 <ImageView
                     android:id="@+id/ico_suggest_publication"
-                    android:layout_width="19dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ico_suggest"
+                    android:layout_width="20dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ico_suggest_grey"
                     android:layout_gravity="top"
-                    android:layout_margin="5dp"
-                    android:onClick="seguroSugerirPublication"/>
+                    android:layout_margin="5dp"/>
                 <TextView
-                    android:id="@+id/text_sugest_publication"
+                    android:id="@+id/title_sugest_publication"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textSize="11sp"
                     android:paddingTop="8sp"
-                    android:text="Sugerir Publicación"
-                    android:onClick="seguroSugerirPublication"/>
+                    android:text="Sugerir Publicación"/>
+            </LinearLayout>
+
+            <!--Destacar padre-->
+            <LinearLayout
+                android:id="@+id/btn_highlight_father"
+                android:clickable="true"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundContainer"
+                android:layout_marginTop="3dp">
+                <ImageView
+                    android:id="@+id/ico_highlight_father"
+                    android:layout_width="20dp"
+                    android:layout_height="21dp"
+                    android:src="@mipmap/ico_highlight_father_grey"
+                    android:layout_gravity="top"
+                    android:layout_margin="5dp"/>
+                <TextView
+                    android:id="@+id/text_highlight_father"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="11sp"
+                    android:paddingTop="8sp"
+                    android:paddingBottom="5sp"
+                    android:text="Destacar Padre"/>
             </LinearLayout>
 
         </RelativeLayout>

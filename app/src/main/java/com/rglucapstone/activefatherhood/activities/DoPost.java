@@ -33,9 +33,9 @@ public class DoPost extends AppCompatActivity {
 
         /**
          * Se oculta el titulo de preferencias
-         */
+
         container = (TextView) findViewById(R.id.title_preference);
-        container.setVisibility(View.GONE);
+        container.setVisibility(View.GONE);*/
     }
 
     /* Toolbar */

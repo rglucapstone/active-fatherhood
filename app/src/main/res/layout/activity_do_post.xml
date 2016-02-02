@@ -48,7 +48,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_gravity="top"
-            android:layout_height="130dp">
+            android:layout_height="110dp">
             <EditText
                 android:id="@+id/input_descripction_post"
                 android:layout_width="match_parent"

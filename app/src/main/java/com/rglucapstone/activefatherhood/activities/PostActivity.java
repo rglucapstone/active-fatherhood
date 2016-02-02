@@ -72,7 +72,6 @@ public class PostActivity extends AppCompatActivity {
         TextView txt_post_likes = (TextView) layout.findViewById(R.id.txt_post_likes);
         txt_post_likes.setText(this.post.likes);
 
-
         setTags();
         for (int i = 1; i <= this.post.themes.length; i++) {
             int index = i - 1;
@@ -87,10 +86,8 @@ public class PostActivity extends AppCompatActivity {
             txt_tag.setVisibility(View.VISIBLE);
         }
 
-
         TextView txt_comments = (TextView) findViewById(R.id.total_comments);
         txt_comments.setText(this.post.listComments.size() + " comentarios");
-
 
         CommentItemAdapter adapter = new CommentItemAdapter(this, this.post.listComments);
         LinearLayout layout_comments = (LinearLayout) findViewById(R.id.layout_list_comments);

@@ -25,6 +25,7 @@ import android.widget.SearchView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.rglucapstone.activefatherhood.adapters.AnswerItemAdapter;
@@ -113,7 +114,6 @@ public class QuestionActivity extends AppCompatActivity {
         final RelativeLayout link_user = (RelativeLayout) findViewById(R.id.link_question_user);
         link_user.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
                 Intent intent = new Intent(context, ProfileActivity.class); //create an Intent object
                 intent.putExtra("user_id", question.user.id); //add data to the Intent object
                 context.startActivity(intent); //start the second activity

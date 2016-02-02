@@ -11,19 +11,19 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="13dp">
+        android:layout_height="wrap_content"
+        android:padding="13dp">
         <!-- Question -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_gravity="top"
-            android:layout_height="150dp">
+            android:layout_height="130dp">
             <EditText
                 android:id="@+id/input_question"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:maxLength="150"
+                android:maxLength="300"
                 android:ems="12"
                 android:gravity="top"
                 android:singleLine="true"
@@ -31,6 +31,8 @@
                 android:background="@drawable/field_write_question"
                 android:textCursorDrawable="@drawable/cursor_text"
                 android:hint="@string/txt_write_question"
+                android:textSize="16dp"
+                android:textColorHint="#c2c2c2"
                 android:editable="true" />
         </RelativeLayout>
 
