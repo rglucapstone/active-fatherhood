@@ -20,6 +20,8 @@ public class User extends Model
     public String name;
     public String email;
     public String buen_padre;
+    public String kind_dad;
+    public float rating;
 
     public String total_questions;
     public String total_answers;
@@ -52,6 +54,8 @@ public class User extends Model
             if (u.has("name")) this.name = u.getString("name");
             if (u.has("email")) this.email = u.getString("email");
             if (u.has("buen_padre")) this.buen_padre = u.getString("buen_padre");
+            if (u.has("kind_dad")) this.kind_dad = u.getString("kind_dad");
+            if (u.has("rate")) this.rating = Float.parseFloat(u.getString("rate"));
             if( u.has("aportes") ){
                 JSONObject a = u.getJSONObject("aportes");
                 if (a.has("preguntas")) this.total_questions = a.getString("preguntas");

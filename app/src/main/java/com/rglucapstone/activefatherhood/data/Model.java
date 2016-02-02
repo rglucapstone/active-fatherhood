@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by ronald on 25/01/16.
@@ -29,6 +30,18 @@ public class Model {
             }catch (JSONException e){
                 e.printStackTrace();
             }
+        }
+        return items;
+    }
+
+    public static HashMap fromJsontoHash(JSONArray data) {
+        HashMap<String, ArrayList<Model>> items = new HashMap<>();
+        for (int i = 0; i < data.length(); i++) {
+            /*try {
+                //items.put(Integer.toString(i),new Model(data.getJSONObject(i)));
+            }catch (JSONException e){
+                e.printStackTrace();
+            }*/
         }
         return items;
     }

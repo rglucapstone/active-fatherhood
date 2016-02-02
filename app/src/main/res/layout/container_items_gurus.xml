@@ -18,6 +18,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center">
         <Button
+            android:id="@+id/txt_test"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:text="Ver más"

@@ -1,6 +1,7 @@
 package com.rglucapstone.activefatherhood.adapters;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,13 @@ import android.widget.AdapterView;
 import android.widget.BaseExpandableListAdapter;
 
 import com.rglucapstone.activefatherhood.R;
+import com.rglucapstone.activefatherhood.activities.ProfileActivity;
 import com.rglucapstone.activefatherhood.data.Guru;
 import com.rglucapstone.activefatherhood.data.Question;
+import com.rglucapstone.activefatherhood.data.Theme;
+import com.rglucapstone.activefatherhood.data.User;
 
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
@@ -30,55 +35,60 @@ import java.util.HashMap;
 public class ListGurusAdapter extends BaseExpandableListAdapter {
 
     private Context _context;
-    private ArrayList<String> _listTags;
-    private HashMap<String, ArrayList<Guru>> _listGurus;
+    private ArrayList<Theme> _listThemes;
+    private HashMap<Theme, ArrayList<User>> _listGurus;
     private LayoutInflater mInflater;
 
-    public ListGurusAdapter(Context context, ArrayList<String> listTags, HashMap<String, ArrayList<Guru>> listGurus) {
+    public ListGurusAdapter(Context context, ArrayList<Theme> listThemes, HashMap<Theme, ArrayList<User>> listGurus) {
         this._context = context;
-        this._listTags = listTags;
+        this._listThemes = listThemes;
         this._listGurus = listGurus;
         //mInflater = LayoutInflater.from(context);
     }
     @Override
     public int getGroupCount() {
-        return this._listTags.size();
+        return this._listThemes.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._listGurus.get(this._listTags.get(groupPosition)).size();
+        return this._listGurus.get(this._listThemes.get(groupPosition)).size();
     }
+
     @Override
     public Object getGroup(int groupPosition) {
-        return this._listTags.get(groupPosition);
+        return this._listThemes.get(groupPosition);
     }
+
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this._listGurus.get(this._listTags.get(groupPosition)).get(childPosition);
+        return this._listGurus.get(this._listThemes.get(groupPosition)).get(childPosition);
     }
+
     @Override
     public long getChildId(int groupPosition, int childPosition) {
         return childPosition;
     }
+
     @Override
     public long getGroupId(int groupPosition) {
         return groupPosition;
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         //final ExpandableListView elv = (ExpandableListView) convertView.findViewById(R.id.exp_list_gurus);
-
-        String tag = (String) getGroup(groupPosition);
+        Theme theme = (Theme) getGroup(groupPosition);
+        int total_gurus = getChildrenCount(groupPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.view_categories_gurus, null);
         }
-
         TextView txt_tag = (TextView) convertView.findViewById(R.id.txt_tag);
-        txt_tag.setText(tag);
+        txt_tag.setText(theme.name);
+
+        TextView txt_total_gurus = (TextView) convertView.findViewById(R.id.txt_total_gurus);
+        txt_total_gurus.setText(" (" + total_gurus + ")");
 
         return convertView;
     }
@@ -87,8 +97,7 @@ public class ListGurusAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        //Guru guru = (Guru) getChild(groupPosition, childPosition);
-        ArrayList<Guru> listGurus = (ArrayList) this._listGurus.get(this._listTags.get(groupPosition));
+        final ArrayList<User> listGurus = (ArrayList) this._listGurus.get(this._listThemes.get(groupPosition));
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.container_items_gurus, null);
@@ -103,8 +112,10 @@ public class ListGurusAdapter extends BaseExpandableListAdapter {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               // text.setText((String) (gridView.getItemAtPosition(position)));
-               // Log.i("ITEM_CLICKED", "" + (String) (gridView.getItemAtPosition(position)));
+                User user = listGurus.get(position);
+                Intent intent = new Intent(_context, ProfileActivity.class);
+                intent.putExtra("user_id", user.id);
+                _context.startActivity(intent);
             }
         });
 

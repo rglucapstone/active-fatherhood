@@ -32,12 +32,15 @@
             android:textColor="@color/colorPrimary"/>
 
         <RatingBar
-            android:layout_width="wrap_content"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_height="wrap_content"
             android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:numStars="4"
-            android:isIndicator="false"/>
+            android:max="100"
+            android:rating="1"
+            android:stepSize="0.1"
+            android:isIndicator="true"
+            style="?android:attr/ratingBarStyleSmall" />
 
         <TextView
             android:id="@+id/txt_grating"

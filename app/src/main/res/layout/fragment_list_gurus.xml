@@ -6,6 +6,11 @@
     android:paddingBottom="5dp"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/loading_gurus"
+        layout="@layout/loading_view">
+    </include>
+
     <ExpandableListView android:id="@+id/exp_list_gurus"
         android:layout_height="match_parent"
         android:paddingTop="5dp"

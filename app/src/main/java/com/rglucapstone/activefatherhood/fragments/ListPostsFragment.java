@@ -49,7 +49,11 @@ public class ListPostsFragment extends ListFragment {
         this.view = view;
 
         Post post = new Post(new loadPosts());
-        this.list = post.getAll();
+        String str_themes = getArguments().getString("str_themes");
+        if( str_themes.length() > 0 )
+            this.list = post.find(str_themes);
+        else
+            this.list = post.getAll();
 
         return view;
     }

@@ -96,6 +96,18 @@ public class Post {
         return items;
     }
 
+    public ArrayList<Post> find(String themes) {
+        ArrayList<Post> items = new ArrayList<>();
+        RestfulClient rest = this.asynctask;
+        rest.method = "GET";
+        rest.uri = "/posts/?themes="+themes;
+        try{
+            rest.execute();
+        }catch (Exception e) {
+        }
+        return items;
+    }
+
     public Post load(String id){
         Post post = null;
         RestfulClient rest = this.asynctask;

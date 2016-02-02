@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,7 +15,9 @@ import com.rglucapstone.activefatherhood.activities.AskActivity;
 import com.rglucapstone.activefatherhood.activities.PublicationsGuru;
 import com.rglucapstone.activefatherhood.data.Guru;
 import com.rglucapstone.activefatherhood.R;
+import com.rglucapstone.activefatherhood.data.User;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,9 +27,10 @@ import java.util.HashMap;
 public class ListContainerGurus extends BaseAdapter{
 
     private Context _context;
-    private ArrayList<Guru> _listGurus;
+    private ArrayList<User> _listGurus;
+    private final int num_starts = 4;
 
-    public ListContainerGurus(Context context, ArrayList<Guru> listGurus) {
+    public ListContainerGurus(Context context, ArrayList<User> listGurus) {
         this._listGurus = listGurus;
         _context = context;
     }
@@ -48,12 +52,11 @@ public class ListContainerGurus extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Guru guru = (Guru) this._listGurus.get(position);
+        User user = (User) this._listGurus.get(position);
 
         ViewHolder item_guru = null;
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) _context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) _context .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.view_items_gurus, parent, false);
 
             /*RelativeLayout rl = (RelativeLayout) convertView.findViewById(R.id.item_guru);
@@ -70,11 +73,19 @@ public class ListContainerGurus extends BaseAdapter{
         } else {
             item_guru = (ViewHolder) convertView.getTag();
         }
-       TextView txt_guser = (TextView) convertView.findViewById(R.id.txt_guser);
-        txt_guser.setText(guru.user);
 
 
-       // TextView txt_gpost = (TextView) convertView.findViewById(R.id.txt_gpost);
+
+        TextView txt_guser = (TextView) convertView.findViewById(R.id.txt_guser);
+        txt_guser.setText(user.login);
+
+        TextView txt_grating = (TextView) convertView.findViewById(R.id.txt_grating);
+        txt_grating.setText(user.kind_dad);
+
+        RatingBar rate_guru = (RatingBar) convertView.findViewById(R.id.ratingBar);
+        String str_rate = new DecimalFormat("##.##").format((user.rating*this.num_starts)/100);
+        rate_guru.setRating(Float.parseFloat(str_rate));
+
         return convertView;
     }
 

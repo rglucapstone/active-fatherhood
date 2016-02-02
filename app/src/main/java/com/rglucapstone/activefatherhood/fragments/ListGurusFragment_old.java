@@ -44,7 +44,7 @@ public class ListGurusFragment_old extends Fragment {
         elv.setDivider(getResources().getDrawable(R.color.lightGrey));
         elv.setDividerHeight(25);
         elv.setFooterDividersEnabled(true);
-        elv.setAdapter(new ListGurusAdapter(getActivity(), listTags, listGurus));
+        //elv.setAdapter(new ListGurusAdapter(getActivity(), listTags, listGurus));
 
 
 
@@ -53,7 +53,7 @@ public class ListGurusFragment_old extends Fragment {
 
     private void prepareListData(ArrayList tags, HashMap gurus) {
 
-        tags.add("Salud");
+        /*tags.add("Salud");
         ArrayList<Guru> salud = new ArrayList<>();
         Guru g1 = new Guru("Pedro Xavier", "13 publicaciones", "3 votos");
         salud.add(g1);
@@ -102,7 +102,7 @@ public class ListGurusFragment_old extends Fragment {
         gurus.put(tags.get(1), adolescentes);
         gurus.put(tags.get(2), problemas_sociales);
         gurus.put(tags.get(3), sexualidad);
-        gurus.put(tags.get(4), disciplina);
+        gurus.put(tags.get(4), disciplina);*/
 
     }
 }
