@@ -33,9 +33,10 @@
                 android:padding="3dp"
                 android:onClick="backProfile"/>
             <ImageView
-                android:layout_width="100dp"
+                android:id="@+id/img_profile"
+                android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:background="@drawable/ico_avatar_white"
+                android:background="@drawable/padre2"
                 android:layout_marginLeft="110dp"
                 android:layout_gravity="center"
                 android:layout_weight="0.06" />

@@ -20,23 +20,22 @@
 
         <!-- Aprendizaje -->
         <LinearLayout
+            android:id="@+id/btn_babys"
+            android:tag="aprendizaje"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
             android:background="@color/backgroundDefault"
+            android:onClick="goCategorie"
             android:layout_marginLeft="15dp">
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_aprendizaje"
-                android:onClick="goCategorie"
-                android:clickable="true"
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_aprendizaje"/>
             <TextView
-                android:onClick="goCategorie"
-                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Aprendizaje"
@@ -47,6 +46,7 @@
         <!-- Comportamiento -->
         <LinearLayout
             android:id="@+id/btn_comportamiento"
+            android:tag="comportamiento"
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="103dp"
@@ -56,16 +56,12 @@
             android:padding="5dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
-                android:onClick="goCategorie"
-                android:clickable="true"
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_comportamiento"
                 />
             <TextView
-                android:onClick="goCategorie"
-                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Comportamiento"
@@ -75,6 +71,9 @@
 
         <!-- Comunicacion -->
         <LinearLayout
+            android:tag="comunicacion"
+            android:onClick="goCategorie"
+            android:clickable="true"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:gravity="center"
@@ -82,9 +81,8 @@
             android:padding="5dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_comunicacion"
-                android:onClick="goCategorie"
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_comunicacion"
@@ -99,6 +97,9 @@
 
         <!-- Problemas Sociales -->
         <LinearLayout
+            android:tag="problemas_sociales"
+            android:onClick="goCategorie"
+            android:clickable="true"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -106,7 +107,7 @@
             android:padding="5dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_problemas_sociales"
                 android:layout_width="56dp"
                 android:layout_height="54dp"
@@ -124,6 +125,9 @@
         <!-- Salud -->
         <LinearLayout
             android:id="@+id/btn_salud"
+            android:tag="salud"
+            android:onClick="goCategorie"
+            android:clickable="true"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:gravity="center"
@@ -131,9 +135,7 @@
             android:padding="5dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
-                android:onClick="goCategorie"
-                android:clickable="true"
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_salud"
@@ -148,6 +150,9 @@
 
         <!-- Alimentacion -->
         <LinearLayout
+            android:tag="alimentacion"
+            android:onClick="goCategorie"
+            android:clickable="true"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:gravity="center"
@@ -155,9 +160,7 @@
             android:padding="5dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
-                android:onClick="goCategorie"
-                android:clickable="true"
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_alimentacion"
@@ -173,6 +176,9 @@
         <!-- Enfermedades -->
         <LinearLayout
             android:id="@+id/btn_enfermedades"
+            android:tag="enfermedades"
+            android:onClick="goCategorie"
+            android:clickable="true"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:gravity="center"
@@ -180,9 +186,7 @@
             android:padding="5dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
-                android:onClick="goCategorie"
-                android:clickable="true"
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_enfermedades"
@@ -198,14 +202,17 @@
         <!-- Discapacidades -->
         <LinearLayout
             android:id="@+id/btn_discapacidades"
-              android:layout_width="102dp"
+            android:tag="discapacidades"
+            android:onClick="goCategorie"
+            android:clickable="true"
+            android:layout_width="102dp"
             android:layout_height="90dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_discapacidades"
@@ -221,18 +228,17 @@
         <!-- Divorcio -->
         <LinearLayout
             android:id="@+id/btn_divorcio"
+            android:tag="divorcio"
+            android:onClick="goCategorie"
+            android:clickable="true"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
-            android:onClick="goCategorie"
-            android:clickable="true"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
-                android:onClick="goCategorie"
-                android:clickable="true"
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_divorce"
@@ -248,6 +254,7 @@
         <!-- Adopción -->
         <LinearLayout
             android:id="@+id/btn_adopcion"
+            android:tag="adopcion"
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
@@ -257,7 +264,7 @@
             android:padding="5dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_adoption2"
@@ -273,6 +280,7 @@
     <!-- Recreación -->
         <LinearLayout
             android:id="@+id/btn_recreación"
+            android:tag="recreacion"
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
@@ -282,7 +290,7 @@
             android:padding="5dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_recreation"
@@ -298,6 +306,7 @@
         <!-- Sexualidad -->
         <LinearLayout
             android:id="@+id/btn_sexualidad"
+            android:tag="sexualidad"
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
@@ -307,7 +316,7 @@
             android:padding="10dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_sexualidad"
@@ -323,6 +332,7 @@
         <!-- Padres Solteros -->
         <LinearLayout
             android:id="@+id/btn_padres_solteros"
+            android:tag="solteros"
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
@@ -332,7 +342,7 @@
             android:padding="10dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_padre_soltero"
@@ -349,6 +359,7 @@
         <!-- Padres Primerizos -->
         <LinearLayout
             android:id="@+id/btn_padres_primerizos"
+            android:tag="primerizos"
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
@@ -358,7 +369,7 @@
             android:padding="10dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_padre_primerizo"
@@ -375,6 +386,7 @@
         <!-- Futuros Padres -->
         <LinearLayout
             android:id="@+id/btn_futuros_padres"
+            android:tag="futuros"
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
@@ -384,7 +396,7 @@
             android:padding="10dp"
             android:background="@color/backgroundDefault"
             android:layout_marginLeft="10dp">
-            <ImageButton
+            <ImageView
                 android:layout_width="56dp"
                 android:layout_height="54dp"
                 android:background="@drawable/ic_futuro_papa"

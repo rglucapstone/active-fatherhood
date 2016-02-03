@@ -51,6 +51,7 @@ import java.lang.reflect.Field;
 public class HomeActivity extends AppCompatActivity {
 
     public String str_themes;
+    public String view_by;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

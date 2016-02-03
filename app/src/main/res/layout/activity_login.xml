@@ -23,6 +23,17 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
 
+    <EditText android:id="@+id/input_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="Usuario"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:textColorHint="#c2c2c2" />
+
     <!-- Password Label -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -41,24 +52,12 @@
         android:textColorHint="#c2c2c2"
         android:textIsSelectable="true"
         android:textColorLink="#cb5858" />
-
-    <EditText android:id="@+id/input_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Correo Electrónico"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="40dp"
-        android:textColorHint="#c2c2c2" />
-
     <Button
         android:id="@+id/btn_enter"
+        android:onClick="loginVerify"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:text="@string/btn_enter"
-        android:onClick="preferencesOn"
         android:background="@drawable/button_fill_primary"
         android:textColor="@color/colorPrimaryText"
         android:layout_gravity="center_vertical"

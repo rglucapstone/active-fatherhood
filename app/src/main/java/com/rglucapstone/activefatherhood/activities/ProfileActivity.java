@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.adapters.QuestionsAdapter;
@@ -48,6 +50,7 @@ public class ProfileActivity extends Activity {
 
     public User user;
     public ArrayList<User> list;
+    public ImageView img_user;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,28 @@ public class ProfileActivity extends Activity {
         Intent intent = getIntent();
         this.user = new User(this, new loadUser());
         this.user.load(intent.getStringExtra("user_id"));
+
+        //************************ *Set photo user (parche) ***************************************
+        final String usr_id = this.user.id;
+        final ImageView usr_img = (ImageView) this.findViewById(R.id.img_profile);
+        //Toast.makeText(getBaseContext(), "id:" + this.user.id + "", Toast.LENGTH_SHORT).show();
+       /* switch (usr_id){
+            case "1":
+                usr_img.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "2":
+                usr_img.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "3":
+                usr_img.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "4":
+                usr_img.setBackgroundResource(R.drawable.padre10);
+                break;
+            default:
+                usr_img.setBackgroundResource(R.drawable.padre2);
+                break;
+        }*/
     }
 
     /*@Override

@@ -20,6 +20,9 @@ public class User extends Model
     public String login;
     public String name;
     public String email;
+    public String password;
+    public String edad;
+
     public String buen_padre;
     public String kind_dad;
     public int level;
@@ -48,6 +51,39 @@ public class User extends Model
         this.name = name;
     }
 
+    //******************************* Constructor for New User *************************************
+    public User(String login, String email, String password, String edad) {
+        this.login = login;
+        this.email = email;
+        this.password = password;
+        this.edad = edad;
+    }
+
+    public boolean send() {
+        boolean send = false;
+        RestfulClient rest = this.asynctask;
+        rest.method = "POST";
+        rest.uri = "/users";
+        try{
+            rest.execute(this.toJson().toString());
+            if( rest.status == 201 )
+                send = true;
+        }catch (Exception e) {
+        }
+        return send;
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("login", this.login);
+            json.put("email", this.email);
+            json.put("password", this.password);
+            json.put("edad", this.edad);
+        } catch (JSONException e) {}
+        return json;
+    }
+
     public User(JSONObject object){
         try {
             JSONObject u = object.getJSONObject("user");
@@ -55,6 +91,8 @@ public class User extends Model
             if (u.has("id")) this.id = u.getString("id");
             if (u.has("name")) this.name = u.getString("name");
             if (u.has("email")) this.email = u.getString("email");
+            if (u.has("password")) this.password = u.getString("password");
+            if (u.has("edad")) this.edad = u.getString("edad");
             if (u.has("buen_padre")) this.buen_padre = u.getString("buen_padre");
             if (u.has("kind_dad")) this.kind_dad = u.getString("kind_dad");
             if (u.has("rate")) this.rating = Float.parseFloat(u.getString("rate"));

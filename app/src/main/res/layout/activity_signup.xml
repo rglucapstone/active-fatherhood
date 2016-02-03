@@ -33,10 +33,11 @@
             android:textSize="16dp"
             android:textColorHint="#c2c2c2" />
     </RelativeLayout>
+    <!-- Names
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!-- Names -->
+
         <EditText android:id="@+id/input_names"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,11 +46,12 @@
             android:layout_marginTop="25dp"
             android:textSize="16dp"
             android:textColorHint="#c2c2c2" />
-    </RelativeLayout>
+    </RelativeLayout> -->
+
+    <!-- Email-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!-- Email -->
         <EditText android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,12 +59,13 @@
             android:hint="Correo Electrónico"
             android:layout_marginTop="25dp"
             android:textSize="16dp"
-            android:textColorHint="#c2c2c2" />
+            android:textColorHint="#c2c2c2"/>
     </RelativeLayout>
+
+    <!-- Password -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!-- Password -->
         <EditText android:id="@+id/input_contraseña"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,29 +75,33 @@
             android:textSize="16dp"
             android:textColorHint="#c2c2c2" />
     </RelativeLayout>
-    <RelativeLayout
+
+     <!-- Edad -->
+        <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!-- Password -->
         <EditText android:id="@+id/input_edad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:inputType="date"
             android:hint="Edad"
             android:layout_marginTop="25dp"
             android:textSize="16dp"
-            android:textColorHint="#c2c2c2" />
+            android:ems="10"
+            android:textColorHint="#c2c2c2"/>
     </RelativeLayout>
+
+    <!--  android:onClick="signUp" -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="top">
+
         <Button
             android:id="@+id/btn_acept"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="@string/btn_aceptar"
-            android:onClick="keepOn"
             android:clickable="true"
             android:background="@drawable/button_fill_primary"
             android:textColor="@color/colorPrimaryLabel"
