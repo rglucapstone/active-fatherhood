@@ -22,6 +22,10 @@ import com.rglucapstone.activefatherhood.activities.QuestionActivity;
 import com.rglucapstone.activefatherhood.data.Answer;
 import com.rglucapstone.activefatherhood.data.Question;
 import com.rglucapstone.activefatherhood.data.User;
+import com.rglucapstone.activefatherhood.sync.RestfulClient;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -31,6 +35,7 @@ import java.util.ArrayList;
 public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     private LayoutInflater inflater;
     private Context context;
+    public User logged;
 
     // Status para configurar acciones en las respuestas
     private boolean suggest_answer_status = false;//answer.user_suggest_answer;
@@ -45,11 +50,15 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         final Answer answer = getItem(position);
-        final User user = answer.user;
+        final User user = this.logged;
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_answer, parent, false);
         }else{ }
+
+        final View viewAnswer = convertView;
+
+
 
         TextView txt_content = (TextView) convertView.findViewById(R.id.answer_content);
         txt_content.setText(answer.content);
@@ -61,7 +70,7 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
         txt_user.setText(answer.user.name);
 
         TextView txt_likes = (TextView) convertView.findViewById(R.id.txt_likes);
-        txt_likes.setText(answer.likes);
+        txt_likes.setText(Integer.toString(answer.likes.size()));
 
         setActions(convertView, user, answer);
 
@@ -81,13 +90,13 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
         setLikeAnswer(convertView, user, ans);
 
         //Se setea el icono de sugerencia de la respuesta solo si el padre es = al padre de la pregunta
-        setSuggestAnswer(convertView, user, ans);
+        //setSuggestAnswer(convertView, user, ans);
 
         // Event Click on Like Answer
         final LinearLayout btn_like_answer = (LinearLayout) convertView.findViewById(R.id.btn_like_answer);
         btn_like_answer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                setLikeAnswer(convertView, usr, ans);
+                actionLikeAnswer(convertView, usr, ans);
             }
         });
 
@@ -144,19 +153,30 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
 
     }
 
+    public void actionLikeAnswer(final View convertView, User user, Answer answer){
+
+        Answer ans_sync = new Answer(new userCheckLike(convertView));
+        ans_sync.id = answer.id;
+        boolean status = ans_sync.like(user.id);
+    }
+
     // Action Like Answer
     public void setLikeAnswer(View convertView,User user,Answer answer){
+
         final User usr = user;
         final Answer ans = answer;
 
         final ImageView ic = (ImageView) convertView.findViewById(R.id.icon_up);//icono like
-        like_answer_status = usr.getLikeAnswerStatus(ans.id);
+
+        //User user_async = new User(new userCheckLike());
+        //user_async.id = user.id;
+        like_answer_status = user.getLikeAnswerStatus(answer.likes);
 
         if (like_answer_status) {// si status era true (like) pasa a false, se resta un like y se cambia el icono a gris
-            like_answer_status = false;//usr.setCountLikeAnwer(ans.id,"dis");
+            //like_answer_status = false;//usr.setCountLikeAnwer(ans.id,"dis");
             ic.setBackgroundResource(R.mipmap.ico_like_primary_24);
         } else {// si status era true (unlike) pasa a true, se suma un like y se cambia el icono a primary
-            like_answer_status = true; //usr.setCountLikeAnwer(ans.id,"add");
+            //like_answer_status = true; //usr.setCountLikeAnwer(ans.id,"add");
             ic.setBackgroundResource(R.mipmap.ico_like_grey_24);
         }
     }
@@ -205,6 +225,43 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
                 break;
         }
     }
+
+    private class userCheckLike extends RestfulClient {
+
+        private View view;
+
+        public userCheckLike(View view){
+            this.view = view;
+        }
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+
+            final ImageView ic = (ImageView) this.view.findViewById(R.id.icon_up);
+
+            if(this.status == 200)
+                ic.setBackgroundResource(R.mipmap.ico_like_grey_24);
+
+            if(this.status == 201)
+                ic.setBackgroundResource(R.mipmap.ico_like_primary_24);
+
+            int likes = 0;
+            try {
+                if( result.has("data") ){
+                    JSONObject u = result.getJSONObject("data");
+                    if (u.has("likes")) likes = Integer.parseInt(u.getString("likes"));
+                    TextView txt_likes = (TextView) this.view.findViewById(R.id.txt_likes);
+                    txt_likes.setText(Integer.toString(likes));
+                }
+            }catch (JSONException e){ e.printStackTrace(); }
+
+        }
+    }
+
 
         /*public AnswerItemAdapter(Activity activity, String[] items){
         super(activity, R.layout.item_answer, items);

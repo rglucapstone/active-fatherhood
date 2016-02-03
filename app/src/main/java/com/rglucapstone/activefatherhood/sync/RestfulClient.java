@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import java.io.IOException;
 import java.net.URL;
 import android.content.Context;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 //import javax.net.ssl.HttpsURLConnection;
@@ -40,6 +41,7 @@ public class RestfulClient extends AsyncTask<String, Void, JSONObject>{
     private Context context;
     private ArrayAdapter adapter;
     private Model element;
+    //public View view;
 
     private String server = "http://ct-alpha.funiber.org/rgonzales/paternidad_plus/api";
     public HttpURLConnection conn;
@@ -49,6 +51,8 @@ public class RestfulClient extends AsyncTask<String, Void, JSONObject>{
     public JSONObject response;
     public int status;
 
+
+    //public RestfulClient(View view) { this.view = view; }
 
     public RestfulClient(Context context) {
         this.context = context;
@@ -101,6 +105,16 @@ public class RestfulClient extends AsyncTask<String, Void, JSONObject>{
                     writer.close();
                     os.close();
                     this.conn.connect();
+                    try{
+                        if( this.conn.getResponseCode() == 200 || this.conn.getResponseCode() == 201){
+                            String output;
+                            BufferedReader buf = new BufferedReader(new InputStreamReader(this.conn.getInputStream()));
+                            while ((output = buf.readLine()) != null) {
+                                str_content = str_content + output;
+                            }
+                            this.setResponse(str_content);
+                        }
+                    }catch(IOException e){}
                     break;
             }
         }catch(Exception e) {
@@ -112,8 +126,6 @@ public class RestfulClient extends AsyncTask<String, Void, JSONObject>{
 
         }
 
-        // RESPONSE
-        //this.element.loadData(this.response);
         return this.response;
     }
 

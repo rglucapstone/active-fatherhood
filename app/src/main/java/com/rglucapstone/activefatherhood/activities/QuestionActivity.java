@@ -49,6 +49,7 @@ public class QuestionActivity extends AppCompatActivity {
     private TextView container;
     private ImageButton btn_like;
     private ImageButton btn_suggest;
+    public User logged;
     //public AnswerItemAdapter adapter;
 
     @Override
@@ -65,6 +66,8 @@ public class QuestionActivity extends AppCompatActivity {
         this.question.load(intent.getStringExtra("question_id"));
         setToolbar();
         setActions();
+
+        this.logged = new User(Integer.toString(2)); // USER LOGGED
 
         //listAnswerAdapter = new AnswerItemAdapter(this, new String[10]);
         //listAnswer = (ListView) findViewById(R.id.listAnswer);
@@ -195,6 +198,7 @@ public class QuestionActivity extends AppCompatActivity {
         }
 
         AnswerItemAdapter adapter = new AnswerItemAdapter(this, this.question.listAnswers);
+        adapter.logged = this.logged;
         LinearLayout layout_answers = (LinearLayout) findViewById(R.id.layout_list_answers);
         ListView list = (ListView) layout_answers.findViewById(R.id.listAnswer);
         list.setAdapter(adapter);

@@ -36,6 +36,10 @@ public class User extends Model
     public RestfulClient asynctask;
     public Context context;
 
+    public User(RestfulClient task) {
+        this.asynctask = task;
+    }
+
     public User(String id){
         this.id = id;
     }
@@ -151,8 +155,13 @@ public class User extends Model
         }
         return items;
     }
-    public boolean getLikeAnswerStatus(String id){
-        return true;
+    public boolean getLikeAnswerStatus(ArrayList<Like> likes){
+        for (int i = 0; i < likes.size(); i++) {
+            Like like = likes.get(i);
+            if( like.user_id == this.id )
+                return true;
+        }
+        return false;
     }
     public boolean getSuggestAnswerStatus(String id){
         return false;
