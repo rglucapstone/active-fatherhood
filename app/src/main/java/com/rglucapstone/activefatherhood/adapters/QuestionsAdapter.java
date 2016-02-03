@@ -73,8 +73,6 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
         txt_quser.setText(question.user.login);
 
 
-
-
         //TextView txt_question_date = (TextView) convertView.findViewById(R.id.txt_question_date);
         RelativeTimeTextView v = (RelativeTimeTextView) convertView.findViewById(R.id.txt_question_date);
         v.setReferenceTime(question.created_ago);

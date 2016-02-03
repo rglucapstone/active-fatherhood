@@ -1,4 +1,5 @@
 package com.rglucapstone.activefatherhood.activities;
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.TextView;
 
 import com.rglucapstone.activefatherhood.R;
 
@@ -14,27 +16,15 @@ import com.rglucapstone.activefatherhood.R;
 /**
  * Created by Luisa Castro on 09/01/2016.
  */
-public class SearchResultsActivity extends ActionBarActivity {
+public class SearchResultsActivity extends Activity {
+
+    public String query;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         handleIntent(getIntent());
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar, menu);
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.action_buscar).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
-
-        return true;
     }
 
     @Override
@@ -42,11 +32,20 @@ public class SearchResultsActivity extends ActionBarActivity {
         handleIntent(intent);
     }
 
+    /*protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        handleIntent(getIntent());
+    }*/
+
     private void handleIntent(Intent intent) {
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            //use the query to search
+            this.query = query;
+
+            TextView txt_results = (TextView) findViewById(R.id.txt_results);
+            txt_results.setText(query);
         }
     }
 }

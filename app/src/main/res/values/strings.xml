@@ -34,6 +34,7 @@
     <string name="message_suggest_publication">Está seguro que desea sugerir esta respuesta como publicación</string>
     <string name="action_buscar">buscar</string>
     <string name="search_hint">Ingresa algún tema que desees buscar..</string>
+    <string name="search_hint_text">Buscar...</string>
     <string name="description_user">Ser un buen padre es ser amigo de tus hijos y no una autoridad...</string>
     <string name="btn_publicar">Realizar una publicación</string>
     <string name="txt_write_post">Escribe aquí tu experiencia o cualquier publicación que desees realizar</string>

@@ -104,7 +104,6 @@ public class ListQuestionsFragment extends ListFragment
         Intent intent = new Intent(getActivity(), QuestionActivity.class);
         intent.putExtra("question_id", question.id);
         startActivity(intent);
-
     }
 
 }
