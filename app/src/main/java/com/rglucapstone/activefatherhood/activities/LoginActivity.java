@@ -10,8 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.rglucapstone.activefatherhood.R;
+import com.rglucapstone.activefatherhood.data.User;
+import com.rglucapstone.activefatherhood.sync.RestfulClient;
+
 import java.util.ArrayList;
 
 import android.app.ProgressDialog;
@@ -50,25 +54,16 @@ public class LoginActivity extends Activity{
     EditText inputEmail;
     EditText inputPassword;
 
+    public User user;
+    public ArrayList<User> list;
+
     /**
      * Called when the activity is first created.
      */
-    private static String KEY_SUCCESS = "success";
-    private static String KEY_UID = "uid";
-    private static String KEY_USERNAME = "uname";
-    private static String KEY_FIRSTNAME = "fname";
-    private static String KEY_LASTNAME = "lname";
-    private static String KEY_EMAIL = "email";
-    private static String KEY_CREATED_AT = "created_at";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        inputEmail = (EditText) findViewById(R.id.input_email);
-        inputPassword = (EditText) findViewById(R.id.input_password);
-        btnLogin = (Button) findViewById(R.id.btn_enter);
 
         /*btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -91,15 +86,47 @@ public class LoginActivity extends Activity{
 
     /* Validate Login */
     public void loginVerify(View view) {
+
         EditText username = (EditText)findViewById(R.id.input_email);
         EditText password = (EditText)findViewById(R.id.input_password);
-        if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
-            Intent intent = new Intent(this, PreferencesActivity.class);
-            startActivity(intent);
-        }else{
-            Toast.makeText(getBaseContext(), "El usuario o la contraseña no son válidos", Toast.LENGTH_SHORT).show();
-        }
 
+        Intent intent = new Intent(context, PreferencesActivity.class);
+        startActivity(intent);
+
+       /*if(!username.getText().toString().equals("") && !password.getText().toString().equals("")){
+            Intent intent = getIntent();
+            this.user = new User(this, new loadUser());
+            this.user.loadbyLogin(intent.getStringExtra("login"));
+            Toast.makeText(getBaseContext(), "Uno", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getBaseContext(), "Uno o más campos están vacíos", Toast.LENGTH_SHORT).show();
+        }*/
+
+    }
+
+    private class loadUser extends RestfulClient {
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+            try {
+                list = User.fromJson(result.getJSONArray("data"));
+                if( !list.isEmpty() ){
+                    user = list.get(0);
+                    TextView txt_login = (TextView) findViewById(R.id.input_email);
+                    TextView txt_password = (TextView) findViewById(R.id.input_password);
+
+                    if( txt_login.equals(user.login) && txt_password.equals(user.password) ){
+                        Intent intent = new Intent(context, PreferencesActivity.class);
+                        startActivity(intent);
+                    }else
+                        Toast.makeText(getApplicationContext(), "Usuario o contraseña ", Toast.LENGTH_SHORT).show();
+                }
+             }catch (JSONException e){
+                e.printStackTrace();
+            }
+        }
     }
 
     /* Button Entrar: go to Add Preference */

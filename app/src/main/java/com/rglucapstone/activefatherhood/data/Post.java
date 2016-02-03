@@ -72,8 +72,8 @@ public class Post {
         }
     }
 
-    public static ArrayList fromJson(JSONArray data) {
-        ArrayList items = new ArrayList<>();
+    public static ArrayList<Post> fromJson(JSONArray data) {
+        ArrayList<Post> items = new ArrayList<>();
         for (int i = 0; i < data.length(); i++) {
             try {
                 items.add(new Post(data.getJSONObject(i)));
@@ -96,11 +96,11 @@ public class Post {
         return items;
     }
 
-    public ArrayList<Post> find(String themes) {
+    public ArrayList<Post> find(String themes, String viewBy) {
         ArrayList<Post> items = new ArrayList<>();
         RestfulClient rest = this.asynctask;
         rest.method = "GET";
-        rest.uri = "/posts/?themes="+themes;
+        rest.uri = "/posts/?themes="+themes+ "&view=" + viewBy;;
         try{
             rest.execute();
         }catch (Exception e) {

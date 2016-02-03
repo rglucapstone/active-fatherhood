@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,9 +54,11 @@ public class ListQuestionsFragment extends ListFragment
         this.view = view;
 
         String str_themes = getArguments().getString("str_themes");
+        String viewBy = getArguments().getString("viewBy");
         Question question = new Question(new loadQuestions());
+
         if( str_themes.length() > 0 )
-            this.list = question.find(str_themes);
+            this.list = question.find(str_themes,viewBy);
         else
             this.list = question.getAll();
 
@@ -79,14 +82,18 @@ public class ListQuestionsFragment extends ListFragment
 
         @Override
         protected void onPostExecute(JSONObject result) {
+            adapter = new QuestionsAdapter(getActivity(), list);
+            setListAdapter(adapter);
             try {
+                if( this.status == 200 ){
+                    list = Question.fromJson(result.getJSONArray("data"));
+                    adapter.addAll(list);
+                }
 
                 // Create the adapter to convert the array to views
-                adapter = new QuestionsAdapter(getActivity(), list);
-                setListAdapter(adapter); // Attach the adapter to a ListView
+                 // Attach the adapter to a ListView
                 // Populating Data into ListView
-                list = Question.fromJson(result.getJSONArray("data"));
-                adapter.addAll(list);
+
 
             }catch (JSONException e){
                 e.printStackTrace();

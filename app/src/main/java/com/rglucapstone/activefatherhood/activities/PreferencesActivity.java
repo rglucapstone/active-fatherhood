@@ -38,7 +38,8 @@ public class PreferencesActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    // Button Continue: go to Home
+
+    // / Button Continue: go to Home
     public void goHome(View view){
 
         verifyPreferences();
@@ -47,6 +48,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("str_themes", this.str_prefers);
+        intent.putExtra("viewBy", "preference");
         startActivity(intent);
     }
 

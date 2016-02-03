@@ -50,8 +50,9 @@ public class ListPostsFragment extends ListFragment {
 
         Post post = new Post(new loadPosts());
         String str_themes = getArguments().getString("str_themes");
+        String viewBy = getArguments().getString("viewBy");
         if( str_themes.length() > 0 )
-            this.list = post.find(str_themes);
+            this.list = post.find(str_themes, viewBy);
         else
             this.list = post.getAll();
 
@@ -75,12 +76,14 @@ public class ListPostsFragment extends ListFragment {
 
         @Override
         protected void onPostExecute(JSONObject result) {
-
+            list = new ArrayList<>();
+            adapter = new PostsAdapter(getActivity(), list);
+            setListAdapter(adapter);
             try {
-                adapter = new PostsAdapter(getActivity(), list);
-                setListAdapter(adapter);
-                list = Post.fromJson(result.getJSONArray("data"));
-                adapter.addAll(list);
+                if( this.status == 200 ){
+                    list = Post.fromJson(result.getJSONArray("data"));
+                    adapter.addAll(list);
+                }
             }catch (JSONException e){
                 e.printStackTrace();
             }

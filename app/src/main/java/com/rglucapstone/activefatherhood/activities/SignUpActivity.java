@@ -39,15 +39,6 @@ public class SignUpActivity extends Activity {
     ArrayList selectedCategories;
     final Context context = this;
 
-    private static String KEY_SUCCESS = "success";
-    private static String KEY_UID = "uid";
-    private static String KEY_FIRSTNAME = "fname";
-    private static String KEY_LASTNAME = "lname";
-    private static String KEY_USERNAME = "uname";
-    private static String KEY_EMAIL = "email";
-    private static String KEY_CREATED_AT = "created_at";
-    private static String KEY_ERROR = "error";
-
     EditText inputUsername;
     EditText inputEmail;
     EditText inputPassword;

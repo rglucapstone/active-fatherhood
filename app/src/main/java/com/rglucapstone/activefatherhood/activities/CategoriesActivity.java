@@ -52,81 +52,67 @@ public class CategoriesActivity extends AppCompatActivity {
         intent.putExtra("viewBy","categorie");
         switch (tag){
             case "aprendizaje":
-                intent.putExtra("str_themes",tag);
-                intent.putExtra("title","Aprendizaje");
-                startActivity(intent);
+                intent.putExtra("str_themes","7");
+                intent.putExtra("title", "Aprendizaje");
                 break;
             case "comportamiento":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","8");
                 intent.putExtra("title","Comportamiento");
-                startActivity(intent);
                 break;
             case "comunicacion":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","11");
                 intent.putExtra("title","Comunicación");
-                startActivity(intent);
                 break;
             case "problemas_sociales":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","9");
                 intent.putExtra("title","Problemas Sociales");
-                startActivity(intent);
                 break;
             case "salud":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","4");
                 intent.putExtra("title","Salud");
-                startActivity(intent);
                 break;
             case "alimentacion":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","17");
                 intent.putExtra("title","Alimentación");
-                startActivity(intent);
                 break;
             case "enfermedades":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","10");
                 intent.putExtra("title","Enfermedades");
-                startActivity(intent);
                 break;
             case "discapacidades":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","20");
                 intent.putExtra("title","Discapacidades");
-                startActivity(intent);
                 break;
             case "divorcio":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","18");
                 intent.putExtra("title","Divorcio");
-                startActivity(intent);
                 break;
             case "adopcion":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","19");
                 intent.putExtra("title","Adopción");
-                startActivity(intent);
                 break;
             case "recreacion":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","21");
                 intent.putExtra("title","Recreacion");
-                startActivity(intent);
                 break;
             case "sexualidad":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","22");
                 intent.putExtra("title","Sexualidad");
-                startActivity(intent);
                 break;
             case "solteros":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","13");
                 intent.putExtra("title","Padres Solteros");
-                startActivity(intent);
                 break;
             case "primerizos":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","14");
                 intent.putExtra("title","Padres primerizos");
-                startActivity(intent);
                 break;
             case "futuros":
-                intent.putExtra("str_themes",tag);
+                intent.putExtra("str_themes","15");
                 intent.putExtra("title","Futuros Padres");
-                startActivity(intent);
                 break;
         }
+        startActivity(intent);
 
 
         //Intent intent = new Intent(this, HomeActivity.class);

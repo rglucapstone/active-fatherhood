@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public String str_themes;
     public String view_by;
+    public String item_categorie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +63,22 @@ public class HomeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         this.str_themes = intent.getStringExtra("str_themes");
+        this.view_by = intent.getStringExtra("viewBy");
 
         // toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
         setSupportActionBar(toolbar);
+
+        //si se elige una categoria se cambia el title al toolbar
+        /*view_by = intent.getStringExtra("viewBy");
+
+        if(view_by!=null) {
+            if (view_by.equals("categorie")) {
+                item_categorie = intent.getStringExtra("title");
+                getSupportActionBar().setTitle(item_categorie);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        }*/
 
         // tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_tabs);
@@ -109,6 +122,7 @@ public class HomeActivity extends AppCompatActivity {
         HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager(),HomeActivity.this);
 
         Bundle bundle = new Bundle();
+        bundle.putString("viewBy",this.view_by);
         bundle.putString("str_themes", this.str_themes);
 
         ListFragment questions = new ListQuestionsFragment();
@@ -124,7 +138,6 @@ public class HomeActivity extends AppCompatActivity {
         adapter.addFragment(gurus, "Padres Gurús");
         //Fragment results = new SearchResultsFragment();
         //adapter.addFragment(results, "Padres Gurús");
-
 
         viewPager.setAdapter(adapter);
     }
@@ -219,7 +232,8 @@ public class HomeActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
                 return true;
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                this.finish();
+                //NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.menu_categories:
                 goCategories(getBaseContext());

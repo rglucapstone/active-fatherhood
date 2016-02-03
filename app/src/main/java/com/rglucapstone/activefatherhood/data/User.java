@@ -124,6 +124,22 @@ public class User extends Model
         return user;
     }
 
+    public User loadbyLogin(String login){
+        User user = null;
+        RestfulClient rest = this.asynctask;
+        rest.method = "GET";
+        rest.uri = "/users/";
+        JSONObject json = new JSONObject();
+        try {
+            json.put("login", login);
+        } catch (JSONException e) {}
+        try{
+            rest.execute(json.toString());
+        }catch (Exception e) {
+        }
+        return user;
+    }
+
     public static ArrayList<User> fromJson(JSONArray data) {
         ArrayList<User> items = new ArrayList<>();
         for (int i = 0; i < data.length(); i++) {
