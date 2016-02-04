@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.rglucapstone.activefatherhood.R;
+import com.rglucapstone.activefatherhood.data.User;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,10 +23,15 @@ public class PreferencesActivity extends AppCompatActivity {
 
     public HashMap<String, String> preferences;
     public String str_prefers;
+    public User user;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_preference);
+
+        Intent intent = getIntent();
+        user = new User(intent.getStringExtra("user_id"));
+
         setToolbar();
         setPreferences();
     }
@@ -47,6 +53,7 @@ public class PreferencesActivity extends AppCompatActivity {
         //test.setText(this.str_prefers);
 
         Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra("user_id", this.user.id);
         intent.putExtra("str_themes", this.str_prefers);
         intent.putExtra("viewBy", "preference");
         startActivity(intent);

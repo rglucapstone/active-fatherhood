@@ -11,6 +11,18 @@
         layout="@layout/loading_view">
     </include>
 
+    <!--<TextView
+        android:id="@+id/txt_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/colorPrimaryLabel"
+        android:textSize="19dp"
+        android:focusable="true"
+        android:layout_gravity="center"
+        android:paddingTop="7dp"
+        android:textStyle="bold" />-->
+
     <!-- Datos -->
     <LinearLayout
         android:orientation="vertical"
@@ -61,6 +73,7 @@
             android:paddingTop="7dp"
             android:textStyle="bold" />
         <TextView
+            android:id="@+id/txt_profile_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="39 años"
@@ -119,54 +132,77 @@
                 </LinearLayout>
 
                 <!--Progress Guru-->
-                <ImageView
-                    android:id="@+id/iconUser"
-                    android:layout_width="55dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/ico_progress"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"/>
+                <RatingBar
+                    android:id="@+id/rating_guru"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="4"
+                    android:max="100"
+                    android:rating="1"
+                    android:stepSize="0.1"
+                    android:isIndicator="true"
+                    style="?android:attr/ratingBarStyleIndicator" />
 
-                <!--Tags Guru-->
+                <!-- Themes -->
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:id="@+id/ly_themes"
+                    android:gravity="left" >
+                    <ImageView
+                        android:id="@+id/ic_themes_tag1"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:src="@drawable/icon_tag_blue_2"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:visibility="gone" />
                     <TextView
-                        android:id="@+id/tag_1"
+                        android:id="@+id/txt_themes_tag1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="5dp"
                         android:text="Salud"
-                        android:textSize="13dp"
-                        android:gravity="center"
-                        android:textColor="@color/normalText"
-                        android:textIsSelectable="true" />
+                        android:visibility="gone" />
+                    <ImageView
+                        android:id="@+id/ic_themes_tag2"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/icon_tag_blue_2"
+                        android:layout_marginTop="3dp"
+                        android:visibility="gone" />
                     <TextView
+                        android:id="@+id/txt_themes_tag2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="  *  " />
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="5dp"
+                        android:text="Disciplina"
+                        android:visibility="gone" />
+                    <ImageView
+                        android:id="@+id/ic_themes_tag3"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/icon_tag_blue_2"
+                        android:layout_marginTop="3dp"
+                        android:visibility="gone" />
                     <TextView
-                        android:id="@+id/tag_2"
+                        android:id="@+id/txt_themes_tag3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Niños"
-                        android:textSize="13dp"
-                        android:gravity="center"
-                        android:textColor="@color/normalText"
-                        android:textIsSelectable="true" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  *  " />
-                    <TextView
-                        android:id="@+id/tag_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Escuela"
-                        android:textSize="13dp"
-                        android:gravity="center"
-                        android:textColor="@color/normalText"
-                        android:textIsSelectable="true" />
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="5dp"
+                        android:text="Aprendizaje"
+                        android:visibility="gone" />
                 </LinearLayout>
+
             </LinearLayout>
         </RelativeLayout>
 
@@ -208,6 +244,7 @@
                         android:layout_gravity="center" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/btn_publicaciones_guru"
                     android:layout_width="133dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -361,7 +398,13 @@
             android:layout_marginTop="7dp"
             android:orientation="vertical"
             android:background="#ffffff">
-            <RelativeLayout
+
+            <ListView android:id="@+id/list_questions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawSelectorOnTop="false"
+                android:layout_gravity="bottom" />
+            <!--<RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
@@ -373,7 +416,7 @@
                 android:text="Ver más"
                 android:gravity="center"
                 android:padding="3dp"
-                android:background="@drawable/border_top_blue"/>
+                android:background="@drawable/border_top_blue"/>-->
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

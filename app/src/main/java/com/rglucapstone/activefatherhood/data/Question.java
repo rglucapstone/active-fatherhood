@@ -36,6 +36,8 @@ public class Question extends Model implements Serializable {
     public ArrayList<Answer> listAnswers;
     public String question_id;
 
+    public User user_guru;
+
 
     public String userstr;
     public String contentstr;
@@ -90,11 +92,14 @@ public class Question extends Model implements Serializable {
         this.user = new User(user_id);
     }
 
-    public ArrayList<Question> getAll() {
+    public ArrayList<Question> getAll(String filter) {
         ArrayList<Question> items = new ArrayList<>();
         RestfulClient rest = this.asynctask;
         rest.method = "GET";
         rest.uri = "/questions";
+        if( filter.length() > 0 )
+            rest.uri += "/?f="+filter;
+
         try{
             rest.execute();
         }catch (Exception e) {
@@ -102,11 +107,11 @@ public class Question extends Model implements Serializable {
         return items;
     }
 
-    public ArrayList<Question> find(String themes, String viewBy) {
+    public ArrayList<Question> find(String themes, String viewBy, String filter) {
         ArrayList<Question> items = new ArrayList<>();
         RestfulClient rest = this.asynctask;
         rest.method = "GET";
-        rest.uri = "/questions/?themes="+themes + "&view=" + viewBy;
+        rest.uri = "/questions/?themes="+themes + "&view=" + viewBy+"&f="+filter;
         //this.content = rest.uri;
         try{
             rest.execute();
@@ -133,6 +138,7 @@ public class Question extends Model implements Serializable {
         rest.method = "POST";
         rest.uri = "/questions";
         try{
+
             rest.execute(this.toJson().toString());
             if( rest.status == 201 )
                 send = true;
@@ -158,10 +164,11 @@ public class Question extends Model implements Serializable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         try {
+            json.put("user_guru_id", this.user_guru.id);
             json.put("content", this.content);
-            json.put("created", this.created);
+            //json.put("created", this.created);
             json.put("user_id", this.user.id);
-            json.put("question_id", this.question_id);
+            //json.put("question_id", this.question_id);
         } catch (JSONException e) {}
         return json;
     }

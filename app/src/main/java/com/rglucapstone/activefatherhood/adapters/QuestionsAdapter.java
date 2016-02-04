@@ -21,6 +21,7 @@ import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.activities.HomeActivity;
 import com.rglucapstone.activefatherhood.activities.ProfileActivity;
 import com.rglucapstone.activefatherhood.data.Question;
+import com.rglucapstone.activefatherhood.data.User;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -39,6 +40,7 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
     public ArrayList<Question> questions;
     public Question question;
     public View view;
+    public User user;
 
     public QuestionsAdapter(Context context, ArrayList<Question> questions){
         super(context, R.layout.fragment_item_question, questions);
@@ -110,6 +112,7 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
 
                 Intent intent = new Intent(context, ProfileActivity.class); //create an Intent object
                 intent.putExtra("user_id", question.user.id); //add data to the Intent object
+                intent.putExtra("logged_id", user.id);
                 context.startActivity(intent); //start the second activity
             }
         });
@@ -142,9 +145,7 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
             int txttag = getContext().getResources().getIdentifier("txt_question_tag" + i, "id", getContext().getPackageName());
             TextView txt_tag = (TextView) this.view.findViewById(txttag);
             txt_tag.setVisibility(View.GONE);
-
         }
-
     }
 
 

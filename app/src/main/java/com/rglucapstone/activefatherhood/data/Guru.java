@@ -15,6 +15,9 @@ import java.util.Iterator;
  */
 public class Guru extends Model{
 
+    public String name;
+    public int level;
+
     public RestfulClient asynctask;
 
     public ArrayList<String> themes;

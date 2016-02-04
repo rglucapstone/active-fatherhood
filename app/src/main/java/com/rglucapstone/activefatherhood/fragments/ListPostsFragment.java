@@ -16,6 +16,7 @@ import com.rglucapstone.activefatherhood.activities.QuestionActivity;
 import com.rglucapstone.activefatherhood.adapters.PostsAdapter;
 import com.rglucapstone.activefatherhood.data.Post;
 import com.rglucapstone.activefatherhood.data.Question;
+import com.rglucapstone.activefatherhood.data.User;
 import com.rglucapstone.activefatherhood.sync.RestfulClient;
 
 import org.json.JSONException;
@@ -31,6 +32,7 @@ public class ListPostsFragment extends ListFragment {
     public View view;
     public ArrayList<Post> list;
     public PostsAdapter adapter;
+    public User logged;
 
 
     public void onCreate(Bundle savedInstanceState){
@@ -47,6 +49,8 @@ public class ListPostsFragment extends ListFragment {
 
         View view = inflater.inflate(R.layout.fragment_list_posts, container, false);
         this.view = view;
+
+        logged = new User(getArguments().getString("logged_id"));
 
         Post post = new Post(new loadPosts());
         String str_themes = getArguments().getString("str_themes");
@@ -78,6 +82,7 @@ public class ListPostsFragment extends ListFragment {
         protected void onPostExecute(JSONObject result) {
             list = new ArrayList<>();
             adapter = new PostsAdapter(getActivity(), list);
+            adapter.logged = logged;
             setListAdapter(adapter);
             try {
                 if( this.status == 200 ){

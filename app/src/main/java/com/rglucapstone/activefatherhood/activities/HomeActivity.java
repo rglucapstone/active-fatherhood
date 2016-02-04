@@ -37,6 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.adapters.HomeFragmentPagerAdapter;
+import com.rglucapstone.activefatherhood.data.User;
 import com.rglucapstone.activefatherhood.fragments.ListQuestionsFragment;
 import com.rglucapstone.activefatherhood.fragments.ListPostsFragment;
 import com.rglucapstone.activefatherhood.fragments.ListGurusFragment;
@@ -53,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
     public String str_themes;
     public String view_by;
     public String item_categorie;
+    public User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.str_themes = intent.getStringExtra("str_themes");
         this.view_by = intent.getStringExtra("viewBy");
+        user = new User(intent.getStringExtra("user_id"));
 
         // toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
@@ -124,6 +127,7 @@ public class HomeActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("viewBy",this.view_by);
         bundle.putString("str_themes", this.str_themes);
+        bundle.putString("logged_id", user.id);
 
         ListFragment questions = new ListQuestionsFragment();
         questions.setArguments(bundle);
@@ -229,6 +233,8 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             case R.id.action_my_profile:
                 Intent intent = new Intent(this, ProfileActivity.class);
+                intent.putExtra("user_id", user.id);
+                intent.putExtra("logged_id", user.id);
                 startActivityForResult(intent, 0);
                 return true;
             case android.R.id.home:

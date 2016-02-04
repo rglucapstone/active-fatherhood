@@ -28,10 +28,14 @@ public class User extends Model
     public int level;
     public float rating;
 
+    public String[] themes;
+
     public String total_questions;
     public String total_answers;
     public String total_posts;
     public String total_likes;
+
+    public Guru guru;
 
     public RestfulClient asynctask;
     public Context context;
@@ -102,7 +106,10 @@ public class User extends Model
             if (u.has("rate")) this.rating = Float.parseFloat(u.getString("rate"));
             if( u.has("guru") ){
                 JSONObject g = u.getJSONObject("guru");
+                this.guru = new Guru();
                 if (g.has("level")) this.level = g.getInt("level");
+                if (g.has("level")) this.guru.level = g.getInt("level");
+                if (g.has("name")) this.guru.name = g.getString("name");
             }
             if( u.has("aportes") ){
                 JSONObject a = u.getJSONObject("aportes");
@@ -110,6 +117,12 @@ public class User extends Model
                 if (a.has("respuestas")) this.total_answers = a.getString("respuestas");
                 if (a.has("publicaciones")) this.total_posts = a.getString("publicaciones");
                 if (a.has("me_gusta")) this.total_likes = a.getString("me_gusta");
+            }
+            if (u.has("themes") ){
+                this.themes = new String[0];
+                String themes = u.getString("themes");
+                if( themes.length() > 0 )
+                    this.themes = u.getString("themes").split(",");
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -132,15 +145,17 @@ public class User extends Model
         User user = null;
         RestfulClient rest = this.asynctask;
         rest.method = "GET";
-        rest.uri = "/users/";
-        JSONObject json = new JSONObject();
-        try {
-            json.put("login", login);
-        } catch (JSONException e) {}
-        try{
-            rest.execute(json.toString());
-        }catch (Exception e) {
-        }
+        rest.uri = "/users/?login="+login;
+        rest.execute();
+        return user;
+    }
+
+    public User loadQuestions(String filter){
+        User user = null;
+        RestfulClient rest = this.asynctask;
+        rest.method = "GET";
+        rest.uri = "/users/"+this.id+"/questions";
+        rest.execute();
         return user;
     }
 

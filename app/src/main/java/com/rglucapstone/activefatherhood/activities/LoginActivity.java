@@ -90,17 +90,17 @@ public class LoginActivity extends Activity{
         EditText username = (EditText)findViewById(R.id.input_email);
         EditText password = (EditText)findViewById(R.id.input_password);
 
-        Intent intent = new Intent(context, PreferencesActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(context, PreferencesActivity.class);
+        //startActivity(intent);
 
-       /*if(!username.getText().toString().equals("") && !password.getText().toString().equals("")){
+       if(!username.getText().toString().equals("") && !password.getText().toString().equals("")){
             Intent intent = getIntent();
-            this.user = new User(this, new loadUser());
-            this.user.loadbyLogin(intent.getStringExtra("login"));
-            Toast.makeText(getBaseContext(), "Uno", Toast.LENGTH_SHORT).show();
+            this.user = new User(new loadUser());
+            this.user.loadbyLogin(username.getText().toString());
+            //Toast.makeText(getBaseContext(), "Uno", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(getBaseContext(), "Uno o más campos están vacíos", Toast.LENGTH_SHORT).show();
-        }*/
+        }
 
     }
 
@@ -112,16 +112,18 @@ public class LoginActivity extends Activity{
         protected void onPostExecute(JSONObject result) {
             try {
                 list = User.fromJson(result.getJSONArray("data"));
-                if( !list.isEmpty() ){
+                if( list.size() > 0 ){
                     user = list.get(0);
+
                     TextView txt_login = (TextView) findViewById(R.id.input_email);
                     TextView txt_password = (TextView) findViewById(R.id.input_password);
-
-                    if( txt_login.equals(user.login) && txt_password.equals(user.password) ){
+                    if( txt_login.getText().toString().equals(user.login) && txt_password.getText().toString().equals(user.password) ){
                         Intent intent = new Intent(context, PreferencesActivity.class);
+                        intent.putExtra("user_id", user.id);
                         startActivity(intent);
                     }else
                         Toast.makeText(getApplicationContext(), "Usuario o contraseña ", Toast.LENGTH_SHORT).show();
+
                 }
              }catch (JSONException e){
                 e.printStackTrace();

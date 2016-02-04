@@ -11,14 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.adapters.QuestionsAdapter;
+import com.rglucapstone.activefatherhood.adapters.ResultAdapter;
 import com.rglucapstone.activefatherhood.data.Question;
 import com.rglucapstone.activefatherhood.data.User;
 import com.rglucapstone.activefatherhood.sync.RestfulClient;
@@ -26,6 +29,7 @@ import com.rglucapstone.activefatherhood.sync.RestfulClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -41,6 +45,8 @@ public class ProfileActivity extends Activity {
     private ListView listPadresGurus;
     private ArrayList<Question> arrayOfInfoGuru;
 
+    private final int num_starts = 4;
+
     private static final int PROGRESS = 0x1;
 
     private ProgressBar mProgress;
@@ -52,14 +58,21 @@ public class ProfileActivity extends Activity {
     public ArrayList<User> list;
     public ImageView img_user;
 
+    public User logged;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
         Intent intent = getIntent();
+        String user_id = intent.getStringExtra("user_id");
+
         this.user = new User(this, new loadUser());
-        this.user.load(intent.getStringExtra("user_id"));
+        this.user.id = user_id;
+        this.user.load(user_id);
+
+        this.logged = new User(intent.getStringExtra("logged_id"));
 
         //************************ *Set photo user (parche) ***************************************
         final String usr_id = this.user.id;
@@ -104,6 +117,8 @@ public class ProfileActivity extends Activity {
     /* Preguntar */
     public void askGuru(View view){
         Intent intent = new Intent(this, AskGuruActivity.class);
+        intent.putExtra("user_id", this.user.id);
+        intent.putExtra("user_creator_id", this.logged.id);
         startActivity(intent);
     }
 
@@ -120,6 +135,10 @@ public class ProfileActivity extends Activity {
     }
 
     private void setData(){
+
+        //TextView txt_test = (TextView) findViewById(R.id.txt_test);
+        //txt_test.setText(this.logged.id + " : "+this.user.id);
+
         TextView txt_name = (TextView) findViewById(R.id.txt_profile_name);
         TextView txt_goodfather = (TextView) findViewById(R.id.txt_profile_goodfather);
         txt_name.setText(this.user.name);
@@ -134,10 +153,60 @@ public class ProfileActivity extends Activity {
         TextView txt_posts = (TextView) findViewById(R.id.txt_posts);
         txt_posts.setText(this.user.total_posts);
 
+        TextView txt_profile_age = (TextView) findViewById(R.id.txt_profile_age);
+        txt_profile_age.setText(this.user.edad + " años");
+
         TextView txt_me_gusta = (TextView) findViewById(R.id.txt_likes);
         txt_me_gusta.setText(this.user.total_likes);
 
-        //txt_goodfather.setText(Integer.toString(this.list.size()));
+        TextView guru_progress_text = (TextView) findViewById(R.id.guru_progress_text);
+        guru_progress_text.setText(this.user.guru.name);
+
+        RatingBar rate_guru = (RatingBar) findViewById(R.id.rating_guru);
+        String str_rate = new DecimalFormat("##.##").format((user.rating*this.num_starts)/100);
+        rate_guru.setRating(Float.parseFloat(str_rate));
+
+        //guru_progress_text.setText(Integer.toString(this.user.themes.length));
+
+        setThemes();
+        if( this.user.themes.length > 0 ){
+            for (int i = 1; i <= this.user.themes.length; i++) {
+                int index = i - 1;
+
+                int imgtag = getBaseContext().getResources().getIdentifier("ic_themes_tag" + i, "id",
+                        getBaseContext().getPackageName());
+                ImageView img_tag = (ImageView) findViewById(imgtag);
+                img_tag.setVisibility(View.VISIBLE);
+
+                int txttag = getBaseContext().getResources().getIdentifier("txt_themes_tag" + i, "id",
+                        getBaseContext().getPackageName());
+                TextView txt_tag = (TextView) findViewById(txttag);
+                txt_tag.setText(this.user.themes[index]);
+                txt_tag.setVisibility(View.VISIBLE);
+            }
+        }
+
+        User user = new User(new loadQuestions());
+        user.id = this.user.id;
+        user.loadQuestions("");
+
+    }
+
+
+    public void setThemes(){
+
+        int total = 3;
+        for (int i = 1; i <= total; i++) {
+            int imgtag = getBaseContext().getResources().getIdentifier("ic_themes_tag" + i, "id",
+                    getBaseContext().getPackageName());
+            ImageView img_tag = (ImageView) findViewById(imgtag);
+            img_tag.setVisibility(View.GONE);
+
+            int txttag = getBaseContext().getResources().getIdentifier("txt_themes_tag" + i, "id",
+                    getBaseContext().getPackageName());
+            TextView txt_tag = (TextView) findViewById(txttag);
+            txt_tag.setVisibility(View.GONE);
+        }
     }
 
     private class loadUser extends RestfulClient {
@@ -160,8 +229,45 @@ public class ProfileActivity extends Activity {
                 e.printStackTrace();
             }
 
+            if( user.id.toString().equals(logged.id.toString()) || user.guru.level < 3  ){
+                LinearLayout btnAsk = (LinearLayout) findViewById(R.id.btn_ask_guru);
+                btnAsk.setVisibility(View.GONE);
+
+                LinearLayout btnViewPublicaciones = (LinearLayout) findViewById(R.id.btn_publicaciones_guru);
+                btnViewPublicaciones.setVisibility(View.GONE);
+            }
+
             RelativeLayout loadingLayout = (RelativeLayout) findViewById(R.id.loading_profile);
             loadingLayout.setVisibility(View.GONE);
+
+        }
+
+    }
+
+    private class loadQuestions extends RestfulClient{
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+            ArrayList<Question> listQuestions = new ArrayList<>();
+
+            ListView list_questions = (ListView) findViewById(R.id.list_questions);
+            ResultAdapter adapter = new ResultAdapter(getBaseContext(), listQuestions);
+            list_questions.setAdapter(adapter);
+            try {
+                if( this.status == 200 ){
+                    listQuestions = Question.fromJson(result.getJSONArray("data"));
+                    adapter.addAll(listQuestions);
+                }
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+            //RelativeLayout loadingLayout = (RelativeLayout) findViewById(R.id.loading_questions);
+            //loadingLayout.setVisibility(View.GONE);
         }
 
     }

@@ -44,6 +44,7 @@ public class ListGurusFragment extends Fragment {
     public ExpandableListView elv;
     public ListGurusAdapter adapter;
     public View view;
+    public User user;
 
     public static ArrayList<Integer> check = new ArrayList<Integer>();
 
@@ -52,6 +53,8 @@ public class ListGurusFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_list_gurus, null);
         this.view = v;
+
+        user = new User(getArguments().getString("logged_id"));
 
         this.elv = (ExpandableListView) v.findViewById(R.id.exp_list_gurus);
         this.elv.setChildDivider(getResources().getDrawable(R.color.backgroundContainer));
@@ -82,6 +85,7 @@ public class ListGurusFragment extends Fragment {
                     listThemes.add(t);
                 }
                 adapter = new ListGurusAdapter(getActivity(), listThemes, hashGurus);
+                adapter.logged = user;
                 elv.setAdapter(adapter);
                 //User u = hashGurus.get("comportamiento").get(0);
                 //TextView txt_quser = (TextView) view.findViewById(R.id.txt_test);

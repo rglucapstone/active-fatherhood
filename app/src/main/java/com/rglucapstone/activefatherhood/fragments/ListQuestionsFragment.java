@@ -23,6 +23,7 @@ import com.rglucapstone.activefatherhood.activities.ProfileActivity;
 import com.rglucapstone.activefatherhood.activities.QuestionActivity;
 import com.rglucapstone.activefatherhood.adapters.QuestionsAdapter;
 import com.rglucapstone.activefatherhood.data.Question;
+import com.rglucapstone.activefatherhood.data.User;
 import com.rglucapstone.activefatherhood.sync.RestfulClient;
 
 import org.json.JSONException;
@@ -37,6 +38,7 @@ public class ListQuestionsFragment extends ListFragment
     public View view;
     public ArrayList<Question> list;
     public QuestionsAdapter adapter;
+    public User user;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,14 +55,17 @@ public class ListQuestionsFragment extends ListFragment
         View view = inflater.inflate(R.layout.fragment_list_questions, container, false);
         this.view = view;
 
+        user = new User(getArguments().getString("logged_id"));
+
         String str_themes = getArguments().getString("str_themes");
         String viewBy = getArguments().getString("viewBy");
         Question question = new Question(new loadQuestions());
 
+
         if( str_themes.length() > 0 )
-            this.list = question.find(str_themes,viewBy);
+            this.list = question.find(str_themes, viewBy, "normal");
         else
-            this.list = question.getAll();
+            this.list = question.getAll("normal");
 
         //TextView test = (TextView) view.findViewById(R.id.test);
         //test.setText(question.content);
@@ -83,6 +88,7 @@ public class ListQuestionsFragment extends ListFragment
         @Override
         protected void onPostExecute(JSONObject result) {
             adapter = new QuestionsAdapter(getActivity(), list);
+            adapter.user = user;
             setListAdapter(adapter);
             try {
                 if( this.status == 200 ){

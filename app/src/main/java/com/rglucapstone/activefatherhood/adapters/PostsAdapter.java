@@ -15,6 +15,7 @@ import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.activities.ProfileActivity;
 import com.rglucapstone.activefatherhood.data.Post;
+import com.rglucapstone.activefatherhood.data.User;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class PostsAdapter extends ArrayAdapter<Post> {
     private LayoutInflater inflater;
     private Context context;
     public View view;
+    public User logged;
 
     public PostsAdapter(Context context, ArrayList<Post> posts){
         super(context, R.layout.fragment_item_post, posts);
@@ -85,6 +87,7 @@ public class PostsAdapter extends ArrayAdapter<Post> {
 
                 Intent intent = new Intent(context, ProfileActivity.class); //create an Intent object
                 intent.putExtra("user_id", post.user.id); //add data to the Intent object
+                intent.putExtra("logged_id", logged.id);
                 context.startActivity(intent); //start the second activity
             }
         });

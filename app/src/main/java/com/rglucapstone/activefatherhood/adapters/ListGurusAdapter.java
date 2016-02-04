@@ -38,6 +38,7 @@ public class ListGurusAdapter extends BaseExpandableListAdapter {
     private ArrayList<Theme> _listThemes;
     private HashMap<Theme, ArrayList<User>> _listGurus;
     private LayoutInflater mInflater;
+    public User logged;
 
     public ListGurusAdapter(Context context, ArrayList<Theme> listThemes, HashMap<Theme, ArrayList<User>> listGurus) {
         this._context = context;
@@ -115,6 +116,7 @@ public class ListGurusAdapter extends BaseExpandableListAdapter {
                 User user = listGurus.get(position);
                 Intent intent = new Intent(_context, ProfileActivity.class);
                 intent.putExtra("user_id", user.id);
+                intent.putExtra("logged_id", logged.id);
                 _context.startActivity(intent);
             }
         });
