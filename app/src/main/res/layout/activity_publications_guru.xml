@@ -1,45 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:weightSum="1">
+
     <include
         android:id="@+id/toolbar_action"
         layout="@layout/toolbar_action">
     </include>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_bottom_primary"
-        android:padding="5dp">
-        <!--<ImageView
-            android:onClick="profileOn"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:id="@+id/ic_user"
-            android:src="@drawable/ic_profile"
-            android:layout_marginLeft="5dp"
-            android:layout_marginBottom="2dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ricardo Arregui"
-            android:textColor="@color/normalText"
-            android:textSize="19dp"
-            android:focusable="true"
-            android:layout_gravity="center"
-            android:paddingTop="7dp"
-            android:layout_marginLeft="50dp"/>-->
-    </RelativeLayout>
 
-    <RelativeLayout
+    <ListView android:id="@+id/listSuggests"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </LinearLayout>
-    </RelativeLayout>
+        android:layout_height="match_parent"
+        android:layout_weight=".75"
+        android:drawSelectorOnTop="false"
+        android:layout_gravity="top" />
 
 </LinearLayout>

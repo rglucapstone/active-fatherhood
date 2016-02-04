@@ -79,7 +79,12 @@ public class Question extends Model implements Serializable {
             this.user = new User(q);
             this.listAnswers = Answer.fromJson(q.getJSONArray("answers"));
             if (q.has("question_id"))  this.question_id = q.getString("question_id");
-
+            if (q.has("themes") ){
+                this.themes = new String[0];
+                String themes = q.getString("themes");
+                if( themes.length() > 0 )
+                    this.themes = q.getString("themes").split(",");
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -138,8 +143,14 @@ public class Question extends Model implements Serializable {
         rest.method = "POST";
         rest.uri = "/questions";
         try{
+            JSONObject json = new JSONObject();
+            try {
+                json.put("content", this.content);
+                json.put("created", this.created);
+                json.put("user_id", this.user.id);
+            } catch (JSONException e) {}
 
-            rest.execute(this.toJson().toString());
+            rest.execute(json.toString());
             if( rest.status == 201 )
                 send = true;
         }catch (Exception e) {
@@ -166,9 +177,9 @@ public class Question extends Model implements Serializable {
         try {
             json.put("user_guru_id", this.user_guru.id);
             json.put("content", this.content);
-            //json.put("created", this.created);
+            json.put("created", this.created);
             json.put("user_id", this.user.id);
-            //json.put("question_id", this.question_id);
+            json.put("question_id", this.question_id);
         } catch (JSONException e) {}
         return json;
     }

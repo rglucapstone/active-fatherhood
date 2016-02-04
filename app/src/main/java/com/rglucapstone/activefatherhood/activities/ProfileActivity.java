@@ -128,9 +128,9 @@ public class ProfileActivity extends Activity {
         startActivity(intent);
     }
 
-    /* Ver Publicaciones */
     public void publicationsGuru(View view) {
         Intent intent = new Intent(this, PublicationsGuru.class);
+        intent.putExtra("user_id", this.logged.id);
         startActivity(intent);
     }
 
@@ -233,8 +233,8 @@ public class ProfileActivity extends Activity {
                 LinearLayout btnAsk = (LinearLayout) findViewById(R.id.btn_ask_guru);
                 btnAsk.setVisibility(View.GONE);
 
-                LinearLayout btnViewPublicaciones = (LinearLayout) findViewById(R.id.btn_publicaciones_guru);
-                btnViewPublicaciones.setVisibility(View.GONE);
+                //LinearLayout btnViewPublicaciones = (LinearLayout) findViewById(R.id.btn_publicaciones_guru);
+                //btnViewPublicaciones.setVisibility(View.GONE);
             }
 
             RelativeLayout loadingLayout = (RelativeLayout) findViewById(R.id.loading_profile);
@@ -243,6 +243,7 @@ public class ProfileActivity extends Activity {
         }
 
     }
+
 
     private class loadQuestions extends RestfulClient{
 

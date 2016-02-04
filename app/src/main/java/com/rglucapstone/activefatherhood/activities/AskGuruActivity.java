@@ -35,8 +35,8 @@ public class AskGuruActivity extends AppCompatActivity {
     private Button button_asking;
     final Context context = this;
 
-    User user;
-    User user_guru;
+    public User user;
+    public User user_guru;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

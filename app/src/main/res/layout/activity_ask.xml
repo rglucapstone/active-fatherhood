@@ -84,14 +84,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="70dp"-->
 
-        <!--<TextView
-            android:id="@+id/txt_test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textAlignment="center"
-            android:textSize="11sp"
-            android:textColor="#d3d3d3"
-            android:text="" />-->
+
     </LinearLayout>
 </LinearLayout>

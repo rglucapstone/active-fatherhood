@@ -3,6 +3,7 @@ package com.rglucapstone.activefatherhood.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
@@ -34,6 +35,7 @@ public class AskActivity extends AppCompatActivity {
     private Button button_asking;
     private TextView container;
     private LayoutInflater inflater;
+    public User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,11 @@ public class AskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ask);
         setToolbar();
 
+        Intent intent = getIntent();
+        this.user = new User(intent.getStringExtra("user_id"));
+
+        //TextView txtview = (TextView) findViewById(R.id.txt_test);
+        //txtview.setText(this.user.id);
 
         /**
          * Se oculta el titulo de preferencias
@@ -55,13 +62,12 @@ public class AskActivity extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 EditText iquestion = (EditText)findViewById(R.id.input_question);
-                int user_id = 2;
 
                 // instance Question object
                 Question question = new Question(context, new sendQuestion());
                 question.content = iquestion.getText().toString();
                 question.created = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
-                question.user = new User(Integer.toString(user_id));
+                question.user = user;
                 question.send();
             }
         });
@@ -107,7 +113,11 @@ public class AskActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(JSONObject result) {
             toast.cancel();
-            context.startActivity(new Intent(context, HomeActivity.class));
+            Intent intent = new Intent(context, HomeActivity.class);
+            intent.putExtra("user_id", user.id);
+            intent.putExtra("str_themes", "");
+            intent.putExtra("viewBy", "preference");
+            context.startActivity(intent);
         }
 
     }

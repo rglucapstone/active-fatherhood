@@ -58,8 +58,6 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
 
         final View viewAnswer = convertView;
 
-
-
         TextView txt_content = (TextView) convertView.findViewById(R.id.answer_content);
         txt_content.setText(answer.content);
 
@@ -77,20 +75,23 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
         return convertView;
     }
 
-    public void setActions(final View convertView, User user, Answer answer){
+    public void setActions(final View convertView, User user, final Answer answer){
         final String userId = user.id;
         final int userLevel = user.level;
         final User usr = user;
         final Answer ans = answer;
 
+
+        //final
+
         //Se setea el icono de padre destacado
-        setFatherHighlights( convertView,userLevel );
+        setFatherHighlights(convertView, userLevel);
 
         //Se setea el icono de like de la respuesta
         setLikeAnswer(convertView, user, ans);
 
         //Se setea el icono de sugerencia de la respuesta solo si el padre es = al padre de la pregunta
-        //setSuggestAnswer(convertView, user, ans);
+        setSuggestAnswer(convertView, user, ans);
 
         // Event Click on Like Answer
         final LinearLayout btn_like_answer = (LinearLayout) convertView.findViewById(R.id.btn_like_answer);
@@ -100,28 +101,41 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
             }
         });
 
+
+
         // Event Click on Suggest Publication
         final LinearLayout btn_suggest_publication = (LinearLayout) convertView.findViewById(R.id.btn_suggest_publication);
-        btn_suggest_publication.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setTitle("Desea sugerir a" + " " + usr.name + " " + "que publique esta respuesta?");
-                alertDialogBuilder.setMessage(R.string.mensaje_sugerir_post)
-                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                setSuggestAnswer(convertView, usr, ans);
-                            }
-                        })
-                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //close dialog
-                            }
-                        });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+        if( logged.id.equals(answer.question_user_id) ){
+
+            if( !(answer.suggestions.size() > 0) ){
+                btn_suggest_publication.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                        alertDialogBuilder.setTitle("Desea sugerir a" + " " + answer.user.name + " " + "que publique esta respuesta?");
+                        alertDialogBuilder.setMessage(R.string.mensaje_sugerir_post)
+                                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        actionSuggestAnswer(convertView, logged, answer);
+                                    }
+                                })
+                                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //close dialog
+                                    }
+                                });
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+                    }
+                });
             }
-        });
+
+
+        }else{
+            LinearLayout btnSugerir = (LinearLayout) convertView.findViewById(R.id.btn_suggest_publication);
+            btnSugerir.setVisibility(View.GONE);
+        }
+
 
         // Action Highlight Father
         final LinearLayout btn_highlight_father = (LinearLayout) convertView.findViewById(R.id.btn_highlight_father);
@@ -147,6 +161,7 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
             public void onClick(View view) {
                 Intent intent = new Intent(context, ProfileActivity.class);
                 intent.putExtra("user_id", userId);
+                intent.putExtra("logged_id", logged.id);
                 context.startActivity(intent);
             }
         });
@@ -180,15 +195,31 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
             ic.setBackgroundResource(R.mipmap.ico_like_grey_24);
         }
     }
-    // Action Suggest Answer
-    public void setSuggestAnswer(View convertView,User user,Answer answer){
+
+    public void setSuggestAnswer(View convertView,User user,Answer answer) {
         final User usr = user;
         final Answer ans = answer;
         final TextView tx = (TextView) convertView.findViewById(R.id.title_sugest_publication);
-
         final ImageView ic = (ImageView) convertView.findViewById(R.id.ico_suggest_publication);
-        suggest_answer_status = usr.getSuggestAnswerStatus(ans.id);
 
+        //tx.setText(Integer.toString(answer.suggestions.size()));
+        if( answer.suggestions.size() > 0 ){
+            ic.setBackgroundResource(R.mipmap.ico_highlight_father);
+            tx.setText("Publicación sugerida");
+        }else{
+            ic.setBackgroundResource(R.mipmap.ico_highlight_father_grey);
+        }
+
+    }
+
+    // Action Suggest Answer
+    public void actionSuggestAnswer(View convertView,User user,Answer answer){
+
+        Answer ans_async = new Answer(new createSuggest());
+        ans_async.id = answer.id;
+        ans_async.suggest(answer.user.id, user.id);
+        /*
+        suggest_answer_status = usr.getSuggestAnswerStatus(ans.id);
         //SI STATUS ES FALSE (NO SUGERIDA AUN) SE LLAMA AL DIALOGO Y SI ACEPTA SE CAMBIA EL STATUS A TRUE, ICONO EN PRIMARY,
         // EL TEXTO CAMBIA A RESPUESTA SUGERIDA y se bloquea el boton
 
@@ -201,7 +232,7 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
             Toast.makeText(context, "Ya sugeriste esta respuesta", Toast.LENGTH_SHORT).show();
             suggest_answer_status = false; //usr.setSuggestAnswerStatus(false);
             ic.setBackgroundResource(R.drawable.ico_suggest);
-        }
+        }*/
     }
 
     // Action Father HighLights
@@ -225,6 +256,43 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
                 break;
         }
     }
+
+
+    private class createSuggest extends RestfulClient {
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+
+            Toast.makeText(context, "Tu sugerencia fue realizada con éxito", Toast.LENGTH_SHORT).show();
+
+
+            /*final ImageView ic = (ImageView) this.view.findViewById(R.id.icon_up);
+
+            if(this.status == 200)
+                ic.setBackgroundResource(R.mipmap.ico_like_grey_24);
+
+            if(this.status == 201)
+                ic.setBackgroundResource(R.mipmap.ico_like_primary_24);
+
+            int likes = 0;
+            try {
+                if( result.has("data") ){
+                    JSONObject u = result.getJSONObject("data");
+                    if (u.has("likes")) likes = Integer.parseInt(u.getString("likes"));
+                    TextView txt_likes = (TextView) this.view.findViewById(R.id.txt_likes);
+                    txt_likes.setText(Integer.toString(likes));
+                }
+            }catch (JSONException e){ e.printStackTrace(); }*/
+
+        }
+    }
+
+
+
 
     private class userCheckLike extends RestfulClient {
 

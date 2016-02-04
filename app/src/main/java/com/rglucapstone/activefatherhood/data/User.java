@@ -141,6 +141,19 @@ public class User extends Model
         return user;
     }
 
+
+    public User load_suggest(){
+        User user = null;
+        RestfulClient rest = this.asynctask;
+        rest.method = "GET";
+        rest.uri = "/users/" + this.id + "/suggestions";
+        try{
+            rest.execute();
+        }catch (Exception e) {
+        }
+        return user;
+    }
+
     public User loadbyLogin(String login){
         User user = null;
         RestfulClient rest = this.asynctask;

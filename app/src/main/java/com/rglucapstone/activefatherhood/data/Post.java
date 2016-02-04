@@ -56,8 +56,11 @@ public class Post {
                     this.created_ago = date.getTime();
                 }catch (ParseException e){}
             }
-            if (q.has("themes")) {
-                this.themes = q.getString("themes").split(",");
+            if (q.has("themes") ){
+                this.themes = new String[0];
+                String themes = q.getString("themes");
+                if( themes.length() > 0 )
+                    this.themes = q.getString("themes").split(",");
             }
 
             if (q.has("likes")) this.likes = q.getString("likes");
@@ -119,4 +122,26 @@ public class Post {
         }
         return post;
     }
+
+    public boolean send() {
+        boolean send = false;
+        RestfulClient rest = this.asynctask;
+        rest.method = "POST";
+        rest.uri = "/posts";
+        try{
+            JSONObject json = new JSONObject();
+            try {
+                json.put("content", this.content);
+                json.put("title", this.title);
+                json.put("user_id", this.user.id);
+            } catch (JSONException e) {}
+
+            rest.execute(json.toString());
+            if( rest.status == 201 )
+                send = true;
+        }catch (Exception e) {
+        }
+        return send;
+    }
+
 }

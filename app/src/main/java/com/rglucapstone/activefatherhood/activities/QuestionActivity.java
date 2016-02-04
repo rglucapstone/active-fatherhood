@@ -60,14 +60,14 @@ public class QuestionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        this.logged = new User(intent.getStringExtra("logged_id"));
+
         //TextView txt_qanswers = (TextView) findViewById(R.id.title_answers);
         //txt_qanswers.setText(obj.user.name);
         this.question = new Question(this, new loadQuestion());
         this.question.load(intent.getStringExtra("question_id"));
         setToolbar();
         setActions();
-
-        this.logged = new User(Integer.toString(2)); // USER LOGGED
 
         //listAnswerAdapter = new AnswerItemAdapter(this, new String[10]);
         //listAnswer = (ListView) findViewById(R.id.listAnswer);
@@ -77,6 +77,7 @@ public class QuestionActivity extends AppCompatActivity {
     public void answer(View view) {
         Intent intent = new Intent(this, AnswerActivity.class);
         intent.putExtra("question_id", this.question.id);
+        intent.putExtra("logged_id", this.logged.id);
         startActivity(intent);
     }
 
@@ -119,6 +120,7 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(context, ProfileActivity.class); //create an Intent object
                 intent.putExtra("user_id", question.user.id); //add data to the Intent object
+                intent.putExtra("logged_id", logged.id); //add data to the Intent object
                 context.startActivity(intent); //start the second activity
             }
         });

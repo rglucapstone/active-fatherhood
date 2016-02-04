@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:paddingBottom="8dp"
+    android:paddingTop="3dp"
+    android:paddingRight="10dp"
+    android:clickable="true"
+    android:id="@+id/item_suggest" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginTop="1dp"
+        android:paddingRight="10dp">
+        <!-- Fecha -->
+        <!--<TextView
+            android:id="@+id/txt_qdatetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="2 min"
+            android:textColor="#999999"
+            android:textSize="11sp" />-->
+        <!-- Like -->
+        <ImageButton
+            android:id="@+id/btn_like_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@mipmap/ico_like_light_grey_24"/>
+        <!-- ELIMINAR LUEGO, TEMPORAL para pruebas -->
+        <ImageButton
+            android:id="@+id/btn_suggest_post"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:visibility="gone"
+            android:background="@drawable/ico_suggest"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txt_qcontent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Contenido de prueba con mucho texto para ver como se ve las pregunta"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:singleLine="false"
+            android:layout_marginTop="0dp"
+            android:textColor="#444444"
+            android:textSize="14sp" />
+        <ImageButton
+            android:id="@+id/btn_lik"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:visibility="gone"
+            android:background="@drawable/ico_suggest"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:paddingBottom="5dp">
+
+        <!-- Tags -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:id="@+id/ly_themes"
+            android:gravity="left" >
+            <ImageView
+                android:id="@+id/ic_question_tag1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/txt_question_tag1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:text="Salud"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/ic_question_tag2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/txt_question_tag2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:text="Disciplina"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/ic_question_tag3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icon_tag_blue_2"
+                android:layout_marginTop="3dp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/txt_question_tag3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:text="Aprendizaje"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Reporte -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/ly_answers"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="left" >
+            <com.github.curioustechizen.ago.RelativeTimeTextView
+                android:id="@+id/txt_question_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="11sp"
+                android:text="2016-01-30 13:45:30" />
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/link_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:gravity="right">
+            <ImageView
+                android:id="@+id/ic_user"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:src="@drawable/ico_profile_grey"
+                android:layout_marginRight="5dp" />
+            <TextView
+                android:id="@+id/txt_quser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="13sp"
+                android:text="username"
+                android:paddingTop="2dp"
+                android:paddingBottom="4dp"
+                android:layout_toRightOf="@+id/ic_user"
+                android:textColor="@color/colorThird" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

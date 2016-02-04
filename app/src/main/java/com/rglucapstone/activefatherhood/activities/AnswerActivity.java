@@ -36,6 +36,7 @@ public class AnswerActivity extends AppCompatActivity {
     ArrayList selectedCategories;
     final Context context = this;
     private Button button_answering;
+    public User logged;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class AnswerActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.answer = new Answer();
         this.answer.question_id = intent.getStringExtra("question_id");
+
+        this.logged = new User(intent.getStringExtra("logged_id"));
         //EditText txt = (EditText) findViewById(R.id.input_answer);
         //txt.setText(intent.getStringExtra("question_id"));
 
@@ -61,18 +64,12 @@ public class AnswerActivity extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 EditText textasnswer = (EditText) findViewById(R.id.input_answer);
-                int user_id = 5;
 
-                // instance Question object
                 Answer ans = new Answer(context, new sendAnswer());
                 ans.content = textasnswer.getText().toString();
                 ans.created = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-                ans.user = new User(Integer.toString(user_id));
+                ans.user = logged;
                 ans.question_id = answer.question_id;
-
-                //EditText txt = (EditText) findViewById(R.id.input_answer);
-                //txt.setText(ans.question_id);
-
                 ans.send();
             }
         });

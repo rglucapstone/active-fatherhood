@@ -295,6 +295,13 @@ public class HomeActivity extends AppCompatActivity {
      */
     public void ask(View view) {
         Intent intent = new Intent(this, AskActivity.class);
+        intent.putExtra("user_id", user.id);
+        startActivity(intent);
+    }
+
+    public void post(View view) {
+        Intent intent = new Intent(this, DoPost.class);
+        intent.putExtra("user_id", user.id);
         startActivity(intent);
     }
 }

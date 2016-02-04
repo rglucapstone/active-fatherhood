@@ -116,6 +116,7 @@ public class ListQuestionsFragment extends ListFragment
         Question question = (Question) getListView().getItemAtPosition(position);
         Intent intent = new Intent(getActivity(), QuestionActivity.class);
         intent.putExtra("question_id", question.id);
+        intent.putExtra("logged_id", user.id);
         startActivity(intent);
     }
 

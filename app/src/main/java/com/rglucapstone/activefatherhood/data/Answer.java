@@ -21,7 +21,9 @@ public class Answer extends Model{
     public String created;
     public User user;
     public String question_id;
+    public String question_user_id;
     public ArrayList<Like> likes;
+    public ArrayList<Suggest> suggestions;
 
     public Context context;
     public RestfulClient asynctask;
@@ -47,8 +49,12 @@ public class Answer extends Model{
             if (q.has("content")) this.content = q.getString("content");
             if (q.has("created")) this.created = q.getString("created");
             if (q.has("question_id")) this.question_id = q.getString("question_id");
+            if (q.has("question_user_id")) this.question_user_id = q.getString("question_user_id");
             if (q.has("likes")){
                 this.likes = Like.fromJson(q.getJSONArray("likes"));
+            }
+            if (q.has("suggestions")){
+                this.suggestions = Suggest.fromJson(q.getJSONArray("suggestions"));
             }
             this.user = new User(q);
         } catch (JSONException e) {
@@ -104,6 +110,23 @@ public class Answer extends Model{
             json.put("user_id", user_id);
             rest.execute(json.toString());
             if( rest.status == 200 )
+                like = true;
+        }catch (Exception e) {
+        }
+        return like;
+    }
+
+    public boolean suggest(String user_owner, String user_request) {
+        boolean like = false;
+        RestfulClient rest = this.asynctask;
+        rest.method = "POST";
+        rest.uri = "/answers/"+this.id+"/suggestions";
+        try{
+            JSONObject json = new JSONObject();
+            json.put("user_owner_id", user_owner);
+            json.put("user_request_id", user_request);
+            rest.execute(json.toString());
+            if( rest.status == 201 )
                 like = true;
         }catch (Exception e) {
         }
