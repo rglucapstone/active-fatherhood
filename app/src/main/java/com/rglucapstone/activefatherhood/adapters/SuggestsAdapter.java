@@ -64,6 +64,9 @@ public class SuggestsAdapter extends ArrayAdapter{
                 Intent intent = new Intent(context, DoPost.class); //create an Intent object
                 intent.putExtra("user_id", logged.id); //add data to the Intent object
                 intent.putExtra("content", suggest.content); //add data to the Intent object
+                intent.putExtra("source", "notification");
+                intent.putExtra("user_request_id", suggest.user_request.id);
+                intent.putExtra("user_answer_id", suggest.answer_id);
                 context.startActivity(intent); //start the second activity
             }
         });

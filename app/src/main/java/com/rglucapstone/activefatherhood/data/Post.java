@@ -26,6 +26,10 @@ public class Post {
     public long created_ago;
     public String[] themes;
 
+    public String user_request;
+    public String answer_request;
+
+
     public User user;
     public ArrayList<Comment> listComments;
     public RestfulClient asynctask;
@@ -134,6 +138,8 @@ public class Post {
                 json.put("content", this.content);
                 json.put("title", this.title);
                 json.put("user_id", this.user.id);
+                json.put("user_request_id", this.user_request);
+                json.put("answer_request_id", this.answer_request);
             } catch (JSONException e) {}
 
             rest.execute(json.toString());

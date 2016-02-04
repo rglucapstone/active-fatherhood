@@ -220,7 +220,7 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     // Action Suggest Answer
     public void actionSuggestAnswer(View convertView,User user,Answer answer){
 
-        Answer ans_async = new Answer(new createSuggest());
+        Answer ans_async = new Answer(new createSuggest(convertView));
         ans_async.id = answer.id;
         ans_async.suggest(answer.user.id, user.id);
         /*
@@ -265,6 +265,12 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
 
     private class createSuggest extends RestfulClient {
 
+        private View view;
+
+        public createSuggest(View view){
+            this.view = view;
+        }
+
         @Override
         protected void onPreExecute() {
         }
@@ -273,6 +279,15 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
         protected void onPostExecute(JSONObject result) {
 
             Toast.makeText(context, "Tu sugerencia fue realizada con éxito", Toast.LENGTH_SHORT).show();
+
+            final TextView tx = (TextView) this.view.findViewById(R.id.title_sugest_publication);
+            final ImageView ic = (ImageView) this.view.findViewById(R.id.ico_suggest_publication);
+
+            ic.setBackgroundResource(R.mipmap.ico_highlight_father);
+            tx.setText("Publicación sugerida");
+
+            final LinearLayout btn_suggest_publication = (LinearLayout) this.view.findViewById(R.id.btn_suggest_publication);
+            btn_suggest_publication.setOnClickListener(null);
 
 
             /*final ImageView ic = (ImageView) this.view.findViewById(R.id.icon_up);

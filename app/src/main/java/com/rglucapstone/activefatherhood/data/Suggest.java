@@ -20,6 +20,7 @@ public class Suggest {
     public String created;
     public User user_request;
     public long created_ago;
+    public String answer_id;
 
     public RestfulClient asynctask;
 
@@ -33,6 +34,7 @@ public class Suggest {
             if( q.has("answer") ){
                 JSONObject a = q.getJSONObject("answer");
                 this.content = a.getString("content");
+                this.answer_id = a.getString("id");
             }
             if (q.has("created")){
                 this.created = q.getString("created");

@@ -42,6 +42,9 @@ public class DoPost extends AppCompatActivity {
         Intent intent = getIntent();
         this.user = new User(intent.getStringExtra("user_id"));
         String content = intent.getStringExtra("content");
+        final String source = intent.getStringExtra("source");
+        final String user_request = intent.getStringExtra("user_request_id");
+        final String answer_request = intent.getStringExtra("user_answer_id");
 
 
         TextView input_descripction_post = (TextView) findViewById(R.id.input_descripction_post);
@@ -60,6 +63,10 @@ public class DoPost extends AppCompatActivity {
                 post.title = title.getText().toString();
                 post.content = description.getText().toString();
                 post.user = new User(user.id);
+                if( source.equals("notification") ){
+                    post.user_request = user_request;
+                    post.answer_request = answer_request;
+                }
                 post.send();
             }
         });
