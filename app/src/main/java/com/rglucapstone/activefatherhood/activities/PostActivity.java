@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.rglucapstone.activefatherhood.R;
@@ -20,6 +21,7 @@ import com.rglucapstone.activefatherhood.adapters.AnswerItemAdapter;
 import com.rglucapstone.activefatherhood.adapters.CommentItemAdapter;
 import com.rglucapstone.activefatherhood.data.Post;
 import com.rglucapstone.activefatherhood.data.Question;
+import com.rglucapstone.activefatherhood.data.User;
 import com.rglucapstone.activefatherhood.sync.RestfulClient;
 
 import org.json.JSONException;
@@ -85,6 +87,10 @@ public class PostActivity extends AppCompatActivity {
             txt_tag.setText(post.themes[index]);
             txt_tag.setVisibility(View.VISIBLE);
         }
+        //set image user
+        final ImageView img_user = (ImageView) findViewById(R.id.ic_post_user);
+        User user_post = post.user;
+        setImageUser(img_user, user_post.id);
 
         TextView txt_comments = (TextView) findViewById(R.id.total_comments);
         txt_comments.setText(this.post.listComments.size() + " comentarios");
@@ -198,6 +204,56 @@ public class PostActivity extends AppCompatActivity {
             loadingLayout.setVisibility(View.GONE);
         }
 
+    }
+
+    public void setImageUser(ImageView img_view,String id){
+        switch (id){
+            case "1":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "2":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "3":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "4":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "5":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "6":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "8":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "9":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "10":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "11":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "13":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "15":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "14":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "16":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            default:
+                img_view.setBackgroundResource(R.drawable.ico_profile_grey);
+                break;
+        }
     }
 
 }

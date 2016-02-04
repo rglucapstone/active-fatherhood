@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
-    android:layout_marginTop="3dp">
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="5dp"
+    android:paddingTop="3dp"
+    android:paddingBottom="8dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -15,9 +18,9 @@
 
         <ImageView
             android:id="@+id/iconUser"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ico_profile2_32"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/ico_profile_grey"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_gravity="left" />
@@ -39,8 +42,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Ronald Gonzales"
                     android:textSize="14sp"
-                    android:textColor="#222222"
-                    android:textStyle="bold" />
+                    android:textColor="@color/colorThird"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -88,9 +90,9 @@
         android:layout_marginRight="10dp"
         android:gravity="center">
 
-        <!--Me Gusta-->
+        <!--Me Gusta
         <RelativeLayout
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="29dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -104,10 +106,10 @@
                     android:text=""
                     android:gravity="right" />
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:id="@+id/icon_up"
-                    android:src="@drawable/ico_like"
+                    android:src="@drawable/ico_like_grey_24"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="4dp" />
                 <TextView
@@ -121,7 +123,7 @@
                     android:text="Me Gusta"/>
             </LinearLayout>
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
         <!--Destacar/Sugerir Votar Padre-->
     </LinearLayout>

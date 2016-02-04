@@ -1,8 +1,11 @@
 package com.rglucapstone.activefatherhood.data;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.sync.RestfulClient;
 
 import org.json.JSONArray;
@@ -39,6 +42,8 @@ public class User extends Model
 
     public RestfulClient asynctask;
     public Context context;
+
+    public ImageView img_user;
 
     public User(RestfulClient task) {
         this.asynctask = task;
@@ -208,5 +213,55 @@ public class User extends Model
         }else
           count --;
         return count;
+    }
+
+    public void setImageUser(ImageView img_view,String id){
+        switch (id){
+            case "1":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "2":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "3":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "4":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "5":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "6":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "8":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "9":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "10":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "11":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "13":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "15":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "14":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "16":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            default:
+                img_view.setBackgroundResource(R.drawable.ico_profile_grey);
+                break;
+        }
     }
 }

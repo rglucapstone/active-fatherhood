@@ -105,8 +105,8 @@ public class ListGurusAdapter extends BaseExpandableListAdapter {
         }
 
         GridView  gridView = (GridView) convertView.findViewById(R.id.gridView);
-        gridView.setNumColumns(4);
-        gridView.setHorizontalSpacing(4);
+        gridView.setNumColumns(3);
+        gridView.setHorizontalSpacing(2);
 
         ListContainerGurus adapter = new ListContainerGurus(_context, listGurus);
         gridView.setAdapter(adapter);

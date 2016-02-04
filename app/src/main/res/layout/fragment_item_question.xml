@@ -189,11 +189,12 @@
             android:clickable="true"
             android:layout_alignParentRight="true"
             android:gravity="right">
+
             <ImageView
                 android:id="@+id/ic_user"
                 android:layout_width="19dp"
                 android:layout_height="19dp"
-                android:src="@drawable/ico_profile_grey"
+                android:background="@drawable/ico_profile_grey"
                 android:layout_marginRight="5dp" />
             <TextView
                 android:id="@+id/txt_quser"

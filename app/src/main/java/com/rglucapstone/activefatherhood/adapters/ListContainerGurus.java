@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
@@ -74,8 +75,6 @@ public class ListContainerGurus extends BaseAdapter{
             item_guru = (ViewHolder) convertView.getTag();
         }
 
-
-
         TextView txt_guser = (TextView) convertView.findViewById(R.id.txt_guser);
         txt_guser.setText(user.login);
 
@@ -86,10 +85,64 @@ public class ListContainerGurus extends BaseAdapter{
         String str_rate = new DecimalFormat("##.##").format((user.rating*this.num_starts)/100);
         rate_guru.setRating(Float.parseFloat(str_rate));
 
+        // set image user temporal
+        final ImageView img_user = (ImageView) convertView.findViewById(R.id.ic_user);
+        setImageUser(img_user, user.id);
+
         return convertView;
     }
 
     static class ViewHolder {
         LinearLayout item_guru;
+    }
+
+    public void setImageUser(ImageView img_view,String id){
+        switch (id){
+            case "1":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "2":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "3":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "4":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "5":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "6":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "8":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "9":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "10":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "11":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "13":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "15":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "14":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "16":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            default:
+                img_view.setBackgroundResource(R.drawable.ico_profile_grey);
+                break;
+        }
     }
 }

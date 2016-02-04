@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.rglucapstone.activefatherhood.R;
@@ -28,6 +29,9 @@ public class PostsAdapter extends ArrayAdapter<Post> {
     private Context context;
     public View view;
     public User logged;
+    public User user_post;
+    public String user_id;
+    public ImageView link_user;
 
     public PostsAdapter(Context context, ArrayList<Post> posts){
         super(context, R.layout.fragment_item_post, posts);
@@ -79,24 +83,25 @@ public class PostsAdapter extends ArrayAdapter<Post> {
             txt_tag.setVisibility(View.VISIBLE);
         }
 
+        link_user = (ImageView) convertView.findViewById(R.id.ic_post_user);
 
+        // set image by user id (temporal)
+        user_post = post.user;
+        setImageUser(link_user,user_post.id);
+        //user_post.setImageUser(link_user,user_post.id);
 
-        final ImageView link_user = (ImageView) convertView.findViewById(R.id.ic_post_user);
         link_user.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
                 Intent intent = new Intent(context, ProfileActivity.class); //create an Intent object
                 intent.putExtra("user_id", post.user.id); //add data to the Intent object
                 intent.putExtra("logged_id", logged.id);
                 context.startActivity(intent); //start the second activity
             }
         });
-
         return convertView;
     }
 
     public void setTags(){
-
         int total = 3;
         for (int i = 1; i <= total; i++) {
             int imgtag = getContext().getResources().getIdentifier("ic_post_tag" + i, "id", getContext().getPackageName());
@@ -106,8 +111,57 @@ public class PostsAdapter extends ArrayAdapter<Post> {
             int txttag = getContext().getResources().getIdentifier("txt_post_tag" + i, "id", getContext().getPackageName());
             TextView txt_tag = (TextView) this.view.findViewById(txttag);
             txt_tag.setVisibility(View.GONE);
-
         }
-
     }
+
+    public void setImageUser(ImageView img_view,String id){
+        switch (id){
+            case "1":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "2":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "3":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "4":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "5":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "6":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "8":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "9":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "10":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "11":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "13":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "15":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "14":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "16":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            default:
+                img_view.setBackgroundResource(R.drawable.ico_profile_grey);
+                break;
+        }
+    }
+
 }

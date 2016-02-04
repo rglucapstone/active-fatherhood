@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //si se elige una categoria se cambia el title al toolbar
-        /*view_by = intent.getStringExtra("viewBy");
+        view_by = intent.getStringExtra("viewBy");
 
         if(view_by!=null) {
             if (view_by.equals("categorie")) {
@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle(item_categorie);
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
-        }*/
+        }
 
         // tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_tabs);
@@ -139,7 +139,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Fragment gurus = new ListGurusFragment();
         gurus.setArguments(bundle);
-        adapter.addFragment(gurus, "Padres Gurús");
+        adapter.addFragment(gurus, "Top Padres");
         //Fragment results = new SearchResultsFragment();
         //adapter.addFragment(results, "Padres Gurús");
 

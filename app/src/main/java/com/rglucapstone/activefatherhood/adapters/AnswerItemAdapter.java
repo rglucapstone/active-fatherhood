@@ -36,6 +36,7 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     private LayoutInflater inflater;
     private Context context;
     public User logged;
+    public User user_anser;
 
     // Status para configurar acciones en las respuestas
     private boolean suggest_answer_status = false;//answer.user_suggest_answer;
@@ -165,6 +166,10 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
                 context.startActivity(intent);
             }
         });
+
+        // set image user temporal
+        user_anser = ans.user;
+        setImageUser(link_user, user_anser.id);
 
     }
 
@@ -327,6 +332,56 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
                 }
             }catch (JSONException e){ e.printStackTrace(); }
 
+        }
+    }
+
+    public void setImageUser(ImageButton img_view,String id){
+        switch (id){
+            case "1":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "2":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "3":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "4":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "5":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "6":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "8":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "9":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "10":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "11":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "13":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "15":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "14":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "16":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            default:
+                img_view.setBackgroundResource(R.drawable.ico_profile_grey);
+                break;
         }
     }
 

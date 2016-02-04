@@ -41,6 +41,7 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
     public Question question;
     public View view;
     public User user;
+    public User user_question;
 
     public QuestionsAdapter(Context context, ArrayList<Question> questions){
         super(context, R.layout.fragment_item_question, questions);
@@ -117,6 +118,11 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
             }
         });
 
+        // set image user temporal
+        final  ImageView img_user = (ImageView) convertView.findViewById(R.id.ic_user);
+        user_question = question.user;
+        setImageUser(img_user, user_question.id);
+
 
         // THEMES
         /*txt_qtags.setText(question.themes[0]);
@@ -148,7 +154,55 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
         }
     }
 
-
+    public void setImageUser(ImageView img_view,String id){
+        switch (id){
+            case "1":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "2":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "3":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "4":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "5":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "6":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "8":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "9":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "10":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "11":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "13":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "15":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "14":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "16":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            default:
+                img_view.setBackgroundResource(R.drawable.ico_profile_grey);
+                break;
+        }
+    }
 
 
 }

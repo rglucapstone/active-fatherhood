@@ -8,17 +8,17 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:padding="7dp"
         android:gravity="center"
         android:background="@drawable/background_border_grey">
 
         <ImageView
             android:id="@+id/ic_user"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_profile"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ico_profile_grey"/>
 
         <TextView
             android:id="@+id/txt_guser"
@@ -26,9 +26,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="_@rgonzales98"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:layout_marginTop="3dp"
-            android:layout_marginLeft="3dp"
             android:textColor="@color/colorPrimary"/>
 
         <RatingBar
@@ -46,7 +45,7 @@
             android:id="@+id/txt_grating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="9sp"
+            android:textSize="11sp"
             android:textColor="@color/mediumGrey"
             android:text="Super Papá"
             />

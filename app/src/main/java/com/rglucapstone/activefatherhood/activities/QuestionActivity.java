@@ -50,6 +50,9 @@ public class QuestionActivity extends AppCompatActivity {
     private ImageButton btn_like;
     private ImageButton btn_suggest;
     public User logged;
+
+    public User user_question;
+    public ImageView ic_user;
     //public AnswerItemAdapter adapter;
 
     @Override
@@ -125,46 +128,6 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });
 
-        /*btn_like = (ImageButton) findViewById(R.id.btn_like_question);
-        btn_like.setVisibility(View.VISIBLE);
-        btn_like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                // function to increment like to person
-                if(btn_like.getBackground().equals(R.mipmap.ico_like_light_grey_24)) {
-                    btn_like.setBackgroundResource(R.mipmap.ico_like_blue_24);
-                }else {
-                    btn_like.setBackgroundResource(R.mipmap.ico_like_light_grey_24);
-                }
-            }
-        });*/
-
-        /***** ELIMINAR LUEGO, TEMPORAL para pruebas
-        btn_suggest = (ImageButton) findViewById(R.id.btn_suggest_post);
-        btn_suggest.setVisibility(View.VISIBLE);
-
-        btn_suggest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setTitle(R.string.seguro_sugerir_post);
-                alertDialogBuilder.setMessage(R.string.mensaje_sugerir_post)
-                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                //QuestionActivity.this.finish();
-                                QuestionActivity.this.closeContextMenu();
-                            }
-                        })
-                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                QuestionActivity.this.closeContextMenu();
-                            }
-                        });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-            }
-        });*/
     }
 
     private void setData(){
@@ -181,6 +144,12 @@ public class QuestionActivity extends AppCompatActivity {
 
         RelativeTimeTextView v = (RelativeTimeTextView) layout.findViewById(R.id.txt_question_date);
         v.setReferenceTime(question.created_ago);
+
+        // set image user temporal
+        final ImageView img_user = (ImageView) findViewById(R.id.ic_user);
+        User user_question = question.user;
+        setImageUser(img_user, user_question.id);
+
 
         //TextView txt_qdatetime = (TextView) layout.findViewById(R.id.txt_qdatetime);
         //txt_qdatetime.setText(this.question.created);
@@ -247,6 +216,55 @@ public class QuestionActivity extends AppCompatActivity {
             txt_tag.setVisibility(View.GONE);
 
         }
+    }
 
+    public void setImageUser(ImageView img_view,String id){
+        switch (id){
+            case "1":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "2":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "3":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            case "4":
+                img_view.setBackgroundResource(R.drawable.padre4);
+                break;
+            case "5":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "6":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "8":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "9":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "10":
+                img_view.setBackgroundResource(R.drawable.padre5);
+                break;
+            case "11":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "13":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "15":
+                img_view.setBackgroundResource(R.drawable.padre8);
+                break;
+            case "14":
+                img_view.setBackgroundResource(R.drawable.padre10);
+                break;
+            case "16":
+                img_view.setBackgroundResource(R.drawable.padre2);
+                break;
+            default:
+                img_view.setBackgroundResource(R.drawable.ico_profile_grey);
+                break;
+        }
     }
 }

@@ -59,42 +59,24 @@ public class ProfileActivity extends Activity {
     public ImageView img_user;
 
     public User logged;
-
+    public String user_id;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
         Intent intent = getIntent();
-        String user_id = intent.getStringExtra("user_id");
-
         this.user = new User(this, new loadUser());
-        this.user.id = user_id;
+        user_id = intent.getStringExtra("user_id");
         this.user.load(user_id);
 
         this.logged = new User(intent.getStringExtra("logged_id"));
 
-        //************************ *Set photo user (parche) ***************************************
-        final String usr_id = this.user.id;
-        final ImageView usr_img = (ImageView) this.findViewById(R.id.img_profile);
-        //Toast.makeText(getBaseContext(), "id:" + this.user.id + "", Toast.LENGTH_SHORT).show();
-       /* switch (usr_id){
-            case "1":
-                usr_img.setBackgroundResource(R.drawable.padre4);
-                break;
-            case "2":
-                usr_img.setBackgroundResource(R.drawable.padre5);
-                break;
-            case "3":
-                usr_img.setBackgroundResource(R.drawable.padre8);
-                break;
-            case "4":
-                usr_img.setBackgroundResource(R.drawable.padre10);
-                break;
-            default:
-                usr_img.setBackgroundResource(R.drawable.padre2);
-                break;
-        }*/
+
+        //set photo user (temporal)
+        img_user = (ImageView) this.findViewById(R.id.img_profile);
+        this.user.setImageUser(img_user, user_id);
+
     }
 
     /*@Override
