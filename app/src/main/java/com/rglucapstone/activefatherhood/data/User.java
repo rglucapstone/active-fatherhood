@@ -28,8 +28,13 @@ public class User extends Model
 
     public String buen_padre;
     public String kind_dad;
-    public int level;
-    public float rating;
+
+    public int level = 1;
+    public String rating;
+
+    public String rate;
+    public String kind_dad_id;
+    public String birthdate;
 
     public String[] themes;
 
@@ -47,6 +52,10 @@ public class User extends Model
 
     public User(RestfulClient task) {
         this.asynctask = task;
+    }
+
+    public User(){
+
     }
 
     public User(String id){
@@ -93,6 +102,11 @@ public class User extends Model
             json.put("email", this.email);
             json.put("password", this.password);
             json.put("edad", this.edad);
+            json.put("rate", this.rate);
+            json.put("kind_dad_id", this.kind_dad_id);
+            json.put("name", this.name);
+            json.put("buen_padre", this.buen_padre);
+            json.put("birthdate", this.birthdate);
         } catch (JSONException e) {}
         return json;
     }
@@ -108,7 +122,9 @@ public class User extends Model
             if (u.has("edad")) this.edad = u.getString("edad");
             if (u.has("buen_padre")) this.buen_padre = u.getString("buen_padre");
             if (u.has("kind_dad")) this.kind_dad = u.getString("kind_dad");
-            if (u.has("rate")) this.rating = Float.parseFloat(u.getString("rate"));
+            if (u.has("rate")) this.rating = u.getString("rate");
+            if (u.has("rate")) this.rate = u.getString("rate");
+            //if (u.has("rate")) this.rating = Float.parseFloat(u.getString("rate"));
             if( u.has("guru") ){
                 JSONObject g = u.getJSONObject("guru");
                 this.guru = new Guru();
@@ -260,7 +276,7 @@ public class User extends Model
                 img_view.setBackgroundResource(R.drawable.padre2);
                 break;
             default:
-                img_view.setBackgroundResource(R.drawable.ico_profile_grey);
+                img_view.setBackgroundResource(R.drawable.ico_avatar_white);
                 break;
         }
     }

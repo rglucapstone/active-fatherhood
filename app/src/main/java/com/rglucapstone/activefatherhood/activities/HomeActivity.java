@@ -129,6 +129,9 @@ public class HomeActivity extends AppCompatActivity {
         bundle.putString("str_themes", this.str_themes);
         bundle.putString("logged_id", user.id);
 
+        //TextView txt = (TextView) findViewById(R.id.title_preference2);
+        //txt.setText(user.id + " : " + user.email);
+
         ListFragment questions = new ListQuestionsFragment();
         questions.setArguments(bundle);
         adapter.addFragment(questions, "Preguntas");

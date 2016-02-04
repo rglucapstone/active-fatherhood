@@ -57,6 +57,9 @@ public class ListQuestionsFragment extends ListFragment
 
         user = new User(getArguments().getString("logged_id"));
 
+        //TextView test = (TextView) view.findViewById(R.id.test);
+        //test.setText(user.id + " : " + user.email);
+
         String str_themes = getArguments().getString("str_themes");
         String viewBy = getArguments().getString("viewBy");
         Question question = new Question(new loadQuestions());

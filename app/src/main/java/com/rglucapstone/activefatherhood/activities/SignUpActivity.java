@@ -72,6 +72,11 @@ public class SignUpActivity extends Activity {
                         user.email = inputEmail.getText().toString();
                         user.password = inputPassword.getText().toString();
                         user.edad = inputEdad.getText().toString();
+                        user.rate = "0";
+                        user.kind_dad_id = "1";
+                        user.buen_padre = "";
+                        user.birthdate = "0000-00-00";
+                        user.name = "";
                         user.send();
 
                         //Toast.makeText(getApplicationContext(), user.login , Toast.LENGTH_SHORT).show();
@@ -95,7 +100,18 @@ public class SignUpActivity extends Activity {
         protected void onPostExecute(JSONObject result) {
             toast.cancel();
             toast = Toast.makeText(context, "El usuario se registró correctamente", Toast.LENGTH_SHORT);
-            context.startActivity(new Intent(context, PreferencesActivity.class));
+
+            String user_id = "";
+            try {
+                if( result.has("data") ){
+                    JSONObject u = result.getJSONObject("data");
+                    JSONObject user = u.getJSONObject("user");
+                    user_id = user.getString("id");
+                }
+            }catch (JSONException e){ e.printStackTrace(); }
+            Intent intent = new Intent(context, PreferencesActivity.class);
+            intent.putExtra("user_id", user_id);
+            context.startActivity(intent);
         }
     }
 

@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="¿Qué consideras es ser un buen Padre?"
+                android:text="Para tí, qué es ser un buen padre?"
                 android:layout_marginTop="25dp"
                 android:textSize="16dp"
                 android:paddingBottom="8dp"

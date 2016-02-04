@@ -145,7 +145,7 @@ public class ProfileActivity extends Activity {
         guru_progress_text.setText(this.user.guru.name);
 
         RatingBar rate_guru = (RatingBar) findViewById(R.id.rating_guru);
-        String str_rate = new DecimalFormat("##.##").format((user.rating*this.num_starts)/100);
+        String str_rate = new DecimalFormat("##.##").format((Float.valueOf(user.rating)*this.num_starts)/100);
         rate_guru.setRating(Float.parseFloat(str_rate));
 
         //guru_progress_text.setText(Integer.toString(this.user.themes.length));

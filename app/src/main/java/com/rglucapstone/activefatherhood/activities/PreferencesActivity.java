@@ -32,6 +32,10 @@ public class PreferencesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         user = new User(intent.getStringExtra("user_id"));
 
+        //TextView txt = (TextView) findViewById(R.id.title_preference);
+        //txt.setText(user.id + " : " + user.email);
+
+
         setToolbar();
         setPreferences();
     }
@@ -53,8 +57,8 @@ public class PreferencesActivity extends AppCompatActivity {
         //test.setText(this.str_prefers);
 
         Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("user_id", this.user.id);
-        intent.putExtra("str_themes", this.str_prefers);
+        intent.putExtra("user_id", user.id);
+        intent.putExtra("str_themes", str_prefers);
         intent.putExtra("viewBy", "preference");
         startActivity(intent);
     }

@@ -82,7 +82,7 @@ public class ListContainerGurus extends BaseAdapter{
         txt_grating.setText(user.kind_dad);
 
         RatingBar rate_guru = (RatingBar) convertView.findViewById(R.id.ratingBar);
-        String str_rate = new DecimalFormat("##.##").format((user.rating*this.num_starts)/100);
+        String str_rate = new DecimalFormat("##.##").format((Float.valueOf(user.rating)*this.num_starts)/100);
         rate_guru.setRating(Float.parseFloat(str_rate));
 
         // set image user temporal
