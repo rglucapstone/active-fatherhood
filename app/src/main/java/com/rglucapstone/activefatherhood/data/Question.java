@@ -85,6 +85,7 @@ public class Question extends Model implements Serializable {
                 if( themes.length() > 0 )
                     this.themes = q.getString("themes").split(",");
             }
+            if (q.has("total_answers")) this.total_answers = q.getString("total_answers");
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -6,22 +6,10 @@
     android:background="#ffffff"
     android:id="@+id/content_profile">
 
-    <include
+     <include
         android:id="@+id/loading_profile"
         layout="@layout/loading_view">
-    </include>
-
-    <!--<TextView
-        android:id="@+id/txt_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@color/colorPrimaryLabel"
-        android:textSize="19dp"
-        android:focusable="true"
-        android:layout_gravity="center"
-        android:paddingTop="7dp"
-        android:textStyle="bold" />-->
+     </include>
 
     <!-- Datos -->
     <LinearLayout
@@ -96,7 +84,7 @@
     <!-- Padres Guru-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:paddingTop="2dp"
         android:paddingLeft="15dp"
         android:paddingBottom="0dp"
@@ -131,6 +119,11 @@
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp"
+                    android:gravity="left">
                 <!--Progress Guru-->
                 <RatingBar
                     android:id="@+id/rating_guru"
@@ -142,6 +135,18 @@
                     android:stepSize="0.1"
                     android:isIndicator="true"
                     style="?android:attr/ratingBarStyleIndicator" />
+                <TextView
+                    android:id="@+id/txt_profile_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30%"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/normalText"
+                    android:textIsSelectable="true"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="10dp"/>
+                </LinearLayout>
 
                 <!-- Themes -->
                 <LinearLayout
@@ -243,33 +248,7 @@
                         android:textColor="@color/colorPrimary"
                         android:layout_gravity="center" />
                 </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/btn_publicaciones_guru"
-                    android:layout_width="133dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:background="@drawable/background_button_white"
-                    android:padding="8dp"
-                    android:clickable="true"
-                    android:onClick="publicationsGuru">
-                    <ImageView
-                        android:id="@+id/ico_publication"
-                        android:layout_width="19dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ico_post"/>
-                    <TextView
-                        android:id="@+id/ico_publication_profile"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Publicaciones"
-                        android:textSize="13dp"
-                        android:layout_marginLeft="7dp"
-                        android:layout_marginTop="0dp"
-                        android:textColor="@color/colorPrimary"
-                        android:layout_gravity="center"/>
-                </LinearLayout>
+
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
@@ -370,6 +349,81 @@
                     android:layout_below="@+id/txt_likes"/>
             </RelativeLayout>
         </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ly_actions_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:background="@drawable/background_border_bottom_top"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/btn_publicaciones_guru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".40"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_button_white"
+            android:padding="6dp"
+            android:clickable="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:onClick="publicationsGuru">
+            <ImageView
+                android:id="@+id/ico_publication"
+                android:layout_width="19dp"
+                android:layout_height="20dp"
+                android:gravity="left"
+                android:src="@drawable/ico_post"/>
+            <TextView
+                android:id="@+id/ico_publication_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Publicaciones sugeridas"
+                android:textSize="11dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="0dp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right"
+                android:textAlignment="center"
+                android:layout_gravity="right"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_preguntas_directas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".40"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_button_white"
+            android:padding="6dp"
+            android:clickable="true"
+            android:gravity="right"
+            android:layout_marginRight="5dp"
+            android:onClick="directQuestions">
+            <ImageView
+                android:id="@+id/ico_preguntas_directas"
+                android:layout_width="19dp"
+                android:layout_height="20dp"
+                android:gravity="left"
+                android:src="@drawable/ico_post"/>
+            <TextView
+                android:id="@+id/txt_publicaciones_directas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preguntas directas"
+                android:textSize="11dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="0dp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right"
+                android:textAlignment="center"
+                android:layout_gravity="right"/>
+        </RelativeLayout>
     </LinearLayout>
 
     <!-- Actividades -->

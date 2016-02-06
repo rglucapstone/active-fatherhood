@@ -7,15 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.activities.ProfileActivity;
+import com.rglucapstone.activefatherhood.activities.QuestionActivity;
 import com.rglucapstone.activefatherhood.data.Entity;
 import com.rglucapstone.activefatherhood.data.Model;
 import com.rglucapstone.activefatherhood.data.Question;
+import com.rglucapstone.activefatherhood.data.User;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,7 @@ import java.util.ArrayList;
  */
 public class ResultAdapter extends ArrayAdapter {
     private Context context;
+    public User logged;
 
     public ResultAdapter(Context context, ArrayList results){
         super(context, R.layout.fragment_item_result, results);
@@ -33,25 +37,29 @@ public class ResultAdapter extends ArrayAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-
-        // Get the data item for this position
         final Question entity = (Question) getItem(position);
-
-        //ViewHolder viewHolder; // view lookup cache stored in tag
-
-        // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_item_result, parent, false);
         }
 
-        TextView txt_content = (TextView) convertView.findViewById(R.id.txt_content);
-        txt_content.setText(entity.content);
+        TextView ly_content = (TextView) convertView.findViewById(R.id.ly_content);
+        ly_content.setText(entity.content);
 
-        TextView txt_date = (TextView) convertView.findViewById(R.id.txt_date);
-        txt_date.setText(entity.created);
+        RelativeTimeTextView v = (RelativeTimeTextView) convertView.findViewById(R.id.txt_date);
+        v.setReferenceTime(entity.created_ago);
 
-        TextView txt_user = (TextView) convertView.findViewById(R.id.txt_user);
-        txt_user.setText(entity.user.login);
+        TextView txt_data = (TextView) convertView.findViewById(R.id.txt_data);
+        txt_data.setText(entity.listAnswers.size() + " respuestas");
+
+        final LinearLayout layout = (LinearLayout) convertView.findViewById(R.id.ly_activity);
+        layout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(context, QuestionActivity.class); //create an Intent object
+                intent.putExtra("question_id", entity.id);
+                intent.putExtra("logged_id", logged.id);
+                context.startActivity(intent); //start the second activity
+            }
+        });
 
         return convertView;
     }

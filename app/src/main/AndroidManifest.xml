@@ -54,6 +54,8 @@
         <activity android:name=".activities.DoPost"></activity>
         <activity android:name=".activities.CategoriesActivity"></activity>
         <activity android:name=".activities.CategorieItemActivity"></activity>
+        <activity android:name=".activities.DirectQuestionsActivity"></activity>
+
     </application>
 
 </manifest>

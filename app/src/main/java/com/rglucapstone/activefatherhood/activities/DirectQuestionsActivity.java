@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.adapters.QuestionsAdapter;
+import com.rglucapstone.activefatherhood.adapters.ResultAdapter;
 import com.rglucapstone.activefatherhood.adapters.SuggestsAdapter;
 import com.rglucapstone.activefatherhood.data.Post;
 import com.rglucapstone.activefatherhood.data.Question;
@@ -29,33 +30,33 @@ import java.util.ArrayList;
 /**
  * Created by Luisa Castro on 24/01/2016.
  */
-public class PublicationsGuru extends AppCompatActivity {
+public class DirectQuestionsActivity extends AppCompatActivity {
 
     public User user;
-    public SuggestsAdapter adapter;
-    public ArrayList<Suggest> list;
+    public ResultAdapter adapter;
+    public ArrayList<Question> list;
     public Context context;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_publications_guru);
+        setContentView(R.layout.activity_direct_questions);
         setToolbar();
         this.context = this;
 
         Intent intent = getIntent();
         String user_id = intent.getStringExtra("user_id");
 
-        //TextView txt_questions = (TextView) findViewById(R.id.txt_questions);
+        //TextView txt_questions = (TextView) findViewById(R.id.title_preference);
         //txt_questions.setText(user_id);
 
-        this.user = new User(this, new loadSuggestions());
+        this.user = new User(new loadQuestions());
         this.user.id = user_id;
-        this.user.load_suggest();
+        this.user.loadQuestions("direct");
     }
 
     public void setToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
-        toolbar.setTitle("Publicaciones sugeridas");
+        toolbar.setTitle("Preguntas directas");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -73,7 +74,7 @@ public class PublicationsGuru extends AppCompatActivity {
     }
 
 
-    private class loadSuggestions extends RestfulClient {
+    private class loadQuestions extends RestfulClient{
 
         @Override
         protected void onPreExecute() {
@@ -81,26 +82,18 @@ public class PublicationsGuru extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(JSONObject result) {
-
             try {
                 if( this.status == 200 ){
-                    list = Suggest.fromJson(result.getJSONArray("data"));
-                    ListView lv = (ListView) findViewById(R.id.listSuggests);
-                    adapter = new SuggestsAdapter(context, list);
+                    list = Question.fromJson(result.getJSONArray("data"));
+                    ListView list_questions = (ListView) findViewById(R.id.listDirectQuestions);
+                    adapter = new ResultAdapter(context, list);
                     adapter.logged = user;
-                    lv.setAdapter(adapter);
+                    list_questions.setAdapter(adapter);
                 }
-
             }catch (JSONException e){
                 e.printStackTrace();
             }
 
-
-            /*
-
-
-            RelativeLayout loadingLayout = (RelativeLayout) findViewById(R.id.loading_suggests);
-            loadingLayout.setVisibility(View.GONE);*/
         }
 
     }

@@ -189,6 +189,8 @@ public class User extends Model
         RestfulClient rest = this.asynctask;
         rest.method = "GET";
         rest.uri = "/users/"+this.id+"/questions";
+        if( filter.length() > 0 )
+            rest.uri += "/?f="+filter;
         rest.execute();
         return user;
     }

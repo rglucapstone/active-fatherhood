@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/title_preference"
-        android:text="Otros papás te han sugerido que conviertas tus respuestas en publicaciones."
+        android:text="Otros papás te han hecho pregunta directa. Date un tiempo y dales una mano."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -22,7 +22,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="16dp"/>
 
-    <ListView android:id="@+id/listSuggests"
+    <ListView android:id="@+id/listDirectQuestions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"

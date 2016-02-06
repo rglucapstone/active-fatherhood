@@ -64,6 +64,7 @@ public class ProfileActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        this.context = this;
 
         Intent intent = getIntent();
         this.user = new User(this, new loadUser());
@@ -104,7 +105,6 @@ public class ProfileActivity extends Activity {
         startActivity(intent);
     }
 
-    /* Realizar Pregunta */
     public void asking(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
@@ -112,6 +112,12 @@ public class ProfileActivity extends Activity {
 
     public void publicationsGuru(View view) {
         Intent intent = new Intent(this, PublicationsGuru.class);
+        intent.putExtra("user_id", this.logged.id);
+        startActivity(intent);
+    }
+
+    public void directQuestions(View view) {
+        Intent intent = new Intent(this, DirectQuestionsActivity.class);
         intent.putExtra("user_id", this.logged.id);
         startActivity(intent);
     }
@@ -148,6 +154,9 @@ public class ProfileActivity extends Activity {
         String str_rate = new DecimalFormat("##.##").format((Float.valueOf(user.rating)*this.num_starts)/100);
         rate_guru.setRating(Float.parseFloat(str_rate));
 
+        TextView txt_profile_rating = (TextView) findViewById(R.id.txt_profile_rating);
+        txt_profile_rating.setText(user.rating + " %");
+
         //guru_progress_text.setText(Integer.toString(this.user.themes.length));
 
         setThemes();
@@ -170,7 +179,7 @@ public class ProfileActivity extends Activity {
 
         User user = new User(new loadQuestions());
         user.id = this.user.id;
-        user.loadQuestions("");
+        user.loadQuestions("normal");
 
     }
 
@@ -214,9 +223,11 @@ public class ProfileActivity extends Activity {
             if( user.id.toString().equals(logged.id.toString()) || user.guru.level < 3  ){
                 LinearLayout btnAsk = (LinearLayout) findViewById(R.id.btn_ask_guru);
                 btnAsk.setVisibility(View.GONE);
+            }
 
-                //LinearLayout btnViewPublicaciones = (LinearLayout) findViewById(R.id.btn_publicaciones_guru);
-                //btnViewPublicaciones.setVisibility(View.GONE);
+            if( !(user.id.toString().equals(logged.id.toString())) ){
+                LinearLayout btnPosts = (LinearLayout) findViewById(R.id.ly_actions_profile);
+                btnPosts.setVisibility(View.GONE);
             }
 
             RelativeLayout loadingLayout = (RelativeLayout) findViewById(R.id.loading_profile);
@@ -238,7 +249,8 @@ public class ProfileActivity extends Activity {
             ArrayList<Question> listQuestions = new ArrayList<>();
 
             ListView list_questions = (ListView) findViewById(R.id.list_questions);
-            ResultAdapter adapter = new ResultAdapter(getBaseContext(), listQuestions);
+            ResultAdapter adapter = new ResultAdapter(context, listQuestions);
+            adapter.logged = logged;
             list_questions.setAdapter(adapter);
             try {
                 if( this.status == 200 ){
