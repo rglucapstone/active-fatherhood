@@ -43,7 +43,6 @@ public class RestfulClient extends AsyncTask<String, Void, JSONObject>{
     private Model element;
     //public View view;
 
-    //private String server = "http://ct-alpha.funiber.org/rgonzales/paternidad_plus/api";
     private String server = "http://betasg.funiber.org/pruebas/api";
 
     public HttpURLConnection conn;

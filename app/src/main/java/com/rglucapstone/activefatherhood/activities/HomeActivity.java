@@ -72,9 +72,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         }*/
 
+        // tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_tabs);
         setupViewPager(viewPager);
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.toolbar_tabs);
         tabLayout.setupWithViewPager(viewPager);
 

@@ -23,7 +23,7 @@
             android:id="@+id/btn_babys"
             android:tag="aprendizaje"
             android:layout_width="100dp"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
@@ -50,7 +50,7 @@
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="103dp"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
@@ -75,7 +75,7 @@
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
@@ -101,7 +101,7 @@
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="110dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
@@ -129,7 +129,7 @@
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
@@ -154,7 +154,7 @@
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
@@ -180,7 +180,7 @@
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
@@ -206,7 +206,7 @@
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="102dp"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
@@ -232,7 +232,7 @@
             android:onClick="goCategorie"
             android:clickable="true"
             android:layout_width="100dp"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="5dp"
@@ -251,7 +251,7 @@
                 android:textSize="12dp"/>
         </LinearLayout>
 
-        <!-- Adopción -->
+        <!-- Adopción
         <LinearLayout
             android:id="@+id/btn_adopcion"
             android:tag="adopcion"
@@ -275,139 +275,62 @@
                 android:text="Adopción"
                 android:layout_marginTop="3dp"
                 android:textSize="12dp"/>
-        </LinearLayout>
+        </LinearLayout>-->
 
     <!-- Recreación -->
-        <LinearLayout
-            android:id="@+id/btn_recreación"
-            android:tag="recreacion"
-            android:onClick="goCategorie"
-            android:clickable="true"
-            android:layout_width="100dp"
-            android:layout_height="90dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="5dp"
-            android:background="@color/backgroundDefault"
-            android:layout_marginLeft="10dp">
-            <ImageView
-                android:layout_width="56dp"
-                android:layout_height="54dp"
-                android:background="@drawable/ic_recreation"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recreación"
-                android:layout_marginTop="3dp"
-                android:textSize="12dp"/>
-        </LinearLayout>
+        <LinearLayout android:layout_columnSpan="3"
+            android:layout_width="match_parent"
+            android:gravity="center">
+            <LinearLayout
+                android:id="@+id/btn_recreación"
+                android:tag="recreacion"
+                android:onClick="goCategorie"
+                android:clickable="true"
+                android:layout_width="100dp"
+                android:layout_height="110dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:background="@color/backgroundDefault"
+                android:layout_marginLeft="10dp">
+                <ImageView
+                    android:layout_width="56dp"
+                    android:layout_height="54dp"
+                    android:background="@drawable/ic_recreation"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recreación"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12dp"/>
+            </LinearLayout>
 
-        <!-- Sexualidad -->
-        <LinearLayout
-            android:id="@+id/btn_sexualidad"
-            android:tag="sexualidad"
-            android:onClick="goCategorie"
-            android:clickable="true"
-            android:layout_width="100dp"
-            android:layout_height="90dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@color/backgroundDefault"
-            android:layout_marginLeft="10dp">
-            <ImageView
-                android:layout_width="56dp"
-                android:layout_height="54dp"
-                android:background="@drawable/ic_sexualidad"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sexualidad"
-                android:layout_marginTop="3dp"
-                android:textSize="12dp"/>
-        </LinearLayout>
-
-        <!-- Padres Solteros -->
-        <LinearLayout
-            android:id="@+id/btn_padres_solteros"
-            android:tag="solteros"
-            android:onClick="goCategorie"
-            android:clickable="true"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@color/backgroundDefault"
-            android:layout_marginLeft="10dp">
-            <ImageView
-                android:layout_width="56dp"
-                android:layout_height="54dp"
-                android:background="@drawable/ic_padre_soltero"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Padres Solteros"
-                android:layout_marginTop="3dp"
-                android:textAlignment="center"
-                android:textSize="12dp"/>
-        </LinearLayout>
-
-        <!-- Padres Primerizos -->
-        <LinearLayout
-            android:id="@+id/btn_padres_primerizos"
-            android:tag="primerizos"
-            android:onClick="goCategorie"
-            android:clickable="true"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@color/backgroundDefault"
-            android:layout_marginLeft="10dp">
-            <ImageView
-                android:layout_width="56dp"
-                android:layout_height="54dp"
-                android:background="@drawable/ic_padre_primerizo"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Padres Primerizos"
-                android:layout_marginTop="3dp"
-                android:textAlignment="center"
-                android:textSize="12dp"/>
-        </LinearLayout>
-
-        <!-- Futuros Padres -->
-        <LinearLayout
-            android:id="@+id/btn_futuros_padres"
-            android:tag="futuros"
-            android:onClick="goCategorie"
-            android:clickable="true"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@color/backgroundDefault"
-            android:layout_marginLeft="10dp">
-            <ImageView
-                android:layout_width="56dp"
-                android:layout_height="54dp"
-                android:background="@drawable/ic_futuro_papa"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Futuros Padres"
-                android:layout_marginTop="3dp"
-                android:textAlignment="center"
-                android:textSize="12dp"/>
+            <!-- Sexualidad -->
+            <LinearLayout
+                android:id="@+id/btn_sexualidad"
+                android:tag="sexualidad"
+                android:onClick="goCategorie"
+                android:clickable="true"
+                android:layout_width="100dp"
+                android:layout_height="110dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@color/backgroundDefault"
+                android:layout_marginLeft="10dp">
+                <ImageView
+                    android:layout_width="56dp"
+                    android:layout_height="54dp"
+                    android:background="@drawable/ic_sexualidad"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sexualidad"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12dp"/>
+            </LinearLayout>
         </LinearLayout>
 
     </GridLayout>

@@ -54,6 +54,7 @@ public class LoginActivity extends Activity{
     public void login(View view) {
         EditText username = (EditText)findViewById(R.id.input_user_email);
         EditText password = (EditText)findViewById(R.id.input_password);
+
        if(!username.getText().toString().equals("") && !password.getText().toString().equals("")){
             User user = new User(new taskLogin());
             user.doLogin(username.getText().toString());
@@ -61,6 +62,17 @@ public class LoginActivity extends Activity{
             Toast.makeText(getBaseContext(), "Uno o más campos están vacíos", Toast.LENGTH_SHORT).show();
         }
     }
+        //Intent intent = new Intent(context, PreferencesActivity.class);
+       // startActivity(intent);
+
+      /* if(!username.getText().toString().equals("") && !password.getText().toString().equals("")){
+            Intent intent = getIntent();
+            this.user = new User(new loadUser());
+            this.user.loadbyLogin(username.getText().toString());
+            //Toast.makeText(getBaseContext(), "Uno", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getBaseContext(), "Uno o más campos están vacíos", Toast.LENGTH_SHORT).show();
+        }*/
 
     public void toggleBusy(int visibility){
         RelativeLayout loadingLayout = (RelativeLayout) findViewById(R.id.loading_login);

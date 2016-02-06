@@ -4,13 +4,14 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:transitionGroup="false"
-    android:touchscreenBlocksFocus="false">
+    android:transitionGroup="false">
 
     <include
         android:id="@+id/loading_login"
         layout="@layout/loading_view">
     </include>
+
+    <com.facebook.widget.LoginButton />
 
     <ImageView android:src="@mipmap/logo_6"
         android:layout_width="48dp"
