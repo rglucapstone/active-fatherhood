@@ -65,6 +65,7 @@ public class LoginActivity extends Activity{
         //Intent intent = new Intent(context, PreferencesActivity.class);
        // startActivity(intent);
 
+
       /* if(!username.getText().toString().equals("") && !password.getText().toString().equals("")){
             Intent intent = getIntent();
             this.user = new User(new loadUser());

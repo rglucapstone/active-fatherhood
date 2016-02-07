@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:transitionGroup="false">
+    android:transitionGroup="false"
+    android:touchscreenBlocksFocus="false">
 
     <include
         android:id="@+id/loading_login"
@@ -59,21 +60,37 @@
         android:textColorHint="#c2c2c2"
         android:textIsSelectable="true"
         android:textColorLink="#cb5858" />
+
     <Button
         android:id="@+id/btn_enter"
         android:onClick="login"
-        android:layout_width="120dp"
+        android:layout_width="220dp"
         android:layout_height="40dp"
         android:text="@string/btn_enter"
         android:background="@drawable/button_fill_primary"
         android:textColor="@color/colorPrimaryText"
-        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/input_password"
-        android:layout_alignRight="@+id/button_gmail"
-        android:layout_alignEnd="@+id/button_gmail"
-        android:layout_alignLeft="@+id/button_gmail"
-        android:layout_alignStart="@+id/button_gmail" />
+        android:layout_alignRight="@+id/login_button"
+        android:layout_alignEnd="@+id/login_button"
+        android:layout_alignLeft="@+id/login_button"
+        android:layout_alignStart="@+id/login_button" />
+
+    <!--
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:text="@string/btn_enter"
+                android:textColor="#35adbd"
+                android:id="@+id/btn_enter"
+                android:background="@drawable/background_button_white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="40dp"
+                android:layout_below="@+id/input_password"
+                android:layout_toLeftOf="@+id/imageView"
+                android:layout_toStartOf="@+id/imageView" />
+-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -95,7 +112,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
 
-    <Button
+    <!--<Button
         android:id="@+id/button_gmail"
         android:layout_width="290dp"
         android:layout_height="40dp"
@@ -105,6 +122,15 @@
         android:textColor="@color/colorPrimaryText"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp" />-->
 
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/btn_enter"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        />
 </RelativeLayout>

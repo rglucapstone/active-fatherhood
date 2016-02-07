@@ -46,7 +46,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
         setToolbar();
 
-        buttonChoose = (Button) findViewById(R.id.uploadPhoto);
+        /*buttonChoose = (Button) findViewById(R.id.uploadPhoto);
         imageView  = (ImageView) findViewById(R.id.photoUser);
 
         buttonChoose.setOnClickListener(new View.OnClickListener() {
@@ -55,11 +55,11 @@ public class EditProfileActivity extends AppCompatActivity {
                     showFileChooser();
                 }
             }
-        });
+        });*/
 
     }
 
-    public String getStringImage(Bitmap bmp){
+    /*public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
@@ -91,7 +91,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Tamaño maximo superado", Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
       /* private void uploadImage(){
         //Showing the progress dialog

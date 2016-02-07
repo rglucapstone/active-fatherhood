@@ -45,4 +45,6 @@
     <string name="menu_categories">Ver Categorías</string>
     <string name="menu_preferences">Preferencias</string>
     <string name="menu_get_out">Cerrar Sesión</string>
+
+    <string name="facebook_app_id">549485611892072</string>
 </resources>

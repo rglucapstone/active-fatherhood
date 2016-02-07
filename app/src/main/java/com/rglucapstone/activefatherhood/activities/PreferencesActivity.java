@@ -22,7 +22,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preferences);
+        setContentView(R.layout.activity_new_preference);
         setToolbar();
     }
 
