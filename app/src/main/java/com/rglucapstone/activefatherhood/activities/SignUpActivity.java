@@ -141,7 +141,7 @@ public class SignUpActivity extends Activity {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
                 LayoutInflater inflater = getLayoutInflater();
-                alertDialogBuilder.setView(inflater.inflate(R.layout.activity_preferences, null))
+                alertDialogBuilder.setView(inflater.inflate(R.layout.activity_preferences_old, null))
                         // Add action buttons
                         .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             @Override

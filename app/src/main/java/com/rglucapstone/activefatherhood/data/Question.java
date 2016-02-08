@@ -20,11 +20,15 @@ import android.widget.ArrayAdapter;
 /**
  * Created by ronald on 13/01/16.
  */
-public class Question extends Model implements Serializable {
+public class Question extends Model{
+
+    public RestfulClient AsyncTask;
+
+
 
     public Context context;
     public ArrayAdapter adapter;
-    public RestfulClient asynctask;
+
 
     public String id;
     public String content;
@@ -37,26 +41,15 @@ public class Question extends Model implements Serializable {
     public String question_id;
 
     public User user_guru;
-
-
     public String userstr;
     public String contentstr;
     public String datetime;
     public String tags;
     public String likes;
 
-
+    // Constructors to instance an AsynTask
     public Question(RestfulClient task) {
-        this.asynctask = task;
-    }
-
-    public Question(Context context) {
-        this.context = context;
-    }
-
-    public Question(Context context, RestfulClient task) {
-        this.context = context;
-        this.asynctask = task;
+        this.AsyncTask = task;
     }
 
     // Constructor to convert JSON object into a Question class instance
@@ -91,6 +84,62 @@ public class Question extends Model implements Serializable {
         }
     }
 
+    // find questions about parameters
+    public void find(String type, String themes, String viewBy) {
+        try{
+            this.AsyncTask.method = "GET";
+            this.AsyncTask.uri = "/questions";
+            if( type.length() > 0 || themes.length() > 0 || viewBy.length() > 0){
+                this.AsyncTask.uri += "/?";
+                if( type.length() > 0 ) this.AsyncTask.uri += "type=" + type + "&";
+                if( themes.length() > 0 ) this.AsyncTask.uri += "themes=" + themes + "&";
+                if( viewBy.length() > 0 ) this.AsyncTask.uri += "view=" + viewBy + "&";
+            }
+            this.AsyncTask.execute();
+        }catch (Exception e) {
+        }
+    }
+
+    // load a question
+    public void load(String id){
+        try{
+            this.AsyncTask.method = "GET";
+            this.AsyncTask.uri = "/questions/" + id;
+            this.AsyncTask.execute();
+        }catch (Exception e) {
+        }
+    }
+
+
+    public static ArrayList fromJson(JSONArray data) {
+        ArrayList items = new ArrayList<>();
+        for (int i = 0; i < data.length(); i++) {
+            try {
+                items.add(new Question(data.getJSONObject(i)));
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+        }
+        return items;
+    }
+
+
+
+
+
+
+
+    public Question(Context context) {
+        this.context = context;
+    }
+
+    public Question(Context context, RestfulClient task) {
+        this.context = context;
+        this.AsyncTask = task;
+    }
+
+
+
     // Constructor to send Question
     public Question(String content, String created, String user_id) {
         this.content = content;
@@ -100,7 +149,7 @@ public class Question extends Model implements Serializable {
 
     public ArrayList<Question> getAll(String filter) {
         ArrayList<Question> items = new ArrayList<>();
-        RestfulClient rest = this.asynctask;
+        RestfulClient rest = this.AsyncTask;
         rest.method = "GET";
         rest.uri = "/questions";
         if( filter.length() > 0 )
@@ -113,34 +162,13 @@ public class Question extends Model implements Serializable {
         return items;
     }
 
-    public ArrayList<Question> find(String themes, String viewBy, String filter) {
-        ArrayList<Question> items = new ArrayList<>();
-        RestfulClient rest = this.asynctask;
-        rest.method = "GET";
-        rest.uri = "/questions/?themes="+themes + "&view=" + viewBy+"&f="+filter;
-        //this.content = rest.uri;
-        try{
-            rest.execute();
-        }catch (Exception e) {
-        }
-        return items;
-    }
 
-    public Question load(String id){
-        Question question = null;
-        RestfulClient rest = this.asynctask;
-        rest.method = "GET";
-        rest.uri = "/questions/" + id;
-        try{
-            rest.execute();
-        }catch (Exception e) {
-        }
-        return question;
-    }
+
+
 
     public boolean send() {
         boolean send = false;
-        RestfulClient rest = this.asynctask;
+        RestfulClient rest = this.AsyncTask;
         rest.method = "POST";
         rest.uri = "/questions";
         try{
@@ -160,17 +188,7 @@ public class Question extends Model implements Serializable {
     }
 
 
-    public static ArrayList fromJson(JSONArray data) {
-        ArrayList items = new ArrayList<>();
-        for (int i = 0; i < data.length(); i++) {
-            try {
-                items.add(new Question(data.getJSONObject(i)));
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
-        }
-        return items;
-    }
+
 
 
     public JSONObject toJson() {

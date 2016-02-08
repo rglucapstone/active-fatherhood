@@ -44,7 +44,8 @@ import java.util.ArrayList;
  * Created by ronald on 15/12/15.
  */
 public class QuestionActivity extends AppCompatActivity {
-    public Question question;
+
+    /*public Question question;
     public Context context;
     private TextView container;
     private ImageButton btn_like;
@@ -53,51 +54,121 @@ public class QuestionActivity extends AppCompatActivity {
 
     public User user_question;
     public ImageView ic_user;
-    //public AnswerItemAdapter adapter;
+    //public AnswerItemAdapter adapter;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-        this.context = this;
+        setToolbar();
 
         Intent intent = getIntent();
+        User user = new User(intent.getStringExtra("logged_id"));
+        Question question = new Question(new load());
 
-        this.logged = new User(intent.getStringExtra("logged_id"));
+        // set actions
+        setActions(question, user);
 
-        //TextView txt_qanswers = (TextView) findViewById(R.id.title_answers);
-        //txt_qanswers.setText(obj.user.name);
-        this.question = new Question(this, new loadQuestion());
-        this.question.load(intent.getStringExtra("question_id"));
-        setToolbar();
-        setActions();
+        // load question
+        question.load(intent.getStringExtra("question_id"));
 
-        //listAnswerAdapter = new AnswerItemAdapter(this, new String[10]);
-        //listAnswer = (ListView) findViewById(R.id.listAnswer);
-        //listAnswer.setAdapter(listAnswerAdapter);
     }
 
-    public void answer(View view) {
-        Intent intent = new Intent(this, AnswerActivity.class);
-        intent.putExtra("question_id", this.question.id);
-        intent.putExtra("logged_id", this.logged.id);
-        startActivity(intent);
-    }
-
-    /*public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu items for use in the action bar
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar, menu);
-        return true;
-    }*/
-
-    /* Toolbar */
-    public void setToolbar(){
+    // setting toolbar
+    private void setToolbar(){
         // toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
         toolbar.setTitle("Pregunta");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    // setting actions
+    private void setActions(final Question q, final User logged){
+
+        RelativeLayout link_user = (RelativeLayout) findViewById(R.id.link_question_user);
+        link_user.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class); //create an Intent object
+                intent.putExtra("user_id", q.user.id); //add data to the Intent object
+                intent.putExtra("logged_id", logged.id); //add data to the Intent object
+                getApplicationContext().startActivity(intent); //start the second activity
+            }
+        });
+    }
+
+    // initialize tags of themes
+    private void setTags(Context context){
+        int total = 3;
+        for (int i = 1; i <= total; i++) {
+            int imgtag = context.getResources().getIdentifier("ic_question_tag" + i, "id", context.getPackageName());
+            ImageView img_tag = (ImageView) findViewById(imgtag);
+            img_tag.setVisibility(View.GONE);
+
+            int txttag = context.getResources().getIdentifier("txt_question_tag" + i, "id", context.getPackageName());
+            TextView txt_tag = (TextView) findViewById(txttag);
+            txt_tag.setVisibility(View.GONE);
+        }
+    }
+
+    // setting data
+    private void setData(Question q){
+        Context context = getApplicationContext();
+        LinearLayout layout = (LinearLayout) findViewById(R.id.layout_item_question);
+
+        // content
+        TextView txt_qcontent = (TextView) layout.findViewById(R.id.txt_qcontent);
+        txt_qcontent.setText(q.content);
+
+        // total of answers
+        TextView txt_qanswers = (TextView) findViewById(R.id.title_answers);
+        txt_qanswers.setText(q.listAnswers.size() + " respuestas");
+
+        // user
+        TextView txt_quser = (TextView) layout.findViewById(R.id.txt_quser);
+        txt_quser.setText(q.user.login);
+
+        // relative date
+        RelativeTimeTextView v = (RelativeTimeTextView) layout.findViewById(R.id.txt_question_date);
+        v.setReferenceTime(q.created_ago);
+
+        // set image user temporal
+        final ImageView img_user = (ImageView) findViewById(R.id.ic_user);
+        setImageUser(img_user, q.user.id);
+
+        // set tags of thmes
+        setTags(context);
+        for (int i = 1; i <= q.themes.length; i++) {
+            int index = i - 1;
+
+            int imgtag = context.getResources().getIdentifier("ic_question_tag" + i, "id", context.getPackageName());
+            ImageView img_tag = (ImageView) layout.findViewById(imgtag);
+            img_tag.setVisibility(View.VISIBLE);
+
+            int txttag = context.getResources().getIdentifier("txt_question_tag" + i, "id", context.getPackageName());
+            TextView txt_tag = (TextView) layout.findViewById(txttag);
+            txt_tag.setText(q.themes[index]);
+            txt_tag.setVisibility(View.VISIBLE);
+        }
+
+        // get logged user id
+        Intent intent = getIntent();
+        User logged = new User(intent.getStringExtra("logged_id"));
+
+        // set list of answers
+        AnswerItemAdapter adapter = new AnswerItemAdapter(this, q.listAnswers, logged);
+        LinearLayout layout_answers = (LinearLayout) findViewById(R.id.layout_list_answers);
+        ListView list = (ListView) layout_answers.findViewById(R.id.listAnswer);
+        list.setAdapter(adapter);
+    }
+
+    // load answer view
+    public void answer(View view) {
+        Intent intentIn = getIntent();
+        Intent intent = new Intent(this, AnswerActivity.class);
+        intent.putExtra("question_id", intentIn.getStringExtra("question_id"));
+        intent.putExtra("logged_id", intent.getStringExtra("logged_id"));
+        startActivity(intent);
     }
 
     @Override
@@ -111,87 +182,18 @@ public class QuestionActivity extends AppCompatActivity {
         }
     }
 
-    /* Actions */
-
-    public void setActions(){
-        /* Se oculta la hora y se muestra el icono de like */
-        //container = (TextView) findViewById(R.id.txt_qdatetime);
-        //container.setVisibility(View.GONE);
-
-        final RelativeLayout link_user = (RelativeLayout) findViewById(R.id.link_question_user);
-        link_user.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(context, ProfileActivity.class); //create an Intent object
-                intent.putExtra("user_id", question.user.id); //add data to the Intent object
-                intent.putExtra("logged_id", logged.id); //add data to the Intent object
-                context.startActivity(intent); //start the second activity
-            }
-        });
-
-    }
-
-    private void setData(){
-        LinearLayout layout = (LinearLayout)findViewById(R.id.layout_item_question);
-
-        TextView txt_qcontent = (TextView) layout.findViewById(R.id.txt_qcontent);
-        txt_qcontent.setText(this.question.content);
-
-        TextView txt_qanswers = (TextView) findViewById(R.id.title_answers);
-        txt_qanswers.setText(this.question.listAnswers.size() + " respuestas");
-
-        TextView txt_quser = (TextView) layout.findViewById(R.id.txt_quser);
-        txt_quser.setText(this.question.user.login);
-
-        RelativeTimeTextView v = (RelativeTimeTextView) layout.findViewById(R.id.txt_question_date);
-        v.setReferenceTime(question.created_ago);
-
-        // set image user temporal
-        final ImageView img_user = (ImageView) findViewById(R.id.ic_user);
-        User user_question = question.user;
-        setImageUser(img_user, user_question.id);
-
-
-        //TextView txt_qdatetime = (TextView) layout.findViewById(R.id.txt_qdatetime);
-        //txt_qdatetime.setText(this.question.created);
-
-        setTags();
-        for (int i = 1; i <= this.question.themes.length; i++) {
-            int index = i - 1;
-
-            int imgtag = context.getResources().getIdentifier("ic_question_tag" + i, "id", context.getPackageName());
-            ImageView img_tag = (ImageView) layout.findViewById(imgtag);
-            img_tag.setVisibility(View.VISIBLE);
-
-            int txttag = context.getResources().getIdentifier("txt_question_tag" + i, "id", context.getPackageName());
-            TextView txt_tag = (TextView) layout.findViewById(txttag);
-            txt_tag.setText(question.themes[index]);
-            txt_tag.setVisibility(View.VISIBLE);
-        }
-
-        AnswerItemAdapter adapter = new AnswerItemAdapter(this, this.question.listAnswers);
-        adapter.logged = this.logged;
-        LinearLayout layout_answers = (LinearLayout) findViewById(R.id.layout_list_answers);
-        ListView list = (ListView) layout_answers.findViewById(R.id.listAnswer);
-        list.setAdapter(adapter);
-    }
-
-    private class loadQuestion extends RestfulClient {
-
-        @Override
-        protected void onPreExecute() {
-        }
+    // task to load question
+    private class load extends RestfulClient {
 
         @Override
         protected void onPostExecute(JSONObject result) {
+            Question question;
             try {
                 // Populating Data into ListView
                 ArrayList<Question> list = Question.fromJson(result.getJSONArray("data"));
                 if( !list.isEmpty() ){
                     question = list.get(0);
-                    setData();
-                    //ListView listView = (ListView) findViewById(R.id.layout_list_answers);
-                    //AnswerItemAdapter adapter = new AnswerItemAdapter(context, question.listAnswers);
-                    //listView.setAdapter(adapter);
+                    setData(question);
                 }
             }catch (JSONException e){
                 e.printStackTrace();
@@ -200,25 +202,10 @@ public class QuestionActivity extends AppCompatActivity {
             RelativeLayout loadingLayout = (RelativeLayout) findViewById(R.id.loading_question);
             loadingLayout.setVisibility(View.GONE);
         }
-
     }
 
-    public void setTags(){
-
-        int total = 3;
-        for (int i = 1; i <= total; i++) {
-            int imgtag = context.getResources().getIdentifier("ic_question_tag" + i, "id", context.getPackageName());
-            ImageView img_tag = (ImageView) findViewById(imgtag);
-            img_tag.setVisibility(View.GONE);
-
-            int txttag = context.getResources().getIdentifier("txt_question_tag" + i, "id", context.getPackageName());
-            TextView txt_tag = (TextView) findViewById(txttag);
-            txt_tag.setVisibility(View.GONE);
-
-        }
-    }
-
-    public void setImageUser(ImageView img_view,String id){
+    // setting image profile
+    private void setImageUser(ImageView img_view,String id){
         switch (id){
             case "1":
                 img_view.setBackgroundResource(R.drawable.padre2);
@@ -267,4 +254,5 @@ public class QuestionActivity extends AppCompatActivity {
                 break;
         }
     }
+
 }

@@ -69,7 +69,7 @@ public class PostsAdapter extends ArrayAdapter<Post> {
         txt_post_comments.setText(post.listComments.size() + " comentarios");
 
 
-        setTags();
+        /*setTags();
         for (int i = 1; i <= post.themes.length; i++) {
             int index = i - 1;
 
@@ -81,7 +81,7 @@ public class PostsAdapter extends ArrayAdapter<Post> {
             TextView txt_tag = (TextView) convertView.findViewById(txttag);
             txt_tag.setText(post.themes[index]);
             txt_tag.setVisibility(View.VISIBLE);
-        }
+        }*/
 
         link_user = (ImageView) convertView.findViewById(R.id.ic_post_user);
 

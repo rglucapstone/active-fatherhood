@@ -12,24 +12,20 @@ import com.rglucapstone.activefatherhood.R;
  */
 public class WelcomeActivity extends Activity{
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
     }
 
-    public void keepOn(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-    }
-
+    // Ir a la vista de Ingreso
     public void showLogin(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
-    public void doRegister(View view) {
+    // Ir a la vista de Creacion de Usuario
+    public void doSignUp(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }

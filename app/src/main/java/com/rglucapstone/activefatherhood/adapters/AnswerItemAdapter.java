@@ -43,45 +43,70 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     private boolean like_answer_status = true; //answer.user_like_answer;//user.getLikeAnswerStatus() = true;
     private boolean highlight_father_status = false; //answer.user_hightlight_father;
 
-    public AnswerItemAdapter(Context context, ArrayList<Answer> answers) {
+    public AnswerItemAdapter(Context context, ArrayList<Answer> answers, User logged) {
         super(context, R.layout.fragment_list_answers, answers);
         this.context = context;
+        this.logged = logged;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        final Answer answer = getItem(position);
-        final User user = this.logged;
 
-        if (convertView == null) {
+        Answer answer = getItem(position);
+
+        if (convertView == null)
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_answer, parent, false);
-        }else{ }
 
-        final View viewAnswer = convertView;
-
-        TextView txt_content = (TextView) convertView.findViewById(R.id.answer_content);
-        txt_content.setText(answer.content);
-
-        TextView txt_date = (TextView) convertView.findViewById(R.id.answer_date);
-        txt_date.setText(answer.created);
-
-        TextView txt_user = (TextView) convertView.findViewById(R.id.answer_user);
-        txt_user.setText(answer.user.name);
-
-        TextView txt_likes = (TextView) convertView.findViewById(R.id.txt_likes);
-        txt_likes.setText(Integer.toString(answer.likes.size()));
-
-        setActions(convertView, user, answer);
-
+        setData(convertView, answer);
+        setActions(convertView, answer);
         return convertView;
     }
 
-    public void setActions(final View convertView, User user, final Answer answer){
-        final String userId = user.id;
+    // setting data
+    private void setData(View v, Answer a){
+
+        TextView txt_content = (TextView) v.findViewById(R.id.answer_content);
+        txt_content.setText(a.content);
+
+        TextView txt_date = (TextView) v.findViewById(R.id.answer_date);
+        txt_date.setText(a.created);
+
+        TextView txt_user = (TextView) v.findViewById(R.id.answer_user);
+        txt_user.setText(a.user.name);
+
+        TextView txt_likes = (TextView) v.findViewById(R.id.txt_likes);
+        txt_likes.setText(Integer.toString(a.likes.size()));
+
+    }
+
+    private void setActions(final View v, final Answer a){
+
+        // setting likes
+        setLikeAnswer(v, a);
+        LinearLayout btn_like_answer = (LinearLayout) v.findViewById(R.id.btn_like_answer);
+        btn_like_answer.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                actionLikeAnswer(v, a);
+            }
+        });
+
+        // setting profile
+        ImageButton link_user = (ImageButton) v.findViewById(R.id.iconUser);
+        link_user.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra("user_id", a.user.id);
+                intent.putExtra("logged_id", logged.id);
+                context.startActivity(intent);
+            }
+        });
+        setImageUser(link_user, a.user.id);
+
+
+        /*final String userId = user.id;
         final int userLevel = user.level;
         final User usr = user;
         final Answer ans = answer;
-
 
         //final
 
@@ -89,20 +114,12 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
         setFatherHighlights(convertView, userLevel);
 
         //Se setea el icono de like de la respuesta
-        setLikeAnswer(convertView, user, ans);
+
 
         //Se setea el icono de sugerencia de la respuesta solo si el padre es = al padre de la pregunta
         setSuggestAnswer(convertView, user, ans);
 
         // Event Click on Like Answer
-        final LinearLayout btn_like_answer = (LinearLayout) convertView.findViewById(R.id.btn_like_answer);
-        btn_like_answer.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                actionLikeAnswer(convertView, usr, ans);
-            }
-        });
-
-
 
         // Event Click on Suggest Publication
         final LinearLayout btn_suggest_publication = (LinearLayout) convertView.findViewById(R.id.btn_suggest_publication);
@@ -156,50 +173,56 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
             }
         });
 
-        //Action View User Profile
-        final ImageButton link_user = (ImageButton) convertView.findViewById(R.id.iconUser);
-        link_user.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(context, ProfileActivity.class);
-                intent.putExtra("user_id", userId);
-                intent.putExtra("logged_id", logged.id);
-                context.startActivity(intent);
-            }
-        });
-
-        // set image user temporal
-        user_anser = ans.user;
-        setImageUser(link_user, user_anser.id);
+*/
 
     }
 
-    public void actionLikeAnswer(final View convertView, User user, Answer answer){
-
-        Answer ans_sync = new Answer(new userCheckLike(convertView));
-        ans_sync.id = answer.id;
-        boolean status = ans_sync.like(user.id);
-    }
-
-    // Action Like Answer
-    public void setLikeAnswer(View convertView,User user,Answer answer){
-
-        final User usr = user;
-        final Answer ans = answer;
-
-        final ImageView ic = (ImageView) convertView.findViewById(R.id.icon_up);//icono like
-
-        //User user_async = new User(new userCheckLike());
-        //user_async.id = user.id;
-        like_answer_status = user.getLikeAnswerStatus(answer.likes);
-
-        if (like_answer_status) {// si status era true (like) pasa a false, se resta un like y se cambia el icono a gris
-            //like_answer_status = false;//usr.setCountLikeAnwer(ans.id,"dis");
+    // setting like icon
+    private void setLikeAnswer(View v, Answer answer){
+        ImageView ic = (ImageView) v.findViewById(R.id.icon_up);
+        like_answer_status = logged.getLikeAnswerStatus(answer.likes);
+        if (like_answer_status) {
             ic.setBackgroundResource(R.mipmap.ico_like_primary_24);
-        } else {// si status era true (unlike) pasa a true, se suma un like y se cambia el icono a primary
-            //like_answer_status = true; //usr.setCountLikeAnwer(ans.id,"add");
+        } else {
             ic.setBackgroundResource(R.mipmap.ico_like_grey_24);
         }
     }
+
+    // set action like
+    private void actionLikeAnswer(View v, Answer a){
+        Answer taskAnswer = new Answer(new userCheckLike(v));
+        taskAnswer.like(a.id, logged.id);
+    }
+
+    // task to make likes
+    private class userCheckLike extends RestfulClient {
+        private View view;
+        public userCheckLike(View view){
+            this.view = view;
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+
+            final ImageView ic = (ImageView) view.findViewById(R.id.icon_up);
+            if(this.status == 200)
+                ic.setBackgroundResource(R.mipmap.ico_like_grey_24);
+
+            if(this.status == 201)
+                ic.setBackgroundResource(R.mipmap.ico_like_primary_24);
+
+            int likes = 0;
+            try {
+                if( result.has("data") ){
+                    JSONObject u = result.getJSONObject("data");
+                    if (u.has("likes")) likes = Integer.parseInt(u.getString("likes"));
+                    TextView txt_likes = (TextView) view.findViewById(R.id.txt_likes);
+                    txt_likes.setText(Integer.toString(likes));
+                }
+            }catch (JSONException e){ e.printStackTrace(); }
+        }
+    }
+
 
     public void setSuggestAnswer(View convertView,User user,Answer answer) {
         final User usr = user;
@@ -312,45 +335,8 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     }
 
 
-
-
-    private class userCheckLike extends RestfulClient {
-
-        private View view;
-
-        public userCheckLike(View view){
-            this.view = view;
-        }
-
-        @Override
-        protected void onPreExecute() {
-        }
-
-        @Override
-        protected void onPostExecute(JSONObject result) {
-
-            final ImageView ic = (ImageView) this.view.findViewById(R.id.icon_up);
-
-            if(this.status == 200)
-                ic.setBackgroundResource(R.mipmap.ico_like_grey_24);
-
-            if(this.status == 201)
-                ic.setBackgroundResource(R.mipmap.ico_like_primary_24);
-
-            int likes = 0;
-            try {
-                if( result.has("data") ){
-                    JSONObject u = result.getJSONObject("data");
-                    if (u.has("likes")) likes = Integer.parseInt(u.getString("likes"));
-                    TextView txt_likes = (TextView) this.view.findViewById(R.id.txt_likes);
-                    txt_likes.setText(Integer.toString(likes));
-                }
-            }catch (JSONException e){ e.printStackTrace(); }
-
-        }
-    }
-
-    public void setImageUser(ImageButton img_view,String id){
+    // setting image profile
+    private void setImageUser(ImageButton img_view,String id){
         switch (id){
             case "1":
                 img_view.setBackgroundResource(R.drawable.padre2);
@@ -399,10 +385,4 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
                 break;
         }
     }
-
-
-        /*public AnswerItemAdapter(Activity activity, String[] items){
-        super(activity, R.layout.item_answer, items);
-        inflater = activity.getWindow().getLayoutInflater();
-    }*/
 }

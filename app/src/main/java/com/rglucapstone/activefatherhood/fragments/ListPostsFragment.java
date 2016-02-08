@@ -53,8 +53,8 @@ public class ListPostsFragment extends ListFragment {
         logged = new User(getArguments().getString("logged_id"));
 
         Post post = new Post(new loadPosts());
-        String str_themes = getArguments().getString("str_themes");
-        String viewBy = getArguments().getString("viewBy");
+        String str_themes = getArguments().getString("prefers");
+        String viewBy = getArguments().getString("view_by");
         if( str_themes.length() > 0 )
             this.list = post.find(str_themes, viewBy);
         else

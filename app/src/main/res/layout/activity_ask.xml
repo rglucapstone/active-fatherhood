@@ -63,7 +63,7 @@
                 android:layout_marginTop="30dp">
                 <include
                     android:id="@+id/add_tags"
-                    layout="@layout/activity_preferences">
+                    layout="@layout/activity_preferences_old">
                 </include>
             </ScrollView>
         </RelativeLayout>

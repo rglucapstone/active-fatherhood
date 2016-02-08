@@ -19,6 +19,9 @@ import java.util.ArrayList;
  */
 public class User extends Model
 {
+    public RestfulClient AsyncTask;
+
+
     public String id;
     public String login;
     public String name;
@@ -45,70 +48,14 @@ public class User extends Model
 
     public Guru guru;
 
-    public RestfulClient asynctask;
+
     public Context context;
 
     public ImageView img_user;
 
+
     public User(RestfulClient task) {
-        this.asynctask = task;
-    }
-
-    public User(){
-
-    }
-
-    public User(String id){
-        this.id = id;
-    }
-
-    public User(Context context, RestfulClient task) {
-        this.context = context;
-        this.asynctask = task;
-    }
-
-    public User(String id, String login, String name){
-        this.id = id;
-        this.login = login;
-        this.name = name;
-    }
-
-    //******************************* Constructor for New User *************************************
-    public User(String login, String email, String password, String edad) {
-        this.login = login;
-        this.email = email;
-        this.password = password;
-        this.edad = edad;
-    }
-
-    public boolean send() {
-        boolean send = false;
-        RestfulClient rest = this.asynctask;
-        rest.method = "POST";
-        rest.uri = "/users";
-        try{
-            rest.execute(this.toJson().toString());
-            if( rest.status == 201 )
-                send = true;
-        }catch (Exception e) {
-        }
-        return send;
-    }
-
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        try {
-            json.put("login", this.login);
-            json.put("email", this.email);
-            json.put("password", this.password);
-            json.put("edad", this.edad);
-            json.put("rate", this.rate);
-            json.put("kind_dad_id", this.kind_dad_id);
-            json.put("name", this.name);
-            json.put("buen_padre", this.buen_padre);
-            json.put("birthdate", this.birthdate);
-        } catch (JSONException e) {}
-        return json;
+        this.AsyncTask = task;
     }
 
     public User(JSONObject object){
@@ -150,49 +97,11 @@ public class User extends Model
         }
     }
 
-    public User load(String id){
-        User user = null;
-        RestfulClient rest = this.asynctask;
-        rest.method = "GET";
-        rest.uri = "/users/" + id;
-        try{
-            rest.execute();
-        }catch (Exception e) {
-        }
-        return user;
-    }
-
-
-    public User load_suggest(){
-        User user = null;
-        RestfulClient rest = this.asynctask;
-        rest.method = "GET";
-        rest.uri = "/users/" + this.id + "/suggestions";
-        try{
-            rest.execute();
-        }catch (Exception e) {
-        }
-        return user;
-    }
-
-    public User loadbyLogin(String login){
-        User user = null;
-        RestfulClient rest = this.asynctask;
-        rest.method = "GET";
-        rest.uri = "/users/?login="+login;
-        rest.execute();
-        return user;
-    }
-
-    public User loadQuestions(String filter){
-        User user = null;
-        RestfulClient rest = this.asynctask;
-        rest.method = "GET";
-        rest.uri = "/users/"+this.id+"/questions";
-        if( filter.length() > 0 )
-            rest.uri += "/?f="+filter;
-        rest.execute();
-        return user;
+    public void doLogin(String login) {
+        this.login = login;
+        this.AsyncTask.method = "GET";
+        this.AsyncTask.uri = "/users/?login=" + this.login;
+        this.AsyncTask.execute();
     }
 
     public static ArrayList<User> fromJson(JSONArray data) {
@@ -206,14 +115,123 @@ public class User extends Model
         }
         return items;
     }
+
+    // check if user did like to an answer
     public boolean getLikeAnswerStatus(ArrayList<Like> likes){
         for (int i = 0; i < likes.size(); i++) {
             Like like = likes.get(i);
-            if( like.user_id == this.id )
+            if( like.user_id.equals(this.id) )
                 return true;
         }
         return false;
     }
+
+
+
+
+    /********************************************************/
+
+
+
+    public User(){
+
+    }
+
+    public User(String id){
+        this.id = id;
+    }
+
+    public User(Context context, RestfulClient task) {
+        this.context = context;
+        this.AsyncTask = task;
+    }
+
+    public User(String id, String login, String name){
+        this.id = id;
+        this.login = login;
+        this.name = name;
+    }
+
+    //******************************* Constructor for New User *************************************
+    public User(String login, String email, String password, String edad) {
+        this.login = login;
+        this.email = email;
+        this.password = password;
+        this.edad = edad;
+    }
+
+    public boolean send() {
+        boolean send = false;
+        RestfulClient rest = this.AsyncTask;
+        rest.method = "POST";
+        rest.uri = "/users";
+        try{
+            rest.execute(this.toJson().toString());
+            if( rest.status == 201 )
+                send = true;
+        }catch (Exception e) {
+        }
+        return send;
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("login", this.login);
+            json.put("email", this.email);
+            json.put("password", this.password);
+            json.put("edad", this.edad);
+            json.put("rate", this.rate);
+            json.put("kind_dad_id", this.kind_dad_id);
+            json.put("name", this.name);
+            json.put("buen_padre", this.buen_padre);
+            json.put("birthdate", this.birthdate);
+        } catch (JSONException e) {}
+        return json;
+    }
+
+
+
+    public User load(String id){
+        User user = null;
+        RestfulClient rest = this.AsyncTask;
+        rest.method = "GET";
+        rest.uri = "/users/" + id;
+        try{
+            rest.execute();
+        }catch (Exception e) {
+        }
+        return user;
+    }
+
+
+    public User load_suggest(){
+        User user = null;
+        RestfulClient rest = this.AsyncTask;
+        rest.method = "GET";
+        rest.uri = "/users/" + this.id + "/suggestions";
+        try{
+            rest.execute();
+        }catch (Exception e) {
+        }
+        return user;
+    }
+
+
+
+    public User loadQuestions(String filter){
+        User user = null;
+        RestfulClient rest = this.AsyncTask;
+        rest.method = "GET";
+        rest.uri = "/users/"+this.id+"/questions";
+        if( filter.length() > 0 )
+            rest.uri += "/?f="+filter;
+        rest.execute();
+        return user;
+    }
+
+
+
     public boolean getSuggestAnswerStatus(String id){
         return false;
     }

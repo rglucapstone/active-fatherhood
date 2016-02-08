@@ -34,55 +34,19 @@ import org.json.JSONObject;
  */
 public class ListQuestionsFragment extends ListFragment
 {
-    public Context context;
-    public View view;
-    public ArrayList<Question> list;
-    public QuestionsAdapter adapter;
-    public User user;
-
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_questions, container, false);
-        this.view = view;
 
-        user = new User(getArguments().getString("logged_id"));
-
-        //TextView test = (TextView) view.findViewById(R.id.test);
-        //test.setText(user.id + " : " + user.email);
-
-        String str_themes = getArguments().getString("str_themes");
-        String viewBy = getArguments().getString("viewBy");
-        Question question = new Question(new loadQuestions());
-
-
-        if( str_themes.length() > 0 )
-            this.list = question.find(str_themes, viewBy, "normal");
-        else
-            this.list = question.getAll("normal");
-
-        //TextView test = (TextView) view.findViewById(R.id.test);
-        //test.setText(question.content);
-
+        // load questions
+        Question question = new Question(new load());
+        question.find("normal", getArguments().getString("prefers"), getArguments().getString("view_by"));
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-
-    private class loadQuestions extends RestfulClient{
+    // task to load questions
+    private class load extends RestfulClient{
 
         @Override
         protected void onPreExecute() {
@@ -90,32 +54,29 @@ public class ListQuestionsFragment extends ListFragment
 
         @Override
         protected void onPostExecute(JSONObject result) {
-            adapter = new QuestionsAdapter(getActivity(), list);
-            adapter.user = user;
+            User user = new User(getArguments().getString("logged_id"));
+            ArrayList<Question> list = new ArrayList<>();
+            QuestionsAdapter adapter = new QuestionsAdapter(getActivity(), list, user);
             setListAdapter(adapter);
             try {
                 if( this.status == 200 ){
                     list = Question.fromJson(result.getJSONArray("data"));
                     adapter.addAll(list);
                 }
-
-                // Create the adapter to convert the array to views
-                 // Attach the adapter to a ListView
-                // Populating Data into ListView
-
-
             }catch (JSONException e){
                 e.printStackTrace();
             }
 
-            RelativeLayout loadingLayout = (RelativeLayout) view.findViewById(R.id.loading_questions);
+            RelativeLayout loadingLayout = (RelativeLayout) getView().findViewById(R.id.loading_questions);
             loadingLayout.setVisibility(View.GONE);
         }
 
     }
 
+    // click over each question
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        User user = new User(getArguments().getString("logged_id"));
         Question question = (Question) getListView().getItemAtPosition(position);
         Intent intent = new Intent(getActivity(), QuestionActivity.class);
         intent.putExtra("question_id", question.id);

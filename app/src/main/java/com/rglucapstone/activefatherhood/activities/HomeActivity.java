@@ -58,35 +58,22 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        // main view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Intent intent = getIntent();
-        this.str_themes = intent.getStringExtra("str_themes");
-        this.view_by = intent.getStringExtra("viewBy");
-        user = new User(intent.getStringExtra("user_id"));
-
-        // toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
         setSupportActionBar(toolbar);
 
-        //si se elige una categoria se cambia el title al toolbar
-        view_by = intent.getStringExtra("viewBy");
-
-        if(view_by!=null) {
+        /*if(view_by!=null) {
             if (view_by.equals("categorie")) {
                 item_categorie = intent.getStringExtra("title");
                 getSupportActionBar().setTitle(item_categorie);
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
-        }
+        }*/
 
-        // tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_tabs);
         setupViewPager(viewPager);
-        //viewPager.setAdapter(new HomeFragmentPagerAdapter(getSupportFragmentManager(), HomeActivity.this));
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.toolbar_tabs);
         tabLayout.setupWithViewPager(viewPager);
@@ -94,6 +81,40 @@ public class HomeActivity extends AppCompatActivity {
         FrameLayout searchLayout = (FrameLayout) findViewById(R.id.layout_search_results);
         searchLayout.setVisibility(View.GONE);
 
+    }
+
+    private Bundle getData(){
+        Intent intent = getIntent();
+        Bundle bundle = new Bundle();
+        bundle.putString("prefers", intent.getStringExtra("prefers"));
+        bundle.putString("view_by", intent.getStringExtra("view_by"));
+        bundle.putString("logged_id", intent.getStringExtra("user_id"));
+        return bundle;
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+
+        HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(
+                getSupportFragmentManager(),HomeActivity.this);
+
+        Bundle bundle = getData();
+
+        // agrega el fragment de Preguntas
+        ListFragment questions = new ListQuestionsFragment();
+        questions.setArguments(bundle);
+        adapter.addFragment(questions, "Preguntas");
+
+        ListFragment posts = new ListPostsFragment();
+        posts.setArguments(bundle);
+        adapter.addFragment(posts, "Publicaciones");
+
+        Fragment gurus = new ListGurusFragment();
+        gurus.setArguments(bundle);
+        adapter.addFragment(gurus, "Top Padres");
+        //Fragment results = new SearchResultsFragment();
+        //adapter.addFragment(results, "Padres Gurús");
+
+        viewPager.setAdapter(adapter);
     }
 
     private void showSearchView(){
@@ -120,34 +141,7 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Set Tabs
      * */
-    private void setupViewPager(ViewPager viewPager) {
 
-        HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager(),HomeActivity.this);
-
-        Bundle bundle = new Bundle();
-        bundle.putString("viewBy",this.view_by);
-        bundle.putString("str_themes", this.str_themes);
-        bundle.putString("logged_id", user.id);
-
-        //TextView txt = (TextView) findViewById(R.id.title_preference2);
-        //txt.setText(user.id + " : " + user.email);
-
-        ListFragment questions = new ListQuestionsFragment();
-        questions.setArguments(bundle);
-        adapter.addFragment(questions, "Preguntas");
-
-        ListFragment posts = new ListPostsFragment();
-        posts.setArguments(bundle);
-        adapter.addFragment(posts, "Publicaciones");
-
-        Fragment gurus = new ListGurusFragment();
-        gurus.setArguments(bundle);
-        adapter.addFragment(gurus, "Top Padres");
-        //Fragment results = new SearchResultsFragment();
-        //adapter.addFragment(results, "Padres Gurús");
-
-        viewPager.setAdapter(adapter);
-    }
 
 
     @Override
@@ -235,9 +229,10 @@ public class HomeActivity extends AppCompatActivity {
                 showSearchView();
                 return true;
             case R.id.action_my_profile:
+                Intent intentIn = getIntent();
                 Intent intent = new Intent(this, ProfileActivity.class);
-                intent.putExtra("user_id", user.id);
-                intent.putExtra("logged_id", user.id);
+                intent.putExtra("user_id", intentIn.getStringExtra("user_id"));
+                intent.putExtra("logged_id", intentIn.getStringExtra("user_id"));
                 startActivityForResult(intent, 0);
                 return true;
             case android.R.id.home:

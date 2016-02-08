@@ -36,125 +36,99 @@ import java.util.Locale;
 public class QuestionsAdapter extends ArrayAdapter<Question>{
 
     private Context context;
-    private LayoutInflater inflater;
-    public ArrayList<Question> questions;
-    public Question question;
-    public View view;
-    public User user;
-    public User user_question;
+    private User user;
 
-    public QuestionsAdapter(Context context, ArrayList<Question> questions){
+    public QuestionsAdapter(Context context, ArrayList<Question> questions, User user){
         super(context, R.layout.fragment_item_question, questions);
         this.context = context;
-        //inflater = context.getWindow().getLayoutInflater();
+        this.user = user;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-
-        // Get the data item for this position
-        final Question question = getItem(position);
-
-        //ViewHolder viewHolder; // view lookup cache stored in tag
+        final Question question = getItem(position); // Get the data item for this position
 
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            //viewHolder = new ViewHolder();
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_item_question, parent, false);
-        }else{
-            //viewHolder = (ViewHolder) convertView.getTag();
         }
+        setData(convertView, question);
+        setActions(convertView, question);
+        return convertView;
+    }
 
-        this.view = convertView;
+    // setting data
+    private void setData(View v, Question q){
 
+        // relative date
+        RelativeTimeTextView date = (RelativeTimeTextView) v.findViewById(R.id.txt_question_date);
+        date.setReferenceTime(q.created_ago);
 
-        final ImageView ic_user = (ImageView) convertView.findViewById(R.id.ic_user);
-        //convertView.setTag(viewHolder);
+        // content
+        TextView txt_qcontent = (TextView) v.findViewById(R.id.txt_qcontent);
+        txt_qcontent.setText(q.content);
 
-        // username - login
-        TextView txt_quser = (TextView) convertView.findViewById(R.id.txt_quser);
-        txt_quser.setText(question.user.login);
+        // total answers
+        TextView txt_qanswers = (TextView) v.findViewById(R.id.txt_qanswers);
+        txt_qanswers.setText(q.listAnswers.size() + " respuestas");
 
+        // login
+        TextView txt_quser = (TextView) v.findViewById(R.id.txt_quser);
+        txt_quser.setText(q.user.login);
 
-        //TextView txt_question_date = (TextView) convertView.findViewById(R.id.txt_question_date);
-        RelativeTimeTextView v = (RelativeTimeTextView) convertView.findViewById(R.id.txt_question_date);
-        v.setReferenceTime(question.created_ago);
-        //txt_question_date.setText(question.created);
-
-        //TextView txt_qdatetime = (TextView) convertView.findViewById(R.id.txt_qdatetime);
-        TextView txt_qcontent = (TextView) convertView.findViewById(R.id.txt_qcontent);
-        TextView txt_qanswers = (TextView) convertView.findViewById(R.id.txt_qanswers);
-
-        //ic_user.setTag(question.user);
-
-        //txt_qdatetime.setText(question.created);
-        txt_qcontent.setText(question.content);
-        txt_qanswers.setText(question.listAnswers.size() + " respuestas");
-
-        setTags();
-        for (int i = 1; i <= question.themes.length; i++) {
+        // tags of themes
+        setTags(v);
+        for (int i = 1; i <= q.themes.length; i++) {
             int index = i - 1;
 
             int imgtag = getContext().getResources().getIdentifier("ic_question_tag" + i, "id", getContext().getPackageName());
-            ImageView img_tag = (ImageView) convertView.findViewById(imgtag);
+            ImageView img_tag = (ImageView) v.findViewById(imgtag);
             img_tag.setVisibility(View.VISIBLE);
 
             int txttag = getContext().getResources().getIdentifier("txt_question_tag" + i, "id", getContext().getPackageName());
-            TextView txt_tag = (TextView) convertView.findViewById(txttag);
-            txt_tag.setText(question.themes[index]);
+            TextView txt_tag = (TextView) v.findViewById(txttag);
+            txt_tag.setText(q.themes[index]);
             txt_tag.setVisibility(View.VISIBLE);
         }
 
-        final RelativeLayout link_user = (RelativeLayout) convertView.findViewById(R.id.link_user);
+    }
+
+    // setting all three tags to invisible
+    private void setTags(View v){
+
+        int total = 3;
+        for (int i = 1; i <= total; i++) {
+            int imgtag = getContext().getResources().getIdentifier("ic_question_tag" + i, "id", getContext().getPackageName());
+            ImageView img_tag = (ImageView) v.findViewById(imgtag);
+            img_tag.setVisibility(View.GONE);
+
+            int txttag = getContext().getResources().getIdentifier("txt_question_tag" + i, "id", getContext().getPackageName());
+            TextView txt_tag = (TextView) v.findViewById(txttag);
+            txt_tag.setVisibility(View.GONE);
+        }
+    }
+
+    // setting actions
+    private void setActions(View v, final Question q){
+
+        // link to open profile
+        final RelativeLayout link_user = (RelativeLayout) v.findViewById(R.id.link_user);
         link_user.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
-                //TextView txt_qanswers = (TextView) view.findViewById(R.id.txt_qanswers);
-                //txt_qanswers.setText(question.user.id);
-
                 Intent intent = new Intent(context, ProfileActivity.class); //create an Intent object
-                intent.putExtra("user_id", question.user.id); //add data to the Intent object
+                intent.putExtra("user_id", q.user.id); //add data to the Intent object
                 intent.putExtra("logged_id", user.id);
                 context.startActivity(intent); //start the second activity
             }
         });
 
-        // set image user temporal
-        final  ImageView img_user = (ImageView) convertView.findViewById(R.id.ic_user);
-        user_question = question.user;
-        setImageUser(img_user, user_question.id);
-
-
-        // THEMES
-        /*txt_qtags.setText(question.themes[0]);
-        final TextView[] themes = new TextView[3];
-        LinearLayout layout_themes = (LinearLayout) convertView.findViewById(R.id.ly_themes);
-        LayoutParams lparams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        layout_themes.removeAllViews();
-        for (int i = 0; i < question.themes.length; i++) {
-            final TextView theme = new TextView(this.getContext());
-            theme.setLayoutParams(lparams);
-            theme.setText(question.themes[i]);
-            layout_themes.addView(theme);
-            themes[i] = theme;
-        }*/
-        return convertView;
+        // setting profile image
+        final  ImageView img_user = (ImageView) v.findViewById(R.id.ic_user); // set image user temporal
+        setImageUser(img_user, q.user.id);
     }
 
-    public void setTags(){
-
-        int total = 3;
-        for (int i = 1; i <= total; i++) {
-            int imgtag = getContext().getResources().getIdentifier("ic_question_tag" + i, "id", getContext().getPackageName());
-            ImageView img_tag = (ImageView) this.view.findViewById(imgtag);
-            img_tag.setVisibility(View.GONE);
-
-            int txttag = getContext().getResources().getIdentifier("txt_question_tag" + i, "id", getContext().getPackageName());
-            TextView txt_tag = (TextView) this.view.findViewById(txttag);
-            txt_tag.setVisibility(View.GONE);
-        }
-    }
-
-    public void setImageUser(ImageView img_view,String id){
+    // setting profile image
+    private void setImageUser(ImageView img_view,String id){
         switch (id){
             case "1":
                 img_view.setBackgroundResource(R.drawable.padre2);
@@ -203,6 +177,5 @@ public class QuestionsAdapter extends ArrayAdapter<Question>{
                 break;
         }
     }
-
 
 }

@@ -1,130 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/container_preference"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar_action"
+        layout="@layout/toolbar_action">
+    </include>
+    <!--Title -->
+    <TextView
+        android:id="@+id/title_preference"
+        android:text="@string/message_preferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:paddingBottom="5dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16dp"/>
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-        android:id="@+id/linearLayout">
-
-       <!-- <TextView
-            android:id="@+id/title_preference"
-            android:text="@string/message_preferences"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentTop="true"
-            android:padding="15dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16dp"
-            android:background="@drawable/border_bottom_primary"/>-->
-
+    <!-- Categories-->
         <TableLayout
-            android:id="@+id/preferences"
+            android:id="@+id/preferences_categories"
             android:paddingTop="5dp"
             android:paddingLeft="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:stretchColumns="*" >
 
+            <!-- Hijos -->
             <TableRow
-                android:id="@+id/row_1"
+                android:id="@+id/row_title_children"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_marginTop="1dp">
+                <TextView
+                    android:id="@+id/title_children"
+                    android:text="Etapas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:padding="5dp"
+                    android:textColor="@color/mediumGrey"
+                    android:textSize="15dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
                 <CheckBox
-                    android:id="@+id/check_bebes"
+                    android:id="@+id/check_babys"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Bebés"
+                    android:checked="false"
+                    android:buttonTint="#4cb6c4"
+                    android:button="@drawable/color_check"/>
+                <CheckBox
+                    android:id="@+id/check_children"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:buttonTint="#4cb6c4" />
-                <CheckBox
-                    android:id="@+id/check_ninos"
                     android:text="Niños"
+                    android:checked="false"
+                    android:buttonTint="#4cb6c4"
+                    android:button="@drawable/color_check"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
+                <CheckBox
+                    android:id="@+id/check_teens"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:buttonTint="#4cb6c4" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/row_3"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
-                <CheckBox
-                    android:id="@+id/check_adolescentes"
                     android:text="Adolescentes"
+                    android:checked="false"
+                    android:buttonTint="#4cb6c4"
+                    android:button="@drawable/color_check" />
+                <CheckBox
+                    android:id="@+id/check_young"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:buttonTint="#4cb6c4" />
-                <CheckBox
-                    android:id="@+id/check_jovenes"
                     android:text="Jóvenes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:checked="false"
-                    android:buttonTint="#4cb6c4" />
+                    android:buttonTint="#4cb6c4"
+                    android:button="@drawable/color_check"/>
             </TableRow>
 
+            <!-- Temas -->
             <TableRow
-                android:id="@+id/row_2"
+                android:id="@+id/row_title_categories"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/title_categories"
+                    android:text="Categorías"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:padding="5dp"
+                    android:textColor="@color/mediumGrey"
+                    android:textSize="15dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
                 <CheckBox
-                    android:id="@+id/check_aprendizaje"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Aprendizaje"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/check_aprendizaje"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
-                    android:id="@+id/check_comportamiento"
-                    android:text="Comportamiento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Comportamiento"
+                    android:id="@+id/check_comportamiento"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
-
             <TableRow
-                android:id="@+id/row_4"
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
                 <CheckBox
                     android:id="@+id/check_comunicacion"
-                    android:text="Comunicación"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Comunicación"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
                     android:id="@+id/check_problemas_sociales"
-                    android:text="Problemas Sociales"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Problemas Sociales"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
-
             <TableRow
-                android:id="@+id/row_5"
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
                 <CheckBox
-                    android:id="@+id/check_salud"
-                    android:text="Salud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Salud"
+                    android:id="@+id/check_salud"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
                     android:id="@+id/check_alimentacion"
@@ -132,82 +165,146 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
-
             <TableRow
-                android:id="@+id/row_6"
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
                 <CheckBox
                     android:id="@+id/check_divorcio"
                     android:text="Divorcio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:buttonTint="#4cb6c4" />
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4"/>
                 <CheckBox
                     android:id="@+id/check_adopcion"
                     android:text="Adopción"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
-
             <TableRow
-                android:id="@+id/row_7"
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
                 <CheckBox
-                    android:id="@+id/check_efermedades"
+                    android:id="@+id/check_enfermedades"
                     android:text="Enfermedades"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:buttonTint="#4cb6c4" />
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4"/>
                 <CheckBox
                     android:id="@+id/check_discapacidades"
                     android:text="Discapacidades"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
-
             <TableRow
-                android:id="@+id/row_8"
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
                 <CheckBox
                     android:id="@+id/check_recreacion"
                     android:text="Recreación"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:buttonTint="#4cb6c4" />
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4"/>
                 <CheckBox
                     android:id="@+id/check_sexualidad"
                     android:text="Sexualidad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
 
+            <!-- Tipos de Padres -->
+            <TableRow
+                android:id="@+id/row_title_fathers"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/title_fathers"
+                    android:text="Otras Categorías"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:padding="5dp"
+                    android:textColor="@color/mediumGrey"
+                    android:textSize="15dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
+                <CheckBox
+                    android:id="@+id/check_solteros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Padres Solteros"
+                    android:checked="false"
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4" />
+                <CheckBox
+                    android:id="@+id/check_primerizos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Padres Primerizos"
+                    android:checked="false"
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4" />
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="fill_parent">
+                <CheckBox
+                    android:id="@+id/check_futuros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Futuros Papás"
+                    android:checked="false"
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4" />
+                <CheckBox
+                    android:id="@+id/check_divorciados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Padres Divorciados"
+                    android:checked="false"
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4" />
+            </TableRow>
         </TableLayout>
 
-            <!--<Button
-                android:id="@+id/btn_acept_preferences"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aceptar"
-                android:layout_marginTop="39dp"
-                android:layout_below="@+id/check_comportamiento"
-                android:layout_centerHorizontal="true" />-->
-    </LinearLayout>
-
-</RelativeLayout>
+    <!-- Continuar-->
+    <Button
+        android:id="@+id/btn_continue_preference"
+        android:text="Continuar"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button_fill_primary"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/colorPrimaryLabel"
+        android:onClick="goHome"/>
+</LinearLayout>

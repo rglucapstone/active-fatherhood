@@ -16,6 +16,10 @@ import java.util.ArrayList;
  */
 public class Answer extends Model{
 
+    public RestfulClient AsyncTask;
+
+
+
     public String id;
     public String content;
     public String created;
@@ -26,20 +30,14 @@ public class Answer extends Model{
     public ArrayList<Suggest> suggestions;
 
     public Context context;
-    public RestfulClient asynctask;
+
     public View view;
 
-    public Answer() {
+    public Answer() { }
 
-    }
-
+    // Constructors
     public Answer(RestfulClient task) {
-        this.asynctask = task;
-    }
-
-    public Answer(Context context, RestfulClient task) {
-        this.context = context;
-        this.asynctask = task;
+        this.AsyncTask = task;
     }
 
     public Answer(JSONObject object) {
@@ -74,6 +72,33 @@ public class Answer extends Model{
         return items;
     }
 
+    // like an answer
+    public boolean like(String answer_id, String user_id) {
+        boolean like = false;
+        this.AsyncTask.method = "POST";
+        this.AsyncTask.uri = "/answers/" + answer_id + "/likes";
+        try{
+            JSONObject json = new JSONObject();
+            json.put("user_id", user_id);
+            this.AsyncTask.execute(json.toString());
+            if( this.AsyncTask.status == 200 )
+                like = true;
+        }catch (Exception e) {}
+        return like;
+    }
+
+
+
+
+    /************************************************************/
+
+    public Answer(Context context, RestfulClient task) {
+        this.context = context;
+        this.AsyncTask = task;
+    }
+
+
+
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         try {
@@ -88,7 +113,7 @@ public class Answer extends Model{
 
     public boolean send() {
         boolean send = false;
-        RestfulClient rest = this.asynctask;
+        RestfulClient rest = this.AsyncTask;
         rest.method = "POST";
         rest.uri = "/answers";
         try{
@@ -100,25 +125,11 @@ public class Answer extends Model{
         return send;
     }
 
-    public boolean like(String user_id) {
-        boolean like = false;
-        RestfulClient rest = this.asynctask;
-        rest.method = "POST";
-        rest.uri = "/answers/"+this.id+"/likes";
-        try{
-            JSONObject json = new JSONObject();
-            json.put("user_id", user_id);
-            rest.execute(json.toString());
-            if( rest.status == 200 )
-                like = true;
-        }catch (Exception e) {
-        }
-        return like;
-    }
+
 
     public boolean suggest(String user_owner, String user_request) {
         boolean like = false;
-        RestfulClient rest = this.asynctask;
+        RestfulClient rest = this.AsyncTask;
         rest.method = "POST";
         rest.uri = "/answers/"+this.id+"/suggestions";
         try{

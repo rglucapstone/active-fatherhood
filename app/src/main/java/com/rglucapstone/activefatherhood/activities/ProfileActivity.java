@@ -159,7 +159,7 @@ public class ProfileActivity extends Activity {
 
         //guru_progress_text.setText(Integer.toString(this.user.themes.length));
 
-        setThemes();
+        /*setThemes();
         if( this.user.themes.length > 0 ){
             for (int i = 1; i <= this.user.themes.length; i++) {
                 int index = i - 1;
@@ -179,7 +179,7 @@ public class ProfileActivity extends Activity {
 
         User user = new User(new loadQuestions());
         user.id = this.user.id;
-        user.loadQuestions("normal");
+        user.loadQuestions("normal");*/
 
     }
 
