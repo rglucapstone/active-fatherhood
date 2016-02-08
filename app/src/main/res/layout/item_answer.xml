@@ -26,24 +26,32 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:gravity="left">
+            android:layout_marginLeft="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="left" >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:gravity="left">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
+                    android:text="ronaldgonzales"
                     android:id="@+id/answer_user"
                     android:textSize="14sp"
-                    android:textColor="@color/colorThird" />
+                    android:textColor="@color/colorThird"
+                    android:layout_gravity="left"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,32 +64,33 @@
                         android:background="@mipmap/ico_father_highlights"
                         android:layout_marginRight="10dp"/>
                 </RelativeLayout>
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="right">
+                    <com.github.curioustechizen.ago.RelativeTimeTextView
+                    android:id="@+id/answer_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text=""
-                    android:id="@+id/answer_date"
-                    android:layout_marginTop="1dp"
-                    android:textColor="#999999"
-                    android:textSize="12sp" />
-            </RelativeLayout>
+                    android:textSize="11sp"
+                    android:text="2016-01-30 13:45:30" />
+                </RelativeLayout>
+            </LinearLayout>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text=""
+                    android:text="Contenido de respuesta de prueba"
                     android:id="@+id/answer_content"
                     android:layout_marginTop="5dp"
                     android:ellipsize="end"
@@ -90,10 +99,10 @@
                     android:textSize="14sp" />
             </RelativeLayout>
 
-            <RelativeLayout
+            <!--<RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <!-- Tags
+                Tags
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -113,9 +122,11 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textSize="12sp"
                         android:text="dd"/>
-                </LinearLayout> -->
-            </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>-->
+
         </LinearLayout>
+
     </LinearLayout>
 
     <!--Acciones-->

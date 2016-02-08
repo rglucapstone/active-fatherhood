@@ -16,6 +16,11 @@ import java.util.Date;
  */
 public class Suggest {
 
+    public Answer answer;
+    public User user;
+
+
+
     public String content;
     public String created;
     public User user_request;
@@ -31,11 +36,9 @@ public class Suggest {
     public Suggest(JSONObject object) {
         try {
             JSONObject q = object.getJSONObject("suggest");
-            if( q.has("answer") ){
-                JSONObject a = q.getJSONObject("answer");
-                this.content = a.getString("content");
-                this.answer_id = a.getString("id");
-            }
+
+            this.answer = new Answer(q);
+            this.user = new User(q);
             if (q.has("created")){
                 this.created = q.getString("created");
                 try {
@@ -44,7 +47,14 @@ public class Suggest {
                     this.created_ago = date.getTime();
                 }catch (ParseException e){}
             }
-            this.user_request = new User(q);
+
+            /*if( q.has("answer") ){
+                JSONObject a = q.getJSONObject("answer");
+                this.content = a.getString("content");
+                this.answer_id = a.getString("id");
+            }
+
+            this.user_request = new User(q);*/
         } catch (JSONException e) {
             e.printStackTrace();
         }

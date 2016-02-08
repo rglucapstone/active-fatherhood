@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <!-- Question -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="top"
+            android:layout_height="150dp">
+            <EditText
+                android:id="@+id/input_answer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLength="150"
+                android:ems="12"
+                android:gravity="top"
+                android:singleLine="true"
+                android:inputType="textMultiLine"
+                android:background="@drawable/field_write_question"
+                android:textCursorDrawable="@drawable/cursor_text"
+                android:hint="@string/txt_write_answer"
+                android:editable="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".20"
+            android:id="@+id/btn_cancel"
+            android:text="Cancelar"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="bottom|right"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button_fill_primary"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".20"
+            android:id="@+id/btn_answering"
+            android:text="@string/btn_send"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="bottom|right"
+            android:background="@drawable/button_fill_primary"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

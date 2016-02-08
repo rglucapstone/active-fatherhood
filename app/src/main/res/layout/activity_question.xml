@@ -133,7 +133,6 @@
     </LinearLayout>
 
         <!-- Reporte -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -194,6 +193,7 @@
 
         <!-- Container Answers -->
         <LinearLayout
+            android:id="@+id/container_answers"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginLeft="0dp"
@@ -219,18 +219,23 @@
                     android:id="@+id/layout_list_answers"
                     layout="@layout/fragment_list_answers">
                 </include>
-            <!--<ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/listAnswer"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />-->
+
         </LinearLayout>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layout_answer"
+            layout="@layout/fragment_answer">
+        </include>
+
     </LinearLayout>
+
+
 
         <!-- Boton Responder -->
         <LinearLayout
+            android:id="@+id/btn_do_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -249,5 +254,6 @@
                 android:clickable="true"
                 android:onClick="answer"/>
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

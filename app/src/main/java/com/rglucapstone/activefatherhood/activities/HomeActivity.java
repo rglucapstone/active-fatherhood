@@ -88,6 +88,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         }*/
 
+        //TextView txt_test = (TextView)findViewById(R.id.txt_test);
+        //txt_test.setText(getIntent().getStringExtra("user_id"));
+
         // tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_tabs);
         setupViewPager(viewPager);
@@ -373,18 +376,17 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Do a Question
-     */
+    // do question
     public void ask(View view) {
         Intent intent = new Intent(this, AskActivity.class);
-        intent.putExtra("user_id", user.id);
+        intent.putExtra("user_id", getIntent().getStringExtra("user_id"));
+        intent.putExtra("user_guru_id", "0");
         startActivity(intent);
     }
 
     public void post(View view) {
         Intent intent = new Intent(this, DoPost.class);
-        intent.putExtra("user_id", user.id);
+        intent.putExtra("user_id", intent.getStringExtra("user_id"));
         startActivity(intent);
     }
 }

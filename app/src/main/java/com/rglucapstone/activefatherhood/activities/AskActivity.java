@@ -30,51 +30,43 @@ import java.util.Date;
  * Created by ronald on 15/12/15.
  */
 public class AskActivity extends AppCompatActivity {
-    final Context context = this;
 
-    private Button button_asking;
-    private TextView container;
-    private LayoutInflater inflater;
-    public User user;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask);
+        this.context = this;
         setToolbar();
-
-        Intent intent = getIntent();
-        this.user = new User(intent.getStringExtra("user_id"));
-
+        User user = new User(getIntent().getStringExtra("user_id"));
+        User user_guru = new User(getIntent().getStringExtra("user_guru_id"));
+        setActions(user, user_guru);
         //TextView txtview = (TextView) findViewById(R.id.txt_test);
         //txtview.setText(this.user.id);
+    }
 
-        /**
-         * Se oculta el titulo de preferencias
+    private void setActions(final User u, final User ug){
 
-        container = (TextView) findViewById(R.id.title_preference);
-        container.setVisibility(View.GONE);*/
-
-        // Luego de realizar la pregunta la muestra en el listado
-        button_asking = (Button) findViewById(R.id.btn_asking);
-        View view;
+        Button button_asking = (Button) findViewById(R.id.btn_asking);
         button_asking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                EditText iquestion = (EditText)findViewById(R.id.input_question);
+                EditText iquestion = (EditText) findViewById(R.id.input_question);
 
                 // instance Question object
                 Question question = new Question(context, new sendQuestion());
                 question.content = iquestion.getText().toString();
-                question.created = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
-                question.user = user;
+                question.created = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                question.user = u;
+                question.user_guru = ug;
                 question.send();
             }
         });
+
     }
 
-    /* Toolbar */
-    public void setToolbar(){
+    private void setToolbar(){
         // toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
         toolbar.setTitle("Agregar pregunta");
@@ -82,13 +74,6 @@ public class AskActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    /* Pedndiente revisar uso*/
-    public void asking(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-    }
-
-    /* Action Back*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -100,6 +85,7 @@ public class AskActivity extends AppCompatActivity {
         }
     }
 
+    // task to send a question
     private class sendQuestion extends RestfulClient {
 
         private Toast toast;
@@ -113,11 +99,17 @@ public class AskActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(JSONObject result) {
             toast.cancel();
-            Intent intent = new Intent(context, HomeActivity.class);
-            intent.putExtra("user_id", user.id);
-            intent.putExtra("str_themes", "");
-            intent.putExtra("viewBy", "preference");
-            context.startActivity(intent);
+            if( this.status == 201 ){
+                Intent intent = new Intent(context, HomeActivity.class);
+                intent.putExtra("user_id", getIntent().getStringExtra("user_id"));
+                intent.putExtra("prefers", "");
+                intent.putExtra("view_by", "preferences");
+                context.startActivity(intent);
+            }else{
+                toast = Toast.makeText(context, "Error al enviar pregunta", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
         }
 
     }

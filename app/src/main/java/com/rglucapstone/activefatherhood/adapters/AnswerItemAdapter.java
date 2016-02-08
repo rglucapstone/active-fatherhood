@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.activities.ProfileActivity;
 import com.rglucapstone.activefatherhood.activities.QuestionActivity;
@@ -36,6 +37,8 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     private LayoutInflater inflater;
     private Context context;
     public User logged;
+    private Question question;
+
     public User user_anser;
 
     // Status para configurar acciones en las respuestas
@@ -43,17 +46,16 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     private boolean like_answer_status = true; //answer.user_like_answer;//user.getLikeAnswerStatus() = true;
     private boolean highlight_father_status = false; //answer.user_hightlight_father;
 
-    public AnswerItemAdapter(Context context, ArrayList<Answer> answers, User logged) {
+    public AnswerItemAdapter(Context context, ArrayList<Answer> answers, Question question, User logged) {
         super(context, R.layout.fragment_list_answers, answers);
         this.context = context;
         this.logged = logged;
+        this.question = question;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-
         Answer answer = getItem(position);
-
         if (convertView == null)
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_answer, parent, false);
 
@@ -68,11 +70,15 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
         TextView txt_content = (TextView) v.findViewById(R.id.answer_content);
         txt_content.setText(a.content);
 
-        TextView txt_date = (TextView) v.findViewById(R.id.answer_date);
-        txt_date.setText(a.created);
+        //TextView txt_date = (TextView) v.findViewById(R.id.answer_date);
+        //txt_date.setText(a.created);
+
+        // relative date
+        RelativeTimeTextView date = (RelativeTimeTextView) v.findViewById(R.id.answer_date);
+        date.setReferenceTime(a.created_ago);
 
         TextView txt_user = (TextView) v.findViewById(R.id.answer_user);
-        txt_user.setText(a.user.name);
+        txt_user.setText(a.user.login);
 
         TextView txt_likes = (TextView) v.findViewById(R.id.txt_likes);
         txt_likes.setText(Integer.toString(a.likes.size()));
@@ -102,58 +108,11 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
         });
         setImageUser(link_user, a.user.id);
 
+        // setting suggest
+        setSuggestAnswer(v, a);
 
-        /*final String userId = user.id;
-        final int userLevel = user.level;
-        final User usr = user;
-        final Answer ans = answer;
-
-        //final
-
-        //Se setea el icono de padre destacado
+        /*//Se setea el icono de padre destacado
         setFatherHighlights(convertView, userLevel);
-
-        //Se setea el icono de like de la respuesta
-
-
-        //Se setea el icono de sugerencia de la respuesta solo si el padre es = al padre de la pregunta
-        setSuggestAnswer(convertView, user, ans);
-
-        // Event Click on Like Answer
-
-        // Event Click on Suggest Publication
-        final LinearLayout btn_suggest_publication = (LinearLayout) convertView.findViewById(R.id.btn_suggest_publication);
-        if( logged.id.equals(answer.question_user_id) ){
-
-            if( !(answer.suggestions.size() > 0) ){
-                btn_suggest_publication.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                        alertDialogBuilder.setTitle("Desea sugerir a" + " " + answer.user.name + " " + "que publique esta respuesta?");
-                        alertDialogBuilder.setMessage(R.string.mensaje_sugerir_post)
-                                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        actionSuggestAnswer(convertView, logged, answer);
-                                    }
-                                })
-                                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        //close dialog
-                                    }
-                                });
-                        AlertDialog alertDialog = alertDialogBuilder.create();
-                        alertDialog.show();
-                    }
-                });
-            }
-
-
-        }else{
-            LinearLayout btnSugerir = (LinearLayout) convertView.findViewById(R.id.btn_suggest_publication);
-            btnSugerir.setVisibility(View.GONE);
-        }
-
 
         // Action Highlight Father
         final LinearLayout btn_highlight_father = (LinearLayout) convertView.findViewById(R.id.btn_highlight_father);
@@ -171,9 +130,7 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
                     ic.setBackgroundResource(R.mipmap.ico_highlight_father_grey);
                 }
             }
-        });
-
-*/
+        });*/
 
     }
 
@@ -224,43 +181,53 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     }
 
 
-    public void setSuggestAnswer(View convertView,User user,Answer answer) {
-        final User usr = user;
-        final Answer ans = answer;
-        final TextView tx = (TextView) convertView.findViewById(R.id.title_sugest_publication);
-        final ImageView ic = (ImageView) convertView.findViewById(R.id.ico_suggest_publication);
+    public void setSuggestAnswer(final View v, final Answer a) {
+        LinearLayout btnSugerir = (LinearLayout) v.findViewById(R.id.btn_suggest_publication);
 
-        //tx.setText(Integer.toString(answer.suggestions.size()));
-        if( answer.suggestions.size() > 0 ){
-            ic.setBackgroundResource(R.mipmap.ico_highlight_father);
-            tx.setText("Publicación sugerida");
+        if( logged.id.equals(question.user.id) ){
+            final TextView tx = (TextView) v.findViewById(R.id.title_sugest_publication);
+            final ImageView ic = (ImageView) v.findViewById(R.id.ico_suggest_publication);
+
+            if( a.suggestions.size() > 0 ){
+                ic.setBackgroundResource(R.mipmap.ico_highlight_father);
+                tx.setText("Publicación sugerida");
+            }else{
+                ic.setBackgroundResource(R.mipmap.ico_highlight_father_grey);
+
+                //setting suggest action
+                btnSugerir.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                        alertDialogBuilder.setTitle("Desea sugerir a" + " " + a.user.name + " " + "que publique esta respuesta?");
+                        alertDialogBuilder.setMessage(R.string.mensaje_sugerir_post)
+                                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        actionSuggestAnswer(v, logged, a);
+                                    }
+                                })
+                                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //close dialog
+                                    }
+                                });
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+                    }
+                });
+            }
+
         }else{
-            ic.setBackgroundResource(R.mipmap.ico_highlight_father_grey);
+            btnSugerir.setVisibility(View.GONE);
         }
-
     }
 
-    // Action Suggest Answer
-    public void actionSuggestAnswer(View convertView,User user,Answer answer){
-
+    // action to sugget answer
+    public void actionSuggestAnswer(View convertView, User user, Answer answer){
         Answer ans_async = new Answer(new createSuggest(convertView));
         ans_async.id = answer.id;
-        ans_async.suggest(answer.user.id, user.id);
-        /*
-        suggest_answer_status = usr.getSuggestAnswerStatus(ans.id);
-        //SI STATUS ES FALSE (NO SUGERIDA AUN) SE LLAMA AL DIALOGO Y SI ACEPTA SE CAMBIA EL STATUS A TRUE, ICONO EN PRIMARY,
-        // EL TEXTO CAMBIA A RESPUESTA SUGERIDA y se bloquea el boton
-
-        if (!suggest_answer_status) {//si el padre aun no sugiere la respuesta
-            suggest_answer_status = true; //usr.setSuggestAnswerStatus(true);
-            Toast.makeText(context, "Tu sugerencia fue realizada con éxito", Toast.LENGTH_SHORT).show();
-            //ic.setBackgroundResource(R.drawable.ico_suggest); //ya se bloquea y no puede sugerir mas
-        } else { //si el padre ya sugirio la respuesta
-            //usr.setSuggestAnswerStatus(false);
-            Toast.makeText(context, "Ya sugeriste esta respuesta", Toast.LENGTH_SHORT).show();
-            suggest_answer_status = false; //usr.setSuggestAnswerStatus(false);
-            ic.setBackgroundResource(R.drawable.ico_suggest);
-        }*/
+        ans_async.user = answer.user;
+        ans_async.suggest(user);
     }
 
     // Action Father HighLights
@@ -286,6 +253,7 @@ public class AnswerItemAdapter extends ArrayAdapter<Answer>{
     }
 
 
+    // task to suggest answer
     private class createSuggest extends RestfulClient {
 
         private View view;

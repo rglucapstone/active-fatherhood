@@ -24,23 +24,24 @@ public class Question extends Model{
 
     public RestfulClient AsyncTask;
 
-
-
-    public Context context;
-    public ArrayAdapter adapter;
-
-
     public String id;
     public String content;
     public String created;
     public long created_ago;
+
+    public User user;
+    public User user_guru;
+
+
+    public Context context;
+    public ArrayAdapter adapter;
     public String total_answers;
     public String[] themes;
-    public User user;
+
     public ArrayList<Answer> listAnswers;
     public String question_id;
 
-    public User user_guru;
+
     public String userstr;
     public String contentstr;
     public String datetime;
@@ -123,11 +124,43 @@ public class Question extends Model{
         return items;
     }
 
+    public void loadAnswers(String id){
+        try{
+            this.AsyncTask.method = "GET";
+            this.AsyncTask.uri = "/questions/" + id + "/answers";
+            this.AsyncTask.execute();
+        }catch (Exception e) {
+        }
+    }
+
+    // send a question
+    public boolean send() {
+        boolean send = false;
+        this.AsyncTask.method = "POST";
+        this.AsyncTask.uri = "/questions";
+        try{
+            JSONObject json = new JSONObject();
+            try {
+                json.put("content", this.content);
+                json.put("created", this.created);
+                json.put("user_id", this.user.id);
+                json.put("user_guru_id", this.user_guru.id);
+            } catch (JSONException e) {}
+
+            this.AsyncTask.execute(json.toString());
+            if( this.AsyncTask.status == 201 )
+                send = true;
+        }catch (Exception e) {
+        }
+        return send;
+    }
 
 
 
 
 
+
+    /****************************************************/
 
     public Question(Context context) {
         this.context = context;
@@ -166,26 +199,7 @@ public class Question extends Model{
 
 
 
-    public boolean send() {
-        boolean send = false;
-        RestfulClient rest = this.AsyncTask;
-        rest.method = "POST";
-        rest.uri = "/questions";
-        try{
-            JSONObject json = new JSONObject();
-            try {
-                json.put("content", this.content);
-                json.put("created", this.created);
-                json.put("user_id", this.user.id);
-            } catch (JSONException e) {}
 
-            rest.execute(json.toString());
-            if( rest.status == 201 )
-                send = true;
-        }catch (Exception e) {
-        }
-        return send;
-    }
 
 
 

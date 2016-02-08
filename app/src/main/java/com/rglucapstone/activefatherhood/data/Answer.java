@@ -9,7 +9,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by ronald on 27/01/16.
@@ -18,11 +21,15 @@ public class Answer extends Model{
 
     public RestfulClient AsyncTask;
 
-
-
     public String id;
     public String content;
     public String created;
+    public long created_ago;
+
+
+
+
+
     public User user;
     public String question_id;
     public String question_user_id;
@@ -45,9 +52,16 @@ public class Answer extends Model{
             JSONObject q = object.getJSONObject("answer");
             if (q.has("id")) this.id = q.getString("id");
             if (q.has("content")) this.content = q.getString("content");
-            if (q.has("created")) this.created = q.getString("created");
             if (q.has("question_id")) this.question_id = q.getString("question_id");
             if (q.has("question_user_id")) this.question_user_id = q.getString("question_user_id");
+            if (q.has("created")){
+                this.created = q.getString("created");
+                try {
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date date = format.parse(this.created);
+                    this.created_ago = date.getTime();
+                }catch (ParseException e){}
+            }
             if (q.has("likes")){
                 this.likes = Like.fromJson(q.getJSONArray("likes"));
             }
@@ -87,6 +101,46 @@ public class Answer extends Model{
         return like;
     }
 
+    // sending an answer
+    public boolean send() {
+        boolean send = false;
+        this.AsyncTask.method = "POST";
+        this.AsyncTask.uri = "/answers";
+        try{
+            JSONObject json = new JSONObject();
+            try {
+                json.put("content", this.content);
+                json.put("created", this.created);
+                json.put("user_id", this.user.id);
+                json.put("question_id", this.question_id);
+            } catch (JSONException e) {}
+            this.AsyncTask.execute(json.toString());
+            if( this.AsyncTask.status == 201 )
+                send = true;
+        }catch (Exception e) {}
+        return send;
+    }
+
+    // suggest an answer
+    public boolean suggest(User user) {
+        boolean status = false;
+        this.AsyncTask.method = "POST";
+        this.AsyncTask.uri = "/answers/" + this.id + "/suggestions";
+        try{
+            JSONObject json = new JSONObject();
+            json.put("user_id", user.id);
+            json.put("created", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            this.AsyncTask.execute(json.toString());
+            if( this.AsyncTask.status == 201 )
+                status = true;
+        }catch (Exception e) {
+        }
+        return status;
+    }
+
+
+
+
 
 
 
@@ -111,36 +165,9 @@ public class Answer extends Model{
     }
 
 
-    public boolean send() {
-        boolean send = false;
-        RestfulClient rest = this.AsyncTask;
-        rest.method = "POST";
-        rest.uri = "/answers";
-        try{
-            rest.execute(this.toJson().toString());
-            if( rest.status == 201 )
-                send = true;
-        }catch (Exception e) {
-        }
-        return send;
-    }
 
 
 
-    public boolean suggest(String user_owner, String user_request) {
-        boolean like = false;
-        RestfulClient rest = this.AsyncTask;
-        rest.method = "POST";
-        rest.uri = "/answers/"+this.id+"/suggestions";
-        try{
-            JSONObject json = new JSONObject();
-            json.put("user_owner_id", user_owner);
-            json.put("user_request_id", user_request);
-            rest.execute(json.toString());
-            if( rest.status == 201 )
-                like = true;
-        }catch (Exception e) {
-        }
-        return like;
-    }
+
+
 }
