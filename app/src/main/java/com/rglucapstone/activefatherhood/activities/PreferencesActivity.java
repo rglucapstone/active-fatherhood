@@ -56,13 +56,6 @@ public class PreferencesActivity extends AppCompatActivity {
         prefers.put("babys","1");
         prefers.put("children","2");
         prefers.put("teens", "3");
-        prefers.put("young", "12");
-
-        prefers.put("solteros", "13");
-        prefers.put("primerizos", "14");
-        prefers.put("futuros", "15");
-        prefers.put("divorciados", "16");
-
         prefers.put("aprendizaje", "7");
         prefers.put("comportamiento", "8");
         prefers.put("comunicacion", "11");
@@ -70,7 +63,6 @@ public class PreferencesActivity extends AppCompatActivity {
         prefers.put("salud", "4");
         prefers.put("alimentacion", "17");
         prefers.put("divorcio", "18");
-        prefers.put("adopcion", "19");
         prefers.put("enfermedades", "10");
         prefers.put("discapacidades", "20");
         prefers.put("recreacion", "21");
