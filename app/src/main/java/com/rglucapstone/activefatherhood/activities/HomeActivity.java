@@ -3,7 +3,10 @@ package com.rglucapstone.activefatherhood.activities;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -17,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,9 +29,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 //import android.widget.SearchView;
 import android.support.v7.widget.SearchView;
@@ -43,6 +49,8 @@ import com.rglucapstone.activefatherhood.fragments.ListPostsFragment;
 import com.rglucapstone.activefatherhood.fragments.ListGurusFragment;
 import com.rglucapstone.activefatherhood.fragments.SearchResultsFragment;
 
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Field;
 
 
@@ -55,6 +63,14 @@ public class HomeActivity extends AppCompatActivity {
     public String view_by;
     public String item_categorie;
     public User user;
+
+    Button btn_profile;
+    BadgeView badge1;
+
+    static Button notifCount;
+    static int mNotifCount = 0;
+
+    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +96,12 @@ public class HomeActivity extends AppCompatActivity {
 
         FrameLayout searchLayout = (FrameLayout) findViewById(R.id.layout_search_results);
         searchLayout.setVisibility(View.GONE);
+
+        /*TextView test = (TextView) findViewById(R.id.txt_test);
+        badge1 = new BadgeView(this, test);
+        badge1.setText("3");
+        //badge1.setBadgePosition(BadgeView.POSITION_CENTER);
+        badge1.toggle();*/
 
     }
 
@@ -115,6 +137,7 @@ public class HomeActivity extends AppCompatActivity {
         //adapter.addFragment(results, "Padres Gurús");
 
         viewPager.setAdapter(adapter);
+
     }
 
     private void showSearchView(){
@@ -149,7 +172,7 @@ public class HomeActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present
         getMenuInflater().inflate(R.menu.action_bar, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+      /* MenuItem searchItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setBackgroundColor(Color.WHITE);
@@ -215,9 +238,71 @@ public class HomeActivity extends AppCompatActivity {
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
         // Assumes current activity is the searchable activity
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));*/
 
-        return true;
+        //**** Set Notification Profile ******
+
+
+        MenuItem item = (MenuItem) menu.findItem(R.id.action_my_profile);
+        View view = MenuItemCompat.getActionView(item);
+        badge1 = new BadgeView(this, view );
+        badge1.setText("2");
+        badge1.setBadgePosition(BadgeView.POSITION_CENTER);
+        badge1.toggle();
+
+       /*MenuItem item = menu.findItem(R.id.action_my_profile);
+        MenuItemCompat.setActionView(item, R.layout.feed_update_count);
+        notifCount = (Button) MenuItemCompat.getActionView(item);
+        notifCount.setText(String.valueOf(mNotifCount));*/
+
+       /* MenuItem item = menu.findItem(R.id.action_my_profile);
+        MenuItemCompat.setActionView(item, R.layout.feed_update_count);
+        View view = MenuItemCompat.getActionView(item);
+        notifCount = (Button)view.findViewById(R.id.notif_count);
+        notifCount.setText(String.valueOf(mNotifCount));*/
+
+       /* MenuItem menuItem = menu.findItem(R.id.action_my_profile);
+        menuItem.setIcon(buildCounterDrawable(count, R.mipmap.ic_profile_white_24dp));*/
+
+        return super.onCreateOptionsMenu(menu);
+        //return true;
+    }
+/*
+    private Drawable buildCounterDrawable(int count, int backgroundImageId) {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.counter_menuitem_layout, null);
+        view.setBackgroundResource(backgroundImageId);
+
+        if (count == 0) {
+            View counterTextPanel = view.findViewById(R.id.counterValuePanel);
+            counterTextPanel.setVisibility(View.GONE);
+        } else {
+            TextView textView = (TextView) view.findViewById(R.id.count);
+           // textView.setText("" + count);
+            textView.setText("8");
+        }
+
+        view.measure(
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+
+        view.setDrawingCacheEnabled(true);
+        view.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+        view.setDrawingCacheEnabled(false);
+
+        return new BitmapDrawable(getResources(), bitmap);
+    }
+
+    private void doIncrease() {
+        count++;
+        invalidateOptionsMenu();
+    }*/
+
+    private void setNotifCount(int count){
+        mNotifCount = count;
+        invalidateOptionsMenu();
     }
     /**
      * Select actions for menu

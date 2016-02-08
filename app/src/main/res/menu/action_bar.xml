@@ -21,7 +21,16 @@
         android:id="@+id/action_my_profile"
         android:title="Mi Perfil"
         android:icon="@mipmap/ic_profile_white_24dp"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
+
+    <!--<item
+        android:id="@+id/badge"
+        android:title="Notificaciones"
+        android:actionLayout="@layout/feed_update_count"
+        android:icon="@drawable/badge_notification"
+        app:actionViewClass="android.view.View"
+        app:showAsAction="always">
+    </item>-->
 
     <!-- Settings -->
     <item

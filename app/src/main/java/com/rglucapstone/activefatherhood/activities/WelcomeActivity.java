@@ -20,44 +20,12 @@ import com.facebook.FacebookSdk;
  * Created by ronald on 09/01/16.
  */
 public class WelcomeActivity extends FragmentActivity {
-    Button btnPosition;
-    BadgeView badge1;
-
-    private LoginButton loginBtn;
-    private TextView username;
-    //private UiLifecycleHelper uiHelper;
-    CallbackManager callbackManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+       // FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_welcome);
-
-      /*  loginBtn = this.findViewById(R.id.login_button);
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });*/
-
-        /**** Example Badge para Profile *****
-        btnPosition = (Button) findViewById(R.id.btn_login);
-        badge1 = new BadgeView(this, btnPosition);
-        badge1.setText("0");
-        //badge1.setBadgePosition(BadgeView.POSITION_CENTER);
-        //badge1.toggle();
-        btnPosition.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (badge1.isShown()) {
-                    badge1.increment(1);
-                } else {
-                    badge1.show();
-                }
-            }
-        });*/
     }
 
     // Ir a la vista de Ingreso

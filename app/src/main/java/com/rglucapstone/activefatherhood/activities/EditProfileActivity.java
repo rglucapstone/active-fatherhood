@@ -3,6 +3,11 @@ package com.rglucapstone.activefatherhood.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -46,7 +51,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
         setToolbar();
 
-        /*buttonChoose = (Button) findViewById(R.id.uploadPhoto);
+        buttonChoose = (Button) findViewById(R.id.uploadPhoto);
         imageView  = (ImageView) findViewById(R.id.photoUser);
 
         buttonChoose.setOnClickListener(new View.OnClickListener() {
@@ -55,11 +60,11 @@ public class EditProfileActivity extends AppCompatActivity {
                     showFileChooser();
                 }
             }
-        });*/
+        });
 
     }
 
-    /*public String getStringImage(Bitmap bmp){
+    public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
@@ -74,6 +79,28 @@ public class EditProfileActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 
+    public Bitmap getCroppedBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
+                bitmap.getWidth() / 2, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
+        //return _bmp;
+        return output;
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -82,16 +109,20 @@ public class EditProfileActivity extends AppCompatActivity {
             try {
                 //Getting the Bitmap from Gallery
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                String image = getStringImage(bitmap);
+                //String image = getStringImage(bitmap);
+                Bitmap img_oval = getCroppedBitmap(bitmap);
+
+                /********************** Imagen Final ********************/
                 //Setting the Bitmap to ImageView
-                imageView.setImageBitmap(bitmap);
+                imageView.setImageBitmap(img_oval);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }else{
             Toast.makeText(this, "Tamaño maximo superado", Toast.LENGTH_LONG).show();
         }
-    }*/
+    }
 
       /* private void uploadImage(){
         //Showing the progress dialog
