@@ -134,7 +134,7 @@ public class Question extends Model{
     }
 
     // send a question
-    public boolean send() {
+    public boolean send(String prefers) {
         boolean send = false;
         this.AsyncTask.method = "POST";
         this.AsyncTask.uri = "/questions";
@@ -145,6 +145,7 @@ public class Question extends Model{
                 json.put("created", this.created);
                 json.put("user_id", this.user.id);
                 json.put("user_guru_id", this.user_guru.id);
+                json.put("themes", prefers);
             } catch (JSONException e) {}
 
             this.AsyncTask.execute(json.toString());

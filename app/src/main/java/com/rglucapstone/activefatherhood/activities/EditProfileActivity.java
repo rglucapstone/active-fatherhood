@@ -1,6 +1,7 @@
 package com.rglucapstone.activefatherhood.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -19,17 +20,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rglucapstone.activefatherhood.R;
+import com.rglucapstone.activefatherhood.data.Question;
+import com.rglucapstone.activefatherhood.data.User;
+import com.rglucapstone.activefatherhood.sync.RestfulClient;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Luisa Castro on 17/01/2016.
  */
 public class EditProfileActivity extends AppCompatActivity {
+
+    private User user;
+    private Context context;
 
 
     /** Upload Image Resource **/
@@ -50,6 +66,11 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         setToolbar();
+        context = this;
+
+        this.user = new User(new load());
+        this.user.id = getIntent().getStringExtra("user_id");
+        this.user.load(this.user.id);
 
         buttonChoose = (Button) findViewById(R.id.uploadPhoto);
         imageView  = (ImageView) findViewById(R.id.photoUser);
@@ -190,6 +211,95 @@ public class EditProfileActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private class load extends RestfulClient {
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+            ArrayList<User> list = new ArrayList<>();
+            try {
+                list = User.fromJson(result.getJSONArray("data"));
+                if( !list.isEmpty() ){
+                    user = list.get(0);
+                    setData(user);
+                    setActions(user);
+                }
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    private class send extends RestfulClient {
+
+        private Toast toast;
+
+        @Override
+        protected void onPreExecute() {
+            toast = Toast.makeText(context, "Guardando perfil de usuario", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+            toast.cancel();
+            if( this.status == 200 ){
+                Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra("user_id", user.id);
+                intent.putExtra("logged_id", user.id);
+                context.startActivity(intent);
+            }else{
+                toast = Toast.makeText(context, "Error al guardar perfil de usuario", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        }
+
+    }
+
+    private void setActions(final User u){
+
+        Button btn_acept = (Button) findViewById(R.id.btn_acept);
+        btn_acept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                User user = u;
+                user.AsyncTask = new send();
+                EditText name = (EditText) findViewById(R.id.input_user_name);
+                user.name = name.getText().toString();
+                EditText login = (EditText) findViewById(R.id.input_user_login);
+                user.login = login.getText().toString();
+                EditText email = (EditText) findViewById(R.id.input_email);
+                user.email = email.getText().toString();
+                EditText age = (EditText) findViewById(R.id.input_age);
+                user.edad = age.getText().toString();
+                EditText buen_padre = (EditText) findViewById(R.id.input_mantra);
+                user.buen_padre = buen_padre.getText().toString();
+                user.send();
+            }
+        });
+
+    }
+
+    private void setData(User u){
+
+        TextView login = (TextView) findViewById(R.id.input_user_login);
+        login.setText(u.login);
+
+        TextView name = (TextView) findViewById(R.id.input_user_name);
+        name.setText(u.name);
+
+        TextView email = (TextView) findViewById(R.id.input_email);
+        email.setText(u.email);
+
+        TextView age = (TextView) findViewById(R.id.input_age);
+        age.setText(u.edad);
+
+        TextView buen_padre = (TextView) findViewById(R.id.input_mantra);
+        buen_padre.setText(u.buen_padre);
+
+
     }
 
 }

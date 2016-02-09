@@ -346,6 +346,7 @@ public class HomeActivity extends AppCompatActivity {
      */
     public void goCategories(Context context){
         Intent intent = new Intent(context, CategoriesActivity.class);
+        intent.putExtra("logged_id", getIntent().getStringExtra("user_id"));
         startActivityForResult(intent, 0);
     }
 
@@ -354,6 +355,7 @@ public class HomeActivity extends AppCompatActivity {
      */
     public void goPreferences(Context context){
         Intent intent = new Intent(context, PreferencesActivity.class);
+        intent.putExtra("user_id", getIntent().getStringExtra("user_id"));
         startActivityForResult(intent, 0);
     }
     /**
@@ -384,9 +386,13 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // do post
     public void post(View view) {
-        Intent intent = new Intent(this, DoPost.class);
-        intent.putExtra("user_id", intent.getStringExtra("user_id"));
+        Intent intent = new Intent(this, DoPostActivity.class);
+        intent.putExtra("user_id", getIntent().getStringExtra("user_id"));
+        intent.putExtra("content", "");
+        intent.putExtra("source", "");
+        intent.putExtra("user_request_id", "");
         startActivity(intent);
     }
 }

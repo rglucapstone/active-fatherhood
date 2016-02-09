@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
         <include
             android:id="@+id/toolbar_action"
             layout="@layout/toolbar_action">
@@ -21,7 +23,7 @@
         <!-- Post -->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:layout_marginBottom="8dp"
@@ -35,9 +37,10 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
                     <LinearLayout
-                        android:layout_width="250dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="5dp">
                         <ImageView
@@ -73,31 +76,31 @@
                                 android:text="" />
                         </LinearLayout>
                     </LinearLayout>
-                    <RelativeLayout
-                        android:layout_width="110dp"
-                        android:layout_height="match_parent"
-                        android:gravity="right">
 
-                        <!-- Me gusta -->
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:layout_marginRight="10dp">
                         <ImageButton
                             android:id="@+id/btn_like_post"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:layout_marginRight="20dp"
-                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="5dp"
                             android:background="@mipmap/ico_like_grey_24"/>
-
                         <TextView
                             android:id="@+id/txt_post_likes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textSize="14sp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="8dp"
-                            android:text=""/>
-                    </RelativeLayout>
+                            android:textSize="11sp"
+                            android:layout_marginTop="5dp"
+                            android:text="me gusta"/>
+
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -190,68 +193,65 @@
                         android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-
-        <!-- Comments -->
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/lightGrey"
-            android:layout_marginBottom="5dp"
-            android:weightSum="1">
-
-            <!-- Container Comments -->
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:orientation="vertical"
-                android:background="@color/colorPrimaryLabel">
-               <!-- android:layout_weight="0.90">-->
-                <TextView
-                    android:id="@+id/total_comments"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="0 Comentarios"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="14dp"
-                    android:textColor="@color/mediumGrey"
-                    android:layout_marginLeft="5dp" />
-
-                <include
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/layout_list_comments"
-                    layout="@layout/fragment_list_comments">
-                </include>
-
-            </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryLabel">
+            <TextView
+                android:id="@+id/total_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="0 Comentarios"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/mediumGrey"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:id="@+id/layout_list_comments"
+                layout="@layout/fragment_list_comments">
+            </include>
+
             <Button
                 android:id="@+id/btn_commenting"
                 android:layout_width="150dp"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:text="Comentar"
                 android:textColor="#FFFFFF"
                 android:textSize="13dp"
                 android:background="@drawable/button_fill_primary"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="6dp"
-                android:layout_marginRight="90dp"
-                android:layout_marginLeft="90dp"
                 android:clickable="true"
-                android:onClick="commenting"/>
-        </LinearLayout>
+                android:onClick="commenting"
+                android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

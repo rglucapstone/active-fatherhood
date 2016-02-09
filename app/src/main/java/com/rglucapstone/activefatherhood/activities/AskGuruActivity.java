@@ -71,7 +71,8 @@ public class AskGuruActivity extends AppCompatActivity {
                 question.user_guru = user_guru;
                 //TextView txt_test = (TextView) findViewById(R.id.txt_test);
                 //txt_test.setText(question.user_guru.id + " : " + question.user.id);
-                question.send();
+                String prefers = "";
+                question.send(prefers);
 
                // SignUpActivity.this.finish();
                 //Intent intent = new Intent(context, ProfileActivity.class);

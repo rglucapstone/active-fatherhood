@@ -45,6 +45,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <EditText android:id="@+id/input_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Nombre Completo"
+                android:layout_below="@+id/textView"
+                android:layout_marginTop="5dp"
+                android:textSize="16dp"
+                android:textColorHint="#c2c2c2"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <!-- User -->
             <EditText android:id="@+id/input_user_login"
                 android:layout_width="match_parent"

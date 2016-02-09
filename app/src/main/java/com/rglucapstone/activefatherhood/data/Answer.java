@@ -25,7 +25,7 @@ public class Answer extends Model{
     public String content;
     public String created;
     public long created_ago;
-
+    public ArrayList<Like> likes;
 
 
 
@@ -33,7 +33,7 @@ public class Answer extends Model{
     public User user;
     public String question_id;
     public String question_user_id;
-    public ArrayList<Like> likes;
+
     public ArrayList<Suggest> suggestions;
 
     public Context context;

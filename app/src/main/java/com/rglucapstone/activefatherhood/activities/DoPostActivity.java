@@ -3,21 +3,18 @@ package com.rglucapstone.activefatherhood.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateFormat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.view.LayoutInflater;
 import android.widget.Toast;
 
 import com.rglucapstone.activefatherhood.R;
+import com.rglucapstone.activefatherhood.data.Post;
 import com.rglucapstone.activefatherhood.data.Question;
 import com.rglucapstone.activefatherhood.data.User;
 import com.rglucapstone.activefatherhood.sync.RestfulClient;
@@ -30,46 +27,65 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /**
- * Created by ronald on 15/12/15.
+ * Created by Luisa Castro on 27/01/2016.
  */
-public class AskActivity extends AppCompatActivity {
+public class DoPostActivity extends AppCompatActivity {
+    private Button button_asking;
+    final Context context = this;
+    private TextView container;
 
-    private Context context;
+    public User user;
+    private Button btn_doPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ask);
-        this.context = this;
+        setContentView(R.layout.activity_do_post);
         setToolbar();
-        User user = new User(getIntent().getStringExtra("user_id"));
-        User user_guru = new User(getIntent().getStringExtra("user_guru_id"));
-        setActions(user, user_guru);
-    }
 
-    private void setActions(final User u, final User ug){
+        Intent intent = getIntent();
+        this.user = new User(intent.getStringExtra("user_id")); // logged user
 
-        Button button_asking = (Button) findViewById(R.id.btn_asking);
-        button_asking.setOnClickListener(new View.OnClickListener() {
+        final String source = intent.getStringExtra("source");
+        final String user_request_id = intent.getStringExtra("user_request_id");
+        //final String answer_request = intent.getStringExtra("user_answer_id");
+
+        // content of post
+        String content = intent.getStringExtra("content");
+        if( content.length() > 0 ){
+            TextView input_descripction_post = (TextView) findViewById(R.id.input_descripction_post);
+            input_descripction_post.setText(content);
+        }
+
+
+        btn_doPost = (Button) findViewById(R.id.btn_doPost);
+        btn_doPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Question question = new Question(context, new sendQuestion());
-                EditText iquestion = (EditText) findViewById(R.id.input_question);
-                question.content = iquestion.getText().toString();
-                question.created = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-                question.user = u;
-                question.user_guru = ug;
+                Post post = new Post(context, new send());
+                EditText title = (EditText) findViewById(R.id.input_title_post);
+                post.title = title.getText().toString();
+                EditText description = (EditText) findViewById(R.id.input_descripction_post);
+                post.content = description.getText().toString();
+                post.user = user;
+                if( source.equals("notification") ){
+                    post.user_request_id = user_request_id;
+                }
                 String prefers = checkPreferences();
-                question.send(prefers);
+                post.send(prefers);
             }
         });
 
+        /**
+         * Se oculta el titulo de preferencias
+
+        container = (TextView) findViewById(R.id.title_preference);
+        container.setVisibility(View.GONE);*/
     }
 
-    private void setToolbar(){
-        // toolbar
+    public void setToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_action);
-        toolbar.setTitle("Agregar pregunta");
+        toolbar.setTitle("Agrega una publicación");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -85,14 +101,14 @@ public class AskActivity extends AppCompatActivity {
         }
     }
 
-    // task to send a question
-    private class sendQuestion extends RestfulClient {
+
+    private class send extends RestfulClient {
 
         private Toast toast;
 
         @Override
         protected void onPreExecute() {
-            toast = Toast.makeText(context, "Enviando pregunta", Toast.LENGTH_SHORT);
+            toast = Toast.makeText(context, "Enviando publicación", Toast.LENGTH_SHORT);
             toast.show();
         }
 
@@ -101,14 +117,15 @@ public class AskActivity extends AppCompatActivity {
             toast.cancel();
             if( this.status == 201 ){
                 Intent intent = new Intent(context, HomeActivity.class);
-                intent.putExtra("user_id", getIntent().getStringExtra("user_id"));
+                intent.putExtra("user_id", user.id);
                 intent.putExtra("prefers", "");
                 intent.putExtra("view_by", "preferences");
                 context.startActivity(intent);
             }else{
-                toast = Toast.makeText(context, "Error al enviar pregunta", Toast.LENGTH_SHORT);
+                toast = Toast.makeText(context, "Error al enviar la publicación", Toast.LENGTH_SHORT);
                 toast.show();
             }
+
         }
 
     }

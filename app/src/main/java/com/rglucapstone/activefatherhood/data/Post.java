@@ -18,31 +18,41 @@ import java.util.Date;
  */
 public class Post {
 
+    public RestfulClient AsyncTask;
+
+
+    public ArrayList<Like> likes;
+    public ArrayList<Comment> listComments;
+
+    public String user_request_id;
+
+
     public String id;
     public String title;
     public String content;
     public String created;
-    public String likes;
     public long created_ago;
     public String[] themes;
-
     public String user_request;
     public String answer_request;
-
-
     public User user;
-    public ArrayList<Comment> listComments;
-    public RestfulClient asynctask;
     public Context context;
 
-
+    // Constructors
     public Post(RestfulClient task) {
-        this.asynctask = task;
+        this.AsyncTask = task;
     }
+
+    public Post(String id){
+        this.id = id;
+    }
+
+
+
 
     public Post(Context context, RestfulClient task) {
         this.context = context;
-        this.asynctask = task;
+        this.AsyncTask = task;
     }
 
     // Constructor to convert JSON object into a Question class instance
@@ -66,8 +76,17 @@ public class Post {
                 if( themes.length() > 0 )
                     this.themes = q.getString("themes").split(",");
             }
+            /*if (q.has("themes") ){
+                this.themes = new String[0];
+                String themes = q.getString("themes");
+                if( themes.length() > 0 )
+                    this.themes = q.getString("themes").split(",");
+            }*/
 
-            if (q.has("likes")) this.likes = q.getString("likes");
+            //if (q.has("likes")) this.likes = q.getString("likes");
+            if (q.has("likes")){
+                this.likes = Like.fromJson(q.getJSONArray("likes"));
+            }
             this.user = new User(q);
             if (q.has("comments")) {
                 this.listComments = Comment.fromJson(q.getJSONArray("comments"));
@@ -93,7 +112,7 @@ public class Post {
 
     public ArrayList<Post> getAll() {
         ArrayList<Post> items = new ArrayList<>();
-        RestfulClient rest = this.asynctask;
+        RestfulClient rest = this.AsyncTask;
         rest.method = "GET";
         rest.uri = "/posts";
         try{
@@ -103,21 +122,69 @@ public class Post {
         return items;
     }
 
-    public ArrayList<Post> find(String themes, String viewBy) {
-        ArrayList<Post> items = new ArrayList<>();
-        RestfulClient rest = this.asynctask;
-        rest.method = "GET";
-        rest.uri = "/posts/?themes="+themes+ "&view=" + viewBy;;
+    // find posts
+    public void find(String themes, String viewBy) {
         try{
-            rest.execute();
+            this.AsyncTask.method = "GET";
+            this.AsyncTask.uri = "/posts";
+            if( themes.length() > 0 || viewBy.length() > 0){
+                this.AsyncTask.uri += "/?";
+                if( themes.length() > 0 ) this.AsyncTask.uri += "themes=" + themes + "&";
+                if( viewBy.length() > 0 ) this.AsyncTask.uri += "view=" + viewBy + "&";
+            }
+            this.AsyncTask.execute();
         }catch (Exception e) {
         }
-        return items;
     }
+
+    // make like to post
+    public boolean like(String post_id, String user_id) {
+        boolean like = false;
+        this.AsyncTask.method = "POST";
+        this.AsyncTask.uri = "/posts/" + post_id + "/likes";
+        try{
+            JSONObject json = new JSONObject();
+            json.put("user_id", user_id);
+            json.put("created", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            this.AsyncTask.execute(json.toString());
+            if( this.AsyncTask.status == 200 )
+                like = true;
+        }catch (Exception e) {}
+        return like;
+    }
+
+    // send a post
+    public boolean send(String prefers) {
+        boolean send = false;
+        this.AsyncTask.method = "POST";
+        this.AsyncTask.uri = "/posts";
+        try{
+            JSONObject json = new JSONObject();
+            try {
+                json.put("content", this.content);
+                json.put("title", this.title);
+                json.put("user_id", this.user.id);
+                json.put("created", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                json.put("user_request_id", this.user_request_id);
+                json.put("themes", prefers);
+            } catch (JSONException e) {}
+
+            this.AsyncTask.execute(json.toString());
+            if( this.AsyncTask.status == 201 )
+                send = true;
+        }catch (Exception e) {
+        }
+        return send;
+    }
+
+
+
+
+
 
     public Post load(String id){
         Post post = null;
-        RestfulClient rest = this.asynctask;
+        RestfulClient rest = this.AsyncTask;
         rest.method = "GET";
         rest.uri = "/posts/" + id;
         try{
@@ -127,27 +194,6 @@ public class Post {
         return post;
     }
 
-    public boolean send() {
-        boolean send = false;
-        RestfulClient rest = this.asynctask;
-        rest.method = "POST";
-        rest.uri = "/posts";
-        try{
-            JSONObject json = new JSONObject();
-            try {
-                json.put("content", this.content);
-                json.put("title", this.title);
-                json.put("user_id", this.user.id);
-                json.put("user_request_id", this.user_request);
-                json.put("answer_request_id", this.answer_request);
-            } catch (JSONException e) {}
 
-            rest.execute(json.toString());
-            if( rest.status == 201 )
-                send = true;
-        }catch (Exception e) {
-        }
-        return send;
-    }
 
 }

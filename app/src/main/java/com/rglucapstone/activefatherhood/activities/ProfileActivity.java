@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -30,7 +33,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Luisa Castro on 17/12/2015.
@@ -68,16 +73,37 @@ public class ProfileActivity extends Activity {
 
         Intent intent = getIntent();
         this.user = new User(this, new loadUser());
-        user_id = intent.getStringExtra("user_id");
-        this.user.load(user_id);
+        this.user.id = intent.getStringExtra("user_id");
+        this.user.load(this.user.id);
 
         this.logged = new User(intent.getStringExtra("logged_id"));
 
+        setActions();
 
         //set photo user (temporal)
         img_user = (ImageView) this.findViewById(R.id.img_profile);
-        this.user.setImageUser(img_user, user_id);
+        this.user.setImageUser(img_user, this.user.id);
 
+    }
+
+
+    private void setActions(){
+        if( user.id.equals(logged.id) ){
+
+            Button button_edit = (Button) findViewById(R.id.btn_edit_profile);
+            button_edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View arg0) {
+                    Intent intent = new Intent(context, EditProfileActivity.class);
+                    intent.putExtra("user_id", logged.id);
+                    context.startActivity(intent);
+                }
+            });
+
+        }else{
+            Button btn_edit = (Button) findViewById(R.id.btn_edit_profile);
+            btn_edit.setVisibility(View.GONE);
+        }
     }
 
     /*@Override
@@ -91,9 +117,10 @@ public class ProfileActivity extends Activity {
         this.finish();
     }
 
-    /* Editar Datos */
-    public void editProfile(View view){
+
+    public void edit(View view){
         Intent intent = new Intent(this, EditProfileActivity.class);
+
         startActivity(intent);
     }
 
@@ -128,8 +155,9 @@ public class ProfileActivity extends Activity {
         //txt_test.setText(this.logged.id + " : "+this.user.id);
 
         TextView txt_name = (TextView) findViewById(R.id.txt_profile_name);
-        TextView txt_goodfather = (TextView) findViewById(R.id.txt_profile_goodfather);
         txt_name.setText(this.user.name);
+
+        TextView txt_goodfather = (TextView) findViewById(R.id.txt_profile_goodfather);
         txt_goodfather.setText(this.user.buen_padre);
 
         TextView txt_questions = (TextView) findViewById(R.id.txt_questions);

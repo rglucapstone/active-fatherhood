@@ -14,6 +14,7 @@ import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.activities.PostActivity;
 import com.rglucapstone.activefatherhood.activities.QuestionActivity;
 import com.rglucapstone.activefatherhood.adapters.PostsAdapter;
+import com.rglucapstone.activefatherhood.adapters.QuestionsAdapter;
 import com.rglucapstone.activefatherhood.data.Post;
 import com.rglucapstone.activefatherhood.data.Question;
 import com.rglucapstone.activefatherhood.data.User;
@@ -29,60 +30,32 @@ import java.util.ArrayList;
  */
 public class ListPostsFragment extends ListFragment {
 
-    public View view;
-    public ArrayList<Post> list;
-    public PostsAdapter adapter;
-    public User logged;
-
-
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_list_posts, container, false);
-        this.view = view;
-
-        logged = new User(getArguments().getString("logged_id"));
-
-        Post post = new Post(new loadPosts());
-        String str_themes = getArguments().getString("prefers");
-        String viewBy = getArguments().getString("view_by");
-        if( str_themes.length() > 0 )
-            this.list = post.find(str_themes, viewBy);
-        else
-            this.list = post.getAll();
-
+        Post post = new Post(new load());
+        post.find(getArguments().getString("prefers"), getArguments().getString("view_by"));
         return view;
     }
 
-
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        User user = new User(getArguments().getString("logged_id"));
         Post post = (Post) getListView().getItemAtPosition(position);
         Intent intent = new Intent(getActivity(), PostActivity.class);
         intent.putExtra("post_id", post.id);
+        intent.putExtra("logged_id", user.id);
         startActivity(intent);
     }
 
-    private class loadPosts extends RestfulClient {
-
-        @Override
-        protected void onPreExecute() {
-        }
+    // task to load posts
+    private class load extends RestfulClient {
 
         @Override
         protected void onPostExecute(JSONObject result) {
-            list = new ArrayList<>();
-            adapter = new PostsAdapter(getActivity(), list);
-            adapter.logged = logged;
+            User user = new User(getArguments().getString("logged_id"));
+            ArrayList<Post> list = new ArrayList<>();
+            PostsAdapter adapter = new PostsAdapter(getActivity(), list, user);
             setListAdapter(adapter);
             try {
                 if( this.status == 200 ){
@@ -93,7 +66,7 @@ public class ListPostsFragment extends ListFragment {
                 e.printStackTrace();
             }
 
-            RelativeLayout loadingLayout = (RelativeLayout) view.findViewById(R.id.loading_posts);
+            RelativeLayout loadingLayout = (RelativeLayout) getView().findViewById(R.id.loading_posts);
             loadingLayout.setVisibility(View.GONE);
         }
 

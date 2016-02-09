@@ -17,13 +17,14 @@
         android:gravity="right">
 
         <ImageView
-            android:id="@+id/iconUser"
+            android:id="@+id/icon_user_comment"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/ico_profile_grey"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:layout_gravity="left" />
+            android:layout_gravity="left"
+            android:clickable="true"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -32,33 +33,42 @@
             android:layout_marginLeft="10dp"
             android:gravity="left">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="left" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.50"
+                android:gravity="left">
                 <TextView
                     android:id="@+id/txt_comment_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Ronald Gonzales"
+                    android:text="rgonzales"
                     android:textSize="14sp"
                     android:textColor="@color/colorThird"/>
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="right">
 
-                <TextView
-                    android:id="@+id/txt_comment_date"
+                <com.github.curioustechizen.ago.RelativeTimeTextView
+                    android:id="@+id/comment_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="2016-31-01 12:20:20"
-                    android:layout_marginTop="1dp"
-                    android:textColor="#999999"
-                    android:textSize="12sp" />
+                    android:textSize="11sp"
+                    android:text="2016-01-30 13:45:30" />
             </RelativeLayout>
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"

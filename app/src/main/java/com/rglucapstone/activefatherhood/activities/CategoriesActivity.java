@@ -49,34 +49,34 @@ public class CategoriesActivity extends AppCompatActivity {
     public void goCategorie( View view ){
         String tag = view.getTag().toString();
         Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("viewBy","categorie");
+        intent.putExtra("view_by","categories");
         switch (tag){
             case "aprendizaje":
-                intent.putExtra("str_themes","7");
+                intent.putExtra("prefers","7");
                 intent.putExtra("title", "Aprendizaje");
                 break;
             case "comportamiento":
-                intent.putExtra("str_themes","8");
+                intent.putExtra("prefers","8");
                 intent.putExtra("title","Comportamiento");
                 break;
             case "comunicacion":
-                intent.putExtra("str_themes","11");
+                intent.putExtra("prefers","11");
                 intent.putExtra("title","Comunicación");
                 break;
             case "problemas_sociales":
-                intent.putExtra("str_themes","9");
+                intent.putExtra("prefers","9");
                 intent.putExtra("title","Problemas Sociales");
                 break;
             case "salud":
-                intent.putExtra("str_themes","4");
+                intent.putExtra("prefers","4");
                 intent.putExtra("title","Salud");
                 break;
             case "alimentacion":
-                intent.putExtra("str_themes","17");
+                intent.putExtra("prefers","17");
                 intent.putExtra("title","Alimentación");
                 break;
             case "enfermedades":
-                intent.putExtra("str_themes","10");
+                intent.putExtra("prefers","10");
                 intent.putExtra("title","Enfermedades");
                 break;
             case "discapacidades":
@@ -84,31 +84,31 @@ public class CategoriesActivity extends AppCompatActivity {
                 intent.putExtra("title","Discapacidades");
                 break;
             case "divorcio":
-                intent.putExtra("str_themes","18");
+                intent.putExtra("prefers","18");
                 intent.putExtra("title","Divorcio");
                 break;
             case "adopcion":
-                intent.putExtra("str_themes","19");
+                intent.putExtra("prefers","19");
                 intent.putExtra("title","Adopción");
                 break;
             case "recreacion":
-                intent.putExtra("str_themes","21");
+                intent.putExtra("prefers","21");
                 intent.putExtra("title","Recreacion");
                 break;
             case "sexualidad":
-                intent.putExtra("str_themes","22");
+                intent.putExtra("prefers","22");
                 intent.putExtra("title","Sexualidad");
                 break;
             case "solteros":
-                intent.putExtra("str_themes","13");
+                intent.putExtra("prefers","13");
                 intent.putExtra("title","Padres Solteros");
                 break;
             case "primerizos":
-                intent.putExtra("str_themes","14");
+                intent.putExtra("prefers","14");
                 intent.putExtra("title","Padres primerizos");
                 break;
             case "futuros":
-                intent.putExtra("str_themes","15");
+                intent.putExtra("prefers","15");
                 intent.putExtra("title","Futuros Padres");
                 break;
         }

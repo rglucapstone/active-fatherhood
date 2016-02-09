@@ -10,28 +10,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="13dp"
         android:orientation="vertical">
         <EditText
             android:id="@+id/input_comment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
+            android:layout_height="130dp"
+            android:layout_weight="1"
+            android:maxLength="300"
             android:ems="12"
-            android:hint="Escribe aquí tu comentario.."/>
+            android:gravity="top"
+            android:singleLine="true"
+            android:inputType="textMultiLine"
+            android:background="@drawable/field_write_question"
+            android:textCursorDrawable="@drawable/cursor_text"
+            android:hint="Escribe aquí tu comentario..."
+            android:textSize="16dp"
+            android:textColorHint="#c2c2c2"
+            android:editable="true" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
             android:id="@+id/btn_comment"
-            android:text="Enviar"
-            android:textColor="#FFFFFF"
-            android:layout_gravity="center_horizontal|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_send"
             android:background="@drawable/button_fill_primary"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="50dp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="bottom|right"
+            android:layout_marginTop="5dp"
             android:clickable="true"
-            android:onClick="comment" />
+            android:onClick="comment"/>
+
     </LinearLayout>
 </LinearLayout>

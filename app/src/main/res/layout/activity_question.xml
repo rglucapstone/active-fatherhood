@@ -3,11 +3,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbarAlwaysDrawVerticalTrack="true">
+        android:layout_height="match_parent">
         <include
             android:id="@+id/toolbar_action"
             layout="@layout/toolbar_action">
@@ -181,6 +181,7 @@
                     android:textColor="@color/colorThird" />
             </RelativeLayout>
         </LinearLayout>
+
     </LinearLayout>
 
     <!-- Answers -->
@@ -231,10 +232,8 @@
 
     </LinearLayout>
 
-
-
-        <!-- Boton Responder -->
-        <LinearLayout
+    <!-- Boton Responder -->
+    <LinearLayout
             android:id="@+id/btn_do_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -256,4 +255,5 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>

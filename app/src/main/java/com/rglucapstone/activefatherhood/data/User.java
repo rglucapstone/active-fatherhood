@@ -53,10 +53,15 @@ public class User extends Model
 
     public ImageView img_user;
 
-
+    // Constructors
     public User(RestfulClient task) {
         this.AsyncTask = task;
     }
+
+    public User(String id){
+        this.id = id;
+    }
+
 
     public User(JSONObject object){
         try {
@@ -97,6 +102,22 @@ public class User extends Model
         }
     }
 
+    public boolean send() {
+        boolean send = false;
+        this.AsyncTask.method = "POST";
+        this.AsyncTask.uri = "/users";
+        try{
+            if( !this.id.equals("") ){
+                this.AsyncTask.uri += "/" + this.id;
+            }
+            this.AsyncTask.execute(this.toJson().toString());
+            if( this.AsyncTask.status == 201 || this.AsyncTask.status == 200)
+                send = true;
+        }catch (Exception e) {
+        }
+        return send;
+    }
+
     public void doLogin(String login) {
         this.login = login;
         this.AsyncTask.method = "GET";
@@ -126,7 +147,31 @@ public class User extends Model
         return false;
     }
 
+    // check if user did like to an entity (answer - post)
+    public boolean getLikeStatus(ArrayList<Like> likes){
+        for (int i = 0; i < likes.size(); i++) {
+            Like like = likes.get(i);
+            if( like.user_id.equals(this.id) )
+                return true;
+        }
+        return false;
+    }
 
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("login", this.login);
+            json.put("email", this.email);
+            json.put("password", this.password);
+            json.put("edad", this.edad);
+            json.put("rate", this.rate);
+            json.put("kind_dad_id", this.kind_dad_id);
+            json.put("name", this.name);
+            json.put("buen_padre", this.buen_padre);
+            json.put("birthdate", this.birthdate);
+        } catch (JSONException e) {}
+        return json;
+    }
 
 
     /********************************************************/
@@ -137,9 +182,7 @@ public class User extends Model
 
     }
 
-    public User(String id){
-        this.id = id;
-    }
+
 
     public User(Context context, RestfulClient task) {
         this.context = context;
@@ -160,35 +203,9 @@ public class User extends Model
         this.edad = edad;
     }
 
-    public boolean send() {
-        boolean send = false;
-        RestfulClient rest = this.AsyncTask;
-        rest.method = "POST";
-        rest.uri = "/users";
-        try{
-            rest.execute(this.toJson().toString());
-            if( rest.status == 201 )
-                send = true;
-        }catch (Exception e) {
-        }
-        return send;
-    }
 
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        try {
-            json.put("login", this.login);
-            json.put("email", this.email);
-            json.put("password", this.password);
-            json.put("edad", this.edad);
-            json.put("rate", this.rate);
-            json.put("kind_dad_id", this.kind_dad_id);
-            json.put("name", this.name);
-            json.put("buen_padre", this.buen_padre);
-            json.put("birthdate", this.birthdate);
-        } catch (JSONException e) {}
-        return json;
-    }
+
+
 
 
 

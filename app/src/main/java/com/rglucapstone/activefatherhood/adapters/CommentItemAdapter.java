@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.rglucapstone.activefatherhood.R;
 import com.rglucapstone.activefatherhood.activities.ProfileActivity;
 import com.rglucapstone.activefatherhood.data.Comment;
@@ -25,51 +26,54 @@ public class CommentItemAdapter extends ArrayAdapter<Comment> {
     public ImageView link_user;
     public User user_comment;
 
-    public CommentItemAdapter(Context context, ArrayList<Comment> comments) {
+    private User logged;
+
+    public CommentItemAdapter(Context context, ArrayList<Comment> comments, User logged) {
         super(context, R.layout.fragment_list_comments, comments);
         this.context = context;
+        this.logged = logged;
     }
-
-
-    /*public AnswerItemAdapter(Activity activity, String[] items){
-        super(activity, R.layout.item_answer, items);
-        inflater = activity.getWindow().getLayoutInflater();
-    }*/
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        final Comment comment = getItem(position);
+        Comment comment = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_comment, parent, false);
-        }else{ }
-
-        TextView txt_user = (TextView) convertView.findViewById(R.id.txt_comment_user);
-        txt_user.setText(comment.user.login);
-
-        TextView txt_date = (TextView) convertView.findViewById(R.id.txt_comment_date);
-        txt_date.setText(comment.created);
-
-        TextView txt_content = (TextView) convertView.findViewById(R.id.txt_comment_content);
-        txt_content.setText(comment.content);
-
-        //TextView txt_likes = (TextView) convertView.findViewById(R.id.txt_likes);
-        //txt_likes.setText(answer.likes);
-
-        // Set image user (temporal)
-        link_user = (ImageView) convertView.findViewById(R.id.iconUser);
-        user_comment = comment.user;
-        setImageUser(link_user,user_comment.id);
-
-        link_user.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(context, ProfileActivity.class);
-                intent.putExtra("user_id", user_comment.id);
-                context.startActivity(intent);
-            }
-        });
+        }
+        setData(convertView, comment);
+        setActions(convertView, comment);
 
         return convertView;
     }
+
+    private void setActions(final View v, final Comment c){
+
+        link_user = (ImageView) v.findViewById(R.id.icon_user_comment);
+        link_user.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra("user_id", c.user.id);
+                intent.putExtra("logged_id", logged.id);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+    private void setData(View v, Comment c){
+        TextView txt_user = (TextView) v.findViewById(R.id.txt_comment_user);
+        txt_user.setText(c.user.login);
+
+        RelativeTimeTextView date = (RelativeTimeTextView) v.findViewById(R.id.comment_date);
+        date.setReferenceTime(c.created_ago);
+
+        TextView txt_content = (TextView) v.findViewById(R.id.txt_comment_content);
+        txt_content.setText(c.content);
+
+        link_user = (ImageView) v.findViewById(R.id.icon_user_comment);
+        setImageUser(link_user, c.user.id);
+    }
+
+
 
     public void setImageUser(ImageView img_view,String id){
         //Toast.makeText(context, "hola" + id , Toast.LENGTH_SHORT).show();

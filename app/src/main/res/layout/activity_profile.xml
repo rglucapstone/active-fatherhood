@@ -41,12 +41,12 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.06" />
             <Button
+                android:id="@+id/btn_edit_profile"
                 android:layout_width="25dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="82dp"
                 android:layout_marginTop="5dp"
-                android:background="@mipmap/ic_edit_white_square_24"
-                android:onClick="editProfile"/>
+                android:background="@mipmap/ic_edit_white_square_24" />
 
         </LinearLayout>
         <TextView

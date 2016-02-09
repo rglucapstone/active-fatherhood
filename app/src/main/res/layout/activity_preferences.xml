@@ -34,20 +34,22 @@
                 android:id="@+id/row_1"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="3dp">
                 <CheckBox
-                    android:id="@+id/check_bebes"
+                    android:id="@+id/check_babys"
                     android:text="Bebés"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
-                    android:id="@+id/check_ninos"
+                    android:id="@+id/check_children"
                     android:text="Niños"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
 
@@ -55,34 +57,44 @@
                 android:id="@+id/row_3"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="3dp">
                 <CheckBox
-                    android:id="@+id/check_adolescentes"
+                    android:id="@+id/check_teens"
                     android:text="Adolescentes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
+                    android:id="@+id/check_recreacion"
+                    android:text="Recreación"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:button="@drawable/color_check"
+                    android:buttonTint="#4cb6c4" />
+                <!--<CheckBox
                     android:id="@+id/check_jovenes"
                     android:text="Jóvenes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:buttonTint="#4cb6c4" />
+                    android:buttonTint="#4cb6c4" />-->
             </TableRow>
 
             <TableRow
                 android:id="@+id/row_2"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="3dp">
                 <CheckBox
                     android:id="@+id/check_aprendizaje"
                     android:text="Aprendizaje"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
                     android:id="@+id/check_comportamiento"
@@ -90,6 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
 
@@ -97,20 +110,22 @@
                 android:id="@+id/row_4"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="3dp">
                 <CheckBox
                     android:id="@+id/check_comunicacion"
                     android:text="Comunicación"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
-                    android:id="@+id/check_problemas_sociales"
-                    android:text="Problemas Sociales"
+                    android:id="@+id/check_sexualidad"
+                    android:text="Sexualidad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
 
@@ -118,13 +133,14 @@
                 android:id="@+id/row_5"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="3dp">
                 <CheckBox
                     android:id="@+id/check_salud"
                     android:text="Salud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
                     android:id="@+id/check_alimentacion"
@@ -132,6 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
 
@@ -139,20 +156,22 @@
                 android:id="@+id/row_6"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="3dp">
                 <CheckBox
                     android:id="@+id/check_divorcio"
                     android:text="Divorcio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
-                    android:id="@+id/check_adopcion"
-                    android:text="Adopción"
+                    android:id="@+id/check_problemas_sociales"
+                    android:text="Problemas Sociales"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
 
@@ -160,13 +179,14 @@
                 android:id="@+id/row_7"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="1dp">
+                android:layout_marginBottom="3dp">
                 <CheckBox
-                    android:id="@+id/check_efermedades"
+                    android:id="@+id/check_enfermedades"
                     android:text="Enfermedades"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
                 <CheckBox
                     android:id="@+id/check_discapacidades"
@@ -174,10 +194,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:button="@drawable/color_check"
                     android:buttonTint="#4cb6c4" />
             </TableRow>
 
-            <TableRow
+            <!--<TableRow
                 android:id="@+id/row_8"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
@@ -196,7 +217,7 @@
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:buttonTint="#4cb6c4" />
-            </TableRow>
+            </TableRow>-->
 
         </TableLayout>
 

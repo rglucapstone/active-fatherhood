@@ -209,18 +209,6 @@ public class LoginActivity extends FragmentActivity {
             Toast.makeText(getBaseContext(), "Uno o más campos están vacíos", Toast.LENGTH_SHORT).show();
         }
     }
-        //Intent intent = new Intent(context, PreferencesActivity.class);
-       // startActivity(intent);
-
-
-      /* if(!username.getText().toString().equals("") && !password.getText().toString().equals("")){
-            Intent intent = getIntent();
-            this.user = new User(new loadUser());
-            this.user.loadbyLogin(username.getText().toString());
-            //Toast.makeText(getBaseContext(), "Uno", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(getBaseContext(), "Uno o más campos están vacíos", Toast.LENGTH_SHORT).show();
-        }*/
 
     public void toggleBusy(int visibility){
         RelativeLayout loadingLayout = (RelativeLayout) findViewById(R.id.loading_login);
@@ -237,20 +225,28 @@ public class LoginActivity extends FragmentActivity {
         @Override
         protected void onPostExecute(JSONObject result) {
             try {
-                ArrayList<User> list = User.fromJson(result.getJSONArray("data"));
-                if( list.size() > 0 ){
-                    User user = list.get(0);
+                if( this.status == 200 ){
+                    ArrayList<User> list = User.fromJson(result.getJSONArray("data"));
+                    if( list.size() > 0 ){
+                        User user = list.get(0);
 
-                    TextView txt_login = (TextView) findViewById(R.id.input_user_email);
-                    TextView txt_password = (TextView) findViewById(R.id.input_password);
-                    if( txt_login.getText().toString().equals(user.login) && txt_password.getText().toString().equals(user.password) ){
-                        toggleBusy(View.GONE);
-                        Intent intent = new Intent(getApplicationContext(), PreferencesActivity.class);
-                        intent.putExtra("user_id", user.id);
-                        startActivity(intent);
-                    }else
-                        Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecto.", Toast.LENGTH_SHORT).show();
+                        TextView txt_login = (TextView) findViewById(R.id.input_user_email);
+                        TextView txt_password = (TextView) findViewById(R.id.input_password);
+                        if( txt_login.getText().toString().equals(user.login) && txt_password.getText().toString().equals(user.password) ){
+                            toggleBusy(View.GONE);
+                            Intent intent = new Intent(getApplicationContext(), PreferencesActivity.class);
+                            intent.putExtra("user_id", user.id);
+                            startActivity(intent);
+                        }else {
+                            toggleBusy(View.GONE);
+                            Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecto.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }else{
+                    toggleBusy(View.GONE);
+                    Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecto.", Toast.LENGTH_SHORT).show();
                 }
+
              }catch (JSONException e){
                 e.printStackTrace();
             }
